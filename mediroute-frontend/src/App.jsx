@@ -23,6 +23,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   
   // Form State
+  const [patientName, setPatientName] = useState('');
   const [symptoms, setSymptoms] = useState('');
   const [location, setLocation] = useState('Nagpur');
   const [age, setAge] = useState(55);
@@ -32,6 +33,7 @@ export default function App() {
   const [intentResult, setIntentResult] = useState(null);
   const [estimates, setEstimates] = useState([]);
   const [selectedHospital, setSelectedHospital] = useState(null);
+  const [requestedAmount, setRequestedAmount] = useState(null);
   const [loanResult, setLoanResult] = useState(null);
 
   const COMORBIDITIES_LIST = ["Diabetes", "Hypertension", "Cardiac Disease", "Age > 60"];
@@ -95,10 +97,11 @@ export default function App() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          patient_name: "Ravi (Demo)",
+          patient_name: patientName || "John Doe",
           hospital_name: selectedHospital.hospital_name,
           procedure_name: intentResult.procedure_name,
-          amount: selectedHospital.estimated_cost
+          amount: requestedAmount || selectedHospital.estimated_cost,
+          estimated_cost: selectedHospital.estimated_cost
         })
       });
       const loanData = await loanRes.json();
@@ -164,6 +167,17 @@ export default function App() {
                       placeholder="e.g., Severe knee pain, difficulty walking, need a replacement..."
                       value={symptoms}
                       onChange={e => setSymptoms(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="form-group" style={{ marginBottom: '20px' }}>
+                    <label className="form-label">Patient Name</label>
+                    <input 
+                      type="text" 
+                      className="input-field" 
+                      placeholder="e.g., Ramesh Kumar"
+                      value={patientName}
+                      onChange={e => setPatientName(e.target.value)}
                     />
                   </div>
 
@@ -350,9 +364,18 @@ export default function App() {
                           <h4 style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--success-color)' }}>
                             <ShieldCheck size={20} /> Verified NBFC Anchor
                           </h4>
-                          <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '24px', lineHeight: 1.6 }}>
+                          <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.6 }}>
                             This estimate includes specific risk adjustments for the patient's comorbidities. Using this anchor eliminates over-financing risks for our lending partners.
                           </p>
+                          <div style={{ marginBottom: '16px' }}>
+                            <label className="form-label" style={{ fontSize: '13px' }}>Requested Loan Amount (Editable for Fraud Demo)</label>
+                            <input 
+                              type="number" 
+                              className="input-field" 
+                              value={requestedAmount !== null ? requestedAmount : selectedHospital.estimated_cost}
+                              onChange={e => setRequestedAmount(parseInt(e.target.value) || 0)}
+                            />
+                          </div>
                           <button 
                             className="btn-primary" 
                             style={{ width: '100%', fontSize: '16px' }}
@@ -386,13 +409,26 @@ export default function App() {
                   initial={{ scale: 0, rotate: -180 }} 
                   animate={{ scale: 1, rotate: 0 }} 
                   transition={{ delay: 0.2, type: 'spring' }}
-                  className="success-icon"
+                  className={loanResult.is_fraud_flagged ? "fraud-icon" : "success-icon"}
+                  style={loanResult.is_fraud_flagged ? {
+                    width: '100px', height: '100px',
+                    background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.05))',
+                    color: 'var(--danger-color)',
+                    borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    margin: '0 auto 32px', fontSize: '48px',
+                    boxShadow: '0 0 40px rgba(239, 68, 68, 0.2), inset 0 0 20px rgba(239, 68, 68, 0.4)',
+                    border: '1px solid rgba(239, 68, 68, 0.3)'
+                  } : {}}
                 >
-                  <CheckCircle size={56} />
+                  {loanResult.is_fraud_flagged ? <ShieldAlert size={56} /> : <CheckCircle size={56} />}
                 </motion.div>
                 
-                <h1 className="title" style={{ marginBottom: '12px' }}>Loan Pre-Approved!</h1>
-                <p className="subtitle" style={{ marginBottom: '40px' }}>{loanResult.message}</p>
+                <h1 className="title" style={{ marginBottom: '12px', color: loanResult.is_fraud_flagged ? 'var(--danger-color)' : 'inherit' }}>
+                  {loanResult.is_fraud_flagged ? "Review Required" : "Loan Pre-Approved!"}
+                </h1>
+                <p className="subtitle" style={{ marginBottom: '40px', color: loanResult.is_fraud_flagged ? 'var(--danger-color)' : 'var(--text-secondary)' }}>
+                  {loanResult.message}
+                </p>
                 
                 <div className="glass-panel" style={{ padding: '32px', textAlign: 'left', marginBottom: '40px', background: 'rgba(0,0,0,0.4)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', fontSize: '16px' }}>
