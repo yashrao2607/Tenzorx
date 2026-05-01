@@ -11,6 +11,13 @@ from services.intent_service import analyze_intent
 from services.cost_service import calculate_costs
 from services.loan_service import process_loan
 from services.ollama_service import analyze_symptom_ollama
+from database import get_db, engine, Base
+from services.pricing_service import get_cost_analysis
+from sqlalchemy.orm import Session
+from fastapi import Depends, HTTPException
+
+# Initialize database
+Base.metadata.create_all(bind=engine)
 
 # Structured Logging
 logging.basicConfig(
@@ -55,6 +62,10 @@ app.add_middleware(
 class SymptomRequest(BaseModel):
     symptom_text: str
 
+class CostAnalysisRequest(BaseModel):
+    procedure: str
+    city: str
+
 class SymptomInput(BaseModel):
     symptoms: str
     age: int
@@ -98,6 +109,14 @@ async def api_apply_loan(req: LoanRequest):
 async def api_analyze_symptom(req: SymptomRequest):
     logger.info(f"Analyzing symptom via Ollama: {req.symptom_text[:50]}...")
     return await analyze_symptom_ollama(req.symptom_text)
+
+@app.post("/api/cost-analysis")
+async def api_cost_analysis(req: CostAnalysisRequest, db: Session = Depends(get_db)):
+    logger.info(f"Cost analysis for {req.procedure} in {req.city}")
+    result = get_cost_analysis(db, req.procedure, req.city)
+    if not result:
+        raise HTTPException(status_code=404, detail="No hospitals found for this procedure and city")
+    return result
 
 @app.post("/api/update-comorbidity")
 async def api_update_comorbidity(req: EstimateRequest):

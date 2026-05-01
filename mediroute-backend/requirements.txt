@@ -10,3 +10,5 @@ langchain-community
 langchain-ollama
 rapidfuzz
 requests
+sqlalchemy
+psycopg2-binary

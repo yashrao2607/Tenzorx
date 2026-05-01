@@ -17,6 +17,7 @@ class Settings(BaseSettings):
 
     # CORS
     ALLOWED_ORIGINS: list[str] = ["*"]
+    DATABASE_URL: str = "sqlite:///./mediroute.db"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
