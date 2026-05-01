@@ -5,7 +5,8 @@ def test_cost_analysis():
     url = "http://localhost:8000/api/cost-analysis"
     payload = {
         "procedure": "Knee Replacement",
-        "city": "Bangalore"
+        "city": "Bangalore",
+        "comorbidities": ["diabetes", "hypertension"]
     }
     
     print(f"Testing Pricing Engine: {url}")
@@ -17,8 +18,16 @@ def test_cost_analysis():
         print("\n--- Cost Benchmarks ---")
         print(f"Min Cost: ₹{data['min_cost']:,}")
         print(f"Max Cost: ₹{data['max_cost']:,}")
-        print(f"Avg Cost: ₹{data['avg_cost']:,}")
-        print(f"Recommended (Quality Weighted): ₹{data['recommended_cost']:,}")
+        print(f"Base Recommended Cost: ₹{data['base_recommended_cost']:,}")
+        print(f"Adjusted Recommended Cost: ₹{data['adjusted_recommended_cost']:,}")
+        
+        if data['applied_factors']:
+            print("Applied Factors:")
+            for factor in data['applied_factors']:
+                print(f"  - {factor['condition']}: {factor['impact']}")
+        print(f"Potential Savings Opportunity: ₹{data['savings_opportunity']:,}")
+        print(f"Market Insight: {data['insight']}")
+        print(f"Financial Risk Flag: {data['risk_flag'].upper()}")
         
         print("\n--- Top 3 Best Value Hospitals ---")
         for h in data['hospital_options'][:3]:

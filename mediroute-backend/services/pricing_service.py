@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from models import Hospital
 
-def get_cost_analysis(db: Session, procedure: str, city: str):
+def get_cost_analysis(db: Session, procedure: str, city: str, comorbidities: list[str] = []):
     # 1. Filter hospitals by procedure + city
     query = db.query(Hospital).filter(
         Hospital.procedure == procedure,
@@ -19,14 +19,34 @@ def get_cost_analysis(db: Session, procedure: str, city: str):
     max_cost = max(costs)
     avg_cost = sum(costs) / len(costs)
     
-    # 4. Compute recommended_cost: weighted average using quality_score
-    # Formula: recommended_cost = sum(cost * quality_score) / sum(quality_score)
+    # 4. Compute recommended_cost (Base Cost)
     weighted_sum = sum(h.cost * h.quality_score for h in hospitals)
     total_quality = sum(h.quality_score for h in hospitals)
-    recommended_cost = weighted_sum / total_quality if total_quality > 0 else avg_cost
+    base_recommended_cost = weighted_sum / total_quality if total_quality > 0 else avg_cost
     
-    # 6. Sorting by best value = highest (quality_score / cost ratio)
-    # Convert to list of dicts for response
+    # Comorbidity Multiplier Logic
+    COMORBIDITY_MULTIPLIERS = {
+        "diabetes": 0.15,
+        "hypertension": 0.10,
+        "heart_disease": 0.20
+    }
+    
+    total_multiplier = 0.0
+    applied_factors = []
+    
+    for c in (comorbidities or []):
+        c_lower = c.lower()
+        if c_lower in COMORBIDITY_MULTIPLIERS:
+            impact = COMORBIDITY_MULTIPLIERS[c_lower]
+            total_multiplier += impact
+            applied_factors.append({
+                "condition": c_lower,
+                "impact": f"+{int(impact * 100)}%"
+            })
+            
+    adjusted_recommended_cost = base_recommended_cost * (1 + total_multiplier)
+    
+    # 6. Sorting by best value
     hospital_options = []
     for h in hospitals:
         hospital_options.append({
@@ -38,7 +58,7 @@ def get_cost_analysis(db: Session, procedure: str, city: str):
     
     # Sort and limit to top 10
     hospital_options.sort(key=lambda x: x["value_index"], reverse=True)
-    top_10 = hospital_options[:10]
+    top_10 = [{k: v for k, v in h.items() if k != "value_index"} for h in hospital_options[:10]]
     
     # Financial Insights Logic
     price_spread_ratio = max_cost / min_cost if min_cost > 0 else 1
@@ -53,13 +73,15 @@ def get_cost_analysis(db: Session, procedure: str, city: str):
         insight = "Low cost variance"
         risk_flag = "low"
         
-    savings_opportunity = max_cost - recommended_cost
+    savings_opportunity = max_cost - base_recommended_cost
         
     return {
         "min_cost": int(min_cost),
         "max_cost": int(max_cost),
         "avg_cost": int(avg_cost),
-        "recommended_cost": int(recommended_cost),
+        "base_recommended_cost": int(base_recommended_cost),
+        "adjusted_recommended_cost": int(adjusted_recommended_cost),
+        "applied_factors": applied_factors,
         "savings_opportunity": int(savings_opportunity),
         "insight": insight,
         "risk_flag": risk_flag,

@@ -65,6 +65,7 @@ class SymptomRequest(BaseModel):
 class CostAnalysisRequest(BaseModel):
     procedure: str
     city: str
+    comorbidities: Optional[list[str]] = []
 
 class SymptomInput(BaseModel):
     symptoms: str
@@ -112,8 +113,8 @@ async def api_analyze_symptom(req: SymptomRequest):
 
 @app.post("/api/cost-analysis")
 async def api_cost_analysis(req: CostAnalysisRequest, db: Session = Depends(get_db)):
-    logger.info(f"Cost analysis for {req.procedure} in {req.city}")
-    result = get_cost_analysis(db, req.procedure, req.city)
+    logger.info(f"Cost analysis for {req.procedure} in {req.city} with {req.comorbidities}")
+    result = get_cost_analysis(db, req.procedure, req.city, req.comorbidities)
     if not result:
         raise HTTPException(status_code=404, detail="No hospitals found for this procedure and city")
     return result
