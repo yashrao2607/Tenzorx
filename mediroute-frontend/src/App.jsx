@@ -1,674 +1,126 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, MapPin, CheckCircle, ArrowRight, ShieldCheck, CreditCard, ActivitySquare, ChevronRight, BrainCircuit, HeartPulse, ShieldAlert, BadgeIndianRupee, Info, TrendingUp, AlertTriangle } from 'lucide-react';
-import './index.css';
+import { Shield, LayoutDashboard, FileCheck, RefreshCcw } from 'lucide-react';
+import SymptomForm from './components/SymptomForm';
+import CostDashboard from './components/CostDashboard';
+import LoanDecision from './components/LoanDecision';
 
-import Header from './components/Header';
-import LenderDashboard from './components/LenderDashboard';
-import GlassCard from './components/GlassCard';
+const API_BASE_URL = 'http://localhost:8000';
 
-const API_BASE = 'http://localhost:8000/api';
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
-
-const staggerItem = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
-};
-
-export default function App() {
+function App() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [viewMode, setViewMode] = useState('patient'); // 'patient' or 'lender'
-  
-  // Form State
-  const [patientName, setPatientName] = useState('');
-  const [symptoms, setSymptoms] = useState('');
-  const [location, setLocation] = useState('Nagpur');
-  const [age, setAge] = useState(55);
-  const [comorbidities, setComorbidities] = useState([]);
-  
-  // API Results
-  const [intentResult, setIntentResult] = useState(null);
-  const [estimates, setEstimates] = useState([]);
-  const [selectedHospital, setSelectedHospital] = useState(null);
-  const [requestedAmount, setRequestedAmount] = useState(null);
-  const [loanResult, setLoanResult] = useState(null);
-  const [detectedLang, setDetectedLang] = useState('eng'); // 'eng', 'hin', 'hinglish'
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
 
-  const COMORBIDITIES_LIST = ["Diabetes", "Hypertension", "Cardiac Disease", "Age > 60"];
-  const CITIES = ["Nagpur", "Mumbai", "Pune", "Delhi", "Bangalore"];
+  const steps = [
+    { id: 1, label: 'Clinical Intake', icon: Shield },
+    { id: 2, label: 'Cost Audit', icon: LayoutDashboard },
+    { id: 3, label: 'Loan Underwriting', icon: FileCheck },
+  ];
 
-  // Blueprint Stage 1 - Language Detection
-  useEffect(() => {
-    const detectLanguage = (text) => {
-      const devanagariRegex = /[\u0900-\u097F]/;
-      if (devanagariRegex.test(text)) return 'hin';
-      
-      const hinglishKeywords = ["dard", "mein", "pet", "pair", "bukhaar", "dikkat"];
-      if (hinglishKeywords.some(kw => text.toLowerCase().includes(kw))) return 'hinglish';
-      
-      return 'eng';
-    };
-
-    if (symptoms) {
-      const timer = setTimeout(() => {
-        setDetectedLang(detectLanguage(symptoms));
-      }, 600);
-      return () => clearTimeout(timer);
-    }
-  }, [symptoms]);
-
-  const handleToggleComorbidity = (item) => {
-    if (comorbidities.includes(item)) {
-      setComorbidities(comorbidities.filter(c => c !== item));
-    } else {
-      setComorbidities([...comorbidities, item]);
-    }
-  };
-
-  // Live Update logic (What-if Simulator)
-  const updateEstimatesLive = useCallback(async () => {
-    if (!intentResult) return;
-    
-    try {
-      const finalComorbidities = [...comorbidities];
-      if (age > 60 && !finalComorbidities.includes("Age > 60")) {
-        finalComorbidities.push("Age > 60");
-      }
-
-      const estRes = await fetch(`${API_BASE}/update-comorbidity`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          procedure_name: intentResult.procedure_name,
-          comorbidities: finalComorbidities,
-          location
-        })
-      });
-      const estData = await estRes.json();
-      setEstimates(estData);
-      
-      // Keep selection if possible
-      if (selectedHospital) {
-        const updated = estData.find(h => h.hospital_name === selectedHospital.hospital_name);
-        if (updated) setSelectedHospital(updated);
-      }
-    } catch (error) {
-      console.error("Live update error:", error);
-    }
-  }, [intentResult, comorbidities, age, location, selectedHospital]);
-
-  useEffect(() => {
-    if (step === 2) {
-      const timer = setTimeout(() => {
-        updateEstimatesLive();
-      }, 500); // Debounce
-      return () => clearTimeout(timer);
-    }
-  }, [comorbidities, age, location, step]);
-
-  const handleAnalyzeAndEstimate = async () => {
-    if (!symptoms.trim()) return;
+  const handleAnalysis = async (formData) => {
     setLoading(true);
+    setError(null);
     try {
-      const intentRes = await fetch(`${API_BASE}/analyze-intent`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ symptoms, age, location })
-      });
-      const intentData = await intentRes.json();
-      setIntentResult(intentData);
-
-      const finalComorbidities = [...comorbidities];
-      if (age > 60 && !finalComorbidities.includes("Age > 60")) {
-        finalComorbidities.push("Age > 60");
-      }
-
-      const estRes = await fetch(`${API_BASE}/estimate-cost`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          procedure_name: intentData.procedure_name,
-          comorbidities: finalComorbidities,
-          location
-        })
-      });
-      const estData = await estRes.json();
-      setEstimates(estData);
-      
-      // Artificial delay for UI dramatic effect
-      setTimeout(() => {
-        setLoading(false);
-        setStep(2);
-      }, 1500);
-      
-    } catch (error) {
-      console.error("Error calling API:", error);
-      alert("Backend API is not running or unreachable.");
+      const response = await axios.post(`${API_BASE_URL}/api/full-analysis`, formData);
+      setData(response.json || response.data);
+      setStep(2);
+    } catch (err) {
+      console.error(err);
+      setError('Unable to reach the MediRoute Intelligence Engine. Please ensure the backend is running.');
+    } finally {
       setLoading(false);
     }
   };
 
-  const handleApplyLoan = async () => {
-    if (!selectedHospital) return;
-    setLoading(true);
-    try {
-      const loanRes = await fetch(`${API_BASE}/apply-loan`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          patient_name: patientName || "John Doe",
-          hospital_name: selectedHospital.hospital_name,
-          procedure_name: intentResult.procedure_name,
-          amount: requestedAmount || selectedHospital.estimated_cost,
-          estimated_cost: selectedHospital.estimated_cost
-        })
-      });
-      const loanData = await loanRes.json();
-      
-      setTimeout(() => {
-        setLoanResult(loanData);
-        setStep(3);
-        setLoading(false);
-      }, 1500);
-      
-    } catch (error) {
-      console.error("Error calling API:", error);
-      setLoading(false);
-    }
-  };
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(amount);
+  const reset = () => {
+    setStep(1);
+    setData(null);
+    setError(null);
   };
 
   return (
-    <>
-      <div className="bg-blobs">
-        <div className="bg-grid"></div>
-        <div className="blob blob-1"></div>
-        <div className="blob blob-2"></div>
+    <div className="min-h-screen pt-12 px-4 sm:px-6 lg:px-8 bg-[#020617]">
+      {/* Navbar / Logo */}
+      <div className="max-w-7xl mx-auto flex justify-between items-center mb-12">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/20">
+            <Shield className="text-white w-6 h-6" />
+          </div>
+          <h1 className="text-2xl font-black tracking-tighter text-white">MEDIROUTE <span className="text-teal-400">AI</span></h1>
+        </div>
+        
+        {step > 1 && (
+          <button 
+            onClick={reset}
+            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium"
+          >
+            <RefreshCcw className="w-4 h-4" /> Start New Audit
+          </button>
+        )}
       </div>
-      
-      <div className="app-container">
-        <Header step={step} viewMode={viewMode} setViewMode={setViewMode} />
 
-        <main>
-          {viewMode === 'lender' ? (
-            <LenderDashboard />
-          ) : (
-            <AnimatePresence mode="wait">
-            {step === 1 && !loading && (
-              <motion.div
-                key="step1"
-                initial={{ opacity: 0, filter: 'blur(10px)', y: 20 }}
-                animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
-                exit={{ opacity: 0, filter: 'blur(10px)', y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="main-content split"
-              >
-                <div className="glass-panel card">
-                  <h1 className="title" style={{ fontSize: '42px', lineHeight: 1.1, marginBottom: '16px' }}>
-                    Clinical <span className="gradient-text">Intelligence.</span><br/>
-                    Financial <span className="gradient-text">Certainty.</span>
-                  </h1>
-                  <p className="subtitle" style={{ fontSize: '16px', maxWidth: '90%' }}>
-                    Our AI-driven engine maps clinical symptoms to procedural costs, adjusting for risk comorbidities to anchor pre-approved healthcare loans.
-                  </p>
-
-                  <div className="form-group">
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                      <label className="form-label">Symptoms or Condition</label>
-                      <div className="tag outline" style={{ fontSize: '10px', padding: '2px 8px' }}>
-                        Detected: {detectedLang === 'hin' ? 'Hindi' : detectedLang === 'hinglish' ? 'Hinglish' : 'English'}
-                      </div>
-                    </div>
-                    <textarea 
-                      className="input-field" 
-                      rows={4} 
-                      placeholder="e.g., Pet mein dard (Hinglish) or Severe knee pain..."
-                      value={symptoms}
-                      onChange={e => setSymptoms(e.target.value)}
-                      style={{ fontFamily: detectedLang === 'hin' ? 'Noto Sans Devanagari' : 'inherit' }}
-                    />
-                  </div>
-
-                  <div className="form-group" style={{ marginBottom: '20px' }}>
-                    <label className="form-label">Patient Name</label>
-                    <input 
-                      type="text" 
-                      className="input-field" 
-                      placeholder="e.g., Ramesh Kumar"
-                      value={patientName}
-                      onChange={e => setPatientName(e.target.value)}
-                    />
-                  </div>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '32px' }}>
-                    <div>
-                      <label className="form-label">Location</label>
-                      <select className="input-field" value={location} onChange={e => setLocation(e.target.value)}>
-                        {CITIES.map(c => <option key={c} value={c}>{c}</option>)}
-                      </select>
-                    </div>
-                    <div>
-                      <label className="form-label">Patient Age: <span className="gradient-text" style={{ fontSize: '18px', fontWeight: 'bold' }}>{age}</span></label>
-                      <input 
-                        type="range" 
-                        min="1" 
-                        max="100" 
-                        className="slider" 
-                        value={age} 
-                        onChange={e => setAge(parseInt(e.target.value))} 
-                        style={{ width: '100%', accentColor: 'var(--primary-color)', height: '8px', borderRadius: '4px', cursor: 'pointer' }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <HeartPulse size={18} color="var(--primary-color)"/> Pre-existing Conditions
-                    </label>
-                    <motion.div className="checkbox-grid" variants={staggerContainer} initial="hidden" animate="show">
-                      {COMORBIDITIES_LIST.map(c => (
-                        <motion.div 
-                          variants={staggerItem}
-                          key={c} 
-                          className={`checkbox-label ${comorbidities.includes(c) ? 'selected' : ''}`}
-                          onClick={() => handleToggleComorbidity(c)}
-                          style={{
-                            padding: '12px',
-                            fontSize: '13px',
-                            borderRadius: '10px',
-                            background: comorbidities.includes(c) ? 'rgba(0, 210, 255, 0.1)' : 'rgba(255,255,255,0.03)',
-                            border: comorbidities.includes(c) ? '1px solid var(--primary-color)' : '1px solid var(--surface-border)'
-                          }}
-                        >
-                          <div className="checkbox-icon" style={{ width: '16px', height: '16px', borderRadius: '4px' }}>
-                            {comorbidities.includes(c) && <motion.div initial={{scale:0}} animate={{scale:1}}><CheckCircle size={12} /></motion.div>}
-                          </div>
-                          {c}
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  </div>
-
-                  <button 
-                    className="btn-primary" 
-                    style={{ width: '100%', marginTop: '16px' }}
-                    onClick={handleAnalyzeAndEstimate}
-                    disabled={!symptoms.trim()}
-                  >
-                    Generate Clinical Estimate
-                    <ArrowRight size={20} />
-                  </button>
+      {/* Step Indicator */}
+      <div className="max-w-xl mx-auto mb-16">
+        <div className="flex justify-between relative">
+          <div className="absolute top-1/2 left-0 w-full h-[2px] bg-slate-800 -translate-y-1/2 z-0" />
+          {steps.map((s) => {
+            const Icon = s.icon;
+            const active = step >= s.id;
+            return (
+              <div key={s.id} className="relative z-10 flex flex-col items-center gap-3">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
+                  active ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/20' : 'bg-slate-900 text-slate-600 border border-slate-800'
+                }`}>
+                  <Icon className="w-5 h-5" />
                 </div>
+                <span className={`text-[10px] uppercase font-bold tracking-widest ${active ? 'text-teal-400' : 'text-slate-600'}`}>
+                  {s.label}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '24px' }}>
-                  <motion.div 
-                    initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
-                    className="glass-panel glass-panel-hover card"
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-                      <div className="logo-icon-wrap" style={{ width: '48px', height: '48px', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '12px' }}>
-                        <ShieldAlert color="#10b981" />
-                      </div>
-                      <h3 style={{ fontSize: '22px' }}>Clinical Risk Adjuster</h3>
-                    </div>
-                    <p style={{ color: 'var(--text-secondary)' }}>Our proprietary engine applies evidence-based comorbidity multipliers to ensure NBFC lenders approve exact amounts, avoiding under-financing.</p>
-                  </motion.div>
+      {/* Error Message */}
+      {error && (
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-2xl mx-auto mb-8 p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-rose-400 text-sm text-center"
+        >
+          {error}
+        </motion.div>
+      )}
 
-                  <motion.div 
-                    initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4, duration: 0.5 }}
-                    className="glass-panel glass-panel-hover card"
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-                      <div className="logo-icon-wrap" style={{ width: '48px', height: '48px', background: 'rgba(139, 92, 246, 0.1)', borderRadius: '12px' }}>
-                        <BadgeIndianRupee color="#8b5cf6" />
-                      </div>
-                      <h3 style={{ fontSize: '22px' }}>Verified NBFC Anchors</h3>
-                    </div>
-                    <p style={{ color: 'var(--text-secondary)' }}>By predicting itemized hospital bills using AI, we eliminate 72% of NPA risk associated with healthcare over-borrowing.</p>
-                  </motion.div>
-                </div>
-              </motion.div>
-            )}
-
-            {loading && (
-              <motion.div
-                key="loading"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
-                className="glass-panel card"
-                style={{ maxWidth: '500px', margin: '100px auto', textAlign: 'center' }}
-              >
-                <div className="pulse-loader">
-                  <div className="pulse-circle"></div>
-                  <BrainCircuit size={40} className="pulse-icon" />
-                </div>
-                <h2 className="title" style={{ fontSize: '28px' }}>Processing Clinical Data</h2>
-                <p className="subtitle">Mapping symptoms to ICD-10 and querying hospital pricing matrices...</p>
-              </motion.div>
-            )}
-
-            {step === 2 && !loading && (
-              <motion.div
-                key="step2"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.6, type: 'spring' }}
-                className="main-content split"
-              >
-                <div>
-                  <div className="glass-panel card" style={{ marginBottom: '32px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-                      <div>
-                        <h2 className="form-label" style={{ marginBottom: '8px' }}>AI Clinical Intent Match</h2>
-                        <p className="gradient-text" style={{ fontSize: '28px', fontWeight: '800', lineHeight: 1.2 }}>
-                          {intentResult?.procedure_name}
-                        </p>
-                      </div>
-                      <div className="tag outline">
-                        ICD-10: {intentResult?.icd_code}
-                      </div>
-                    </div>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '16px', lineHeight: 1.6 }}>
-                      {intentResult?.explanation}
-                    </p>
-                    <div style={{ marginBottom: '16px' }}>
-                      <h4 className="form-label" style={{ fontSize: '11px', marginBottom: '8px' }}>Clinical Protocol (MAS Agent Generated)</h4>
-                      <div style={{ background: 'rgba(0,0,0,0.3)', padding: '12px', borderRadius: '8px', fontSize: '13px', borderLeft: '3px solid var(--primary-color)' }}>
-                        <p style={{ fontWeight: '600', marginBottom: '4px' }}>Hypothesis: <span style={{ color: 'var(--text-primary)' }}>{intentResult?.diagnostic_hypothesis?.join(', ')}</span></p>
-                        <p style={{ fontWeight: '600', marginBottom: '4px' }}>Investigations: <span style={{ color: 'var(--text-primary)' }}>{intentResult?.investigations?.join(', ')}</span></p>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '8px' }}>{intentResult?.care_plan}</p>
-                      </div>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--success-color)' }}>
-                      <CheckCircle size={14} /> Clinical Match Confidence: {(intentResult?.confidence_score * 100).toFixed(0)}% (RAG Verified)
-                    </div>
-                  </div>
-
-                  {/* What-if Simulator Controls */}
-                  <div className="glass-panel card" style={{ marginBottom: '32px', padding: '24px' }}>
-                    <h3 className="form-label" style={{ fontSize: '14px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <BrainCircuit size={16} color="var(--primary-color)" /> What-if Simulator
-                    </h3>
-                    
-                    <div style={{ marginBottom: '20px' }}>
-                      <label className="form-label" style={{ fontSize: '12px' }}>Adjust Age: <span className="gradient-text">{age}</span></label>
-                      <input 
-                        type="range" min="1" max="100" className="slider" 
-                        value={age} onChange={e => setAge(parseInt(e.target.value))} 
-                        style={{ width: '100%', accentColor: 'var(--primary-color)' }}
-                      />
-                    </div>
-
-                    <div>
-                      <label className="form-label" style={{ fontSize: '12px' }}>Toggle Conditions</label>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                        {COMORBIDITIES_LIST.map(c => (
-                          <div 
-                            key={c}
-                            onClick={() => handleToggleComorbidity(c)}
-                            style={{ 
-                              padding: '6px 12px', 
-                              borderRadius: '8px', 
-                              fontSize: '12px', 
-                              cursor: 'pointer',
-                              border: '1px solid var(--surface-border)',
-                              background: comorbidities.includes(c) ? 'rgba(6, 182, 212, 0.2)' : 'rgba(0,0,0,0.2)',
-                              color: comorbidities.includes(c) ? 'var(--primary-color)' : 'var(--text-secondary)',
-                              transition: 'all 0.2s'
-                            }}
-                          >
-                            {c}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <h3 style={{ marginBottom: '20px', fontSize: '18px', fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Ranked Providers in {location}</h3>
-                  <motion.div variants={staggerContainer} initial="hidden" animate="show">
-                    {estimates.map((est, idx) => (
-                      <motion.div 
-                        variants={staggerItem}
-                        key={idx}
-                        className={`glass-panel glass-panel-hover hospital-card ${selectedHospital?.hospital_name === est.hospital_name ? 'selected' : ''}`}
-                        onClick={() => setSelectedHospital(est)}
-                        style={{ padding: '24px', marginBottom: '12px' }}
-                      >
-                        <div>
-                          <h4 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '6px' }}>{est.hospital_name}</h4>
-                          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-                            <span className={`tag ${est.price_tier === 'Premium' ? 'red' : est.price_tier === 'High' ? 'yellow' : 'green'}`} style={{ fontSize: '10px' }}>
-                              {est.price_tier}
-                            </span>
-                            <span style={{ fontSize: '10px', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: '4px' }}>
-                              {est.icu_status} ICU
-                            </span>
-                            <span style={{ fontSize: '10px', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: '4px' }}>
-                              {est.er_wait} ER Wait
-                            </span>
-                            <span style={{ fontSize: '11px', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                              <MapPin size={12} /> {est.distance_km} km
-                            </span>
-                          </div>
-                        </div>
-                        <div style={{ textAlign: 'right' }}>
-                          <div className="gradient-text" style={{ fontSize: '18px', fontWeight: '800' }}>
-                            {formatCurrency(est.min_cost)} - {formatCurrency(est.max_cost)}
-                          </div>
-                          <div style={{ fontSize: '10px', color: est.edge_status === 'LOCAL_EDGE_EXECUTION' ? 'var(--success-color)' : 'var(--warning-color)', marginTop: '2px' }}>
-                             {est.edge_status === 'LOCAL_EDGE_EXECUTION' ? 'Edge Optimized' : 'Hub Offloaded'}
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </div>
-
-                <div style={{ position: 'sticky', top: '40px' }}>
-                  <AnimatePresence mode="wait">
-                    {selectedHospital ? (
-                      <motion.div
-                        key="details"
-                        initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
-                        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.4 }}
-                        className="glass-panel card"
-                      >
-                        <h2 className="title" style={{ fontSize: '28px', marginBottom: '4px' }}>Cost Breakdown</h2>
-                        <p className="subtitle" style={{ marginBottom: '0' }}>{selectedHospital.hospital_name}</p>
-                        
-                        <div className="cost-breakdown">
-                          <h4 className="form-label" style={{ fontSize: '12px', marginBottom: '16px' }}>Itemized AI Prediction</h4>
-                          {selectedHospital.breakdown.map((item, i) => (
-                            <div key={i} style={{ marginBottom: '16px' }}>
-                              <div className="breakdown-row" style={{ marginBottom: '8px', border: 'none' }}>
-                                <span>{item.category}</span>
-                                <span>{formatCurrency(item.amount)}</span>
-                              </div>
-                              <div style={{ height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
-                                <motion.div 
-                                  initial={{ width: 0 }}
-                                  animate={{ width: `${(item.amount / selectedHospital.estimated_cost) * 100}%` }}
-                                  style={{ height: '100%', background: i % 2 === 0 ? 'var(--primary-color)' : 'var(--secondary-color)' }}
-                                />
-                              </div>
-                            </div>
-                          ))}
-                          <div className="breakdown-row total" style={{ marginTop: '24px' }}>
-                            <span>Total (Avg)</span>
-                            <span className="gradient-text">{formatCurrency(selectedHospital.estimated_cost)}</span>
-                          </div>
-                        </div>
-
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '24px' }}>
-                          <div className="glass-panel" style={{ padding: '12px', background: 'rgba(0,0,0,0.2)' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '4px' }}>
-                              <Info size={12} /> Confidence
-                            </div>
-                            <div style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--success-color)' }}>
-                              {(selectedHospital.confidence_score * 100).toFixed(0)}%
-                            </div>
-                          </div>
-                          <div className="glass-panel" style={{ padding: '12px', background: 'rgba(0,0,0,0.2)' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '4px' }}>
-                              <TrendingUp size={12} /> Quality
-                            </div>
-                            <div style={{ fontSize: '18px', fontWeight: 'bold' }}>
-                              {selectedHospital.quality_score}/10
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="info-box" style={{ background: 'rgba(6, 182, 212, 0.05)', border: '1px solid var(--primary-glow)', marginTop: '24px' }}>
-                          <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: 'var(--primary-color)', marginBottom: '8px' }}>
-                            <BrainCircuit size={16} /> Why this Provider?
-                          </h4>
-                          <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                            {selectedHospital.why_this_hospital} {selectedHospital.confidence_explanation}
-                          </p>
-                        </div>
-
-                        <div className="info-box" style={{ background: 'rgba(6, 182, 212, 0.03)', border: '1px solid rgba(0, 210, 255, 0.1)', marginTop: '24px', padding: '20px' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                            <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--primary-color)', fontWeight: '700', textTransform: 'uppercase' }}>
-                              <ShieldCheck size={16} /> DSCSA Chain of Custody
-                            </h4>
-                            <span style={{ fontSize: '10px', fontFamily: 'monospace', color: 'var(--text-secondary)' }}>{selectedHospital.blockchain_id}</span>
-                          </div>
-                          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.5 }}>
-                            Blockchain verified tracking: UAV Dock is {selectedHospital.uav_dock}. Inventory ({selectedHospital.blood_status}) stabilized via PPO optimization.
-                          </p>
-                          <div style={{ marginBottom: '20px' }}>
-                            <label className="form-label" style={{ fontSize: '11px' }}>Requested Loan (₹)</label>
-                            <input 
-                              type="number" 
-                              className="input-field" 
-                              style={{ background: 'rgba(0,0,0,0.4)', fontSize: '18px', fontWeight: 'bold' }}
-                              value={requestedAmount !== null ? requestedAmount : selectedHospital.estimated_cost}
-                              onChange={e => setRequestedAmount(parseInt(e.target.value) || 0)}
-                            />
-                          </div>
-                          <button 
-                            className="btn-primary" 
-                            style={{ width: '100%', padding: '18px' }}
-                            onClick={handleApplyLoan}
-                          >
-                            <CreditCard size={18} />
-                            Deploy to Poonawalla
-                          </button>
-                        </div>
-                      </motion.div>
-                    ) : (
-                      <div className="glass-panel card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', minHeight: '500px', borderStyle: 'dashed' }}>
-                        <p style={{ color: 'var(--text-secondary)', textAlign: 'center', fontSize: '18px' }}>Select a hospital provider to view the itemized AI breakdown and unlock 0% EMI financing.</p>
-                      </div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            )}
-
-            {step === 3 && !loading && loanResult && (
-              <motion.div
-                key="step3"
-                initial={{ opacity: 0, scale: 0.9, y: 40 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ type: 'spring', damping: 20 }}
-                className="glass-panel card"
-                style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center', padding: '60px 40px' }}
-              >
-                <motion.div 
-                  initial={{ scale: 0, rotate: -180 }} 
-                  animate={{ scale: 1, rotate: 0 }} 
-                  transition={{ delay: 0.2, type: 'spring' }}
-                  className={loanResult.is_fraud_flagged ? "fraud-icon" : "success-icon"}
-                  style={loanResult.is_fraud_flagged ? {
-                    width: '100px', height: '100px',
-                    background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.05))',
-                    color: 'var(--danger-color)',
-                    borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    margin: '0 auto 32px', fontSize: '48px',
-                    boxShadow: '0 0 40px rgba(239, 68, 68, 0.2), inset 0 0 20px rgba(239, 68, 68, 0.4)',
-                    border: '1px solid rgba(239, 68, 68, 0.3)'
-                  } : {}}
-                >
-                  {loanResult.is_fraud_flagged ? <ShieldAlert size={56} /> : <CheckCircle size={56} />}
-                </motion.div>
-                
-                <h1 className="title" style={{ marginBottom: '12px', color: loanResult.is_fraud_flagged ? 'var(--danger-color)' : 'inherit' }}>
-                  {loanResult.is_fraud_flagged ? "Review Required" : "Loan Pre-Approved!"}
-                </h1>
-                <p className="subtitle" style={{ marginBottom: '40px', color: loanResult.is_fraud_flagged ? 'var(--danger-color)' : 'var(--text-secondary)' }}>
-                  {loanResult.message}
-                </p>
-                
-                <div className="glass-panel" style={{ padding: '32px', textAlign: 'left', marginBottom: '40px', background: 'rgba(0,0,0,0.2)', borderRadius: '16px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px' }}>
-                    <span style={{ color: 'var(--text-secondary)' }}>Applicant ID</span>
-                    <span style={{ fontWeight: '700', letterSpacing: '0.05em' }}>{loanResult.applicant_id}</span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px' }}>
-                    <span style={{ color: 'var(--text-secondary)' }}>Patient Name</span>
-                    <span style={{ fontWeight: '700' }}>{loanResult.patient_name}</span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px' }}>
-                    <span style={{ color: 'var(--text-secondary)' }}>CIBIL / Risk Score</span>
-                    <span style={{ fontWeight: '700', color: loanResult.patient_risk_score > 750 ? 'var(--success-color)' : 'var(--warning-color)' }}>
-                      {loanResult.patient_risk_score}
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px', fontSize: '14px' }}>
-                    <span style={{ color: 'var(--text-secondary)' }}>Healthcare Provider</span>
-                    <span style={{ fontWeight: '700', color: 'var(--primary-color)' }}>{selectedHospital?.hospital_name}</span>
-                  </div>
-                  
-                  <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid var(--surface-border)', paddingTop: '20px', alignItems: 'center' }}>
-                    <span style={{ color: 'var(--text-secondary)', fontSize: '14px', textTransform: 'uppercase', fontWeight: '700' }}>Approved Amount</span>
-                    <span className="gradient-text" style={{ fontSize: '32px', fontWeight: '900' }}>
-                      {formatCurrency(loanResult.approved_amount)}
-                    </span>
-                  </div>
-                </div>
-
-                <div style={{ textAlign: 'left', marginBottom: '20px', fontWeight: '700', fontSize: '18px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                  Select Repayment Plan
-                </div>
-                
-                <motion.div variants={staggerContainer} initial="hidden" animate="show" className="main-content split" style={{ gap: '20px' }}>
-                  {loanResult.emi_options.map((opt, i) => (
-                    <motion.div variants={staggerItem} key={i} className="glass-panel glass-panel-hover loan-card" style={{ cursor: 'pointer' }}>
-                      <div className="gradient-text-alt" style={{ fontSize: '32px', fontWeight: '800', marginBottom: '8px' }}>
-                        {formatCurrency(opt.emi)}<span style={{ fontSize: '16px', color: 'var(--text-secondary)', fontWeight: '500' }}>/mo</span>
-                      </div>
-                      <div style={{ fontSize: '16px', marginBottom: '16px', color: 'var(--text-secondary)' }}>For {opt.tenure_months} months</div>
-                      <div className="tag green">{opt.interest}</div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-                
-                <button className="btn-primary" style={{ marginTop: '48px' }} onClick={() => window.location.reload()}>
-                  Start New Patient Flow
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+      {/* Main Content */}
+      <main>
+        <AnimatePresence mode="wait">
+          {step === 1 && (
+            <SymptomForm key="step1" onSubmit={handleAnalysis} loading={loading} />
           )}
-        </main>
-      </div>
-    </>
+          {step === 2 && (
+            <CostDashboard key="step2" data={data} onNext={() => setStep(3)} />
+          )}
+          {step === 3 && (
+            <LoanDecision key="step3" data={data} onBack={() => setStep(2)} />
+          )}
+        </AnimatePresence>
+      </main>
+
+      <footer className="max-w-7xl mx-auto mt-20 pb-10 border-t border-slate-900 pt-8 flex justify-between items-center text-slate-600 text-[10px] uppercase tracking-widest">
+        <div>© 2026 MediRoute AI Engine • TenzorX Hackathon</div>
+        <div className="flex gap-6">
+          <span className="hover:text-teal-400 cursor-pointer">Security Protocol</span>
+          <span className="hover:text-teal-400 cursor-pointer">NBFC API Docs</span>
+          <span className="hover:text-teal-400 cursor-pointer">ABDM Compliant</span>
+        </div>
+      </footer>
+    </div>
   );
 }
+
+export default App;
