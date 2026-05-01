@@ -16,20 +16,20 @@ class UnderwriterAgent:
         
         if requested_amount > 0:
             overpricing_percent = ((requested_amount - adjusted_cost) / adjusted_cost) * 100 if adjusted_cost > 0 else 0
+            overpricing_percent = round(overpricing_percent, 2)
             
             if requested_amount <= adjusted_cost * 1.1:
-                loan_recommendation = "APPROVE"
+                loan_recommendation = "APPROVED"
                 decision_confidence = "HIGH"
-                reason = f"Requested ₹{requested_amount:,} is within 10% of risk-adjusted benchmark (₹{int(adjusted_cost):,})."
             elif requested_amount <= adjusted_cost * 1.3:
                 loan_recommendation = "REVIEW"
                 decision_confidence = "MEDIUM"
-                reason = f"Requested ₹{requested_amount:,} exceeds benchmark (₹{int(adjusted_cost):,}) by {int(overpricing_percent)}%. Manual verification required."
             else:
-                loan_recommendation = "REJECT"
+                loan_recommendation = "REJECTED"
                 fraud_flag = True
                 decision_confidence = "HIGH"
-                reason = f"Requested ₹{requested_amount:,} significantly exceeds risk-adjusted benchmark (₹{int(adjusted_cost):,}) by {int(overpricing_percent)}%."
+
+            reason = f"Requested ₹{requested_amount:,} vs recommended ₹{int(adjusted_cost):,}, exceeding by {overpricing_percent}%."
 
         duration = time.perf_counter() - start_time
         logger.info(f"[Underwriter] Review Success | Duration: {duration:.2f}s")
@@ -37,7 +37,8 @@ class UnderwriterAgent:
         return {
             "loan_recommendation": loan_recommendation,
             "decision_confidence": decision_confidence,
-            "overpricing_percent": round(overpricing_percent, 2),
+            "overpricing_percent": overpricing_percent,
+            "recommended_loan_amount": int(adjusted_cost),
             "fraud_flag": fraud_flag,
             "reason": reason
         }

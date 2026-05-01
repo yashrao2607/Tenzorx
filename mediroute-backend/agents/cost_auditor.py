@@ -20,6 +20,28 @@ class CostAuditorAgent:
             "heart_disease": 0.20
         }
 
+    def _generate_cost_breakdown(self, total_cost: int) -> Dict[str, int]:
+        import random
+        # Base percentages
+        surgery_pct = random.uniform(0.55, 0.65)
+        stay_pct = random.uniform(0.15, 0.20)
+        meds_pct = random.uniform(0.08, 0.12)
+        diag_pct = random.uniform(0.05, 0.10)
+        
+        # Calculate initial amounts
+        breakdown = {
+            "surgery_fee": int(total_cost * surgery_pct),
+            "hospital_stay": int(total_cost * stay_pct),
+            "medication": int(total_cost * meds_pct),
+            "diagnostics": int(total_cost * diag_pct)
+        }
+        
+        # Miscellaneous is the remainder
+        current_sum = sum(breakdown.values())
+        breakdown["miscellaneous"] = total_cost - current_sum
+        
+        return breakdown
+
     def _apply_icd_overrides(self, condition: str, current_code: str) -> str:
         condition_lower = condition.lower()
         for keyword, code in self.ICD_MAP.items():
@@ -72,6 +94,9 @@ class CostAuditorAgent:
                 
         adjusted_recommended_cost = base_recommended_cost * (1 + total_multiplier)
         
+        # Component-Level Cost Breakdown
+        cost_breakdown = self._generate_cost_breakdown(int(adjusted_recommended_cost))
+        
         # Best value options
         hospital_options = []
         for h in hospitals:
@@ -94,6 +119,7 @@ class CostAuditorAgent:
             "avg_cost": int(avg_cost),
             "base_recommended_cost": int(base_recommended_cost),
             "adjusted_recommended_cost": int(adjusted_recommended_cost),
+            "cost_breakdown": cost_breakdown,
             "applied_factors": applied_factors,
             "savings_opportunity": int(max_cost - base_recommended_cost),
             "insight": "High price variation detected" if price_spread_ratio > 2.0 else "Moderate price variation" if price_spread_ratio > 1.5 else "Low cost variance",

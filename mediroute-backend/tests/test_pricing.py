@@ -22,6 +22,10 @@ def test_cost_analysis():
         print(f"Base Recommended Cost: ₹{data['base_recommended_cost']:,}")
         print(f"Adjusted Recommended Cost: ₹{data['adjusted_recommended_cost']:,}")
         
+        print("\n--- Itemized Bill (Estimated) ---")
+        for item, price in data['cost_breakdown'].items():
+            print(f"- {item.replace('_', ' ').title()}: ₹{price:,}")
+        
         if data['applied_factors']:
             print("Applied Factors:")
             for factor in data['applied_factors']:

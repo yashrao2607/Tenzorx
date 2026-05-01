@@ -27,6 +27,10 @@ def test_full_analysis():
         print(f"Base Recommended Cost: ₹{data['cost_analysis']['base_recommended_cost']:,}")
         print(f"Adjusted Recommended Cost (incl. comorbidities): ₹{data['cost_analysis']['adjusted_recommended_cost']:,}")
         
+        print("\n--- [2.1] Itemized Breakdown ---")
+        for item, price in data['cost_analysis']['cost_breakdown'].items():
+            print(f"  - {item.replace('_', ' ').title()}: ₹{price:,}")
+        
         print("\n--- [3] Underwriter Agent ---")
         print(f"Recommendation: {data['underwriting']['loan_recommendation']}")
         print(f"Reason: {data['underwriting']['reason']}")
