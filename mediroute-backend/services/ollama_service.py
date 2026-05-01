@@ -4,16 +4,17 @@ import time
 import asyncio
 from typing import Dict, Any, Optional
 from langchain_ollama import OllamaLLM
-from langchain_core.prompts import PromptTemplate
 from config import settings
 
 logger = logging.getLogger(__name__)
 
-# Model Optimization
+# 1. MODEL OPTIMIZATION (llama3:8b, low token limit)
 llm = OllamaLLM(
     model=settings.OLLAMA_MODEL, 
     temperature=0.2,
-    num_predict=150
+    num_predict=120,      # Reduced for speed
+    top_p=0.9,
+    repeat_penalty=1.1
 )
 
 # ICD Correction Layer
@@ -24,28 +25,19 @@ ICD_MAP = {
     "glaucoma": "H40"
 }
 
-# Simple In-memory Cache
+# 5. IN-MEMORY CACHING
 _cache: Dict[str, Dict[str, Any]] = {}
 
-STRICT_SYSTEM_PROMPT = """You are a clinical decision support AI.
-Convert user symptoms into:
-1. Most likely condition
-2. Correct ICD-10 code (STRICT, real-world accurate)
-3. Recommended medical procedure
-
-Rules:
-* Use ONLY valid ICD-10 codes (e.g., K35 for appendicitis, I20 for angina, M17 for osteoarthritis)
-* Do NOT hallucinate codes
-* Prefer common diagnoses
-* If symptoms are unclear, return: 'condition': 'Insufficient data'
-
-Output ONLY JSON:
-{
+# 3. SHORTEN PROMPT (Minimalist clinical prompt)
+MINIMAL_PROMPT = """You are a clinical AI.
+Return JSON only:
+{{
   "condition": "...",
   "icd10_code": "...",
   "recommended_procedure": "...",
   "confidence_score": 0-1
-}"""
+}}
+Use valid ICD-10 codes. Prefer common conditions."""
 
 def extract_json(text: str) -> Optional[Dict[str, Any]]:
     try:
@@ -65,12 +57,13 @@ def apply_icd_overrides(data: Dict[str, Any]) -> Dict[str, Any]:
             break
     return data
 
+# 6. ASYNC OPTIMIZATION
 async def analyze_symptom_ollama(symptom_text: str) -> Dict[str, Any]:
     start_time = time.perf_counter()
     
-    # Caching Layer
+    # 5. CACHING LAYER
     if symptom_text in _cache:
-        logger.info(f"Cache hit for symptom: {symptom_text[:30]}")
+        logger.info(f"Cache hit: {symptom_text[:20]} | Time: 0s")
         return _cache[symptom_text]
 
     fallback_response = {
@@ -80,44 +73,35 @@ async def analyze_symptom_ollama(symptom_text: str) -> Dict[str, Any]:
         "confidence_score": 0.0
     }
 
-    prompt = PromptTemplate.from_template("{system_prompt}\n\nUser Symptom: {symptom}\n\nJSON Output:").format(
-        system_prompt=STRICT_SYSTEM_PROMPT,
-        symptom=symptom_text
-    )
+    prompt = f"{MINIMAL_PROMPT}\n\nSymptom: {symptom_text}\nJSON:"
 
-    for attempt in range(2): # Retry logic
-        try:
-            # Timeout + LLM Call
-            response = await asyncio.wait_for(
-                llm.ainvoke(prompt), 
-                timeout=settings.OLLAMA_TIMEOUT
-            )
+    try:
+        # 4. RESPONSE TIMEOUT CONTROL (5s)
+        response = await asyncio.wait_for(
+            llm.ainvoke(prompt), 
+            timeout=settings.OLLAMA_TIMEOUT
+        )
+        
+        result = extract_json(response)
+        if result:
+            result = apply_icd_overrides(result)
             
-            # JSON Validation
-            result = extract_json(response)
-            if result:
-                # ICD Correction Layer
-                result = apply_icd_overrides(result)
-                
-                # Performance Logging
-                duration = time.perf_counter() - start_time
-                logger.info(f"Symptom: {symptom_text[:50]} | Time: {duration:.2f}s | Attempt: {attempt + 1}")
-                
-                # Update Cache
-                _cache[symptom_text] = result
-                return result
-                
-        except asyncio.TimeoutError:
-            logger.error(f"Timeout occurred for symptom: {symptom_text[:50]}")
-            return {
-                "condition": "Service timeout",
-                "icd10_code": "N/A",
-                "recommended_procedure": "Retry",
-                "confidence_score": 0.0
-            }
-        except Exception as e:
-            logger.error(f"Error on attempt {attempt + 1}: {e}")
-            if attempt == 1: break # No more retries
+            # 7. LOGGING UPDATE
+            duration = time.perf_counter() - start_time
+            logger.info(f"Model: {settings.OLLAMA_MODEL} | Duration: {duration:.2f}s | Out: {result['icd10_code']}")
+            
+            _cache[symptom_text] = result
+            return result
+            
+    except asyncio.TimeoutError:
+        logger.error(f"Timeout (5s) exceeded for: {symptom_text[:30]}")
+        return {
+            "condition": "Service timeout",
+            "icd10_code": "N/A",
+            "recommended_procedure": "Retry",
+            "confidence_score": 0.0
+        }
+    except Exception as e:
+        logger.error(f"LLM Error: {e}")
 
-    logger.warning(f"Fallback triggered for symptom: {symptom_text[:50]}")
     return fallback_response
