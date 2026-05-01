@@ -10,9 +10,8 @@ from config import settings
 from services.intent_service import analyze_intent
 from services.cost_service import calculate_costs
 from services.loan_service import process_loan
-from services.ollama_service import analyze_symptom_ollama
+from services.orchestrator import run_full_analysis, diagnostician, cost_auditor, underwriter
 from database import get_db, engine, Base
-from services.pricing_service import get_cost_analysis
 from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException
 
@@ -68,6 +67,12 @@ class CostAnalysisRequest(BaseModel):
     comorbidities: Optional[list[str]] = []
     requested_loan_amount: Optional[int] = 0
 
+class FullAnalysisRequest(BaseModel):
+    symptom_text: str
+    city: str
+    comorbidities: Optional[list[str]] = []
+    requested_loan_amount: int
+
 class SymptomInput(BaseModel):
     symptoms: str
     age: int
@@ -109,16 +114,27 @@ async def api_apply_loan(req: LoanRequest):
 
 @app.post("/api/analyze-symptom")
 async def api_analyze_symptom(req: SymptomRequest):
-    logger.info(f"Analyzing symptom via Ollama: {req.symptom_text[:50]}...")
-    return await analyze_symptom_ollama(req.symptom_text)
+    logger.info(f"Analyzing symptom via Diagnostician Agent: {req.symptom_text[:50]}...")
+    return await diagnostician.analyze(req.symptom_text)
 
 @app.post("/api/cost-analysis")
 async def api_cost_analysis(req: CostAnalysisRequest, db: Session = Depends(get_db)):
-    logger.info(f"Cost analysis for {req.procedure} in {req.city}")
-    result = get_cost_analysis(db, req.procedure, req.city, req.comorbidities, req.requested_loan_amount)
+    logger.info(f"Cost analysis via Cost Auditor Agent: {req.procedure}")
+    result = await cost_auditor.audit(db, req.procedure, req.city, req.comorbidities)
     if not result:
-        raise HTTPException(status_code=404, detail="No hospitals found for this procedure and city")
+        raise HTTPException(status_code=404, detail="No hospitals found")
+    
+    # If a loan amount is provided, also run the underwriter
+    if req.requested_loan_amount > 0:
+        underwriting = await underwriter.review(result["adjusted_cost"], req.requested_loan_amount)
+        result.update(underwriting)
+        
     return result
+
+@app.post("/api/full-analysis")
+async def api_full_analysis(req: FullAnalysisRequest, db: Session = Depends(get_db)):
+    logger.info(f"Full pipeline analysis for symptom: {req.symptom_text[:50]}")
+    return await run_full_analysis(db, req.symptom_text, req.city, req.comorbidities, req.requested_loan_amount)
 
 @app.post("/api/update-comorbidity")
 async def api_update_comorbidity(req: EstimateRequest):
