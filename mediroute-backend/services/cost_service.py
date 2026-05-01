@@ -46,7 +46,7 @@ def haversine(lat1, lon1, lat2, lon2):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return R * c
 
-def calculate_costs(procedure_name, comorbidities, city):
+def calculate_costs(procedure_name, comorbidities, city, manual_multiplier: float = 1.0):
     try:
         with open("hospitals.json", "r") as f:
             hospitals_db = json.load(f)
@@ -54,7 +54,9 @@ def calculate_costs(procedure_name, comorbidities, city):
         return []
 
     city_hospitals = [h for h in hospitals_db if h["city"] == city]
-    if not city_hospitals: city_hospitals = hospitals_db[:20]
+    if not city_hospitals: 
+        # Search across world simulation
+        city_hospitals = hospitals_db[:20]
 
     # Fuzzy match base cost
     base_cost = 100000
@@ -63,10 +65,11 @@ def calculate_costs(procedure_name, comorbidities, city):
             base_cost = cost
             break
 
-    # Apply Multiplicative Comorbidity Risk
-    c_multiplier = 1.0
-    for c in comorbidities:
-        c_multiplier *= COMORBIDITY_MULTIPLIERS.get(c, 1.0)
+    # Apply Multiplicative Comorbidity Risk (Manual or Automatic)
+    c_multiplier = manual_multiplier
+    if c_multiplier == 1.0:
+        for c in comorbidities:
+            c_multiplier *= COMORBIDITY_MULTIPLIERS.get(c, 1.0)
 
     user_lat, user_lon = CITY_COORDS.get(city, (21.14, 79.08))
 

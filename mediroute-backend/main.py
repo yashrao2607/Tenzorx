@@ -22,6 +22,9 @@ class SymptomInput(BaseModel):
     symptoms: str
     age: int
     location: str
+    patient_name: Optional[str] = "Anonymous"
+    address: Optional[str] = ""
+    conditions_text: Optional[str] = ""
 
 class EstimateRequest(BaseModel):
     procedure_name: str
@@ -37,7 +40,7 @@ class LoanRequest(BaseModel):
 
 @app.post("/api/analyze-intent")
 async def api_analyze_intent(req: SymptomInput):
-    return analyze_intent(req.symptoms, req.age)
+    return analyze_intent(req.symptoms, req.age, req.conditions_text)
 
 @app.post("/api/estimate-cost")
 async def api_estimate_cost(req: EstimateRequest):
