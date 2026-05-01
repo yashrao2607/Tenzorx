@@ -30,8 +30,20 @@ class CostAuditorAgent:
     async def audit(self, db: Session, procedure: str, city: str, comorbidities: List[str] = [], condition: str = "") -> Dict[str, Any]:
         start_time = time.perf_counter()
         
+        # Robust Procedure Matching
+        VALID_PROCEDURES = ["Appendectomy", "Angioplasty", "Knee Replacement"]
+        matched_procedure = None
+        for p in VALID_PROCEDURES:
+            if p.lower() in procedure.lower():
+                matched_procedure = p
+                break
+        
+        if not matched_procedure:
+            logger.warning(f"[Cost Auditor] No matching procedure found for: {procedure}")
+            return {}
+
         query = db.query(Hospital).filter(
-            Hospital.procedure == procedure,
+            Hospital.procedure == matched_procedure,
             Hospital.city == city
         )
         
