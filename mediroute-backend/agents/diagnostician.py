@@ -24,7 +24,11 @@ Return JSON only:
   "recommended_procedure": "...",
   "confidence_score": 0-1
 }}
-Use valid ICD-10 codes. Prefer common conditions."""
+
+Rules:
+* Always return a SPECIFIC medical procedure (e.g., Appendectomy, Angioplasty, Knee Replacement).
+* AVOID vague terms like 'Consultation', 'Evaluation', or 'Checkup'.
+* Use valid ICD-10 codes. Prefer common conditions."""
 
 class DiagnosticianAgent:
     def __init__(self):
