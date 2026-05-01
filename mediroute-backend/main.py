@@ -126,7 +126,7 @@ async def api_cost_analysis(req: CostAnalysisRequest, db: Session = Depends(get_
     
     # If a loan amount is provided, also run the underwriter
     if req.requested_loan_amount > 0:
-        underwriting = await underwriter.review(result["adjusted_cost"], req.requested_loan_amount)
+        underwriting = await underwriter.review(result["adjusted_recommended_cost"], req.requested_loan_amount)
         result.update(underwriting)
         
     return result

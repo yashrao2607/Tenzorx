@@ -32,7 +32,7 @@ async def run_full_analysis(db: Session, symptom_text: str, city: str, comorbidi
     
     # Step 3: Underwriter
     underwriting = {}
-    adjusted_cost = cost_data.get("adjusted_cost", 0)
+    adjusted_cost = cost_data.get("adjusted_recommended_cost", 0)
     if adjusted_cost > 0:
         underwriting = await underwriter.review(adjusted_cost, requested_loan_amount)
     
