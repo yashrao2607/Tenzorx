@@ -16,6 +16,9 @@ def test_full_analysis():
         response.raise_for_status()
         
         data = response.json()
+        print(f"\n📢 EXECUTIVE SUMMARY: {data['summary']}")
+        print(f"🎖️ OVERALL CONFIDENCE: {data['overall_confidence']}")
+        
         print("\n--- [1] Diagnosis Agent ---")
         print(f"Condition: {data['diagnosis']['condition']}")
         print(f"Procedure: {data['diagnosis']['recommended_procedure']}")

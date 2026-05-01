@@ -35,11 +35,31 @@ async def run_full_analysis(db: Session, symptom_text: str, city: str, comorbidi
     adjusted_cost = cost_data.get("adjusted_recommended_cost", 0)
     if adjusted_cost > 0:
         underwriting = await underwriter.review(adjusted_cost, requested_loan_amount)
+        
+    # Calculate Overall Confidence
+    diag_conf = diagnosis.get("confidence_score", 0)
+    uw_conf = underwriting.get("decision_confidence", "LOW")
     
+    if diag_conf >= 0.8 and uw_conf == "HIGH":
+        overall_confidence = "HIGH"
+    elif diag_conf >= 0.6 or uw_conf == "MEDIUM":
+        overall_confidence = "MEDIUM"
+    else:
+        overall_confidence = "LOW"
+        
+    # Generate 1-Line Summary
+    rec = underwriting.get("loan_recommendation", "N/A")
+    cost = underwriting.get("adjusted_cost", cost_data.get("adjusted_recommended_cost", 0))
+    summary = f"{rec}: Diagnosis of {condition} for ₹{int(cost):,} approved/reviewed based on market benchmarks."
+    if underwriting.get("fraud_flag"):
+        summary = f"REJECTED: High inflation risk detected for {condition} ({underwriting.get('overpricing_percent')}% over benchmark)."
+
     total_duration = time.perf_counter() - start_time
     logger.info(f"[Orchestrator] Full Analysis Complete | Total Time: {total_duration:.2f}s")
     
     return {
+        "summary": summary,
+        "overall_confidence": overall_confidence,
         "diagnosis": diagnosis,
         "cost_analysis": cost_data,
         "underwriting": underwriting,
