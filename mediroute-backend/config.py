@@ -12,7 +12,8 @@ class Settings(BaseSettings):
     # API Keys
     ANTHROPIC_API_KEY: Optional[str] = None
     CLAUDE_MODEL: str = "claude-3-5-sonnet-20240620"
-    OLLAMA_MODEL: str = "llama3"
+    OLLAMA_MODEL: str = "llama3:8b"
+    OLLAMA_TIMEOUT: int = 5
 
     # CORS
     ALLOWED_ORIGINS: list[str] = ["*"]

@@ -97,7 +97,7 @@ async def api_apply_loan(req: LoanRequest):
 @app.post("/api/analyze-symptom")
 async def api_analyze_symptom(req: SymptomRequest):
     logger.info(f"Analyzing symptom via Ollama: {req.symptom_text[:50]}...")
-    return analyze_symptom_ollama(req.symptom_text)
+    return await analyze_symptom_ollama(req.symptom_text)
 
 @app.post("/api/update-comorbidity")
 async def api_update_comorbidity(req: EstimateRequest):
