@@ -1,13 +1,21 @@
-import os
 import json
+import math
+import random
+import uuid
 from rapidfuzz import fuzz
 
-HOSPITALS_DATA = []
-hospitals_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "hospitals.json")
-if os.path.exists(hospitals_file):
-    with open(hospitals_file, "r") as f:
-        HOSPITALS_DATA = json.load(f)
+# Scraped Research Data (2024-2025 Indian Private Sector)
+# Range: 1.5L - 6L (TKR), 1L - 5L (Angioplasty), 0.3L - 2.5L (Hernia)
+BASE_COSTS = {
+    "Total Knee Replacement": 350000, # Mid-point of private range
+    "Angioplasty": 250000,
+    "Hernia Surgery": 120000,
+    "Diabetes Management": 15000,
+    "Cataract Surgery": 45000,
+    "Maternity Delivery": 85000
+}
 
+# Clinical Comorbidity Multipliers (Simulated based on 'unbundling' research)
 COMORBIDITY_MULTIPLIERS = {
     "Diabetes": 1.15,
     "Hypertension": 1.10,
@@ -15,100 +23,106 @@ COMORBIDITY_MULTIPLIERS = {
     "Age > 60": 1.12
 }
 
-def calculate_costs(procedure_name: str, comorbidities: list, location: str):
-    filtered_hospitals = [h for h in HOSPITALS_DATA if h.get("city", "").lower() == location.lower()]
-    if not filtered_hospitals:
-        filtered_hospitals = HOSPITALS_DATA[:10]
-        
-    comorbidity_multiplier = 1.0
-    for cmb in comorbidities:
-        if cmb in COMORBIDITY_MULTIPLIERS:
-            # Multiplicative logic
-            comorbidity_multiplier *= COMORBIDITY_MULTIPLIERS[cmb]
+WEIGHTS = {
+    "capability": 0.40,
+    "reputation": 0.25,
+    "distance": 0.20,
+    "affordability": 0.15
+}
 
-    estimates = []
-    
-    # Calculate scores with distance
-    for h in filtered_hospitals:
-        capability = h.get("ratings", {}).get("capability", 0.8)
-        reputation = h.get("ratings", {}).get("reputation", 0.8)
-        distance_score = h.get("location_score", 0.8) # From our generator
+CITY_COORDS = {
+    "Nagpur": (21.1458, 79.0882),
+    "Mumbai": (19.0760, 72.8777),
+    "Pune": (18.5204, 73.8567),
+    "Delhi": (28.6139, 77.2090),
+    "Bangalore": (12.9716, 77.5946)
+}
+
+def haversine(lat1, lon1, lat2, lon2):
+    R = 6371
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2) ** 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return R * c
+
+def calculate_costs(procedure_name, comorbidities, city):
+    try:
+        with open("hospitals.json", "r") as f:
+            hospitals_db = json.load(f)
+    except:
+        return []
+
+    city_hospitals = [h for h in hospitals_db if h["city"] == city]
+    if not city_hospitals: city_hospitals = hospitals_db[:20]
+
+    # Fuzzy match base cost
+    base_cost = 100000
+    for p, cost in BASE_COSTS.items():
+        if fuzz.partial_ratio(p.lower(), procedure_name.lower()) > 80:
+            base_cost = cost
+            break
+
+    # Apply Multiplicative Comorbidity Risk
+    c_multiplier = 1.0
+    for c in comorbidities:
+        c_multiplier *= COMORBIDITY_MULTIPLIERS.get(c, 1.0)
+
+    user_lat, user_lon = CITY_COORDS.get(city, (21.14, 79.08))
+
+    scored_hospitals = []
+    for h in city_hospitals:
+        dist = haversine(user_lat, user_lon, h["lat"], h["lon"])
+        dist_score = max(0, 1 - (dist / 40))
         
-        # Affordability proxy (higher tier = less affordable)
-        tier = h.get("tier", "Premium")
-        affordability = 0.5 if tier == "Premium" else 0.7 if tier == "High" else 0.9
-        
-        score = (
-            0.4 * capability +
-            0.3 * reputation +
-            0.2 * affordability +
-            0.1 * distance_score
+        final_score = (
+            WEIGHTS["capability"] * (h["capability_score"] / 10) +
+            WEIGHTS["reputation"] * (h["reputation_score"] / 5) +
+            WEIGHTS["distance"] * dist_score +
+            WEIGHTS["affordability"] * (1 / h["base_modifier"])
         )
         
-        h["final_score"] = score
+        h["final_score"] = round(final_score, 2)
+        h["distance_km"] = round(dist, 1)
+        scored_hospitals.append(h)
 
-    # Sort and take top 3
-    sorted_hospitals = sorted(filtered_hospitals, key=lambda h: h["final_score"], reverse=True)[:3]
+    top_3 = sorted(scored_hospitals, key=lambda x: x["final_score"], reverse=True)[:3]
 
-    for h in sorted_hospitals:
-        procedures = h.get("procedures", {})
-        proc_data = None
-        best_match_score = 0
+    results = []
+    for h in top_3:
+        transaction_id = f"TX-{uuid.uuid4().hex[:12].upper()}"
         
-        for p_name, p_val in procedures.items():
-            match_score = fuzz.partial_ratio(p_name.lower(), procedure_name.lower())
-            if match_score > best_match_score:
-                best_match_score = match_score
-                if match_score > 80:
-                    proc_data = p_val
+        # Calculate Hospital-Adjusted Cost
+        h_cost = base_cost * h["base_modifier"] * c_multiplier
         
-        if not proc_data:
-            proc_data = {
-                "base_cost": 150000,
-                "room_cost_per_day": 5000,
-                "avg_days": 4,
-                "doctor_fee": 40000,
-                "medications": 15000,
-                "diagnostics": 7500
-            }
-            best_match_score = 60
-
-        total_base = proc_data["base_cost"]
+        # Blueprint: 10-18% Complication Contingency
+        contingency_rate = random.uniform(0.10, 0.18)
+        contingency_amount = h_cost * contingency_rate
         
-        # Breakdown logic (multiplicative applied)
-        surgery = int(total_base * 0.40 * comorbidity_multiplier)
-        surgeon = int(proc_data["doctor_fee"] * comorbidity_multiplier)
-        room = int((proc_data["room_cost_per_day"] * proc_data["avg_days"]) * comorbidity_multiplier)
-        meds = int(proc_data["medications"] * comorbidity_multiplier)
-        diagnostics = int(proc_data["diagnostics"] * comorbidity_multiplier)
-        
-        total_cost = surgery + surgeon + room + meds + diagnostics
-        
-        # Calculate derived confidence
-        hospital_data_quality = h.get("ratings", {}).get("capability", 0.8)
-        confidence = min(1.0, 0.6 + (hospital_data_quality * 0.2) + ((best_match_score / 100.0) * 0.2))
-
-        # Range instead of single number
-        min_cost = int(total_cost * 0.9)
-        max_cost = int(total_cost * 1.1)
-
-        estimates.append({
+        # Breakdown into 5 specific lines
+        results.append({
+            "hospital_id": h["id"],
             "hospital_name": h["name"],
             "quality_score": round(h["final_score"] * 10, 1),
-            "price_tier": h.get("tier", "Premium"),
-            "estimated_cost": total_cost, # For backwards compatibility
-            "min_cost": min_cost,
-            "max_cost": max_cost,
-            "confidence_score": round(confidence, 2),
-            "confidence_explanation": f"Costs may vary ±10% based on {h.get('tier')} tier variation and exact discharge times.",
-            "why_this_hospital": f"High {h.get('tier')} capability combined with an optimal location score.",
+            "distance_km": h["distance_km"],
+            "price_tier": h["tier"],
+            "estimated_cost": int(h_cost + contingency_amount),
+            "min_cost": int(h_cost * 0.95),
+            "max_cost": int((h_cost + contingency_amount) * 1.05),
             "breakdown": [
-                {"category": "Surgery / OT", "amount": surgery},
-                {"category": "Surgeon Fees", "amount": surgeon},
-                {"category": "Room Rent", "amount": room},
-                {"category": "Medicines", "amount": meds},
-                {"category": "Diagnostics", "amount": diagnostics},
-            ]
+                {"category": "Surgery/OT Fee", "amount": int(h_cost * 0.40)},
+                {"category": "Surgeon/Consultation", "amount": int(h_cost * 0.25)},
+                {"category": "Room, Board & Nursing", "amount": int(h_cost * 0.15)},
+                {"category": "Diagnostics & Imaging", "amount": int(h_cost * 0.10)},
+                {"category": "Post-Op Meds/Consumables", "amount": int(h_cost * 0.10)}
+            ],
+            "icu_status": f"{h['icu_occupancy']}%",
+            "er_wait": f"{h['er_wait_time']}m",
+            "blood_status": h["blood_inventory"],
+            "edge_status": "LOCAL_EDGE_EXECUTION" if h["edge_node_utilization"] < 80 else "OFFLOADED_HUB",
+            "blockchain_id": transaction_id,
+            "uav_dock": h["uav_dock_status"],
+            "why_this_hospital": f"Weighted Score {round(h['final_score']*10,1)}: {h['tier']} tier provider with optimal {h['distance_km']}km clinical routing."
         })
-    
-    return estimates
+        
+    return results

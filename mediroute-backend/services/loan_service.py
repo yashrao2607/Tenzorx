@@ -1,46 +1,54 @@
 import random
+import uuid
 
+# Blueprint Stage 5 - Loan Bridge
 def process_loan(patient_name, hospital_name, procedure_name, amount, estimated_cost):
+    applicant_id = f"APP-{uuid.uuid4().hex[:8].upper()}"
+    
     # Calculate deviation
     deviation = (amount - estimated_cost) / estimated_cost if estimated_cost > 0 else 0
     
-    # 1. Fraud Check: Deviation > 15%
-    is_fraud_flagged = deviation > 0.15
+    # Fraud Check
+    is_fraud_flagged = deviation > 0.15 or amount > 1000000
     
-    # 2. Max Loan Cap: 10 Lakhs
-    max_cap = 1000000 
-    if amount > max_cap:
-        is_fraud_flagged = True
-        
-    # 3. Patient Risk Score (Mocked based on age/comorbidities - in real app would be Credit Score)
-    patient_risk_score = random.randint(650, 850)
+    patient_risk_score = random.randint(680, 820)
     
-    # 4. Hospital Tier Validation
-    # (In real app, check if hospital is in approved network)
+    # Mocking NBFC response (Webhook simulation)
+    # Payload includes blueprint-specific fields
+    loan_packet = {
+        "applicant_id": applicant_id,
+        "procedure_name": procedure_name,
+        "hospital_name": hospital_name,
+        "requested_amount": amount,
+        "estimated_anchor_cost": estimated_cost,
+        "risk_score": patient_risk_score,
+        "status": "FLAGGED" if is_fraud_flagged else "PRE_APPROVED"
+    }
     
     if is_fraud_flagged:
-        reason = "Deviation > 15%" if deviation > 0.15 else "Exceeds Max Cap"
         return {
             "status": "MANUAL_REVIEW_REQUIRED",
             "loan_id": f"LN-{random.randint(10000, 99999)}",
+            "applicant_id": applicant_id,
             "approved_amount": 0,
             "patient_name": patient_name,
             "patient_risk_score": patient_risk_score,
-            "emi_options": [],
-            "message": f"🚨 REVIEW FLAG: {reason}. Requested loan (₹{amount}) exceeds MediRoute AI bounds (₹{estimated_cost}). Flagged for Poonawalla risk team.",
-            "is_fraud_flagged": True
+            "message": "🚨 Webhook simulation: NBFC API flagged deviation. Manual clinical review triggered.",
+            "is_fraud_flagged": True,
+            "emi_options": []
         }
     
     return {
         "status": "APPROVED_IN_PRINCIPLE",
         "loan_id": f"LN-{random.randint(10000, 99999)}",
+        "applicant_id": applicant_id,
         "patient_name": patient_name,
         "patient_risk_score": patient_risk_score,
         "approved_amount": amount,
         "emi_options": [
-            {"tenure_months": 12, "emi": int(amount / 12), "interest": "0% (Hospital Subvention)"},
-            {"tenure_months": 24, "emi": int((amount * 1.1) / 24), "interest": "10% p.a."}
+            {"tenure_months": 12, "emi": int(amount / 12), "interest": "0% (Subvention)"},
+            {"tenure_months": 24, "emi": int((amount * 1.08) / 24), "interest": "8% p.a."}
         ],
-        "message": f"Pre-approved via Poonawalla Fincorp. Patient Credit Score: {patient_risk_score}.",
+        "message": f"Pre-approved via NBFC Bridge. Decision ID: {uuid.uuid4().hex[:6].upper()}.",
         "is_fraud_flagged": False
     }

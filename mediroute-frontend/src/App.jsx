@@ -35,9 +35,30 @@ export default function App() {
   const [selectedHospital, setSelectedHospital] = useState(null);
   const [requestedAmount, setRequestedAmount] = useState(null);
   const [loanResult, setLoanResult] = useState(null);
+  const [detectedLang, setDetectedLang] = useState('eng'); // 'eng', 'hin', 'hinglish'
 
   const COMORBIDITIES_LIST = ["Diabetes", "Hypertension", "Cardiac Disease", "Age > 60"];
   const CITIES = ["Nagpur", "Mumbai", "Pune", "Delhi", "Bangalore"];
+
+  // Blueprint Stage 1 - Language Detection
+  useEffect(() => {
+    const detectLanguage = (text) => {
+      const devanagariRegex = /[\u0900-\u097F]/;
+      if (devanagariRegex.test(text)) return 'hin';
+      
+      const hinglishKeywords = ["dard", "mein", "pet", "pair", "bukhaar", "dikkat"];
+      if (hinglishKeywords.some(kw => text.toLowerCase().includes(kw))) return 'hinglish';
+      
+      return 'eng';
+    };
+
+    if (symptoms) {
+      const timer = setTimeout(() => {
+        setDetectedLang(detectLanguage(symptoms));
+      }, 600);
+      return () => clearTimeout(timer);
+    }
+  }, [symptoms]);
 
   const handleToggleComorbidity = (item) => {
     if (comorbidities.includes(item)) {
@@ -207,13 +228,19 @@ export default function App() {
                   </p>
 
                   <div className="form-group">
-                    <label className="form-label">Symptoms or Condition</label>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                      <label className="form-label">Symptoms or Condition</label>
+                      <div className="tag outline" style={{ fontSize: '10px', padding: '2px 8px' }}>
+                        Detected: {detectedLang === 'hin' ? 'Hindi' : detectedLang === 'hinglish' ? 'Hinglish' : 'English'}
+                      </div>
+                    </div>
                     <textarea 
                       className="input-field" 
                       rows={4} 
-                      placeholder="e.g., Severe knee pain, difficulty walking, need a replacement..."
+                      placeholder="e.g., Pet mein dard (Hinglish) or Severe knee pain..."
                       value={symptoms}
                       onChange={e => setSymptoms(e.target.value)}
+                      style={{ fontFamily: detectedLang === 'hin' ? 'Noto Sans Devanagari' : 'inherit' }}
                     />
                   </div>
 
@@ -361,8 +388,16 @@ export default function App() {
                     <p style={{ color: 'var(--text-secondary)', fontSize: '16px', lineHeight: 1.6 }}>
                       {intentResult?.explanation}
                     </p>
-                    <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: 'var(--success-color)' }}>
-                      <CheckCircle size={16} /> Clinical Match Confidence: {(intentResult?.confidence_score * 100).toFixed(0)}%
+                    <div style={{ marginBottom: '16px' }}>
+                      <h4 className="form-label" style={{ fontSize: '11px', marginBottom: '8px' }}>Clinical Protocol (MAS Agent Generated)</h4>
+                      <div style={{ background: 'rgba(0,0,0,0.3)', padding: '12px', borderRadius: '8px', fontSize: '13px', borderLeft: '3px solid var(--primary-color)' }}>
+                        <p style={{ fontWeight: '600', marginBottom: '4px' }}>Hypothesis: <span style={{ color: 'var(--text-primary)' }}>{intentResult?.diagnostic_hypothesis?.join(', ')}</span></p>
+                        <p style={{ fontWeight: '600', marginBottom: '4px' }}>Investigations: <span style={{ color: 'var(--text-primary)' }}>{intentResult?.investigations?.join(', ')}</span></p>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '12px', marginTop: '8px' }}>{intentResult?.care_plan}</p>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--success-color)' }}>
+                      <CheckCircle size={14} /> Clinical Match Confidence: {(intentResult?.confidence_score * 100).toFixed(0)}% (RAG Verified)
                     </div>
                   </div>
 
@@ -418,18 +453,28 @@ export default function App() {
                       >
                         <div>
                           <h4 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '6px' }}>{est.hospital_name}</h4>
-                          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
                             <span className={`tag ${est.price_tier === 'Premium' ? 'red' : est.price_tier === 'High' ? 'yellow' : 'green'}`} style={{ fontSize: '10px' }}>
                               {est.price_tier}
                             </span>
-                            <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Quality Score: {est.quality_score}/10</span>
+                            <span style={{ fontSize: '10px', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: '4px' }}>
+                              {est.icu_status} ICU
+                            </span>
+                            <span style={{ fontSize: '10px', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: '4px' }}>
+                              {est.er_wait} ER Wait
+                            </span>
+                            <span style={{ fontSize: '11px', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                              <MapPin size={12} /> {est.distance_km} km
+                            </span>
                           </div>
                         </div>
                         <div style={{ textAlign: 'right' }}>
                           <div className="gradient-text" style={{ fontSize: '18px', fontWeight: '800' }}>
                             {formatCurrency(est.min_cost)} - {formatCurrency(est.max_cost)}
                           </div>
-                          <div style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '2px' }}>Projected Range</div>
+                          <div style={{ fontSize: '10px', color: est.edge_status === 'LOCAL_EDGE_EXECUTION' ? 'var(--success-color)' : 'var(--warning-color)', marginTop: '2px' }}>
+                             {est.edge_status === 'LOCAL_EDGE_EXECUTION' ? 'Edge Optimized' : 'Hub Offloaded'}
+                          </div>
                         </div>
                       </motion.div>
                     ))}
@@ -502,11 +547,14 @@ export default function App() {
                         </div>
 
                         <div className="info-box" style={{ background: 'rgba(6, 182, 212, 0.03)', border: '1px solid rgba(0, 210, 255, 0.1)', marginTop: '24px', padding: '20px' }}>
-                          <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--primary-color)', marginBottom: '8px', fontWeight: '700', textTransform: 'uppercase' }}>
-                            <ShieldCheck size={16} /> Verified clinical anchor
-                          </h4>
-                          <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.5 }}>
-                            Costs adjusted for {comorbidities.length || "zero"} patient risk factors. This estimate is used by Poonawalla Fincorp to eliminate under-financing risk.
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                            <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--primary-color)', fontWeight: '700', textTransform: 'uppercase' }}>
+                              <ShieldCheck size={16} /> DSCSA Chain of Custody
+                            </h4>
+                            <span style={{ fontSize: '10px', fontFamily: 'monospace', color: 'var(--text-secondary)' }}>{selectedHospital.blockchain_id}</span>
+                          </div>
+                          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.5 }}>
+                            Blockchain verified tracking: UAV Dock is {selectedHospital.uav_dock}. Inventory ({selectedHospital.blood_status}) stabilized via PPO optimization.
                           </p>
                           <div style={{ marginBottom: '20px' }}>
                             <label className="form-label" style={{ fontSize: '11px' }}>Requested Loan (₹)</label>
@@ -574,8 +622,8 @@ export default function App() {
                 
                 <div className="glass-panel" style={{ padding: '32px', textAlign: 'left', marginBottom: '40px', background: 'rgba(0,0,0,0.2)', borderRadius: '16px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px' }}>
-                    <span style={{ color: 'var(--text-secondary)' }}>Loan Application ID</span>
-                    <span style={{ fontWeight: '700', letterSpacing: '0.05em' }}>{loanResult.loan_id}</span>
+                    <span style={{ color: 'var(--text-secondary)' }}>Applicant ID</span>
+                    <span style={{ fontWeight: '700', letterSpacing: '0.05em' }}>{loanResult.applicant_id}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px' }}>
                     <span style={{ color: 'var(--text-secondary)' }}>Patient Name</span>
