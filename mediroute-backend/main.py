@@ -10,6 +10,7 @@ from config import settings
 from services.intent_service import analyze_intent
 from services.cost_service import calculate_costs
 from services.loan_service import process_loan
+from services.ollama_service import analyze_symptom_ollama
 
 # Structured Logging
 logging.basicConfig(
@@ -51,6 +52,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class SymptomRequest(BaseModel):
+    symptom_text: str
+
 class SymptomInput(BaseModel):
     symptoms: str
     age: int
@@ -89,6 +93,11 @@ async def api_estimate_cost(req: EstimateRequest):
 async def api_apply_loan(req: LoanRequest):
     logger.info(f"Processing loan application for {req.patient_name}")
     return process_loan(req.patient_name, req.hospital_name, req.procedure_name, req.amount, req.estimated_cost)
+
+@app.post("/api/analyze-symptom")
+async def api_analyze_symptom(req: SymptomRequest):
+    logger.info(f"Analyzing symptom via Ollama: {req.symptom_text[:50]}...")
+    return analyze_symptom_ollama(req.symptom_text)
 
 @app.post("/api/update-comorbidity")
 async def api_update_comorbidity(req: EstimateRequest):
