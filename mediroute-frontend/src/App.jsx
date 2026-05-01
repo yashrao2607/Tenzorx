@@ -166,6 +166,7 @@ export default function App() {
   return (
     <>
       <div className="bg-blobs">
+        <div className="bg-grid"></div>
         <div className="blob blob-1"></div>
         <div className="blob blob-2"></div>
       </div>
@@ -197,8 +198,13 @@ export default function App() {
                 className="main-content split"
               >
                 <div className="glass-panel card">
-                  <h1 className="title">Find The <span className="gradient-text">Best Care.</span></h1>
-                  <p className="subtitle">Describe your medical condition. Our clinical AI maps the exact procedure, adjusts for risk, and anchors the cost for a 0% EMI loan.</p>
+                  <h1 className="title" style={{ fontSize: '42px', lineHeight: 1.1, marginBottom: '16px' }}>
+                    Clinical <span className="gradient-text">Intelligence.</span><br/>
+                    Financial <span className="gradient-text">Certainty.</span>
+                  </h1>
+                  <p className="subtitle" style={{ fontSize: '16px', maxWidth: '90%' }}>
+                    Our AI-driven engine maps clinical symptoms to procedural costs, adjusting for risk comorbidities to anchor pre-approved healthcare loans.
+                  </p>
 
                   <div className="form-group">
                     <label className="form-label">Symptoms or Condition</label>
@@ -254,9 +260,16 @@ export default function App() {
                           key={c} 
                           className={`checkbox-label ${comorbidities.includes(c) ? 'selected' : ''}`}
                           onClick={() => handleToggleComorbidity(c)}
+                          style={{
+                            padding: '12px',
+                            fontSize: '13px',
+                            borderRadius: '10px',
+                            background: comorbidities.includes(c) ? 'rgba(0, 210, 255, 0.1)' : 'rgba(255,255,255,0.03)',
+                            border: comorbidities.includes(c) ? '1px solid var(--primary-color)' : '1px solid var(--surface-border)'
+                          }}
                         >
-                          <div className="checkbox-icon">
-                            {comorbidities.includes(c) && <motion.div initial={{scale:0}} animate={{scale:1}}><CheckCircle size={14} /></motion.div>}
+                          <div className="checkbox-icon" style={{ width: '16px', height: '16px', borderRadius: '4px' }}>
+                            {comorbidities.includes(c) && <motion.div initial={{scale:0}} animate={{scale:1}}><CheckCircle size={12} /></motion.div>}
                           </div>
                           {c}
                         </motion.div>
