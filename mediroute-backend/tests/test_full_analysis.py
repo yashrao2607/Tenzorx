@@ -33,6 +33,8 @@ def test_full_analysis():
         
         print("\n--- [3] Underwriter Agent ---")
         print(f"Recommendation: {data['underwriting']['loan_recommendation']}")
+        print(f"Recommended Amount: ₹{data['underwriting']['recommended_loan_amount']:,}")
+        print(f"Overpricing Index: {data['underwriting']['overpricing_percent']}%")
         print(f"Reason: {data['underwriting']['reason']}")
         
         print(f"\n⚡ Total Execution Time: {data['performance']['total_time']}")

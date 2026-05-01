@@ -47,18 +47,26 @@ async def run_full_analysis(db: Session, symptom_text: str, city: str, comorbidi
     else:
         overall_confidence = "LOW"
         
-    # Generate 1-Line Summary
+    # Generate 1-Line Summary & Risk Level
+    overpricing = underwriting.get("overpricing_percent", 0)
     rec = underwriting.get("loan_recommendation", "N/A")
-    cost = underwriting.get("adjusted_cost", cost_data.get("adjusted_recommended_cost", 0))
-    summary = f"{rec}: Diagnosis of {condition} for ₹{int(cost):,} approved/reviewed based on market benchmarks."
-    if underwriting.get("fraud_flag"):
-        summary = f"REJECTED: High inflation risk detected for {condition} ({underwriting.get('overpricing_percent')}% over benchmark)."
+    
+    # Risk Level Mapping
+    if overpricing <= 10:
+        risk_level = "low"
+    elif overpricing <= 30:
+        risk_level = "moderate"
+    else:
+        risk_level = "high"
+        
+    summary = f"{rec}: Requested loan exceeds fair cost by {overpricing}%, indicating {risk_level} inflation risk for {condition}."
 
     total_duration = time.perf_counter() - start_time
     logger.info(f"[Orchestrator] Full Analysis Complete | Total Time: {total_duration:.2f}s")
     
     return {
         "summary": summary,
+        "risk_level": risk_level,
         "overall_confidence": overall_confidence,
         "diagnosis": diagnosis,
         "cost_analysis": cost_data,
