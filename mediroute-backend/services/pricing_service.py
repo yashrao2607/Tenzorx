@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from models import Hospital
 
-def get_cost_analysis(db: Session, procedure: str, city: str, comorbidities: list[str] = []):
+def get_cost_analysis(db: Session, procedure: str, city: str, comorbidities: list[str] = [], requested_loan_amount: int = 0):
     # 1. Filter hospitals by procedure + city
     query = db.query(Hospital).filter(
         Hospital.procedure == procedure,
@@ -46,6 +46,25 @@ def get_cost_analysis(db: Session, procedure: str, city: str, comorbidities: lis
             
     adjusted_recommended_cost = base_recommended_cost * (1 + total_multiplier)
     
+    # Underwriting Intelligence Logic
+    loan_recommendation = "N/A"
+    fraud_flag = False
+    reason = "No loan requested"
+    
+    if requested_loan_amount > 0:
+        if requested_loan_amount <= adjusted_recommended_cost * 1.1:
+            loan_recommendation = "APPROVE"
+            reason = "Requested amount is within 10% of risk-adjusted cost benchmark."
+        elif requested_loan_amount <= adjusted_recommended_cost * 1.3:
+            loan_recommendation = "REVIEW"
+            reason = "Requested amount exceeds benchmark by 10-30%. Manual verification required."
+        else:
+            loan_recommendation = "REJECT"
+            fraud_flag = True
+            reason = "Requested amount significantly exceeds risk-adjusted benchmark (>30%). High risk of inflated billing/fraud."
+
+    # 6. Sorting by best value
+    
     # 6. Sorting by best value
     hospital_options = []
     for h in hospitals:
@@ -85,5 +104,8 @@ def get_cost_analysis(db: Session, procedure: str, city: str, comorbidities: lis
         "savings_opportunity": int(savings_opportunity),
         "insight": insight,
         "risk_flag": risk_flag,
+        "loan_recommendation": loan_recommendation,
+        "fraud_flag": fraud_flag,
+        "reason": reason,
         "hospital_options": top_10
     }

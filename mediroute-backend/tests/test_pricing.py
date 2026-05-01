@@ -6,7 +6,8 @@ def test_cost_analysis():
     payload = {
         "procedure": "Knee Replacement",
         "city": "Bangalore",
-        "comorbidities": ["diabetes", "hypertension"]
+        "comorbidities": ["diabetes", "hypertension"],
+        "requested_loan_amount": 500000
     }
     
     print(f"Testing Pricing Engine: {url}")
@@ -28,6 +29,11 @@ def test_cost_analysis():
         print(f"Potential Savings Opportunity: ₹{data['savings_opportunity']:,}")
         print(f"Market Insight: {data['insight']}")
         print(f"Financial Risk Flag: {data['risk_flag'].upper()}")
+        
+        print("\n--- Underwriting Intelligence ---")
+        print(f"Loan Recommendation: {data['loan_recommendation']}")
+        print(f"Fraud Flag: {data['fraud_flag']}")
+        print(f"Decision Reason: {data['reason']}")
         
         print("\n--- Top 3 Best Value Hospitals ---")
         for h in data['hospital_options'][:3]:
