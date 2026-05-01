@@ -84,6 +84,7 @@ class CostAuditorAgent:
             "adjusted_recommended_cost": int(adjusted_recommended_cost),
             "applied_factors": applied_factors,
             "savings_opportunity": int(max_cost - base_recommended_cost),
+            "insight": "High price variation detected" if price_spread_ratio > 2.0 else "Moderate price variation" if price_spread_ratio > 1.5 else "Low cost variance",
             "risk_flag": risk_flag,
             "hospital_options": top_10,
             "corrected_icd10": self._apply_icd_overrides(condition, "")

@@ -21,8 +21,8 @@ def test_full_analysis():
         print(f"Procedure: {data['diagnosis']['recommended_procedure']}")
         
         print("\n--- [2] Cost Auditor Agent ---")
-        print(f"Base Cost: ₹{data['cost_analysis']['base_cost']:,}")
-        print(f"Adjusted Cost (incl. comorbidities): ₹{data['cost_analysis']['adjusted_cost']:,}")
+        print(f"Base Recommended Cost: ₹{data['cost_analysis']['base_recommended_cost']:,}")
+        print(f"Adjusted Recommended Cost (incl. comorbidities): ₹{data['cost_analysis']['adjusted_recommended_cost']:,}")
         
         print("\n--- [3] Underwriter Agent ---")
         print(f"Recommendation: {data['underwriting']['loan_recommendation']}")
