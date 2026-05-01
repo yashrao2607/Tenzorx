@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, MapPin, CheckCircle, ArrowRight, ShieldCheck, CreditCard, ActivitySquare, ChevronRight, BrainCircuit, HeartPulse, ShieldAlert, BadgeIndianRupee } from 'lucide-react';
+import { Activity, MapPin, CheckCircle, ArrowRight, ShieldCheck, CreditCard, ActivitySquare, ChevronRight, BrainCircuit, HeartPulse, ShieldAlert, BadgeIndianRupee, Info, TrendingUp, AlertTriangle } from 'lucide-react';
 import './index.css';
 
 const API_BASE = 'http://localhost:8000/api';
@@ -46,6 +46,47 @@ export default function App() {
       setComorbidities([...comorbidities, item]);
     }
   };
+
+  // Live Update logic (What-if Simulator)
+  const updateEstimatesLive = useCallback(async () => {
+    if (!intentResult) return;
+    
+    try {
+      const finalComorbidities = [...comorbidities];
+      if (age > 60 && !finalComorbidities.includes("Age > 60")) {
+        finalComorbidities.push("Age > 60");
+      }
+
+      const estRes = await fetch(`${API_BASE}/update-comorbidity`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          procedure_name: intentResult.procedure_name,
+          comorbidities: finalComorbidities,
+          location
+        })
+      });
+      const estData = await estRes.json();
+      setEstimates(estData);
+      
+      // Keep selection if possible
+      if (selectedHospital) {
+        const updated = estData.find(h => h.hospital_name === selectedHospital.hospital_name);
+        if (updated) setSelectedHospital(updated);
+      }
+    } catch (error) {
+      console.error("Live update error:", error);
+    }
+  }, [intentResult, comorbidities, age, location, selectedHospital]);
+
+  useEffect(() => {
+    if (step === 2) {
+      const timer = setTimeout(() => {
+        updateEstimatesLive();
+      }, 500); // Debounce
+      return () => clearTimeout(timer);
+    }
+  }, [comorbidities, age, location, step]);
 
   const handleAnalyzeAndEstimate = async () => {
     if (!symptoms.trim()) return;
@@ -189,8 +230,16 @@ export default function App() {
                       </select>
                     </div>
                     <div>
-                      <label className="form-label">Patient Age</label>
-                      <input type="number" className="input-field" value={age} onChange={e => setAge(parseInt(e.target.value))} />
+                      <label className="form-label">Patient Age: <span className="gradient-text" style={{ fontSize: '18px', fontWeight: 'bold' }}>{age}</span></label>
+                      <input 
+                        type="range" 
+                        min="1" 
+                        max="100" 
+                        className="slider" 
+                        value={age} 
+                        onChange={e => setAge(parseInt(e.target.value))} 
+                        style={{ width: '100%', accentColor: 'var(--primary-color)', height: '8px', borderRadius: '4px', cursor: 'pointer' }}
+                      />
                     </div>
                   </div>
 
@@ -300,7 +349,47 @@ export default function App() {
                       {intentResult?.explanation}
                     </p>
                     <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: 'var(--success-color)' }}>
-                      <CheckCircle size={16} /> Confidence Score: {(intentResult?.confidence_score * 100).toFixed(1)}%
+                      <CheckCircle size={16} /> Clinical Match Confidence: {(intentResult?.confidence_score * 100).toFixed(0)}%
+                    </div>
+                  </div>
+
+                  {/* What-if Simulator Controls */}
+                  <div className="glass-panel card" style={{ marginBottom: '32px', padding: '24px' }}>
+                    <h3 className="form-label" style={{ fontSize: '14px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <BrainCircuit size={16} color="var(--primary-color)" /> What-if Simulator
+                    </h3>
+                    
+                    <div style={{ marginBottom: '20px' }}>
+                      <label className="form-label" style={{ fontSize: '12px' }}>Adjust Age: <span className="gradient-text">{age}</span></label>
+                      <input 
+                        type="range" min="1" max="100" className="slider" 
+                        value={age} onChange={e => setAge(parseInt(e.target.value))} 
+                        style={{ width: '100%', accentColor: 'var(--primary-color)' }}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="form-label" style={{ fontSize: '12px' }}>Toggle Conditions</label>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                        {COMORBIDITIES_LIST.map(c => (
+                          <div 
+                            key={c}
+                            onClick={() => handleToggleComorbidity(c)}
+                            style={{ 
+                              padding: '6px 12px', 
+                              borderRadius: '8px', 
+                              fontSize: '12px', 
+                              cursor: 'pointer',
+                              border: '1px solid var(--surface-border)',
+                              background: comorbidities.includes(c) ? 'rgba(6, 182, 212, 0.2)' : 'rgba(0,0,0,0.2)',
+                              color: comorbidities.includes(c) ? 'var(--primary-color)' : 'var(--text-secondary)',
+                              transition: 'all 0.2s'
+                            }}
+                          >
+                            {c}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
@@ -323,10 +412,10 @@ export default function App() {
                           </div>
                         </div>
                         <div style={{ textAlign: 'right' }}>
-                          <div className="gradient-text" style={{ fontSize: '24px', fontWeight: '800' }}>
-                            {formatCurrency(est.estimated_cost)}
+                          <div className="gradient-text" style={{ fontSize: '20px', fontWeight: '800' }}>
+                            {formatCurrency(est.min_cost)} - {formatCurrency(est.max_cost)}
                           </div>
-                          <div style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '4px' }}>Adjusted Total</div>
+                          <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>AI Range Estimate</div>
                         </div>
                       </motion.div>
                     ))}
@@ -348,16 +437,54 @@ export default function App() {
                         <p className="subtitle" style={{ marginBottom: '0' }}>{selectedHospital.hospital_name}</p>
                         
                         <div className="cost-breakdown">
+                          <h4 className="form-label" style={{ fontSize: '12px', marginBottom: '16px' }}>Itemized AI Prediction</h4>
                           {selectedHospital.breakdown.map((item, i) => (
-                            <div key={i} className="breakdown-row">
-                              <span>{item.category}</span>
-                              <span>{formatCurrency(item.amount)}</span>
+                            <div key={i} style={{ marginBottom: '16px' }}>
+                              <div className="breakdown-row" style={{ marginBottom: '8px', border: 'none' }}>
+                                <span>{item.category}</span>
+                                <span>{formatCurrency(item.amount)}</span>
+                              </div>
+                              <div style={{ height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
+                                <motion.div 
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${(item.amount / selectedHospital.estimated_cost) * 100}%` }}
+                                  style={{ height: '100%', background: i % 2 === 0 ? 'var(--primary-color)' : 'var(--secondary-color)' }}
+                                />
+                              </div>
                             </div>
                           ))}
-                          <div className="breakdown-row total">
-                            <span>Adjusted Final</span>
+                          <div className="breakdown-row total" style={{ marginTop: '24px' }}>
+                            <span>Total (Avg)</span>
                             <span className="gradient-text">{formatCurrency(selectedHospital.estimated_cost)}</span>
                           </div>
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '24px' }}>
+                          <div className="glass-panel" style={{ padding: '12px', background: 'rgba(0,0,0,0.2)' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '4px' }}>
+                              <Info size={12} /> Confidence
+                            </div>
+                            <div style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--success-color)' }}>
+                              {(selectedHospital.confidence_score * 100).toFixed(0)}%
+                            </div>
+                          </div>
+                          <div className="glass-panel" style={{ padding: '12px', background: 'rgba(0,0,0,0.2)' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '4px' }}>
+                              <TrendingUp size={12} /> Quality
+                            </div>
+                            <div style={{ fontSize: '18px', fontWeight: 'bold' }}>
+                              {selectedHospital.quality_score}/10
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="info-box" style={{ background: 'rgba(6, 182, 212, 0.05)', border: '1px solid var(--primary-glow)', marginTop: '24px' }}>
+                          <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: 'var(--primary-color)', marginBottom: '8px' }}>
+                            <BrainCircuit size={16} /> Why this Provider?
+                          </h4>
+                          <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                            {selectedHospital.why_this_hospital} {selectedHospital.confidence_explanation}
+                          </p>
                         </div>
 
                         <div className="info-box">
@@ -438,6 +565,12 @@ export default function App() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', fontSize: '16px' }}>
                     <span style={{ color: 'var(--text-secondary)' }}>Patient Name</span>
                     <span style={{ fontWeight: '600' }}>{loanResult.patient_name}</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', fontSize: '16px' }}>
+                    <span style={{ color: 'var(--text-secondary)' }}>CIBIL / Risk Score</span>
+                    <span style={{ fontWeight: '600', color: loanResult.patient_risk_score > 750 ? 'var(--success-color)' : 'var(--warning-color)' }}>
+                      {loanResult.patient_risk_score}
+                    </span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px', fontSize: '16px' }}>
                     <span style={{ color: 'var(--text-secondary)' }}>Healthcare Provider</span>
