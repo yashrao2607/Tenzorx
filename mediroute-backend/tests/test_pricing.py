@@ -32,6 +32,8 @@ def test_cost_analysis():
         
         print("\n--- Underwriting Intelligence ---")
         print(f"Loan Recommendation: {data['loan_recommendation']}")
+        print(f"Decision Confidence: {data['decision_confidence']}")
+        print(f"Overpricing Index: {data['overpricing_percent']}%")
         print(f"Fraud Flag: {data['fraud_flag']}")
         print(f"Decision Reason: {data['reason']}")
         
