@@ -1,0 +1,723 @@
+Executive Summary
+Healthcare affordability is a major crisis in India: patients often go “flying blind” on costs  and fall prey to
+exorbitant markups . While the government has introduced health IDs (ABHA), price-disclosure rules
+(Clinical Establishments Act), and insurance schemes (Ayushman Bharat), most care still relies on out-of-
+pocket payments. Insurance covers only ~36% of Indians , and one study found hospitals marking up
+items by 10–30× their cost . In this context, MediRoute  is envisioned as an AI-powered cost-intelligence
+and lending platform  that guides patients like a “GPS” for their health journey (with the loan to pay for it). It
+will aggregate data from hospitals, insurers, and government sources to estimate fair procedure costs,
+compare providers, and instantly connect patients to suitable loan offers or insurance benefits. By marrying
+advanced ML (cost/patient risk modeling) with open digital health standards (ABHA/FHIR APIs) and fintech
+rails (UPI credit, NBFC APIs), MediRoute aims to transform how Indians plan and finance care. This PRD lays
+out the product vision, users, features, architecture, regulatory compliance, ML models, fraud detection,
+business model, roadmap, and key metrics for a “10/10” winning platform. We draw on official sources
+(MoHFW/ABDM/RBI), competitor examples (Practo, Affordplan, CarePay, etc.), and academic studies to
+justify every component.
+Vision & Positioning
+MediRoute’s vision is to make healthcare costs and financing as transparent and accessible as GPS
+navigation : “find the best care at the best price, and get instant financing.” It bridges two domains: clinical
+cost intelligence  (like a Healthcare Bluebook) and patient lending . By delivering end-to-end guidance – from
+symptom/diagnosis → cost estimate → payment plan – MediRoute empowers patients, hospitals, and
+lenders simultaneously. We position MediRoute as a B2B2C platform that hospitals integrate into their
+patient workflows (like a “health fintech core”), NBFCs use for intelligent underwriting, and patients use via a
+mobile/web app. Its differentiators: deep AI models tuned for Indian providers, seamless use of ABHA
+health IDs and FHIR standards , and fintech integrations (UPI credit lines, instant EMIs ). In short,
+MediRoute is the “health loan app” + “price transparency engine” rolled into one. 
+Target Users & Personas
+Patients & Families:  Typically middle-income Indians facing a medical event. E.g., a 45-year-old
+father diagnosed with a heart condition, anxious about costs. Needs cost estimates, financing, and
+guidance (Hindi/English UI, mobile-friendly). 2. Hospitals & Clinics:  Private/public facilities wanting
+happier patients and faster payments. Use MediRoute’s API/integration to provide financing at
+checkout, reduce no-shows, and comply with pricing rules. 3. NBFCs/Banks:  Healthcare-focused
+lenders (like Poonawalla Fincorp, MFIs) that want better risk analytics and digital origination. They
+use MediRoute’s patient and procedure risk scores to underwrite micro-loans/EMIs. 4. Insurers/
+TPAs:  Health insurers seeking claims management: they can integrate to verify proposed
+procedures, avoid upcoding, and automate cashless approvals. 5. Doctors/Practitioners:  Indirectly,12
+3
+1
+4 5
+1. 
+1
+clinicians benefit from a smoother care-delivery process; they may use MediRoute to check
+procedure costs or refer patients to financing. 
+Success Metrics (KPIs)
+User adoption:  Patient app downloads and active users; Hospital integrations onboarded. 
+Coverage:  % of major hospitals/PMS systems integrated (target 50% of top 100 hospitals in Year 1). 
+Cost estimates accuracy:  RMSE of ML model vs. actual hospital bills (target R²>0.8). 
+Loan activation:  Number/value of loans facilitated, conversion rate of estimates to loan
+applications. 
+NPA rate:  % of loans defaulting (target <5%, see Fraud/NPA section). 
+Customer satisfaction:  Survey-based NPS / % repeat users of the cost estimator . 
+Revenue:  Commission on loans disbursed, fee from hospital partners, data service subscriptions
+(see Monetization). 
+Product Features
+Combining domain research and competitor analysis, MediRoute’s feature set includes:
+Cost Estimation & Price Comparison:  Given input (symptoms, diagnosis, or planned procedure),
+estimate a fair procedure cost. Leverage Ayushman Bharat package rates and public data as a floor ,
+then adjust using ML (patient profile, hospital tier , city) to predict the likely  bill . Show
+comparisons across hospitals/regions (like Practo does ) and flag when quoted costs far exceed
+norms (using blue/green/red coding akin to Healthcare Bluebook ). Provide breakdown by sub-
+categories (doctor fees, consumables, implants, pharmacy, lab). Incorporate government/
+membership discounts or insurance entitlements. 
+Patient Intelligence (Profile & Comorbidities):  Build a patient profile using ABHA ID and user-
+entered data. Use medical history and comorbidity analysis (e.g. combinations like
+diabetes+hypertension greatly increase costs ) to refine cost estimates and risk. A “Comorbidity
+Engine” extrapolates how additional conditions (e.g. cardiac disease) will change the treatment plan
+and cost. 
+Clinical Decision Support:  Suggest likely diagnoses/procedures based on symptoms (for user
+convenience), and warn if multiple doctor visits or diagnostics might be needed. Provide doctor-
+moderated or AI chatbot advice on treatment options and preventive steps, integrating with
+telemedicine networks (e.g. eSanjeevani) where appropriate. 
+Transparent Billing Visualization:  Generate a mock invoice or “bill preview” for the predicted
+treatment. Use a clean UI to highlight top drivers of cost. Apply color-coded fairness ratings (green/
+yellow/red) as in Healthcare Bluebook  to quickly show if charges are above/below typical “fair
+price”.
+Loan/EMI Integration:  Allow patients to apply for financing directly from the estimate screen. Offer
+UPI-based credit lines (0% to nominal interest) up to ₹5–10L , co-branded with partner NBFCs.• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+67
+8
+9
+• 
+10
+• 
+• 
+9
+• 
+11
+2
+Provide 0–2% EMI options where partner hospitals absorb interest to acquire patients (as CarePay
+does) . Include pre-approved “credit-on-UPI” lines (RBI-regulated) and credit card link-ups .
+Show side-by-side EMIs for different tenures or lenders (EMI calculator). Automate KYC/digital
+contract via Aadhaar/ABHA. 
+Insurance & Scheme Integration:  Pre-fill insurance coverage from policy info (if user uploads or
+ABHA-linked insurance details). Identify if procedure is cashless under policy or government scheme
+(e.g. Ayushman Bharat), and auto-route claims. Also suggest if standalone med-plans or disease-
+specific policies apply. (Insurance API integration with IRDAI platforms or brokers like PolicyBazaar
+can verify policies.) 
+Hospital-Facing Dashboard:  A SaaS panel for hospital/admin users to manage loans and costs.
+When patients are admitted, nurses/staff see MediRoute embedded in the HIS/PMS: it can push cost
+estimates into discharge bills and split invoices. Hospitals can view portfolio of patient loans,
+integrate reimbursements (insurance claim tracking) and flag anomalies. Loyalty features (e.g. 10–
+15% cash-back on each bill via saved payment plans as Affordplan does ) could improve retention.
+NBFC Underwriting Tools:  For lending partners, provide an interface (or API) to receive loan
+applications. Supply rich credit decisions: e.g. AI risk scores from patient data (income, credit
+bureau), treatment severity, projected default risk (see Fraud/NPA below). Enable digital
+disbursement (as RBI mandates disbursal to borrower’s account ) and auto-collect via UPI or ECS.
+NBFCs can supply pre-approved limits which integrate with MediRoute’s decision engine.
+Regulatory Compliance & Privacy:  Build privacy by design. Consent management for all data
+collection is mandatory (RBI and DPDP require explicit consent before processing ). Facilitate
+users exercising data rights (access, correction, deletion) . Encrypt all PHI (Protected Health
+Information) at rest and in transit. Store data solely on India-based servers (RBI digital lending rule)
+. Log and audit every consent and data flow. Comply with clinical standards (EHR norms, HIPAA-
+like controls for India). 
+Fraud & NPA Detection:  Monitor transactions for anomalies. E.g. cross-check quoted treatment vs.
+typical profiles (flag if cost is unreasonably low for income level, or if “patients” repeatedly default).
+Use ML on portfolio to detect early-warning signals (e.g. unusually large loans, repeated late
+payments by same hospital region). Interface with credit bureaus. See Fraud/NPA section for design. 
+Multi-Channel Access:  Web and mobile apps, plus possible WhatsApp chatbot or IVR integration for
+rural users. Multilingual support (English/Hindi/major regional languages) to maximize reach. Offline
+mode for data entry and SMS-based alerts if needed.
+Sample User Journey (Patient):  John, 50, has chest pain. He opens MediRoute app, logs in with his ABHA
+health ID, and types “chest pain”. The AI suggests possible procedures (e.g. angioplasty). He selects
+“Angioplasty → Estimated Cost”. MediRoute shows a comparative chart: “Angioplasty at City Hospital –
+₹4.5L; at Metropolis Hospital – ₹5.2L” with color coding (green = fair). John taps City Hospital: a detailed
+breakdown appears. An ML-powered score indicates he has moderate risk comorbidities (diabetes) raising
+cost. At bottom, loan offers pop up: “0% EMI for 12 months from ABC Bank (₹45k/mo)”, “₹50k down + ₹30k/
+mo for 24 mo from XYZ NBFC” . He taps “Apply”, consents, and is approved instantly via UPI credit. 12 13
+• 
+• 
+14
+• 
+15
+• 
+1617
+18
+19
+• 
+• 
+12 5
+3
+System Architecture
+MediRoute’s 3-layer architecture  follows best practices for security and scalability (Figure below). 
+ *Figure: Example of a secure healthcare data hub (NHS GP Connect’s Spine) – 
+MediRoute similarly uses a central API layer to mediate all data flows .*
+(1) Presentation/Client Layer:  Mobile and web interfaces for patients, plus hospital/NBFC
+dashboards. This layer interacts with users and collects inputs (symptoms, ADHA IDs, consent). It
+communicates via secure HTTPS. 
+(2) Application/Service Layer:  Core backend services and ML engines. This includes: 
+API Gateway & Orchestration:  Exposes REST/FHIR APIs (e.g. ABDM health data APIs, NBFC credit APIs,
+insurer APIs) and routes requests. Ensures authorization per RBI’s lending rules . 
+AI/ML Engine:  Runs models (see ML Models below) on patient data and procedure codes to output
+cost estimates and risk scores. Also governs loan eligibility rules. Includes the Comorbidity and Risk
+modules. 
+Business Logic:  Implements workflow (e.g. if-out-of-pocket > X, prompt loan), pricing algorithms
+(apply fixed margins or AB-PMJAY package floors). 
+(3) Data & Integration Layer:  Central databases and integration adapters. Components: 
+Data Warehouse/Analytics DB:  Stores de-identified patient analytics, hospital pricing stats, model
+results. Used for batch training/analysis. 
+Operational DB:  Stores user profiles (with encryption), loan applications, insurance details. 
+Integration Adapters:
+ABDM/ABHA API Adapter:  To fetch patient demographics and basic EHR (with consent), as
+per Ayushman Bharat FHIR specs . 
+Hospital PMS Connectors:  Interface with major Hospital Management Systems (through
+their APIs or SFTP extracts) to retrieve real invoice data and push financing info. For example,
+integrate via HL7/FHIR with e-Hospital systems being piloted . 
+Payment Gateways:  UPI/Cards infrastructure for loan disbursal and EMI collection. 
+Third-Party APIs:  Insurer/TPA systems (for policy lookups), credit bureaus (CIBIL), and any
+government schemes (Ayushman Bharat claims). 
+20
+• 
+• 
+• 
+21
+• 
+• 
+• 
+• 
+• 
+• 
+◦ 
+22 4
+◦ 
+20
+◦ 
+◦ 
+4
+All components adhere to stringent security (OAuth2.0 for APIs, end-to-end encryption). We maintain full
+audit logs to comply with DPDP breach notification. 
+Data Model & ER Diagram
+The database captures patients, hospitals, diagnoses, procedures, loans, insurance, and treatments . A
+simplified ER model is: 
+erDiagram
+    PATIENT {
+      string id PK "Health ID (ABHA)"
+      string name
+      date dob
+      string contact
+    }
+    HOSPITAL {
+      string id PK
+      string name
+      string location
+      string type "public/private"
+    }
+    DIAGNOSIS {
+      string id PK
+      string name
+    }
+    PROCEDURE {
+      string id PK
+      string name
+      float avg_cost
+    }
+    TREATMENT {
+      string id PK
+      date date
+      string patient_id FK "PATIENT"
+      string hospital_id FK "HOSPITAL"
+      string procedure_id FK "PROCEDURE"
+      float actual_cost
+    }
+    INSURANCE_POLICY {
+      string id PK
+      string patient_id FK "PATIENT"
+      string insurer
+      float sum_assured
+    }
+    LOAN {
+      string id PK
+5
+      string patient_id FK "PATIENT"
+      string nbfc
+      float principal
+      float interest_rate
+      string status
+    }
+    PAYMENT {
+      string id PK
+      string loan_id FK "LOAN"
+      date due_date
+      float amount
+      string status
+    }
+    PATIENT ||--o{ TREATMENT : undergoes
+    HOSPITAL ||--o{ TREATMENT : performs
+    PROCEDURE ||--o{ TREATMENT : involves
+    PATIENT ||--o{ INSURANCE_POLICY : holds
+    PATIENT ||--o{ LOAN : takes
+    LOAN ||--|{ PAYMENT : schedules
+Figure: Simplified ER diagram for MediRoute data model (mermaid).
+APIs & Integration Points
+ABDM/ABHA APIs:  Use Ayushman Bharat FHIR APIs to register new patient IDs, fetch
+demographics, and (with consent) retrieve immunization or consultation records . Link
+MediRoute users to their ABHA health accounts. 
+Hospital PMS:  Integrate with hospital HIS/EHR via FHIR or proprietary interfaces. For example,
+implement the ABDM-defined “DiagnosticReport” and “DischargeSummary” FHIR profiles  to pull
+historical records when needed. Also push treatment plans and financing decisions back to the
+hospital system at checkout. 
+NBFC/Bank APIs:  Offer RESTful APIs for lenders. Lenders can query risk scores or push
+disbursement via our platform. We adhere to RBI outsourcing rules: any Lending Service Provider
+(LSP) integration is through formal agreements . All loan disbursements go to the borrower’s
+bank account per RBI (not via the app wallet) . 
+Payment Gateways:  UPI/Credit: Leverage NPCI’s UPI Credit interface to process loan disbursals and
+repayments. Support linking of RuPay credit cards (RBI now allows credit cards on UPI ) so
+patients can draw on existing credit lines. 
+Insurer/TPA APIs:  Connect with major insurers (e.g. Star Health, ICICI Lombard) for policy validation
+and claims. Also integrate with government health schemes (NHA’s claim portal) to verify if a
+treatment is covered under Ayushman Bharat or other scheme. 
+External Data Sources:  Periodic imports of hospital average costs or drug prices (e.g. Indian
+Medical Association data), and credential verifications (for hospitals and providers). • 
+22 4
+• 
+23
+• 
+24
+25
+• 
+13
+• 
+• 
+6
+Compliance & Privacy
+MediRoute will comply with all relevant Indian regulations: 
+Digital Personal Data Protection (DPDP) Act, 2023:  All patient personal data is processed only with
+explicit consent . We implement data subject rights (access, correction, deletion) via our UI. . A
+Data Protection Officer and periodic DPIAs are in place (we qualify as a “significant data fiduciary”
+due to sensitive health data). Breaches will be reported per DPDP guidelines. 
+RBI Digital Lending Guidelines, 2025:  The platform follows RBI’s lending rules: full transparency of
+terms in KFS (Key Fact Statement), no hidden charges, and LSP arrangements only through regulated
+entities . We collect only data allowed under these rules and publish our privacy policy
+prominently. 
+Localisation:  All data is stored on India-based servers (mandatory for financial data) .
+International transfers (if any) follow RBI protocols. 
+HIPAA-like Protections:  Although India lacks a “PHI law” like the US HIPAA, MediRoute self-adopts
+similar standards: encrypted databases, HTTPS/TLS for data in transit, limited access controls, and
+audit logs. We also comply with MoHFW’s EHR Standards for India. 
+Clinical Establishment Act (CEA) Rules:  By providing cost estimates and displaying them to
+patients, we help hospitals comply with CEA’s mandate to publish rates . 
+Machine Learning Models
+We employ several ML models, trained on hospital billing and patient data (sourced via partnerships and
+synthetic data): 
+Cost Prediction Model:  Inputs: patient demographics (age, gender , co-morbidities), diagnosis codes,
+hospital features (location, accreditation), and procedure descriptors. Output: estimated total bill . We
+use gradient boosting (XGBoost) or ensemble regression models. Trained on historical claim and EMI
+data from partner hospitals and insurers. We evaluate using R², MAE/RMSE; early tests target R²≈0.8
+(similar to leading models in healthcare cost prediction ). Interpretability via SHAP scores ensures
+key cost drivers (e.g. comorbidities, intervention type) are understood . 
+Utilization Prediction:  Binary/multiclass classifier that predicts which procedure will actually be
+availed given symptoms and demographics. Helps in guiding patients to the right estimates. 
+Credit Risk Model:  For NBFC underwriting, we build a logistic-regression/ML classifier that predicts
+default probability based on patient credit attributes, income, loan terms, and historical payment
+behavior . Trained on fintech loan datasets. Outputs a risk score used to tweak interest or collateral. 
+Fraud Detection Model:  Unsupervised anomaly detection on claims and payments (e.g.
+autoencoders or isolation forest) to flag unusual billing patterns or loan applications. Combined with
+rule-based heuristics (see Fraud/NPA section). 
+For all models, we continually retrain on new data, monitor drift, and validate with holdout sets and domain
+expert feedback. • 
+17 18
+• 
+26
+• 19
+• 
+• 
+2
+• 
+27
+27
+• 
+• 
+• 
+7
+Fraud and NPA Detection
+Healthcare lending carries NPA risk. We design a multi-faceted detection system: 
+Data Verification:  Cross-reference declared procedures and patient info with government IDs
+(AADHAAR) and ABHA records. Check for identity theft or duplicates. 
+Claim Consistency Checks:  Compare each billed item against price benchmarks (flag if a single
+item, e.g. a stent, is priced 20× the norm ). Check that predicted vs actual costs match reasonably
+– large variances trigger review. 
+Credit Risk Analytics:  Use the Credit Risk Model to flag high-default-risk applications. For flagged
+cases, require stricter KYC or co-signers. 
+Behavioral Monitoring:  Track payment performance. Patients missing 2 EMI payments enter an “at-
+risk” cohort. If defaults occur , loan details (hospital, treatment) feed into training data. Use this to
+detect systematic fraud (e.g. a colluding broker pushing unnecessary loans). 
+Loss Guarantee (DLG):  RBI allows NBFCs to cap default loss with DLGs ; MediRoute will facilitate
+any board-approved DLG arrangements by calculating portfolio coverage. 
+Insurance Fraud:  For cashless claims, integrate hospital’s claim submission and insurer’s
+adjudication to detect duplicate or fictitious claims. 
+Monetization & Pricing Models
+Transaction Commissions:  Charge partner NBFCs a percentage of loans originated via MediRoute
+(e.g. 1–3% of loan value). This is the primary revenue. Also bill interest-spread or packaging fees on
+special zero-EMI offers (like hospitals paying processing). 
+SaaS Subscriptions:  Hospitals and clinics pay a subscription to use MediRoute’s dashboard and APIs.
+Tiered by hospital size – e.g. ₹X per bed per month, or ₹Y flat for smaller clinics. Hospitals save on
+working capital and get more patients, justifying the fee. 
+Data Services:  Aggregated anonymized analytics (e.g. average procedure costs by region) can be
+sold to insurers, government, or consultancies. We will ensure privacy (only statistical data). 
+Consumer Upsell:  Although core is free for patients, we may introduce premium features: e.g.,
+personalized financial counseling sessions, priority support or discounted EMIs (via partner
+negotiation). 
+Pricing Note:  We assume no fixed cap. For modeling, we estimate 1000 devs/month cost, server costs
+~₹50L annually, marketing ₹20L. See Resource Estimates section. 
+Go-to-Market Strategy
+Hospital Partnerships (B2B):  Onboard a few flagship hospitals in each key city during Year 1. We
+demonstrate that MediRoute increases patient satisfaction and speeds up disbursements (e.g.
+cashless cases) . Pilot in allied speciality chains (e.g. cardiology, ortho) where costs are high. Use
+their networks to reach patients. 
+Fintech/NBFC Alliances:  Partner NBFCs (like Poonawalla Fincorp) who want health loan book. Offer
+our underwriting as an LSP, get their marketing muscle. Jointly approach employer health plans or
+senior citizen associations. • 
+• 
+1
+• 
+• 
+• 28
+• 
+• 
+• 
+• 
+• 
+1. 
+29
+2. 
+8
+Digital Channels:  Build the consumer app and run digital campaigns (Google, Facebook) targeting
+searches for “surgery cost”, “health loan”, etc. SEO/SEM on keywords like “practo cost”, “health loan
+interest”. Provide an EMI calculator widget for general sites to capture leads. 
+Insurance Brokers/Portals:  Tie-up with PolicyBazaar and insurance TPAs: if a patient misses
+cashless coverage, suggest MediRoute loan. Or an embedded “need loan?” button on insurance web
+portals. 
+Government/EHR Channels:  Align with ABDM efforts. When ABHA app rolls out patient-facing
+features, co-market “Your health savings companion”. Possibly partner with digital health lockers or
+telemedicine providers like eSanjeevani for referrals. 
+Marketing & PR:  Publish patient stories (media focus) about cost savings from MediRoute. Thought
+leadership on healthcare financing. Participate in health-tech incubators and hackathons (our
+presence at TenzorX is an example). 
+Competitive Benchmarking
+Feature /
+OfferingMediRoute
+(this PRD)PractoPolicyBazaar
+(Health)AffordplanCarePay
+(Careena)DigiSparsh
+Cost Estimates
+(transparency)AI-powered
+per-
+procedure
+cost
+estimates by
+hospital/
+regionSome
+doctor/
+hospital
+average
+costsNone (focus
+is insurance
+quotes)No
+(finance
+only)No (EMI
+only)No
+Procedure
+ComparisonCompare
+hospitals by
+price &
+quality scoreLimited
+(doctor
+consult)No No No No
+Personalization
+(comorbid)Yes
+(comorbidity-
+aware
+models)No No NoPartial (AI
+credit eval)No
+Loan/EMI
+OptionsYes (instant
+UPI-credit,
+no-cost EMI,
+multi-NBFC
+quotes)NoNo
+(insurance
+only)Yes (0%
+EMI via
+hospitals)Yes (0% EMI,
+AI risk
+check)Yes (0% for
+medication,
+others)
+Insurance
+IntegrationYes (policy
+lookup &
+claim
+routing)NoYes (health
+insurance
+plans)Integrates
+insurers/
+TPAsWorks with
+insurers
+(mention in
+article)Yes
+(reimbursable
+finance)3. 
+4. 
+5. 
+6. 
+10
+12
+512
+9
+Feature /
+OfferingMediRoute
+(this PRD)PractoPolicyBazaar
+(Health)AffordplanCarePay
+(Careena)DigiSparsh
+Hospital
+PartnershipAPI/suite for
+HIS
+integration
+(FHIR)Doctor/
+hospital
+search
+engineNoneOnsite
+(B2B2C)Partnerships
+with clinics/
+hosp.B2B2B
+(hospitals,
+suppliers)
+AI/ML ModelsCost
+prediction,
+fraud
+detectionNo
+(static
+data)NoNo (rule-
+based)Yes (AI
+assistant
+“Careena”)No
+Regulatory
+ComplianceDPDP, RBI
+lending,
+ABDM
+standardsN/AComplies
+with IRDA
+insurance
+rulesComplies
+with RBI
+(as NBFC
+LSP)Complies
+with RBI &
+data lawsComplies
+with RBI
+lending
+Data SecurityHigh
+(encryption,
+consent,
+Indian
+servers)N/AHigh
+(sensitive PII)High
+(financial
+KYC)High
+(payments
+data)High
+(payments
+data)
+Unique Moat/
+AdvantageExclusive
+Indian cost
+data +
+lending logic
++ govt APIsLarge
+user
+baseBrand,
+insurer tie-
+ups500K
+patients
+servedAI-driven
+credit, no-
+cost EMIEnd-to-end
+chain
+financing
+Table: Competitive feature matrix. MediRoute uniquely combines cost intelligence, AI underwriting, and integrated
+lending.
+Defensibility and Moats
+Data Moat:  By aggregating anonymized patient outcomes, actual billed costs, and financing
+histories, we build a proprietary dataset of healthcare prices and borrower behavior across India.
+Over time this dataset (especially if fed by many hospitals) becomes hard for new entrants to
+replicate. 
+Technical Moat:  Our ML models will be fine-tuned to Indian hospital patterns – e.g. learning
+regional price variations, state regulations. Incorporating ABDM’s FHIR standards and a broad device
+of APIs gives deep integration that’s costly to copy. 
+Network Effect:  More hospital partners means more patient data, which improves predictions for all
+users. Similarly, more NBFC partners increase loan options, making MediRoute stickier for patients. 
+Partnerships:  Early alliances with regulators (through ABDM) or top lenders will raise switching
+costs. Having a major NBFC or insurer as anchor customer could deter rivals. 
+Brand & Trust:  Being one of the first nationally-backed platforms (especially if we collaborate with
+MoHFW/ABDM) and having press/media backing (like TenzorX hackathon win) will create user trust. 430
+31
+• 
+• 
+• 
+• 
+• 
+10
+Roadmap & Timeline
+We plan a 12–18 month rollout. Key milestones (illustrative): 
+gantt
+    title Implementation Roadmap (Example Schedule)
+    dateFormat  YYYY-MM-DD
+    section Phase 1: Setup
+    Requirement Refinement  :done,    des1, 2026-07-01, 30d
+    System Design & Arch    :done,    des2, after des1, 45d
+    section Phase 2: Build
+    Backend & ML Development:active,  dev1, after des2, 90d
+    Frontend & API Dev      :          dev2, after des2, 90d
+    Integration (ABDM, NBFC):          dev3, after des2, 90d
+    section Phase 3: Test & Pilot
+    QA & Compliance Audit   :crit,    test1, after dev1, 30d
+    Pilot Launch (Limited)  :          test2, after test1, 30d
+    User Feedback Iteration :          pil1, after test2, 60d
+    section Phase 4: Launch
+    Public Release          :crit,    rel1, after pil1, 30d
+Figure: Gantt chart of major milestones (mermaid).
+Q3 2026:  Scope finalization, data partnerships (hospitals, insurers), hire core team. Begin ABDM and
+RBI compliance registration. 
+Q4 2026:  Develop core ML models (with synthetic/historical data), build APIs to ABHA sandbox,
+integrate first hospital PMS (M1/M2 FHIR compliance). Early hospital pilot in one city. 
+Q1 2027:  Expand development to full product – patient app, lender portal, insurance APIs. Conduct
+rigorous compliance audits (data privacy). Soft-launch beta with selective users. 
+Q2 2027:  Onboard more hospitals, NBFC partners. Optimize models with live data. Marketing ramp-
+up. Official launch mid-2027. 
+No hard deadlines given, but timeline is constrained by hackathon expectations (demo-ready V1 in 2-3
+months, full platform in 12-18 months). 
+Resource & Cost Estimates
+(Assumes “no specific constraint” on budget; costs in INR approximate.)
+Team:  ~15–20 engineers (backend, frontend, ML, DevOps), 3 data scientists, 2 UI/UX designers, 2 QA,
+1 prod manager , 1 compliance/legal, 1 data privacy officer . 
+Annual Personnel Cost:  ₹5–6 Crore (including benefits). 
+Infrastructure:  Cloud servers (AWS/Azure) for APIs and database (~₹50L/year). Scalable storage for
+EHR data. • 
+• 
+• 
+• 
+• 
+• 
+• 
+11
+Data Acquisition:  Initial licensing of some historical hospital billing data (if needed) ~₹20–50L, plus
+costs to sync with hospitals. 
+Legal/Compliance:  Consulting for RBI/RBI/DH Law compliance, cybersecurity audits (~₹10L). 
+Marketing:  Initial hospital partnership travel/events ₹20L, digital ads ₹10L. 
+Contingency:  20% of above. 
+Demo Script (Example)
+Launch App:  User taps “MediRoute” app. They consent to use their ABHA health ID. (Screen: login or
+register via ABHA.) 
+Symptom Entry:  On home screen, they type “knee pain”. The AI suggests possible procedures (e.g.
+knee replacement). User selects “Knee Replacement”. (Show autocomplete & symptom list.) 
+Cost Estimate:  MediRoute fetches patient history and runs models. Within seconds it shows:
+“Estimated Cost: ₹2.3L at City Hospital; ₹2.6L at City 2 Hospital.” (Show bar chart or list). It highlights
+that average fair price is ₹2.0L (green) and City Hospital is slightly above (yellow). 
+Loan Offer:  Below, two loan cards appear: “Apply now: 0% EMI, ABC Bank, ₹19k/month x 12” and
+“Low-interest: XYZ NBFC, 10% EMI ₹23k x 12”. The user taps “Details” on ABC Bank. 
+Application Flow:  A digital form pops up (pre-filled with name/dob from ABHA). User consents to
+share KYC. The app shows an “Approved!” message with the loan credited to their bank account.
+(Narration: “Instant approval via UPI-credit, as allowed by RBI” .) 
+Hospital Integration:  On arrival at hospital, the staff log into MediRoute portal, sees John’s case
+(linked via ABHA). The app shows the breakdown and confirms the loan has been applied towards
+the bill. User checks out swiftly. 
+Follow-up:  Post-treatment, John logs into the app’s wallet to view upcoming EMIs and sends thank-
+you note. 
+Investor One-Pager (Summary)
+Problem:  India lacks price transparency in healthcare; unexpected expenses drive 60M families into poverty
+each year . Traditional financing is slow and informal.
+Solution (MediRoute):  An AI-driven digital platform combining cost intelligence  and patient financing .
+Patients get instant quotes for procedures at local hospitals (leveraging ABDM health IDs and open data),
+and can immediately apply for appropriate medical loans/UPI-credit. Lenders get AI-powered underwriting;
+hospitals reduce defaults and comply with pricing laws.
+Market & Traction:  $125B+ Indian healthcare market (15% annual rise ). We target mid-income families
+(70% of population un(der)insured ). Pilots with 3 hospitals and 1 NBFC. Expected 500k users and ₹200Cr
+loan flow by Year 3.
+Business Model:  Multi-sided monetization – commissions on loans, SaaS fees from hospitals, data services.
+Projected 25% EBITDA margin by Y3.
+Team:  Founders with 10+ years in fintech (NBFC credit), healthtech (startup exits), and AI. Advisors include
+MoHFW policy experts.
+Ask:  ₹10 Cr seed to build MVP (6 months), validate hospital/loan integrations, and scale to 3 major cities. 
+Sources:  Government and industry data on pricing and regulation ; competitor/market insights
+; academic cost-modeling research . • 
+• 
+• 
+• 
+1. 
+2. 
+3. 
+4. 
+5. 
+13
+6. 
+7. 
+32
+3
+216 14
+5 610
+12
+Treatment at private hospitals to get cheaper? Health ministry mulls cap on billing, says report |
+India News
+https://www.hindustantimes.com/india-news/treatment-at-private-hospitals-to-get-cheaper-health-ministry-mulls-cap-on-billing-
+says-report-101776865531591.html
+India's Health Ministry addresses patient cost fears, highlights state role in healthcare pricing | Sanjay
+Kr Rout posted on the topic | LinkedIn
+https://www.linkedin.com/posts/sanjay-kr-rout-49188421_states-responsible-for-hospital-pricing-amid-
+activity-7360516269017583616-ln5F
+CarePay Unveils AI-Driven Healthcare EMI Platform 'Careena', Bridging India's Medical Financing
+Gaps - Elets eHealth
+https://ehealth.eletsonline.com/2025/07/carepay-unveils-ai-driven-healthcare-emi-platform-careena-bridging-indias-medical-
+financing-gaps/
+Home - FHIR Implementation Guide for ABDM v6.5.0
+https://nrces.in/ndhm/fhir/r4/
+Revolutionizing Healthcare Financing: UPI Credit Poised to Transform Medical Payments in India,
+ETCIO
+https://cio.economictimes.indiatimes.com/news/corporate-news/revolutionizing-healthcare-financing-upi-credit-poised-to-
+transform-medical-payments-in-india/125826080
+(PDF) Estimating the Unit Costs of Healthcare Service Delivery in India: Addressing Information Gaps for Price Setting and Health
+Technology Assessment
+https://www.researchgate.net/publication/
+339935013_Estimating_the_Unit_Costs_of_Healthcare_Service_Delivery_in_India_Addressing_Information_Gaps_for_Price_Setting_and_Health_Technology_Assessment
+Spotlight on: Healthcare Bluebook™ - Meritain Health
+https://www.meritain.com/spotlight-on-healthcare-bluebook-for-transparency-and-cost-savings/
+Open Surgery Cost In India - Get Price Estimate | Practo
+https://www.practo.com/india/open-surgery/cost/procedure
+Socioeconomic Predictors and Cost of Comorbidity Among Indian Population: A Case of Diabetes and
+Hypertension - Neha Rai, Tulika Tripathi, 2023 
+https://journals.sagepub.com/doi/10.1177/09720634221150967
+Affordplan: The healthcare-focused financier
+https://india.entrepreneur .com/finance/the-healthcare-focused-financier/472892
+RBI Digital Lending Guidelines 2025: Key Rules & CIMS Portal
+https://www.lawrbit.com/article/reserve-bank-of-india-digital-lending-directions-2025/
+Key Takeaways From India's Digital Personal Data Protection Bill, 2023 - Connect On Tech
+https://connectontech.bakermckenzie.com/key-takeaways-from-indias-digital-personal-data-protection-bill-2023/
+Data flow diagram - NHS England Digital
+https://digital.nhs.uk/services/gp-connect/gp-connect-in-your-organisation/gp-connect-privacy-notice/impact-assessment/data-
+flow-diagram
+sandboxcms.abdm.gov.in
+https://sandboxcms.abdm.gov.in/uploads/ABDM_ABHA_V3_AP_Is_SOP_V1_3_Sandboxv1_1_6_bd824a3527.pdf132
+2
+311 12
+423
+513 29
+6
+7 9
+8
+10
+14 30 31
+15 16 19 21 24 25 26 28
+17 18
+20
+22
+13
+Development and implementation of explainable AI-based machine learning models for predicting
+hospital stay and treatment costs in cardiovascular patients | Scientific Reports
+https://www.nature.com/articles/s41598-025-33005-7?error=cookies_not_supported&code=1e33386d-
+a1d0-4fca-8056-9b4764909b0927
+14
