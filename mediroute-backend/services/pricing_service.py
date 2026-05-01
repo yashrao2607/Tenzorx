@@ -40,14 +40,28 @@ def get_cost_analysis(db: Session, procedure: str, city: str):
     hospital_options.sort(key=lambda x: x["value_index"], reverse=True)
     top_10 = hospital_options[:10]
     
-    # Remove value_index from final response
-    for h in top_10:
-        del h["value_index"]
+    # Financial Insights Logic
+    price_spread_ratio = max_cost / min_cost if min_cost > 0 else 1
+    
+    if price_spread_ratio > 2.0:
+        insight = "High price variation detected"
+        risk_flag = "high"
+    elif price_spread_ratio > 1.5:
+        insight = "Moderate price variation"
+        risk_flag = "medium"
+    else:
+        insight = "Low cost variance"
+        risk_flag = "low"
+        
+    savings_opportunity = max_cost - recommended_cost
         
     return {
         "min_cost": int(min_cost),
         "max_cost": int(max_cost),
         "avg_cost": int(avg_cost),
         "recommended_cost": int(recommended_cost),
+        "savings_opportunity": int(savings_opportunity),
+        "insight": insight,
+        "risk_flag": risk_flag,
         "hospital_options": top_10
     }
