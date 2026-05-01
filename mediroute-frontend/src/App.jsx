@@ -406,7 +406,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <h3 style={{ marginBottom: '20px', fontSize: '22px', fontWeight: 700 }}>Ranked Providers in {location}</h3>
+                  <h3 style={{ marginBottom: '20px', fontSize: '18px', fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Ranked Providers in {location}</h3>
                   <motion.div variants={staggerContainer} initial="hidden" animate="show">
                     {estimates.map((est, idx) => (
                       <motion.div 
@@ -414,21 +414,22 @@ export default function App() {
                         key={idx}
                         className={`glass-panel glass-panel-hover hospital-card ${selectedHospital?.hospital_name === est.hospital_name ? 'selected' : ''}`}
                         onClick={() => setSelectedHospital(est)}
+                        style={{ padding: '24px', marginBottom: '12px' }}
                       >
                         <div>
-                          <h4 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '8px' }}>{est.hospital_name}</h4>
-                          <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                            <span className={`tag ${est.price_tier === 'Premium' ? 'red' : est.price_tier === 'High' ? 'yellow' : 'green'}`}>
-                              {est.price_tier} Tier
+                          <h4 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '6px' }}>{est.hospital_name}</h4>
+                          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                            <span className={`tag ${est.price_tier === 'Premium' ? 'red' : est.price_tier === 'High' ? 'yellow' : 'green'}`} style={{ fontSize: '10px' }}>
+                              {est.price_tier}
                             </span>
-                            <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>Score: {est.quality_score}/10</span>
+                            <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Quality Score: {est.quality_score}/10</span>
                           </div>
                         </div>
                         <div style={{ textAlign: 'right' }}>
-                          <div className="gradient-text" style={{ fontSize: '20px', fontWeight: '800' }}>
+                          <div className="gradient-text" style={{ fontSize: '18px', fontWeight: '800' }}>
                             {formatCurrency(est.min_cost)} - {formatCurrency(est.max_cost)}
                           </div>
-                          <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>AI Range Estimate</div>
+                          <div style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '2px' }}>Projected Range</div>
                         </div>
                       </motion.div>
                     ))}
@@ -500,29 +501,30 @@ export default function App() {
                           </p>
                         </div>
 
-                        <div className="info-box">
-                          <h4 style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--success-color)' }}>
-                            <ShieldCheck size={20} /> Verified NBFC Anchor
+                        <div className="info-box" style={{ background: 'rgba(6, 182, 212, 0.03)', border: '1px solid rgba(0, 210, 255, 0.1)', marginTop: '24px', padding: '20px' }}>
+                          <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--primary-color)', marginBottom: '8px', fontWeight: '700', textTransform: 'uppercase' }}>
+                            <ShieldCheck size={16} /> Verified clinical anchor
                           </h4>
-                          <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.6 }}>
-                            This estimate includes specific risk adjustments for the patient's comorbidities. Using this anchor eliminates over-financing risks for our lending partners.
+                          <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.5 }}>
+                            Costs adjusted for {comorbidities.length || "zero"} patient risk factors. This estimate is used by Poonawalla Fincorp to eliminate under-financing risk.
                           </p>
-                          <div style={{ marginBottom: '16px' }}>
-                            <label className="form-label" style={{ fontSize: '13px' }}>Requested Loan Amount (Editable for Fraud Demo)</label>
+                          <div style={{ marginBottom: '20px' }}>
+                            <label className="form-label" style={{ fontSize: '11px' }}>Requested Loan (₹)</label>
                             <input 
                               type="number" 
                               className="input-field" 
+                              style={{ background: 'rgba(0,0,0,0.4)', fontSize: '18px', fontWeight: 'bold' }}
                               value={requestedAmount !== null ? requestedAmount : selectedHospital.estimated_cost}
                               onChange={e => setRequestedAmount(parseInt(e.target.value) || 0)}
                             />
                           </div>
                           <button 
                             className="btn-primary" 
-                            style={{ width: '100%', fontSize: '16px' }}
+                            style={{ width: '100%', padding: '18px' }}
                             onClick={handleApplyLoan}
                           >
-                            Send to NBFC (Poonawalla)
-                            <ChevronRight size={20} />
+                            <CreditCard size={18} />
+                            Deploy to Poonawalla
                           </button>
                         </div>
                       </motion.div>
@@ -570,29 +572,29 @@ export default function App() {
                   {loanResult.message}
                 </p>
                 
-                <div className="glass-panel" style={{ padding: '32px', textAlign: 'left', marginBottom: '40px', background: 'rgba(0,0,0,0.4)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', fontSize: '16px' }}>
+                <div className="glass-panel" style={{ padding: '32px', textAlign: 'left', marginBottom: '40px', background: 'rgba(0,0,0,0.2)', borderRadius: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px' }}>
                     <span style={{ color: 'var(--text-secondary)' }}>Loan Application ID</span>
-                    <span style={{ fontWeight: '600' }}>{loanResult.loan_id}</span>
+                    <span style={{ fontWeight: '700', letterSpacing: '0.05em' }}>{loanResult.loan_id}</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', fontSize: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px' }}>
                     <span style={{ color: 'var(--text-secondary)' }}>Patient Name</span>
-                    <span style={{ fontWeight: '600' }}>{loanResult.patient_name}</span>
+                    <span style={{ fontWeight: '700' }}>{loanResult.patient_name}</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', fontSize: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', fontSize: '14px' }}>
                     <span style={{ color: 'var(--text-secondary)' }}>CIBIL / Risk Score</span>
-                    <span style={{ fontWeight: '600', color: loanResult.patient_risk_score > 750 ? 'var(--success-color)' : 'var(--warning-color)' }}>
+                    <span style={{ fontWeight: '700', color: loanResult.patient_risk_score > 750 ? 'var(--success-color)' : 'var(--warning-color)' }}>
                       {loanResult.patient_risk_score}
                     </span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px', fontSize: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px', fontSize: '14px' }}>
                     <span style={{ color: 'var(--text-secondary)' }}>Healthcare Provider</span>
-                    <span style={{ fontWeight: '600', color: 'var(--primary-color)' }}>{selectedHospital?.hospital_name}</span>
+                    <span style={{ fontWeight: '700', color: 'var(--primary-color)' }}>{selectedHospital?.hospital_name}</span>
                   </div>
                   
-                  <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid var(--surface-border)', paddingTop: '24px', alignItems: 'center' }}>
-                    <span style={{ color: 'var(--text-secondary)', fontSize: '18px' }}>Approved Amount</span>
-                    <span className="gradient-text" style={{ fontSize: '36px', fontWeight: '800' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid var(--surface-border)', paddingTop: '20px', alignItems: 'center' }}>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '14px', textTransform: 'uppercase', fontWeight: '700' }}>Approved Amount</span>
+                    <span className="gradient-text" style={{ fontSize: '32px', fontWeight: '900' }}>
                       {formatCurrency(loanResult.approved_amount)}
                     </span>
                   </div>
