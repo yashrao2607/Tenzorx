@@ -108,7 +108,16 @@ class CostAuditorAgent:
         
         # Insights
         price_spread_ratio = max_cost / min_cost if min_cost > 0 else 1
-        risk_flag = "high" if price_spread_ratio > 2.0 else "medium" if price_spread_ratio > 1.5 else "low"
+        
+        if price_spread_ratio > 2.0:
+            insight = "High price variation detected"
+            risk_flag = "High risk"
+        elif price_spread_ratio > 1.5:
+            insight = "Moderate price variation"
+            risk_flag = "Moderate risk"
+        else:
+            insight = "Low cost variance"
+            risk_flag = "Low risk"
         
         duration = time.perf_counter() - start_time
         logger.info(f"[Cost Auditor] Audit Success | Duration: {duration:.2f}s")
@@ -117,12 +126,12 @@ class CostAuditorAgent:
             "min_cost": int(min_cost),
             "max_cost": int(max_cost),
             "avg_cost": int(avg_cost),
-            "base_recommended_cost": int(base_recommended_cost),
-            "adjusted_recommended_cost": int(adjusted_recommended_cost),
+            "base_cost_estimate": int(base_recommended_cost),
+            "risk_adjusted_cost": int(adjusted_recommended_cost),
             "cost_breakdown": cost_breakdown,
             "applied_factors": applied_factors,
             "savings_opportunity": int(max_cost - base_recommended_cost),
-            "insight": "High price variation detected" if price_spread_ratio > 2.0 else "Moderate price variation" if price_spread_ratio > 1.5 else "Low cost variance",
+            "insight": insight,
             "risk_flag": risk_flag,
             "hospital_options": top_10,
             "corrected_icd10": self._apply_icd_overrides(condition, "")

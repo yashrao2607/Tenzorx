@@ -32,7 +32,7 @@ async def run_full_analysis(db: Session, symptom_text: str, city: str, comorbidi
     
     # Step 3: Underwriter
     underwriting = {}
-    adjusted_cost = cost_data.get("adjusted_recommended_cost", 0)
+    adjusted_cost = cost_data.get("risk_adjusted_cost", 0)
     if adjusted_cost > 0:
         underwriting = await underwriter.review(adjusted_cost, requested_loan_amount)
         
@@ -47,26 +47,25 @@ async def run_full_analysis(db: Session, symptom_text: str, city: str, comorbidi
     else:
         overall_confidence = "LOW"
         
-    # Generate 1-Line Summary & Risk Level
-    overpricing = underwriting.get("overpricing_percent", 0)
-    rec = underwriting.get("loan_recommendation", "N/A")
+    # Generate Executive Summary & Risk Level
+    overpricing = underwriting.get("overpricing_percentage", 0)
+    decision = underwriting.get("loan_recommendation", "N/A")
     
-    # Risk Level Mapping
+    # Risk Level Mapping with proper capitalization
     if overpricing <= 10:
-        risk_level = "low"
+        risk_level = "Low"
     elif overpricing <= 30:
-        risk_level = "moderate"
+        risk_level = "Moderate"
     else:
-        risk_level = "high"
+        risk_level = "High"
         
-    summary = f"{rec}: Requested loan exceeds fair cost by {overpricing}%, indicating {risk_level} inflation risk for {condition}."
+    summary = f"{decision}: Requested loan exceeds fair cost by {overpricing}%, indicating {risk_level} inflation risk for {condition}."
 
     total_duration = time.perf_counter() - start_time
     logger.info(f"[Orchestrator] Full Analysis Complete | Total Time: {total_duration:.2f}s")
     
     return {
         "summary": summary,
-        "risk_level": risk_level,
         "overall_confidence": overall_confidence,
         "diagnosis": diagnosis,
         "cost_analysis": cost_data,

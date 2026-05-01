@@ -19,8 +19,8 @@ def test_cost_analysis():
         print("\n--- Cost Benchmarks ---")
         print(f"Min Cost: ₹{data['min_cost']:,}")
         print(f"Max Cost: ₹{data['max_cost']:,}")
-        print(f"Base Recommended Cost: ₹{data['base_recommended_cost']:,}")
-        print(f"Adjusted Recommended Cost: ₹{data['adjusted_recommended_cost']:,}")
+        print(f"Base Cost Estimate: ₹{data['base_cost_estimate']:,}")
+        print(f"Risk-Adjusted Cost: ₹{data['risk_adjusted_cost']:,}")
         
         print("\n--- Itemized Bill (Estimated) ---")
         for item, price in data['cost_breakdown'].items():
