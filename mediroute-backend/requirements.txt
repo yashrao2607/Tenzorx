@@ -7,5 +7,6 @@ python-dotenv
 cors
 langchain
 langchain-community
+langchain-ollama
 rapidfuzz
 requests

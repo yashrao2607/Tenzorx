@@ -1,14 +1,14 @@
 import json
 import logging
-from langchain_community.llms import Ollama
+import re
+from langchain_ollama import OllamaLLM
 from langchain_core.prompts import PromptTemplate
-# No output parser imports needed as we use manual JSON parsing
 from config import settings
 
 logger = logging.getLogger(__name__)
 
-# Requirements: model llama3, structured JSON output
-llm = Ollama(model=settings.OLLAMA_MODEL, temperature=0)
+# Use the modern OllamaLLM class to resolve deprecations
+llm = OllamaLLM(model=settings.OLLAMA_MODEL, temperature=0)
 
 system_prompt = """
 You are a clinical decision support AI.
@@ -24,6 +24,24 @@ Rules:
 * Do not include explanations
 """
 
+def extract_json(text: str):
+    """
+    Robustly extracts a JSON object from a string, finding the first '{' and last '}'.
+    """
+    try:
+        # Find the first '{' and the last '}'
+        start_index = text.find('{')
+        end_index = text.rfind('}')
+        
+        if start_index == -1 or end_index == -1:
+            return None
+            
+        json_str = text[start_index:end_index + 1]
+        return json.loads(json_str)
+    except Exception as e:
+        logger.error(f"JSON Extraction Error: {e}")
+        return None
+
 def analyze_symptom_ollama(symptom_text: str):
     """
     Analyzes user symptoms using local Ollama (Llama 3).
@@ -31,7 +49,7 @@ def analyze_symptom_ollama(symptom_text: str):
     """
     
     prompt_template = PromptTemplate(
-        template="{system_prompt}\n\nUser Symptom: {symptom_text}\n\nOutput JSON Format:\n{{\n  \"condition\": \"...\",\n  \"icd10_code\": \"...\",\n  \"recommended_procedure\": \"...\",\n  \"confidence_score\": 0.XX\n}}",
+        template="{system_prompt}\n\nUser Symptom: {symptom_text}\n\nReturn ONLY a JSON object in this format:\n{{\n  \"condition\": \"...\",\n  \"icd10_code\": \"...\",\n  \"recommended_procedure\": \"...\",\n  \"confidence_score\": 0.XX\n}}",
         input_variables=["system_prompt", "symptom_text"]
     )
     
@@ -42,22 +60,24 @@ def analyze_symptom_ollama(symptom_text: str):
     
     try:
         response = llm.invoke(formatted_prompt)
+        logger.debug(f"Raw Ollama Response: {response}")
         
-        # Simple extraction logic for JSON if model includes markdown markers
-        cleaned_response = response.strip()
-        if "```json" in cleaned_response:
-            cleaned_response = cleaned_response.split("```json")[1].split("```")[0].strip()
-        elif "```" in cleaned_response:
-            cleaned_response = cleaned_response.split("```")[1].strip()
-            
-        return json.loads(cleaned_response)
+        # Robust extraction
+        result = extract_json(response)
+        
+        if result:
+            return result
+        else:
+            logger.error(f"Failed to extract JSON from response: {response}")
+            raise ValueError("No valid JSON found in LLM response")
     
     except Exception as e:
         logger.error(f"Ollama Service Error: {e}")
         # Fallback if parsing fails or LLM errors
         return {
-            "condition": "Error analyzing symptoms",
-            "icd10_code": "N/A",
-            "recommended_procedure": "Please consult a doctor",
-            "confidence_score": 0.0
+            "condition": "Analysis Error",
+            "icd10_code": "Unknown",
+            "recommended_procedure": "Clinical consultation required",
+            "confidence_score": 0.0,
+            "error_detail": str(e)
         }
