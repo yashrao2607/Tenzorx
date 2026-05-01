@@ -1,8 +1,8 @@
 import json
 import logging
 from langchain_community.llms import Ollama
-from langchain.prompts import PromptTemplate
-from langchain.output_parsers import ResponseSchema, StructuredOutputParser
+from langchain_core.prompts import PromptTemplate
+# No output parser imports needed as we use manual JSON parsing
 from config import settings
 
 logger = logging.getLogger(__name__)
