@@ -3,6 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, MapPin, CheckCircle, ArrowRight, ShieldCheck, CreditCard, ActivitySquare, ChevronRight, BrainCircuit, HeartPulse, ShieldAlert, BadgeIndianRupee, Info, TrendingUp, AlertTriangle } from 'lucide-react';
 import './index.css';
 
+import Header from './components/Header';
+import LenderDashboard from './components/LenderDashboard';
+import GlassCard from './components/GlassCard';
+
 const API_BASE = 'http://localhost:8000/api';
 
 const staggerContainer = {
@@ -21,6 +25,7 @@ const staggerItem = {
 export default function App() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [viewMode, setViewMode] = useState('patient'); // 'patient' or 'lender'
   
   // Form State
   const [patientName, setPatientName] = useState('');
@@ -193,22 +198,13 @@ export default function App() {
       </div>
       
       <div className="app-container">
-        <header className="header">
-          <div className="logo">
-            <div className="logo-icon-wrap">
-              <ActivitySquare color="#06b6d4" size={36} />
-            </div>
-            <span>MediRoute<span className="gradient-text">.AI</span></span>
-          </div>
-          <div className="step-indicator">
-            <div className={`step-dot ${step === 1 ? 'active' : step > 1 ? 'completed' : ''}`} />
-            <div className={`step-dot ${step === 2 ? 'active' : step > 2 ? 'completed' : ''}`} />
-            <div className={`step-dot ${step === 3 ? 'active' : ''}`} />
-          </div>
-        </header>
+        <Header step={step} viewMode={viewMode} setViewMode={setViewMode} />
 
         <main>
-          <AnimatePresence mode="wait">
+          {viewMode === 'lender' ? (
+            <LenderDashboard />
+          ) : (
+            <AnimatePresence mode="wait">
             {step === 1 && !loading && (
               <motion.div
                 key="step1"
@@ -670,6 +666,7 @@ export default function App() {
               </motion.div>
             )}
           </AnimatePresence>
+          )}
         </main>
       </div>
     </>

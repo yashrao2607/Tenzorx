@@ -1,18 +1,19 @@
-import os
 import json
+import logging
 from anthropic import Anthropic
-from dotenv import load_dotenv
+from config import settings
 
-load_dotenv()
-
-CLAUDE_MODEL = "claude-3-5-sonnet-20240620"
-client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+logger = logging.getLogger(__name__)
+client = Anthropic(api_key=settings.ANTHROPIC_API_KEY)
 
 def analyze_intent(symptoms: str, age: int, conditions_text: str = ""):
     """
     Blueprint: LLM-Based Multi-Agent System (MAS) Simulation
     Expanded: Analyzes both symptoms and free-text pre-existing conditions.
     """
+    if not settings.ANTHROPIC_API_KEY:
+        logger.warning("ANTHROPIC_API_KEY not set. Using fallback response.")
+        return get_fallback_intent()
 
     system_prompt = """
     You are a Multi-Agent Clinical Support System (MACSS). 
@@ -44,7 +45,7 @@ def analyze_intent(symptoms: str, age: int, conditions_text: str = ""):
     
     try:
         message = client.messages.create(
-            model=CLAUDE_MODEL,
+            model=settings.CLAUDE_MODEL,
             max_tokens=1000,
             temperature=0,
             system=system_prompt,
@@ -53,15 +54,18 @@ def analyze_intent(symptoms: str, age: int, conditions_text: str = ""):
         
         return json.loads(message.content[0].text)
     except Exception as e:
-        print(f"Agent Error: {e}")
-        return {
-            "icd10_code": "I25.10",
-            "procedure_name": "Angioplasty",
-            "diagnostic_hypothesis": ["Coronary Artery Disease"],
-            "investigations": ["ECG", "Troponin"],
-            "care_plan": "Standard cardiac stabilization protocol.",
-            "confidence_score": 0.85,
-            "risk_multiplier": 1.2,
-            "condition_tags": ["Cardiovascular"],
-            "risk_explanation": "Fallback due to API error."
-        }
+        logger.error(f"Agent Error: {e}")
+        return get_fallback_intent()
+
+def get_fallback_intent():
+    return {
+        "icd10_code": "I25.10",
+        "procedure_name": "Angioplasty",
+        "diagnostic_hypothesis": ["Coronary Artery Disease"],
+        "investigations": ["ECG", "Troponin"],
+        "care_plan": "Standard cardiac stabilization protocol.",
+        "confidence_score": 0.85,
+        "risk_multiplier": 1.2,
+        "condition_tags": ["Cardiovascular"],
+        "risk_explanation": "Fallback due to API error."
+    }
