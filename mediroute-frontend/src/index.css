@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0f172a;
+  --color-card: rgba(30, 41, 59, 0.7);
+  --color-accent-primary: #2dd4bf;
+  --color-accent-secondary: #3b82f6;
+}
 
 :root {
   color-scheme: dark;
