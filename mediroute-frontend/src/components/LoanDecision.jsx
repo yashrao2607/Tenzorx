@@ -60,7 +60,7 @@ const LoanDecision = ({ data, onBack }) => {
             <div className="flex justify-between items-center pb-4 border-b border-slate-800">
               <span className="text-slate-400">Overpricing Percentage</span>
               <span className={`text-xl font-bold ${underwriting?.overpricing_percentage > 20 ? 'text-rose-400' : 'text-teal-400'}`}>
-                {underpricing?.overpricing_percentage || 0}%
+                {underwriting?.overpricing_percentage || 0}%
               </span>
             </div>
             <div className="flex justify-between items-center pb-4 border-b border-slate-800">
@@ -84,9 +84,9 @@ const LoanDecision = ({ data, onBack }) => {
             <div>
               <h4 className="font-bold text-lg mb-2">Auditor's Note</h4>
               <p className="text-slate-400 text-sm leading-relaxed">
-                {underwriting.reason}
+                {underwriting?.reason || 'N/A'}
               </p>
-              {underwriting.fraud_flag && (
+              {underwriting?.fraud_flag && (
                 <div className="mt-4 p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg text-rose-400 text-xs font-medium">
                   🚨 Warning: High deviation from market standards detected.
                 </div>
