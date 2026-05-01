@@ -6,7 +6,7 @@ const LoanDecision = ({ data, onBack }) => {
   if (!data) return null;
 
   const { underwriting, summary, overall_confidence } = data;
-  const decision = underwriting.loan_recommendation;
+  const decision = underwriting?.loan_recommendation || 'PENDING';
 
   const getTheme = () => {
     switch(decision) {
@@ -55,17 +55,17 @@ const LoanDecision = ({ data, onBack }) => {
           <div className="space-y-4">
             <div className="flex justify-between items-center pb-4 border-b border-slate-800">
               <span className="text-slate-400">Recommended Loan</span>
-              <span className="text-xl font-bold text-white">₹{underwriting.recommended_loan_amount.toLocaleString()}</span>
+              <span className="text-xl font-bold text-white">₹{underwriting?.recommended_loan_amount?.toLocaleString() || 'N/A'}</span>
             </div>
             <div className="flex justify-between items-center pb-4 border-b border-slate-800">
-              <span className="text-slate-400">Overpricing Index</span>
-              <span className={`text-xl font-bold ${underwriting.overpricing_percentage > 20 ? 'text-rose-400' : 'text-teal-400'}`}>
-                {underwriting.overpricing_percentage}%
+              <span className="text-slate-400">Overpricing Percentage</span>
+              <span className={`text-xl font-bold ${underwriting?.overpricing_percentage > 20 ? 'text-rose-400' : 'text-teal-400'}`}>
+                {underpricing?.overpricing_percentage || 0}%
               </span>
             </div>
             <div className="flex justify-between items-center pb-4 border-b border-slate-800">
               <span className="text-slate-400">Decision Confidence</span>
-              <span className="text-xl font-bold text-teal-400">{underwriting.decision_confidence}</span>
+              <span className="text-xl font-bold text-teal-400">{underwriting?.decision_confidence || 'N/A'}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-slate-400">Overall Trust Level</span>
