@@ -48,27 +48,27 @@ const Navbar = () => {
 
         {/* Action Area */}
         <div className='flex items-center gap-4'>
-          {token ? (
-            <div className='flex items-center gap-3 cursor-pointer group relative'>
+          {token && userData ? (
+            <div className='flex items-center gap-3 cursor-pointer group relative py-2'>
               <div className="w-10 h-10 rounded-2xl bg-primary flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform uppercase">
-                {userData?.name ? userData.name.charAt(0) : "U"}
+                {userData.name.charAt(0)}
               </div>
               
               {/* Dropdown Menu */}
-              <div className='absolute top-full right-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-[110]'>
-                <div className='min-w-[240px] glass-card p-3 shadow-2xl border-white/60'>
+              <div className='absolute top-full right-0 pt-2 hidden group-hover:block z-[200]'>
+                <div className='min-w-[240px] glass-card p-3 shadow-2xl border-white/60 backdrop-blur-3xl'>
                   <div className="px-3 py-4 mb-2 border-b border-slate-100">
-                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Active Institution</p>
-                    <p className="text-slate-900 font-bold truncate">{userData?.name}</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Active Institution</p>
+                    <p className="text-slate-900 font-bold truncate">{userData.name}</p>
                   </div>
-                  <button onClick={() => navigate('/my-profile')} className='w-full flex items-center gap-3 hover:bg-primary/5 p-3 rounded-xl transition-colors text-slate-600 font-bold text-sm'>
-                    <User className="w-4 h-4 text-primary" /> Profile Identity
+                  <button onClick={() => navigate('/my-profile')} className='w-full flex items-center gap-3 hover:bg-primary/10 p-3 rounded-xl transition-all text-slate-600 hover:text-primary font-bold text-sm'>
+                    <User className="w-4 h-4" /> Profile Identity
                   </button>
-                  <button onClick={() => navigate('/my-appointments')} className='w-full flex items-center gap-3 hover:bg-primary/5 p-3 rounded-xl transition-colors text-slate-600 font-bold text-sm'>
-                    <LayoutDashboard className="w-4 h-4 text-primary" /> Clinical Diagnostics
+                  <button onClick={() => navigate('/my-appointments')} className='w-full flex items-center gap-3 hover:bg-primary/10 p-3 rounded-xl transition-all text-slate-600 hover:text-primary font-bold text-sm'>
+                    <LayoutDashboard className="w-4 h-4" /> Clinical Diagnostics
                   </button>
                   <hr className="my-2 border-slate-100" />
-                  <button onClick={logout} className='w-full flex items-center gap-3 hover:bg-rose-50 p-3 rounded-xl transition-colors text-rose-600 font-bold text-sm'>
+                  <button onClick={logout} className='w-full flex items-center gap-3 hover:bg-rose-50 p-3 rounded-xl transition-all text-rose-600 font-bold text-sm'>
                     <LogOut className="w-4 h-4" /> Terminate Session
                   </button>
                 </div>
