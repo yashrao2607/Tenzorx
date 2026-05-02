@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { MapPin, TrendingUp, Star, Building2, Info, ChevronRight, AlertCircle } from 'lucide-react';
+import { Star, Building2, ChevronRight, AlertCircle } from 'lucide-react';
 import L from 'leaflet';
 import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
@@ -69,6 +69,14 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
       </div>
     </div>
   );
+
+  if (error) {
+    return (
+      <div className="glass-card p-6 max-w-3xl mx-auto text-center border-rose-500/20">
+        <p className="text-rose-400">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto">

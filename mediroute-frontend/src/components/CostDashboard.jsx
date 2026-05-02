@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Stethoscope, ShieldCheck, PieChart as PieChartIcon, ArrowRight, Save } from 'lucide-react';
 import CostBreakdownChart from './CostBreakdownChart';
