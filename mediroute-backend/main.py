@@ -133,6 +133,14 @@ class ApplyLoanRequest(BaseModel):
 # EXISTING ENDPOINTS (unchanged)
 # ──────────────────────────────────────────────
 
+@app.get("/")
+async def root():
+    return {
+        "message": "MediRoute AI API is running on port 8001",
+        "docs": "/docs",
+        "health": "/health"
+    }
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "version": settings.VERSION}
