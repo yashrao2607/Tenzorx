@@ -40,6 +40,7 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
+  const [sortBy, setSortBy] = useState('cost');
 
   const city = user?.city || 'Delhi';
   const center = CITY_COORDS[city] || [28.6139, 77.2090];
@@ -79,6 +80,16 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
       </div>
     );
   }
+
+  const sortedHospitals = [...(data?.hospitals || [])].sort((a, b) => {
+    if (sortBy === 'quality') {
+      return b.quality_score - a.quality_score;
+    }
+    if (sortBy === 'value') {
+      return (b.quality_score / b.estimated_total_cost) - (a.quality_score / a.estimated_total_cost);
+    }
+    return a.estimated_total_cost - b.estimated_total_cost;
+  });
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -128,6 +139,19 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
                 <p className="text-2xl font-black text-white">₹{data?.fair_market_price.toLocaleString()}</p>
               </div>
             </div>
+
+            <div className="mb-4">
+              <label className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mr-3">Sort By</label>
+              <select
+                className="input-field text-xs py-2 px-3"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option value="cost">Cost (Low to High)</option>
+                <option value="quality">Quality (High to Low)</option>
+                <option value="value">Value (Quality/Cost)</option>
+              </select>
+            </div>
             
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
@@ -147,7 +171,7 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
 
           <div className="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar">
             <AnimatePresence>
-              {data?.hospitals.map((h, i) => (
+              {sortedHospitals.map((h, i) => (
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -221,6 +245,24 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
                           </p>
                         </div>
                       )}
+
+                      {(() => {
+                        const cheapest = data?.hospitals?.[0];
+                        if (!cheapest || cheapest.hospital_id === h.hospital_id) {
+                          return null;
+                        }
+                        const savings = h.estimated_total_cost - cheapest.estimated_total_cost;
+                        if (savings <= 0) {
+                          return null;
+                        }
+                        return (
+                          <div className="mt-3 p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                            <p className="text-[10px] text-blue-300 leading-tight">
+                              {cheapest.hospital_name} offers the same ICD-10 treatment for ₹{savings.toLocaleString()} less.
+                            </p>
+                          </div>
+                        );
+                      })()}
 
                       <button 
                         onClick={() => onSelect(h, data)}
