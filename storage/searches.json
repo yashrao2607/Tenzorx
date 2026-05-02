@@ -123,5 +123,51 @@
             ]
         },
         "timestamp": "2026-05-02T15:28:21.929974"
+    },
+    {
+        "user_id": "USR-1fc65305",
+        "symptom_text": "mere pet main drd hai \n",
+        "result": {
+            "condition": "Acute appendicitis",
+            "icd10_code": "K35.80",
+            "recommended_procedure": "Appendectomy",
+            "confidence_score": 0.7,
+            "procedure_aliases": [
+                "Surgical removal of appendix",
+                "Appendicectomy"
+            ]
+        },
+        "timestamp": "2026-05-02T15:33:13.354343"
+    },
+    {
+        "user_id": "USR-0e529969",
+        "symptom_text": "mere pet main drd hai \n",
+        "result": {
+            "condition": "Acute appendicitis",
+            "icd10_code": "K35.80",
+            "recommended_procedure": "Appendectomy",
+            "confidence_score": 0.7,
+            "procedure_aliases": [
+                "Surgical removal of appendix",
+                "Appendicectomy"
+            ]
+        },
+        "timestamp": "2026-05-02T15:33:58.415130"
+    },
+    {
+        "user_id": "USR-0e529969",
+        "symptom_text": "i have problem in the heart",
+        "result": {
+            "condition": "Coronary Artery Disease",
+            "icd10_code": "I25.10",
+            "recommended_procedure": "Percutaneous Coronary Intervention",
+            "confidence_score": 0.65,
+            "procedure_aliases": [
+                "Coronary Angioplasty with Stent Placement",
+                "PTCA with Stent",
+                "Balloon Angioplasty with Stent"
+            ]
+        },
+        "timestamp": "2026-05-02T15:41:50.291167"
     }
 ]

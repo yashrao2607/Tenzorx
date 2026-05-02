@@ -228,7 +228,7 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
                     >
                       <h5 className="text-[10px] uppercase font-black text-teal-500 tracking-widest mb-4">Cost Structure Breakdown</h5>
                       <div className="grid grid-cols-2 gap-y-3 gap-x-8">
-                        {Object.entries(h.cost_breakdown).map(([label, val]) => (
+                        {Object.entries(h.breakdown || h.cost_breakdown || {}).map(([label, val]) => (
                           <div key={label} className="flex justify-between items-center text-xs">
                             <span className="text-slate-500 capitalize">{label.replace(/_/g, ' ')}</span>
                             <span className="font-mono text-slate-300">₹{val.toLocaleString()}</span>

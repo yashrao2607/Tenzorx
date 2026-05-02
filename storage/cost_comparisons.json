@@ -69,5 +69,113 @@
         "fair_market_price": 89404,
         "hospital_count": 7,
         "timestamp": "2026-05-02T15:28:21.965861"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 68282,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:33:13.372506"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 68282,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:33:13.379871"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 71302,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:33:58.433202"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 71302,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:33:58.443134"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 71302,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:38:57.586749"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 71302,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:38:57.595998"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 71302,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:39:45.817145"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 71302,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:39:45.837767"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 71302,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:40:10.072346"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "K35",
+        "procedure": "Appendectomy",
+        "fair_market_price": 71302,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:40:10.082756"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "fair_market_price": 274780,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:41:50.312809"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "fair_market_price": 274780,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:41:50.322714"
     }
 ]
