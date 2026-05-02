@@ -39,7 +39,7 @@ const Navbar = () => {
             <li className='py-1'>NETWORK</li>
           </NavLink>
           <NavLink to='/mediroute' className={({isActive}) => isActive ? 'text-primary' : 'hover:text-slate-900 transition-colors'}>
-            <li className='py-1'>AI ENGINE</li>
+            <li className='py-1'>MEDIROUTE AI</li>
           </NavLink>
           <NavLink to='/about' className={({isActive}) => isActive ? 'text-primary' : 'hover:text-slate-900 transition-colors'}>
             <li className='py-1'>INTELLIGENCE</li>
@@ -96,7 +96,7 @@ const Navbar = () => {
             <div className='p-8 flex flex-col gap-6 text-xl font-bold text-slate-900'>
               <NavLink onClick={() => setShowMenu(false)} to='/'>HOME</NavLink>
               <NavLink onClick={() => setShowMenu(false)} to='/doctors'>NETWORK</NavLink>
-              <NavLink onClick={() => setShowMenu(false)} to='/mediroute'>AI ENGINE</NavLink>
+              <NavLink onClick={() => setShowMenu(false)} to='/mediroute'>MEDIROUTE AI</NavLink>
               <NavLink onClick={() => setShowMenu(false)} to='/about'>INTELLIGENCE</NavLink>
               <NavLink onClick={() => setShowMenu(false)} to='/contact'>CONTACT</NavLink>
             </div>
