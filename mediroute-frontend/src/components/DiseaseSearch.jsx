@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Search, Activity, Info } from 'lucide-react';
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001';
+
 const DiseaseSearch = ({ user, onSearch }) => {
   const [symptomText, setSymptomText] = useState('');
   const [loading, setLoading] = useState(false);
@@ -13,7 +15,7 @@ const DiseaseSearch = ({ user, onSearch }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post('http://localhost:8001/api/search-disease', {
+      const response = await axios.post(`${API_BASE_URL}/api/search-disease`, {
         user_id: user.user_id,
         symptom_text: symptomText
       });

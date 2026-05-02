@@ -6,6 +6,8 @@ import L from 'leaflet';
 import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001';
+
 // Fix Leaflet marker icons
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -45,7 +47,7 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:8001/api/hospitals-by-city', {
+        const response = await axios.post(`${API_BASE_URL}/api/hospitals-by-city`, {
           city: city,
           procedure: diagnosis.recommended_procedure,
           icd10_code: diagnosis.icd10_code

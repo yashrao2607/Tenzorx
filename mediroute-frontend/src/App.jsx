@@ -7,7 +7,7 @@ import DiseaseSearch from './components/DiseaseSearch';
 import HospitalMapView from './components/HospitalMapView';
 import LoanDecision from './components/LoanDecision';
 
-const API_BASE_URL = 'http://localhost:8001';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001';
 
 function App() {
   const [step, setStep] = useState(0);

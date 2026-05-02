@@ -1,0 +1,13 @@
+[
+  {
+    "user_id": "USR-ab7e4de4",
+    "hospital_name": "Orange City Hospital & Research Institute",
+    "city": "Nagpur",
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "requested_amount": 54643,
+    "decision": "APPROVED",
+    "fair_market_price": 110660,
+    "timestamp": "2026-05-02T15:47:48.637563"
+  }
+]
