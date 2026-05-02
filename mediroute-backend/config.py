@@ -11,11 +11,11 @@ class Settings(BaseSettings):
 
     # API Keys
     GEMINI_API_KEY: Optional[str] = None
-    GEMINI_MODEL: str = "gemini-1.5-flash"
+    GEMINI_MODEL: str = "gemini-2.5-flash"
     ANTHROPIC_API_KEY: Optional[str] = None
     CLAUDE_MODEL: str = "claude-3-5-sonnet-20240620"
     OLLAMA_MODEL: str = "llama3:8b"
-    OLLAMA_TIMEOUT: int = 30
+    API_TIMEOUT: int = 30
 
     # CORS
     ALLOWED_ORIGINS: list[str] = ["*"]
