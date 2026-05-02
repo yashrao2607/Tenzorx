@@ -2,8 +2,8 @@ import json
 import os
 from datetime import datetime
 
-# The storage directory is at the root of the project
-STORAGE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "storage")
+# The storage directory is located within the backend folder
+STORAGE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "storage")
 
 def _ensure_dir():
     if not os.path.exists(STORAGE_DIR):
