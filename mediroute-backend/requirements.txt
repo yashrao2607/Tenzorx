@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+anthropic
+python-dotenv
+cors
+langchain
+langchain-community
+langchain-ollama
+rapidfuzz
+requests
+langchain-google-genai
+sqlalchemy
+psycopg2-binary
