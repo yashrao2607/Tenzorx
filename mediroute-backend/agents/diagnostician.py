@@ -67,13 +67,13 @@ class DiagnosticianAgent:
                 
         except asyncio.TimeoutError:
             logger.error(f"[Diagnostician] Timeout exceeded")
-        return {
-            "condition": "Service timeout",
-            "icd10_code": "N/A",
-            "recommended_procedure": "Retry",
-            "confidence_score": 0.0,
-            "procedure_aliases": ["Retry", "Try again"]
-        }
+            return {
+                "condition": "Service timeout",
+                "icd10_code": "N/A",
+                "recommended_procedure": "Retry",
+                "confidence_score": 0.0,
+                "procedure_aliases": ["Retry", "Try again"]
+            }
         except Exception as e:
             logger.error(f"[Diagnostician] Error: {e}")
 
