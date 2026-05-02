@@ -15,5 +15,23 @@
     "fair_market_price": 110660,
     "hospital_count": 7,
     "timestamp": "2026-05-02T16:06:30.552935"
+  },
+  {
+    "city": "Pune",
+    "resolved_city": "Pune",
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "fair_market_price": 83314,
+    "hospital_count": 7,
+    "timestamp": "2026-05-02T16:14:00.883240"
+  },
+  {
+    "city": "Pune",
+    "resolved_city": "Pune",
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "fair_market_price": 83314,
+    "hospital_count": 7,
+    "timestamp": "2026-05-02T16:14:00.896721"
   }
 ]

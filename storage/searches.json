@@ -75,5 +75,22 @@
       ]
     },
     "timestamp": "2026-05-02T16:06:48.101356"
+  },
+  {
+    "user_id": "USR-593259bc",
+    "symptom_text": "mere pet m kidney stone hai",
+    "result": {
+      "condition": "Nephrolithiasis (Kidney Stone)",
+      "icd10_code": "N20.0",
+      "recommended_procedure": "Ureteroscopy with Laser Lithotripsy",
+      "confidence_score": 0.95,
+      "procedure_aliases": [
+        "Ureteroscopic stone removal",
+        "URS",
+        "Laser lithotripsy",
+        "Endoscopic stone removal"
+      ]
+    },
+    "timestamp": "2026-05-02T16:14:00.851286"
   }
 ]
