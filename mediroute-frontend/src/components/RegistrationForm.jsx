@@ -5,6 +5,9 @@ import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8011';
 
+const onlyDigits = (value) => value.replace(/\D/g, '');
+const normalizePan = (value) => value.replace(/[^a-z0-9]/gi, '').toUpperCase();
+
 const RegistrationForm = ({ onRegister }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -22,11 +25,54 @@ const RegistrationForm = ({ onRegister }) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
+    const payload = {
+      ...formData,
+      age: Number(formData.age),
+      aadhaar: onlyDigits(formData.aadhaar),
+      pan: normalizePan(formData.pan),
+      phone: onlyDigits(formData.phone),
+      city: formData.city.trim(),
+      name: formData.name.trim(),
+    };
+
+    if (!payload.name) {
+      setError('Please enter your full name.');
+      setLoading(false);
+      return;
+    }
+    if (!Number.isInteger(payload.age) || payload.age < 1 || payload.age > 120) {
+      setError('Please enter a valid age.');
+      setLoading(false);
+      return;
+    }
+    if (payload.aadhaar.length !== 12) {
+      setError('Aadhaar must contain exactly 12 digits.');
+      setLoading(false);
+      return;
+    }
+    if (!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(payload.pan)) {
+      setError('PAN must use the format ABCDE1234F.');
+      setLoading(false);
+      return;
+    }
+    if (payload.phone.length !== 10) {
+      setError('Phone number must contain exactly 10 digits.');
+      setLoading(false);
+      return;
+    }
+    if (!payload.city) {
+      setError('Please select your current city.');
+      setLoading(false);
+      return;
+    }
+
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/register-user`, formData);
+      const response = await axios.post(`${API_BASE_URL}/api/register-user`, payload);
       onRegister(response.data);
     } catch (err) {
-      setError('Registration failed. Please try again.');
+      const detail = err.response?.data?.detail;
+      setError(typeof detail === 'string' ? detail : 'Registration failed. Please check the fields and try again.');
       console.error(err);
     } finally {
       setLoading(false);
@@ -91,7 +137,7 @@ const RegistrationForm = ({ onRegister }) => {
               className="input-field w-full"
               placeholder="12-digit number"
               value={formData.aadhaar}
-              onChange={(e) => setFormData({ ...formData, aadhaar: e.target.value })}
+              onChange={(e) => setFormData({ ...formData, aadhaar: onlyDigits(e.target.value).slice(0, 12) })}
             />
           </div>
           <div className="space-y-2">
@@ -104,7 +150,7 @@ const RegistrationForm = ({ onRegister }) => {
               className="input-field w-full"
               placeholder="ABCDE1234F"
               value={formData.pan}
-              onChange={(e) => setFormData({ ...formData, pan: e.target.value.toUpperCase() })}
+              onChange={(e) => setFormData({ ...formData, pan: normalizePan(e.target.value).slice(0, 10) })}
             />
           </div>
         </div>
@@ -136,7 +182,7 @@ const RegistrationForm = ({ onRegister }) => {
               className="input-field w-full"
               placeholder="10-digit number"
               value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              onChange={(e) => setFormData({ ...formData, phone: onlyDigits(e.target.value).slice(0, 10) })}
             />
           </div>
         </div>
