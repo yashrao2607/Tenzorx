@@ -14,5 +14,33 @@
             ]
         },
         "timestamp": "2026-05-02T15:54:43.376233"
+    },
+    {
+        "user_id": "USR-faa2b15f",
+        "symptom_text": "i have pain in my heart\n",
+        "result": {
+            "condition": "Unknown",
+            "icd10_code": "N/A",
+            "recommended_procedure": "Consult physician",
+            "confidence_score": 0.0,
+            "procedure_aliases": [
+                "Consult doctor"
+            ]
+        },
+        "timestamp": "2026-05-02T16:42:21.880555"
+    },
+    {
+        "user_id": "USR-faa2b15f",
+        "symptom_text": "i have a pain in my eyes i cannot properly\n",
+        "result": {
+            "condition": "Unknown",
+            "icd10_code": "N/A",
+            "recommended_procedure": "Consult physician",
+            "confidence_score": 0.0,
+            "procedure_aliases": [
+                "Consult doctor"
+            ]
+        },
+        "timestamp": "2026-05-02T16:46:52.189492"
     }
 ]

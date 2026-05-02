@@ -1,133 +1,121 @@
 import { motion } from 'framer-motion';
-import { CheckCircle2, AlertTriangle, XCircle, Info, Landmark, ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, XCircle, AlertCircle, TrendingDown, ArrowLeft, ShieldCheck, Clock, ExternalLink } from 'lucide-react';
 
-const LoanDecision = ({ data, onBack, isPhase2 = false }) => {
+const LoanDecision = ({ data, onBack }) => {
   if (!data) return null;
 
-  // Handle both Phase 1 and Phase 2 data structures
-  const decision = isPhase2 ? data.decision : (data.underwriting?.loan_recommendation || 'PENDING');
-  const recommendationText = isPhase2 ? data.recommendation : data.summary;
-  const fairMarketPrice = isPhase2 ? data.fair_market_price : data.cost_analysis?.base_cost_estimate;
-  const overpricingPct = isPhase2 ? data.overpricing_pct : data.underwriting?.overpricing_percentage;
+  const { decision, fair_market_price, requested_amount, overpricing_pct, recommendation, cheaper_alternative, emi_options, procedure } = data;
 
-  const getTheme = () => {
-    switch(decision) {
-      case 'APPROVE':
-      case 'APPROVED': return { color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', icon: CheckCircle2 };
-      case 'REVIEW': return { color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20', icon: AlertTriangle };
-      case 'REJECT':
-      case 'REJECTED': return { color: 'text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20', icon: XCircle };
-      default: return { color: 'text-slate-400', bg: 'bg-slate-500/10', border: 'border-slate-500/20', icon: Info };
-    }
-  };
-
-  const theme = getTheme();
-  const Icon = theme.icon;
+  const isApproved = decision === 'APPROVED';
+  const isReview = decision === 'REVIEW';
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="max-w-4xl mx-auto space-y-8 pb-20"
-    >
-      <button 
-        onClick={onBack}
-        className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
-      >
-        <ArrowLeft className="w-4 h-4" /> Back to Map View
-      </button>
-
-      {/* Decision Card */}
-      <div className={`glass-card p-10 text-center relative overflow-hidden border-t-4 ${theme.border}`}>
-        <div className={`absolute top-0 left-0 w-full h-1 ${theme.bg}`} />
-        <div className={`w-20 h-20 ${theme.bg} rounded-full flex items-center justify-center mx-auto mb-6`}>
-          <Icon className={`${theme.color} w-10 h-10`} />
+    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="max-w-4xl mx-auto pb-20">
+      <div className="glass-card overflow-hidden">
+        {/* Status Header */}
+        <div className={`p-10 text-center ${isApproved ? 'bg-emerald-50' : isReview ? 'bg-amber-50' : 'bg-rose-50'}`}>
+          <div className="flex justify-center mb-6">
+            {isApproved ? <CheckCircle2 className="w-20 h-20 text-emerald-500" /> : isReview ? <AlertCircle className="w-20 h-20 text-amber-500" /> : <XCircle className="w-20 h-20 text-rose-500" />}
+          </div>
+          <h2 className={`text-4xl font-black mb-3 ${isApproved ? 'text-emerald-700' : isReview ? 'text-amber-700' : 'text-rose-700'}`}>
+            {decision}
+          </h2>
+          <p className="text-slate-600 max-w-lg mx-auto font-medium">{recommendation}</p>
         </div>
-        <h2 className={`text-5xl font-black mb-2 tracking-tight ${theme.color}`}>
-          {decision}
-        </h2>
-        <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-          {recommendationText}
-        </p>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="glass-card p-8 space-y-6">
-          <h3 className="text-lg font-semibold flex items-center gap-2">
-            <Landmark className="w-5 h-5 text-teal-400" /> Underwriting Details
-          </h3>
-          <div className="space-y-4">
-            <div className="flex justify-between items-center pb-4 border-b border-slate-800">
-              <span className="text-slate-400">Fair Market Price (FMP)</span>
-              <span className="text-xl font-bold text-white">₹{fairMarketPrice?.toLocaleString() || 'N/A'}</span>
+        <div className="p-10 space-y-10">
+          {/* Main Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
+              <p className="text-[10px] uppercase font-black text-slate-400 mb-2 tracking-widest">Medical Procedure</p>
+              <p className="text-xl font-bold text-slate-900">{procedure}</p>
             </div>
-            <div className="flex justify-between items-center pb-4 border-b border-slate-800">
-              <span className="text-slate-400">Requested Amount</span>
-              <span className="text-xl font-bold text-white">₹{data.requested_amount?.toLocaleString() || 'N/A'}</span>
+            <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 text-center">
+              <p className="text-[10px] uppercase font-black text-slate-400 mb-2 tracking-widest">Requested Loan</p>
+              <p className="text-2xl font-black text-slate-900">₹{requested_amount.toLocaleString()}</p>
             </div>
-            <div className="flex justify-between items-center pb-4 border-b border-slate-800">
-              <span className="text-slate-400">Inflation Deviation</span>
-              <span className={`text-xl font-bold ${overpricingPct > 10 ? 'text-rose-400' : 'text-teal-400'}`}>
-                {overpricingPct || 0}%
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-slate-400">Regional Pricing Trust</span>
-              <span className="px-3 py-1 bg-slate-800 rounded-full text-[10px] font-black text-slate-200 uppercase tracking-widest">
-                ICD-10 VALIDATED
-              </span>
+            <div className="p-6 bg-primary/5 rounded-3xl border border-primary/10 text-right">
+              <p className="text-[10px] uppercase font-black text-primary mb-2 tracking-widest">Regional Fair Price</p>
+              <p className="text-2xl font-black text-primary">₹{fair_market_price.toLocaleString()}</p>
             </div>
           </div>
-        </div>
 
-        <div className="space-y-8">
-          {data.cheaper_alternative && (
-            <div className="glass-card p-8 bg-blue-500/5 border-blue-500/20">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-500/10 rounded-xl">
-                  <ShieldCheck className="text-blue-400 w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg mb-1">Smart Recommendation</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                    We found a cheaper alternative for the same medical code in your city.
-                  </p>
-                  <div className="bg-slate-950/50 p-4 rounded-xl border border-slate-800">
-                    <p className="text-xs text-slate-500 font-bold uppercase mb-1">{data.cheaper_alternative.hospital_name}</p>
-                    <div className="flex justify-between items-end">
-                      <p className="text-lg font-black text-white">₹{data.cheaper_alternative.cost.toLocaleString()}</p>
-                      <p className="text-sm font-bold text-emerald-400">Save ₹{data.cheaper_alternative.savings.toLocaleString()}</p>
-                    </div>
-                  </div>
-                </div>
+          {/* Alert for Overpricing */}
+          {overpricing_pct > 0 && (
+            <div className={`p-6 rounded-3xl flex items-start gap-4 border ${isApproved ? 'bg-amber-50 border-amber-100' : 'bg-rose-50 border-rose-100'}`}>
+              <AlertCircle className={`w-6 h-6 shrink-0 ${isApproved ? 'text-amber-500' : 'text-rose-500'}`} />
+              <div>
+                <h4 className={`font-bold mb-1 ${isApproved ? 'text-amber-800' : 'text-rose-800'}`}>Price Inflation Detected</h4>
+                <p className={`text-sm ${isApproved ? 'text-amber-700' : 'text-rose-700'}`}>
+                  The selected hospital is charging <strong>{overpricing_pct}% more</strong> than the regional market average.
+                </p>
               </div>
             </div>
           )}
 
-          {data.emi_options && data.emi_options.length > 0 && (
-            <div className="glass-card p-8">
-              <h4 className="font-bold text-lg mb-6 flex items-center gap-2">
-                <Landmark className="w-5 h-5 text-teal-400" /> EMI Payment Options
-              </h4>
-              <div className="space-y-4">
-                {data.emi_options.map((opt, i) => (
-                  <div key={i} className="p-4 bg-slate-950/50 rounded-xl border border-slate-800 flex justify-between items-center">
-                    <div>
-                      <p className="text-lg font-black text-white">₹{opt.emi.toLocaleString()}/mo</p>
-                      <p className="text-xs text-slate-500 font-bold uppercase">{opt.tenure_months} Months • {opt.interest}</p>
+          {/* EMI Options */}
+          {emi_options && emi_options.length > 0 && (
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-slate-900 flex items-center gap-3">
+                <ShieldCheck className="text-primary w-6 h-6" /> Available Financing Options
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {emi_options.map((opt, i) => (
+                  <div key={i} className="p-6 bg-white border border-slate-200 rounded-3xl hover:border-primary transition-all group">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <p className="text-2xl font-black text-slate-900">₹{opt.emi.toLocaleString()} <span className="text-xs text-slate-400 font-bold">/mo</span></p>
+                        <p className="text-sm font-bold text-primary mt-1">{opt.tenure_months} Months Tenure</p>
+                      </div>
+                      <div className="px-3 py-1 bg-secondary text-primary text-[10px] font-black rounded-full uppercase tracking-widest">
+                        {opt.interest}
+                      </div>
                     </div>
-                    <button className="text-teal-400 hover:text-teal-300 transition-colors">
-                      <ArrowRight className="w-5 h-5" />
+                    <button className="w-full py-3 bg-slate-900 text-white rounded-2xl font-bold text-sm hover:bg-primary transition-colors flex items-center justify-center gap-2">
+                      Apply with This Plan <ExternalLink className="w-4 h-4" />
                     </button>
                   </div>
                 ))}
               </div>
             </div>
           )}
+
+          {/* Alternative Suggestion */}
+          {cheaper_alternative && (
+            <div className="p-8 bg-primary text-white rounded-[2.5rem] shadow-xl shadow-primary/20 relative overflow-hidden">
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-4">
+                  <TrendingDown className="w-6 h-6" />
+                  <span className="text-xs font-black uppercase tracking-[0.2em]">Smart Recommendation</span>
+                </div>
+                <h4 className="text-2xl font-bold mb-2">Switch to {cheaper_alternative.hospital_name}</h4>
+                <p className="text-white/80 text-sm mb-6 max-w-md">
+                  You can save up to <strong className="text-white text-lg">₹{cheaper_alternative.savings.toLocaleString()}</strong> by switching to this equally-rated provider.
+                </p>
+                <button onClick={onBack} className="bg-white text-primary font-black py-4 px-8 rounded-2xl flex items-center gap-3 hover:bg-secondary transition-all">
+                  Compare Other Hospitals <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="absolute -right-10 -bottom-10 opacity-10">
+                <ShieldCheck className="w-64 h-64" />
+              </div>
+            </div>
+          )}
+
+          <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row gap-6">
+            <button onClick={onBack} className="flex-1 py-4 border border-slate-200 text-slate-600 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
+              <ArrowLeft className="w-4 h-4" /> Adjust Selection
+            </button>
+            <button className="flex-1 py-4 bg-slate-100 text-slate-400 rounded-2xl font-bold cursor-not-allowed">
+              <Clock className="w-4 h-4 inline mr-2" /> Download Detailed Audit Report
+            </button>
+          </div>
         </div>
       </div>
     </motion.div>
   );
 };
+
+const ArrowRight = ({ className }) => <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>;
 
 export default LoanDecision;

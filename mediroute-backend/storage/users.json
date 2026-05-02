@@ -185,5 +185,104 @@
         "city": "Pune",
         "phone": "9352339808",
         "registered_at": "2026-05-02T15:51:59.882088"
+    },
+    {
+        "user_id": "USR-9d0864e0",
+        "name": "Krish rathi",
+        "age": 20,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Student",
+        "city": "Pune",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T16:10:54.075631"
+    },
+    {
+        "user_id": "USR-16ccb152",
+        "name": "Krish rathi",
+        "age": 21,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Student",
+        "city": "Pune",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T16:11:02.304983"
+    },
+    {
+        "user_id": "USR-4b2c30dc",
+        "name": "Krish rathi",
+        "age": 21,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Student",
+        "city": "Delhi",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T16:11:39.627518"
+    },
+    {
+        "user_id": "USR-98f3941a",
+        "name": "Krish rathi",
+        "age": 21,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Student",
+        "city": "Delhi",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T16:11:42.735454"
+    },
+    {
+        "user_id": "USR-ca601fda",
+        "name": "Krish rathi",
+        "age": 21,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Student",
+        "city": "Delhi",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T16:11:50.501669"
+    },
+    {
+        "user_id": "USR-dc5666e8",
+        "name": "Krish rathi",
+        "age": 21,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Student",
+        "city": "Delhi",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T16:11:59.976571"
+    },
+    {
+        "user_id": "USR-faa2b15f",
+        "name": "Krish rathi",
+        "age": 21,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Student",
+        "city": "Delhi",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T16:12:08.626471"
+    },
+    {
+        "user_id": "USR-c582b5bb",
+        "name": "Krish rathi",
+        "age": 21,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Salaried",
+        "city": "GURGOAN",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T16:36:15.979049"
+    },
+    {
+        "user_id": "USR-ff4b3421",
+        "name": "krish rathi",
+        "age": 20,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Salaried",
+        "city": "GURGOAN",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T16:41:10.636314"
     }
 ]

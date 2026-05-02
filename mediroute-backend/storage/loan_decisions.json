@@ -9,5 +9,49 @@
         "decision": "APPROVED",
         "fair_market_price": 53353,
         "timestamp": "2026-05-02T15:55:26.592415"
+    },
+    {
+        "user_id": "USR-faa2b15f",
+        "hospital_name": "Fortis Escorts Heart",
+        "city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "requested_amount": 237472,
+        "decision": "APPROVED",
+        "fair_market_price": 232898,
+        "timestamp": "2026-05-02T16:42:30.463966"
+    },
+    {
+        "user_id": "USR-faa2b15f",
+        "hospital_name": "AIIMS New Delhi",
+        "city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "requested_amount": 137708,
+        "decision": "APPROVED",
+        "fair_market_price": 232898,
+        "timestamp": "2026-05-02T16:42:39.485478"
+    },
+    {
+        "user_id": "USR-faa2b15f",
+        "hospital_name": "AIIMS New Delhi",
+        "city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "requested_amount": 137708,
+        "decision": "APPROVED",
+        "fair_market_price": 232898,
+        "timestamp": "2026-05-02T16:47:12.733391"
+    },
+    {
+        "user_id": "USR-faa2b15f",
+        "hospital_name": "AIIMS New Delhi",
+        "city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "requested_amount": 137708,
+        "decision": "APPROVED",
+        "fair_market_price": 232898,
+        "timestamp": "2026-05-02T16:47:38.472220"
     }
 ]

@@ -6,7 +6,7 @@ from rapidfuzz import fuzz
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Dict
 import logging
 import sys
 
@@ -341,7 +341,16 @@ async def register_user(req: RegisterUserRequest):
     }
     append_json("users.json", record)
     logger.info(f"[Register] New user {user_id} from {req.city}")
-    return {"user_id": user_id, "status": "registered", "city": req.city}
+    return {"user_id": user_id, "status": "registered", "city": req.city, "userData": record}
+
+
+@app.get("/api/get-user-profile/{user_id}")
+async def get_user_profile(user_id: str):
+    users = read_json("users.json")
+    user_record = next((u for u in users if u.get("user_id") == user_id), None)
+    if not user_record:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {"success": True, "userData": user_record}
 
 
 @app.post("/api/get-questions")

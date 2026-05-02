@@ -7,16 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0f172a",
-        card: "rgba(30, 41, 59, 0.7)",
-        accent: {
-          primary: "#2dd4bf",
-          secondary: "#3b82f6",
-        }
+        'primary': '#5F6FFF',
+        'secondary': '#EAEFFF',
+        'background': '#FFFFFF',
       },
-      backdropBlur: {
-        xs: '2px',
-      }
+      fontFamily: {
+        'outfit': ['Outfit', 'sans-serif'],
+      },
     },
   },
   plugins: [],

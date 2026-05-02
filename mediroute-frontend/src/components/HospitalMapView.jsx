@@ -1,38 +1,30 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { Star, Building2, ChevronRight, AlertCircle } from 'lucide-react';
+import { Star, Building2, ChevronRight, AlertCircle, Info } from 'lucide-react';
 import L from 'leaflet';
 import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8011';
 
-// Fix Leaflet marker icons
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
 let DefaultIcon = L.icon({
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41]
+  iconUrl: markerIcon, shadowUrl: markerShadow, iconSize: [25, 41], iconAnchor: [12, 41]
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
-// Helper to center map
 const ChangeView = ({ center }) => {
   const map = useMap();
-  map.setView(center, 12);
+  useEffect(() => { map.setView(center, 12); }, [center, map]);
   return null;
 };
 
 const CITY_COORDS = {
-  "Nagpur": [21.1458, 79.0882],
-  "Mumbai": [19.0760, 72.8777],
-  "Pune": [18.5204, 73.8567],
-  "Delhi": [28.6139, 77.2090],
-  "Bangalore": [12.9716, 77.5946]
+  "Nagpur": [21.1458, 79.0882], "Mumbai": [19.0760, 72.8777], "Pune": [18.5204, 73.8567],
+  "Delhi": [28.6139, 77.2090], "Bangalore": [12.9716, 77.5946]
 };
 
 const HospitalMapView = ({ user, diagnosis, onSelect }) => {
@@ -49,76 +41,45 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(`${API_BASE_URL}/api/hospitals-by-city`, {
-          city: city,
-          procedure: diagnosis.recommended_procedure,
-          icd10_code: diagnosis.icd10_code
+          city, procedure: diagnosis.recommended_procedure, icd10_code: diagnosis.icd10_code
         });
         setData(response.data);
-      } catch (err) {
-        setError('Could not fetch regional hospital data.');
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+      } catch (err) { setError('Could not fetch hospital data.'); }
+      finally { setLoading(false); }
     };
     fetchData();
   }, [city, diagnosis]);
 
   if (loading) return (
     <div className="h-[600px] flex items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-teal-500/20 border-t-teal-500 rounded-full animate-spin" />
-        <p className="text-slate-400 animate-pulse">Mapping Regional Healthcare Providers...</p>
+      <div className="flex flex-col items-center gap-6">
+        <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+        <p className="text-slate-400 font-bold animate-pulse">Mapping Regional Providers...</p>
       </div>
     </div>
   );
 
-  if (error) {
-    return (
-      <div className="glass-card p-6 max-w-3xl mx-auto text-center border-rose-500/20">
-        <p className="text-rose-400">{error}</p>
-      </div>
-    );
-  }
-
   const sortedHospitals = [...(data?.hospitals || [])].sort((a, b) => {
-    if (sortBy === 'quality') {
-      return (b.reputation_score || 0) - (a.reputation_score || 0);
-    }
-    if (sortBy === 'value') {
-      const valA = (a.reputation_score || 0) / (a.estimated_total_cost || 1);
-      const valB = (b.reputation_score || 0) / (b.estimated_total_cost || 1);
-      return valB - valA;
-    }
+    if (sortBy === 'quality') return (b.reputation_score || 0) - (a.reputation_score || 0);
     return a.estimated_total_cost - b.estimated_total_cost;
   });
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col lg:flex-row gap-6 h-[750px]">
-        {/* Left Pane: Map */}
-        <div className="lg:w-1/2 h-[400px] lg:h-full rounded-2xl overflow-hidden border border-slate-800 shadow-2xl z-0">
+    <div className="max-w-7xl mx-auto px-4">
+      <div className="flex flex-col lg:flex-row gap-8 h-[750px]">
+        {/* Map Pane */}
+        <div className="lg:w-1/2 h-[400px] lg:h-full rounded-3xl overflow-hidden border border-slate-200 shadow-xl z-0">
           <MapContainer center={center} zoom={12} style={{ height: '100%', width: '100%' }}>
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            />
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             <ChangeView center={center} />
             {data?.hospitals.map(h => (
-              <Marker 
-                key={h.hospital_id} 
-                position={[h.lat, h.lon]}
-                eventHandlers={{ click: () => setSelectedId(h.hospital_id) }}
-              >
+              <Marker key={h.hospital_id} position={[h.lat, h.lon]} eventHandlers={{ click: () => setSelectedId(h.hospital_id) }}>
                 <Popup>
-                  <div className="p-1">
+                  <div className="p-2">
                     <h4 className="font-bold text-slate-900">{h.hospital_name}</h4>
-                    <p className="text-teal-600 font-bold">₹{h.estimated_total_cost.toLocaleString()}</p>
-                    <button 
-                      onClick={() => onSelect(h, data)}
-                      className="mt-2 bg-teal-600 text-white text-[10px] px-3 py-1 rounded-md w-full font-bold uppercase tracking-wider"
-                    >
-                      Select & Audit
+                    <p className="text-primary font-bold text-lg">₹{h.estimated_total_cost.toLocaleString()}</p>
+                    <button onClick={() => onSelect(h, data)} className="mt-3 bg-primary text-white text-[10px] px-4 py-2 rounded-lg w-full font-bold uppercase tracking-wider">
+                      Select Hospital
                     </button>
                   </div>
                 </Popup>
@@ -127,156 +88,94 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
           </MapContainer>
         </div>
 
-        {/* Right Pane: Hospital Comparison */}
-        <div className="lg:w-1/2 h-full flex flex-col gap-6 overflow-hidden">
-          <div className="glass-card p-6 border-teal-500/20">
-            <div className="flex justify-between items-start mb-4">
+        {/* List Pane */}
+        <div className="lg:w-1/2 h-full flex flex-col gap-6">
+          <div className="glass-card p-8 border-primary/10 bg-white">
+            <div className="flex justify-between items-start mb-6">
               <div>
-                <span className="text-[10px] uppercase tracking-widest text-teal-400 font-bold">Regional Audit: {city}</span>
-                <h3 className="text-2xl font-bold">{diagnosis.condition}</h3>
-                <p className="text-slate-400 text-sm">ICD-10 Code: <span className="text-slate-200 font-mono">{diagnosis.icd10_code}</span></p>
+                <span className="text-[10px] uppercase tracking-widest text-primary font-black">Regional Audit: {city}</span>
+                <h3 className="text-3xl font-bold text-slate-900 mt-1">{diagnosis.recommended_procedure}</h3>
+                <p className="text-slate-500 text-sm mt-1">Diagnosis: <span className="font-bold text-slate-700">{diagnosis.condition}</span></p>
               </div>
               <div className="text-right">
-                <p className="text-xs text-slate-500 uppercase font-bold mb-1">Fair Market Price</p>
-                <p className="text-2xl font-black text-white">₹{data?.fair_market_price.toLocaleString()}</p>
+                <p className="text-[10px] text-slate-400 uppercase font-bold mb-1 tracking-widest">Market Median</p>
+                <p className="text-3xl font-black text-primary">₹{data?.fair_market_price.toLocaleString()}</p>
               </div>
             </div>
 
-            <div className="mb-4">
-              <label className="text-[10px] uppercase tracking-widest text-slate-500 font-bold mr-3">Sort By</label>
-              <select
-                className="input-field text-xs py-2 px-3"
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-              >
-                <option value="cost">Cost (Low to High)</option>
-                <option value="quality">Quality (High to Low)</option>
-                <option value="value">Value (Quality/Cost)</option>
+            <div className="flex items-center gap-4 mb-6">
+              <label className="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Sort Results</label>
+              <select className="input-field text-xs py-2 px-4" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                <option value="cost">Cost (Lowest First)</option>
+                <option value="quality">Quality (Highest Rated)</option>
               </select>
             </div>
             
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
-                <p className="text-[10px] text-slate-500 uppercase font-bold mb-1">City Min</p>
-                <p className="text-sm font-bold">₹{data?.min_cost.toLocaleString()}</p>
+            <div className="grid grid-cols-3 gap-6">
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                <p className="text-[10px] text-slate-400 uppercase font-bold mb-1">Lowest</p>
+                <p className="text-sm font-black text-slate-700">₹{data?.min_cost.toLocaleString()}</p>
               </div>
-              <div className="bg-slate-950/50 p-3 rounded-xl border border-slate-800">
-                <p className="text-[10px] text-slate-500 uppercase font-bold mb-1">City Max</p>
-                <p className="text-sm font-bold">₹{data?.max_cost.toLocaleString()}</p>
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                <p className="text-[10px] text-slate-400 uppercase font-bold mb-1">Highest</p>
+                <p className="text-sm font-black text-slate-700">₹{data?.max_cost.toLocaleString()}</p>
               </div>
-              <div className="bg-teal-500/10 p-3 rounded-xl border border-teal-500/20">
-                <p className="text-[10px] text-teal-400 uppercase font-bold mb-1">Hospitals</p>
-                <p className="text-sm font-bold text-teal-400">{data?.hospital_count}</p>
+              <div className="bg-secondary p-4 rounded-2xl border border-primary/20">
+                <p className="text-[10px] text-primary uppercase font-bold mb-1">Available</p>
+                <p className="text-sm font-black text-primary">{data?.hospital_count} Hospitals</p>
               </div>
             </div>
           </div>
 
           <div className="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar">
-            <AnimatePresence>
-              {sortedHospitals.map((h, i) => (
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  key={h.hospital_id}
-                  onClick={() => setSelectedId(h.hospital_id)}
-                  className={`p-5 rounded-2xl border transition-all cursor-pointer group ${
-                    selectedId === h.hospital_id 
-                      ? 'bg-teal-500/10 border-teal-500 shadow-lg shadow-teal-500/10' 
-                      : 'bg-slate-900/40 border-slate-800 hover:border-slate-700'
-                  }`}
-                >
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-4">
-                      <div className={`p-3 rounded-xl transition-colors ${
-                        selectedId === h.hospital_id ? 'bg-teal-500 text-white' : 'bg-slate-800 text-slate-400 group-hover:bg-slate-700'
-                      }`}>
-                        <Building2 className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-slate-100">{h.hospital_name}</h4>
-                        <div className="flex items-center gap-3 mt-1">
-                          <span className="flex items-center gap-1 text-[10px] font-bold text-amber-400 uppercase tracking-wider">
-                            <Star className="w-3 h-3 fill-amber-400" /> {h.reputation_score} Rating
-                          </span>
-                          <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                            h.tier === 'Premium' ? 'text-purple-400' : h.tier === 'High' ? 'text-blue-400' : 'text-slate-500'
-                          }`}>
-                            {h.tier} Tier
-                          </span>
-                        </div>
-                      </div>
+            {sortedHospitals.map((h, i) => (
+              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} key={h.hospital_id} onClick={() => setSelectedId(h.hospital_id)}
+                className={`p-6 rounded-3xl border transition-all cursor-pointer group ${selectedId === h.hospital_id ? 'bg-secondary border-primary shadow-lg shadow-primary/5' : 'bg-white border-slate-100 hover:border-slate-300'}`}
+              >
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-5">
+                    <div className={`p-4 rounded-2xl transition-colors ${selectedId === h.hospital_id ? 'bg-primary text-white' : 'bg-slate-50 text-slate-400 group-hover:bg-slate-100'}`}>
+                      <Building2 className="w-6 h-6" />
                     </div>
-                    <div className="text-right">
-                      <p className={`text-xl font-black ${selectedId === h.hospital_id ? 'text-teal-400' : 'text-slate-200'}`}>
-                        ₹{h.estimated_total_cost.toLocaleString()}
-                      </p>
-                      <button 
-                        onClick={(e) => { e.stopPropagation(); onSelect(h, data); }}
-                        className={`mt-2 flex items-center gap-1 text-[10px] font-black uppercase tracking-widest transition-all ${
-                          selectedId === h.hospital_id ? 'text-teal-400 opacity-100' : 'text-slate-500 opacity-0 group-hover:opacity-100'
-                        }`}
-                      >
-                        Select Hospital <ChevronRight className="w-3 h-3" />
-                      </button>
+                    <div>
+                      <h4 className="text-lg font-bold text-slate-900 leading-tight">{h.hospital_name}</h4>
+                      <div className="flex items-center gap-4 mt-1.5">
+                        <span className="flex items-center gap-1.5 text-[10px] font-black text-amber-500 uppercase tracking-widest">
+                          <Star className="w-3.5 h-3.5 fill-amber-500" /> {h.reputation_score} Rating
+                        </span>
+                        <span className={`text-[10px] font-black uppercase tracking-widest ${h.tier === 'Premium' ? 'text-purple-500' : 'text-slate-400'}`}>
+                          {h.tier} Class
+                        </span>
+                      </div>
                     </div>
                   </div>
+                  <div className="text-right">
+                    <p className={`text-2xl font-black ${selectedId === h.hospital_id ? 'text-primary' : 'text-slate-800'}`}>₹{h.estimated_total_cost.toLocaleString()}</p>
+                    <button onClick={(e) => { e.stopPropagation(); onSelect(h, data); }} className={`mt-3 flex items-center gap-1.5 ml-auto text-[10px] font-black uppercase tracking-widest transition-all ${selectedId === h.hospital_id ? 'text-primary' : 'text-slate-400 opacity-0 group-hover:opacity-100'}`}>
+                      Select <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
 
+                <AnimatePresence>
                   {selectedId === h.hospital_id && (
-                    <motion.div 
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      className="mt-6 pt-6 border-t border-teal-500/20"
-                    >
-                      <h5 className="text-[10px] uppercase font-black text-teal-500 tracking-widest mb-4">Cost Structure Breakdown</h5>
-                      <div className="grid grid-cols-2 gap-y-3 gap-x-8">
+                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} className="mt-8 pt-8 border-t border-primary/10 overflow-hidden">
+                      <div className="grid grid-cols-2 gap-y-4 gap-x-12 mb-8">
                         {Object.entries(h.breakdown || h.cost_breakdown || {}).map(([label, val]) => (
-                          <div key={label} className="flex justify-between items-center text-xs">
-                            <span className="text-slate-500 capitalize">{label.replace(/_/g, ' ')}</span>
-                            <span className="font-mono text-slate-300">₹{val.toLocaleString()}</span>
+                          <div key={label} className="flex justify-between items-center text-sm">
+                            <span className="text-slate-400 capitalize">{label.replace(/_/g, ' ')}</span>
+                            <span className="font-bold text-slate-700">₹{val.toLocaleString()}</span>
                           </div>
                         ))}
                       </div>
-                      
-                      {h.estimated_total_cost > data.fair_market_price * 1.1 && (
-                        <div className="mt-6 p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl flex items-start gap-3">
-                          <AlertCircle className="text-rose-400 w-4 h-4 shrink-0" />
-                          <p className="text-[10px] text-rose-300 leading-tight">
-                            Warning: This hospital is {Math.round((h.estimated_total_cost / data.fair_market_price - 1) * 100)}% above regional fair price. 
-                            Loan approval may require manual review.
-                          </p>
-                        </div>
-                      )}
-
-                      {(() => {
-                        const cheapest = data?.hospitals?.[0];
-                        if (!cheapest || cheapest.hospital_id === h.hospital_id) {
-                          return null;
-                        }
-                        const savings = h.estimated_total_cost - cheapest.estimated_total_cost;
-                        if (savings <= 0) {
-                          return null;
-                        }
-                        return (
-                          <div className="mt-3 p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-                            <p className="text-[10px] text-blue-300 leading-tight">
-                              {cheapest.hospital_name} offers the same ICD-10 treatment for ₹{savings.toLocaleString()} less.
-                            </p>
-                          </div>
-                        );
-                      })()}
-
-                      <button 
-                        onClick={() => onSelect(h, data)}
-                        className="btn-primary w-full mt-6 py-3 text-sm font-bold"
-                      >
-                        Proceed to Loan Underwriting
+                      <button onClick={() => onSelect(h, data)} className="btn-primary w-full py-4 text-base tracking-tight font-bold">
+                        Continue to Digital Underwriting
                       </button>
                     </motion.div>
                   )}
-                </motion.div>
-              ))}
-            </AnimatePresence>
+                </AnimatePresence>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

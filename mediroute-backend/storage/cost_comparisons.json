@@ -34,5 +34,95 @@
         "fair_market_price": 53353,
         "hospital_count": 6,
         "timestamp": "2026-05-02T15:55:32.259715"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:42:21.909175"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:42:21.918261"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:42:37.071175"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:42:37.161350"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:46:52.207740"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:46:52.220868"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:47:26.993394"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:47:27.086668"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:48:14.005386"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "Delhi",
+        "icd10_code": "S83.5",
+        "procedure": "ACL Reconstruction",
+        "fair_market_price": 232898,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T16:48:14.023524"
     }
 ]
