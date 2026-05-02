@@ -21,7 +21,7 @@ const RegistrationForm = ({ onRegister, loading: parentLoading }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post('http://localhost:8000/api/register-user', formData);
+      const response = await axios.post('http://localhost:8001/api/register-user', formData);
       onRegister(response.data);
     } catch (err) {
       setError('Registration failed. Please try again.');

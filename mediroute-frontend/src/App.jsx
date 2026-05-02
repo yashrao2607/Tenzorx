@@ -7,7 +7,7 @@ import DiseaseSearch from './components/DiseaseSearch';
 import HospitalMapView from './components/HospitalMapView';
 import LoanDecision from './components/LoanDecision';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'http://localhost:8001';
 
 function App() {
   const [step, setStep] = useState(0);

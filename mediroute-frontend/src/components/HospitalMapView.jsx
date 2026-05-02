@@ -45,7 +45,7 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:8000/api/hospitals-by-city', {
+        const response = await axios.post('http://localhost:8001/api/hospitals-by-city', {
           city: city,
           procedure: diagnosis.recommended_procedure,
           icd10_code: diagnosis.icd10_code

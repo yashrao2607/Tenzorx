@@ -13,7 +13,7 @@ const DiseaseSearch = ({ user, onSearch }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post('http://localhost:8000/api/search-disease', {
+      const response = await axios.post('http://localhost:8001/api/search-disease', {
         user_id: user.user_id,
         symptom_text: symptomText
       });
