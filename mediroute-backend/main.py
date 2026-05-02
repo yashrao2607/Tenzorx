@@ -1,4 +1,6 @@
 import time
+import uuid
+import statistics
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -12,6 +14,7 @@ from services.cost_service import calculate_costs
 from services.loan_service import process_loan
 from services.orchestrator import run_full_analysis, diagnostician, cost_auditor, underwriter
 from database import get_db, engine, Base
+from storage_utils import read_json, append_json, now_iso
 from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException
 
@@ -58,6 +61,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ──────────────────────────────────────────────
+# PYDANTIC MODELS
+# ──────────────────────────────────────────────
+
 class SymptomRequest(BaseModel):
     symptom_text: str
 
@@ -93,6 +100,39 @@ class LoanRequest(BaseModel):
     amount: int
     estimated_cost: int
 
+# ── Phase 2 Models ──
+
+class RegisterUserRequest(BaseModel):
+    name: str
+    age: int
+    aadhaar: str
+    pan: str
+    occupation: str
+    city: str
+    phone: str
+
+class SearchDiseaseRequest(BaseModel):
+    user_id: str
+    symptom_text: str
+
+class HospitalsByCityRequest(BaseModel):
+    city: str
+    procedure: str
+    icd10_code: str
+
+class ApplyLoanRequest(BaseModel):
+    user_id: str
+    hospital_id: int
+    hospital_name: str
+    icd10_code: str
+    procedure: str
+    requested_amount: int
+    city: str
+
+# ──────────────────────────────────────────────
+# EXISTING ENDPOINTS (unchanged)
+# ──────────────────────────────────────────────
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "version": settings.VERSION}
@@ -123,12 +163,9 @@ async def api_cost_analysis(req: CostAnalysisRequest, db: Session = Depends(get_
     result = await cost_auditor.audit(db, req.procedure, req.city, req.comorbidities)
     if not result:
         raise HTTPException(status_code=404, detail="No hospitals found")
-    
-    # If a loan amount is provided, also run the underwriter
     if req.requested_loan_amount > 0:
         underwriting = await underwriter.review(result["adjusted_recommended_cost"], req.requested_loan_amount)
         result.update(underwriting)
-        
     return result
 
 @app.post("/api/full-analysis")
@@ -139,6 +176,176 @@ async def api_full_analysis(req: FullAnalysisRequest, db: Session = Depends(get_
 @app.post("/api/update-comorbidity")
 async def api_update_comorbidity(req: EstimateRequest):
     return calculate_costs(req.procedure_name, req.comorbidities, req.location)
+
+# ──────────────────────────────────────────────
+# PHASE 2 ENDPOINTS
+# ──────────────────────────────────────────────
+
+@app.post("/api/register-user")
+async def register_user(req: RegisterUserRequest):
+    user_id = f"USR-{uuid.uuid4().hex[:8]}"
+    record = {
+        "user_id": user_id,
+        "name": req.name,
+        "age": req.age,
+        "aadhaar": f"XXXX-XXXX-{req.aadhaar[-4:]}",
+        "pan": req.pan.upper(),
+        "occupation": req.occupation,
+        "city": req.city,
+        "phone": req.phone,
+        "registered_at": now_iso(),
+    }
+    append_json("users.json", record)
+    logger.info(f"[Register] New user {user_id} from {req.city}")
+    return {"user_id": user_id, "status": "registered", "city": req.city}
+
+
+@app.post("/api/search-disease")
+async def search_disease(req: SearchDiseaseRequest):
+    logger.info(f"[Search] user={req.user_id} symptom={req.symptom_text[:40]}")
+    result = await diagnostician.analyze(req.symptom_text)
+
+    # Save search log
+    append_json("searches.json", {
+        "user_id": req.user_id,
+        "symptom_text": req.symptom_text,
+        "result": result,
+        "timestamp": now_iso(),
+    })
+
+    return result
+
+
+@app.post("/api/hospitals-by-city")
+async def hospitals_by_city(req: HospitalsByCityRequest):
+    logger.info(f"[Hospitals] city={req.city} proc={req.procedure} icd={req.icd10_code}")
+
+    all_data = read_json("hospitals_data.json")
+
+    # Filter by city + icd10 code
+    matches = [
+        h for h in all_data
+        if h["city"].lower() == req.city.lower() and h["icd10_code"] == req.icd10_code
+    ]
+
+    if not matches:
+        # Fallback: match by procedure name
+        matches = [
+            h for h in all_data
+            if h["city"].lower() == req.city.lower() and req.procedure.lower() in h["procedure"].lower()
+        ]
+
+    if not matches:
+        raise HTTPException(status_code=404, detail=f"No hospitals found in {req.city} for {req.procedure}")
+
+    costs = [h["estimated_total_cost"] for h in matches]
+    fair_market_price = int(statistics.median(costs))
+
+    response = {
+        "city": req.city,
+        "icd10_code": req.icd10_code,
+        "procedure": req.procedure,
+        "fair_market_price": fair_market_price,
+        "min_cost": min(costs),
+        "max_cost": max(costs),
+        "hospital_count": len(matches),
+        "hospitals": sorted(matches, key=lambda x: x["estimated_total_cost"]),
+    }
+
+    # Save for audit
+    append_json("cost_comparisons.json", {
+        "city": req.city,
+        "icd10_code": req.icd10_code,
+        "procedure": req.procedure,
+        "fair_market_price": fair_market_price,
+        "hospital_count": len(matches),
+        "timestamp": now_iso(),
+    })
+
+    return response
+
+
+@app.post("/api/apply-for-loan")
+async def apply_for_loan(req: ApplyLoanRequest):
+    logger.info(f"[Loan] user={req.user_id} hospital={req.hospital_name} amount={req.requested_amount}")
+
+    all_data = read_json("hospitals_data.json")
+    city_matches = [
+        h for h in all_data
+        if h["city"].lower() == req.city.lower() and h["icd10_code"] == req.icd10_code
+    ]
+
+    if not city_matches:
+        raise HTTPException(status_code=404, detail="No market data available")
+
+    costs = [h["estimated_total_cost"] for h in city_matches]
+    fair_market_price = int(statistics.median(costs))
+    max_approvable = int(fair_market_price * 1.10)
+
+    selected = next((h for h in city_matches if h["hospital_id"] == req.hospital_id), None)
+    selected_cost = selected["estimated_total_cost"] if selected else fair_market_price
+
+    overpricing_pct = round(((req.requested_amount - fair_market_price) / fair_market_price) * 100, 2)
+
+    # Decision logic
+    if req.requested_amount <= max_approvable:
+        decision = "APPROVED"
+        recommendation = "Your loan is within fair market range. Approved."
+    elif req.requested_amount <= fair_market_price * 1.30:
+        decision = "REVIEW"
+        recommendation = f"Requested amount exceeds fair market price by {overpricing_pct:.0f}%. Manual verification required."
+    else:
+        decision = "REJECTED"
+        recommendation = f"Loan REJECTED: Requested amount exceeds regional fair price by {overpricing_pct:.0f}%. This indicates potential cost inflation."
+
+    # Find cheaper alternative if selected hospital is expensive
+    cheaper = None
+    sorted_by_cost = sorted(city_matches, key=lambda x: x["estimated_total_cost"])
+    cheapest = sorted_by_cost[0]
+    if selected and cheapest["hospital_id"] != selected["hospital_id"]:
+        savings = selected_cost - cheapest["estimated_total_cost"]
+        if savings > 0:
+            cheaper = {
+                "hospital_name": cheapest["hospital_name"],
+                "cost": cheapest["estimated_total_cost"],
+                "savings": savings,
+            }
+
+    emi_options = []
+    if decision == "APPROVED":
+        amt = req.requested_amount
+        emi_options = [
+            {"tenure_months": 12, "emi": int(amt / 12), "interest": "0% (Subvention)"},
+            {"tenure_months": 24, "emi": int((amt * 1.08) / 24), "interest": "8% p.a."},
+        ]
+
+    result = {
+        "decision": decision,
+        "fair_market_price": fair_market_price,
+        "max_approvable": max_approvable,
+        "requested_amount": req.requested_amount,
+        "selected_hospital_cost": selected_cost,
+        "city_min_cost": min(costs),
+        "city_max_cost": max(costs),
+        "overpricing_pct": overpricing_pct,
+        "recommendation": recommendation,
+        "cheaper_alternative": cheaper,
+        "emi_options": emi_options,
+    }
+
+    # Save decision
+    append_json("loan_decisions.json", {
+        "user_id": req.user_id,
+        "hospital_name": req.hospital_name,
+        "icd10_code": req.icd10_code,
+        "requested_amount": req.requested_amount,
+        "decision": decision,
+        "fair_market_price": fair_market_price,
+        "timestamp": now_iso(),
+    })
+
+    return result
+
 
 if __name__ == "__main__":
     import uvicorn
