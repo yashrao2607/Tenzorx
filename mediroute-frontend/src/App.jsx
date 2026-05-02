@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, UserPlus, Search, MapPin, FileCheck, RefreshCcw } from 'lucide-react';
@@ -19,6 +19,21 @@ function App() {
   const [diagnosis, setDiagnosis] = useState(null);
   const [loanResult, setLoanResult] = useState(null);
 
+  // Load user from localStorage on mount
+  useEffect(() => {
+    const savedUser = localStorage.getItem('mediroute_user');
+    if (savedUser) {
+      try {
+        const parsedUser = JSON.parse(savedUser);
+        setUser(parsedUser);
+        setStep(1); // Skip registration if user exists
+      } catch (err) {
+        console.error("Failed to parse saved user", err);
+        localStorage.removeItem('mediroute_user');
+      }
+    }
+  }, []);
+
   const steps = [
     { id: 0, label: 'Registration', icon: UserPlus },
     { id: 1, label: 'Disease Search', icon: Search },
@@ -27,7 +42,11 @@ function App() {
   ];
 
   const handleRegistration = (userData) => {
+    // Combine backend response with local payload if needed, 
+    // or just store what the backend gives plus the local city if it's there.
+    // The backend returns user_id and city.
     setUser(userData);
+    localStorage.setItem('mediroute_user', JSON.stringify(userData));
     setStep(1);
   };
 
@@ -61,11 +80,19 @@ function App() {
   };
 
   const reset = () => {
+    setStep(1); // Go back to search, not registration
+    setDiagnosis(null);
+    setLoanResult(null);
+    setError(null);
+  };
+
+  const fullReset = () => {
     setStep(0);
     setUser(null);
     setDiagnosis(null);
     setLoanResult(null);
     setError(null);
+    localStorage.removeItem('mediroute_user');
   };
 
   return (
@@ -80,12 +107,26 @@ function App() {
         </div>
         
         {step > 0 && (
-          <button 
-            onClick={reset}
-            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium"
-          >
-            <RefreshCcw className="w-4 h-4" /> Start New Audit
-          </button>
+          <div className="flex gap-4">
+            <div className="flex items-center gap-3 pr-4 border-r border-slate-800">
+              <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-teal-400 font-bold text-xs border border-slate-700">
+                {user?.name?.charAt(0) || 'U'}
+              </div>
+              <span className="text-slate-300 text-sm font-medium">{user?.name || 'User'}</span>
+            </div>
+            <button 
+              onClick={reset}
+              className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium"
+            >
+              <RefreshCcw className="w-4 h-4" /> New Search
+            </button>
+            <button 
+              onClick={fullReset}
+              className="flex items-center gap-2 text-slate-500 hover:text-rose-400 transition-colors text-sm font-medium"
+            >
+              Reset Profile
+            </button>
+          </div>
         )}
       </div>
 

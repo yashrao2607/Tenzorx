@@ -108,5 +108,20 @@
             ]
         },
         "timestamp": "2026-05-02T11:33:53.345584"
+    },
+    {
+        "user_id": "USR-2711c89c",
+        "symptom_text": "pet main drd h i guess pathari hai \n",
+        "result": {
+            "condition": "Nephrolithiasis",
+            "icd10_code": "N20.0",
+            "recommended_procedure": "Extracorporeal Shock Wave Lithotripsy",
+            "confidence_score": 0.9,
+            "procedure_aliases": [
+                "Shockwave Lithotripsy",
+                "ESWL"
+            ]
+        },
+        "timestamp": "2026-05-02T15:28:21.929974"
     }
 ]

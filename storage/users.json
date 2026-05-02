@@ -119,5 +119,27 @@
         "city": "Mumbai",
         "phone": "8053435834",
         "registered_at": "2026-05-02T11:33:05.341704"
+    },
+    {
+        "user_id": "USR-63aedb16",
+        "name": "Krish rathi",
+        "age": 20,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Salaried",
+        "city": "Delhi",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T15:27:38.709607"
+    },
+    {
+        "user_id": "USR-2711c89c",
+        "name": "Krish rathi",
+        "age": 20,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Salaried",
+        "city": "Pune",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T15:28:03.887758"
     }
 ]

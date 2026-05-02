@@ -9,13 +9,13 @@
         "reputation_score": 4.3,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 105769,
+        "estimated_total_cost": 103715,
         "breakdown": {
-            "room_charges": 21153,
-            "doctor_fees": 31730,
-            "medicines": 15865,
-            "consumables": 10576,
-            "other": 26442
+            "room_charges": 20743,
+            "doctor_fees": 31114,
+            "medicines": 15557,
+            "consumables": 10371,
+            "other": 25928
         }
     },
     {
@@ -28,13 +28,13 @@
         "reputation_score": 4.3,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 87462,
+        "estimated_total_cost": 86465,
         "breakdown": {
-            "room_charges": 17492,
-            "doctor_fees": 26238,
-            "medicines": 13119,
-            "consumables": 8746,
-            "other": 21865
+            "room_charges": 17293,
+            "doctor_fees": 25939,
+            "medicines": 12969,
+            "consumables": 8646,
+            "other": 21616
         }
     },
     {
@@ -47,13 +47,13 @@
         "reputation_score": 4.3,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 313416,
+        "estimated_total_cost": 326436,
         "breakdown": {
-            "room_charges": 62683,
-            "doctor_fees": 94024,
-            "medicines": 47012,
-            "consumables": 31341,
-            "other": 78354
+            "room_charges": 65287,
+            "doctor_fees": 97930,
+            "medicines": 48965,
+            "consumables": 32643,
+            "other": 81609
         }
     },
     {
@@ -66,13 +66,13 @@
         "reputation_score": 4.3,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 473752,
+        "estimated_total_cost": 431272,
         "breakdown": {
-            "room_charges": 94750,
-            "doctor_fees": 142125,
-            "medicines": 71062,
-            "consumables": 47375,
-            "other": 118438
+            "room_charges": 86254,
+            "doctor_fees": 129381,
+            "medicines": 64690,
+            "consumables": 43127,
+            "other": 107818
         }
     },
     {
@@ -85,13 +85,13 @@
         "reputation_score": 4.3,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 61496,
+        "estimated_total_cost": 52605,
         "breakdown": {
-            "room_charges": 12299,
-            "doctor_fees": 18448,
-            "medicines": 9224,
-            "consumables": 6149,
-            "other": 15374
+            "room_charges": 10521,
+            "doctor_fees": 15781,
+            "medicines": 7890,
+            "consumables": 5260,
+            "other": 13151
         }
     },
     {
@@ -104,13 +104,13 @@
         "reputation_score": 4.3,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 69240,
+        "estimated_total_cost": 71398,
         "breakdown": {
-            "room_charges": 13848,
-            "doctor_fees": 20772,
-            "medicines": 10386,
-            "consumables": 6924,
-            "other": 17310
+            "room_charges": 14279,
+            "doctor_fees": 21419,
+            "medicines": 10709,
+            "consumables": 7139,
+            "other": 17849
         }
     },
     {
@@ -123,13 +123,13 @@
         "reputation_score": 4.8,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 111889,
+        "estimated_total_cost": 101273,
         "breakdown": {
-            "room_charges": 22377,
-            "doctor_fees": 33566,
-            "medicines": 16783,
-            "consumables": 11188,
-            "other": 27972
+            "room_charges": 20254,
+            "doctor_fees": 30381,
+            "medicines": 15190,
+            "consumables": 10127,
+            "other": 25318
         }
     },
     {
@@ -142,13 +142,13 @@
         "reputation_score": 4.8,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 80079,
+        "estimated_total_cost": 88524,
         "breakdown": {
-            "room_charges": 16015,
-            "doctor_fees": 24023,
-            "medicines": 12011,
-            "consumables": 8007,
-            "other": 20019
+            "room_charges": 17704,
+            "doctor_fees": 26557,
+            "medicines": 13278,
+            "consumables": 8852,
+            "other": 22131
         }
     },
     {
@@ -161,13 +161,13 @@
         "reputation_score": 4.8,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 290150,
+        "estimated_total_cost": 299960,
         "breakdown": {
-            "room_charges": 58030,
-            "doctor_fees": 87045,
-            "medicines": 43522,
-            "consumables": 29015,
-            "other": 72537
+            "room_charges": 59992,
+            "doctor_fees": 89988,
+            "medicines": 44994,
+            "consumables": 29996,
+            "other": 74990
         }
     },
     {
@@ -180,13 +180,13 @@
         "reputation_score": 4.8,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 465639,
+        "estimated_total_cost": 406473,
         "breakdown": {
-            "room_charges": 93127,
-            "doctor_fees": 139691,
-            "medicines": 69845,
-            "consumables": 46563,
-            "other": 116409
+            "room_charges": 81294,
+            "doctor_fees": 121941,
+            "medicines": 60970,
+            "consumables": 40647,
+            "other": 101618
         }
     },
     {
@@ -199,13 +199,13 @@
         "reputation_score": 4.8,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 61785,
+        "estimated_total_cost": 61007,
         "breakdown": {
-            "room_charges": 12357,
-            "doctor_fees": 18535,
-            "medicines": 9267,
-            "consumables": 6178,
-            "other": 15446
+            "room_charges": 12201,
+            "doctor_fees": 18302,
+            "medicines": 9151,
+            "consumables": 6100,
+            "other": 15251
         }
     },
     {
@@ -218,13 +218,13 @@
         "reputation_score": 4.8,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 75143,
+        "estimated_total_cost": 68646,
         "breakdown": {
-            "room_charges": 15028,
-            "doctor_fees": 22542,
-            "medicines": 11271,
-            "consumables": 7514,
-            "other": 18785
+            "room_charges": 13729,
+            "doctor_fees": 20593,
+            "medicines": 10296,
+            "consumables": 6864,
+            "other": 17161
         }
     },
     {
@@ -237,13 +237,13 @@
         "reputation_score": 3.5,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 86255,
+        "estimated_total_cost": 88899,
         "breakdown": {
-            "room_charges": 17251,
-            "doctor_fees": 25876,
-            "medicines": 12938,
-            "consumables": 8625,
-            "other": 21563
+            "room_charges": 17779,
+            "doctor_fees": 26669,
+            "medicines": 13334,
+            "consumables": 8889,
+            "other": 22224
         }
     },
     {
@@ -256,13 +256,13 @@
         "reputation_score": 3.5,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 65460,
+        "estimated_total_cost": 66619,
         "breakdown": {
-            "room_charges": 13092,
-            "doctor_fees": 19638,
-            "medicines": 9819,
-            "consumables": 6546,
-            "other": 16365
+            "room_charges": 13323,
+            "doctor_fees": 19985,
+            "medicines": 9992,
+            "consumables": 6661,
+            "other": 16654
         }
     },
     {
@@ -275,13 +275,13 @@
         "reputation_score": 3.5,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 266006,
+        "estimated_total_cost": 244607,
         "breakdown": {
-            "room_charges": 53201,
-            "doctor_fees": 79801,
-            "medicines": 39900,
-            "consumables": 26600,
-            "other": 66501
+            "room_charges": 48921,
+            "doctor_fees": 73382,
+            "medicines": 36691,
+            "consumables": 24460,
+            "other": 61151
         }
     },
     {
@@ -294,13 +294,13 @@
         "reputation_score": 3.5,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 398405,
+        "estimated_total_cost": 339692,
         "breakdown": {
-            "room_charges": 79681,
-            "doctor_fees": 119521,
-            "medicines": 59760,
-            "consumables": 39840,
-            "other": 99601
+            "room_charges": 67938,
+            "doctor_fees": 101907,
+            "medicines": 50953,
+            "consumables": 33969,
+            "other": 84923
         }
     },
     {
@@ -313,13 +313,13 @@
         "reputation_score": 3.5,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 50752,
+        "estimated_total_cost": 48983,
         "breakdown": {
-            "room_charges": 10150,
-            "doctor_fees": 15225,
-            "medicines": 7612,
-            "consumables": 5075,
-            "other": 12688
+            "room_charges": 9796,
+            "doctor_fees": 14694,
+            "medicines": 7347,
+            "consumables": 4898,
+            "other": 12245
         }
     },
     {
@@ -332,13 +332,13 @@
         "reputation_score": 3.5,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 63505,
+        "estimated_total_cost": 60324,
         "breakdown": {
-            "room_charges": 12701,
-            "doctor_fees": 19051,
-            "medicines": 9525,
-            "consumables": 6350,
-            "other": 15876
+            "room_charges": 12064,
+            "doctor_fees": 18097,
+            "medicines": 9048,
+            "consumables": 6032,
+            "other": 15081
         }
     },
     {
@@ -351,13 +351,13 @@
         "reputation_score": 3.6,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 71957,
+        "estimated_total_cost": 73543,
         "breakdown": {
-            "room_charges": 14391,
-            "doctor_fees": 21587,
-            "medicines": 10793,
-            "consumables": 7195,
-            "other": 17989
+            "room_charges": 14708,
+            "doctor_fees": 22062,
+            "medicines": 11031,
+            "consumables": 7354,
+            "other": 18385
         }
     },
     {
@@ -370,13 +370,13 @@
         "reputation_score": 3.6,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 58241,
+        "estimated_total_cost": 52992,
         "breakdown": {
-            "room_charges": 11648,
-            "doctor_fees": 17472,
-            "medicines": 8736,
-            "consumables": 5824,
-            "other": 14560
+            "room_charges": 10598,
+            "doctor_fees": 15897,
+            "medicines": 7948,
+            "consumables": 5299,
+            "other": 13248
         }
     },
     {
@@ -389,13 +389,13 @@
         "reputation_score": 3.6,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 199948,
+        "estimated_total_cost": 221436,
         "breakdown": {
-            "room_charges": 39989,
-            "doctor_fees": 59984,
-            "medicines": 29992,
-            "consumables": 19994,
-            "other": 49987
+            "room_charges": 44287,
+            "doctor_fees": 66430,
+            "medicines": 33215,
+            "consumables": 22143,
+            "other": 55359
         }
     },
     {
@@ -408,13 +408,13 @@
         "reputation_score": 3.6,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 297732,
+        "estimated_total_cost": 282583,
         "breakdown": {
-            "room_charges": 59546,
-            "doctor_fees": 89319,
-            "medicines": 44659,
-            "consumables": 29773,
-            "other": 74433
+            "room_charges": 56516,
+            "doctor_fees": 84774,
+            "medicines": 42387,
+            "consumables": 28258,
+            "other": 70645
         }
     },
     {
@@ -427,13 +427,13 @@
         "reputation_score": 3.6,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 35792,
+        "estimated_total_cost": 35189,
         "breakdown": {
-            "room_charges": 7158,
-            "doctor_fees": 10737,
-            "medicines": 5368,
-            "consumables": 3579,
-            "other": 8948
+            "room_charges": 7037,
+            "doctor_fees": 10556,
+            "medicines": 5278,
+            "consumables": 3518,
+            "other": 8797
         }
     },
     {
@@ -446,13 +446,13 @@
         "reputation_score": 3.6,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 50436,
+        "estimated_total_cost": 45841,
         "breakdown": {
-            "room_charges": 10087,
-            "doctor_fees": 15130,
-            "medicines": 7565,
-            "consumables": 5043,
-            "other": 12609
+            "room_charges": 9168,
+            "doctor_fees": 13752,
+            "medicines": 6876,
+            "consumables": 4584,
+            "other": 11460
         }
     },
     {
@@ -465,13 +465,13 @@
         "reputation_score": 4.4,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 74242,
+        "estimated_total_cost": 65521,
         "breakdown": {
-            "room_charges": 14848,
-            "doctor_fees": 22272,
-            "medicines": 11136,
-            "consumables": 7424,
-            "other": 18560
+            "room_charges": 13104,
+            "doctor_fees": 19656,
+            "medicines": 9828,
+            "consumables": 6552,
+            "other": 16380
         }
     },
     {
@@ -484,13 +484,13 @@
         "reputation_score": 4.4,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 58269,
+        "estimated_total_cost": 57770,
         "breakdown": {
-            "room_charges": 11653,
-            "doctor_fees": 17480,
-            "medicines": 8740,
-            "consumables": 5826,
-            "other": 14567
+            "room_charges": 11554,
+            "doctor_fees": 17331,
+            "medicines": 8665,
+            "consumables": 5777,
+            "other": 14442
         }
     },
     {
@@ -503,13 +503,13 @@
         "reputation_score": 4.4,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 220783,
+        "estimated_total_cost": 193984,
         "breakdown": {
-            "room_charges": 44156,
-            "doctor_fees": 66234,
-            "medicines": 33117,
-            "consumables": 22078,
-            "other": 55195
+            "room_charges": 38796,
+            "doctor_fees": 58195,
+            "medicines": 29097,
+            "consumables": 19398,
+            "other": 48496
         }
     },
     {
@@ -522,13 +522,13 @@
         "reputation_score": 4.4,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 282323,
+        "estimated_total_cost": 302748,
         "breakdown": {
-            "room_charges": 56464,
-            "doctor_fees": 84696,
-            "medicines": 42348,
-            "consumables": 28232,
-            "other": 70580
+            "room_charges": 60549,
+            "doctor_fees": 90824,
+            "medicines": 45412,
+            "consumables": 30274,
+            "other": 75687
         }
     },
     {
@@ -541,13 +541,13 @@
         "reputation_score": 4.4,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 34945,
+        "estimated_total_cost": 35181,
         "breakdown": {
-            "room_charges": 6989,
-            "doctor_fees": 10483,
-            "medicines": 5241,
-            "consumables": 3494,
-            "other": 8736
+            "room_charges": 7036,
+            "doctor_fees": 10554,
+            "medicines": 5277,
+            "consumables": 3518,
+            "other": 8795
         }
     },
     {
@@ -560,13 +560,13 @@
         "reputation_score": 4.4,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 50804,
+        "estimated_total_cost": 47867,
         "breakdown": {
-            "room_charges": 10160,
-            "doctor_fees": 15241,
-            "medicines": 7620,
-            "consumables": 5080,
-            "other": 12701
+            "room_charges": 9573,
+            "doctor_fees": 14360,
+            "medicines": 7180,
+            "consumables": 4786,
+            "other": 11966
         }
     },
     {
@@ -579,13 +579,13 @@
         "reputation_score": 4.5,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 87624,
+        "estimated_total_cost": 81243,
         "breakdown": {
-            "room_charges": 17524,
-            "doctor_fees": 26287,
-            "medicines": 13143,
-            "consumables": 8762,
-            "other": 21906
+            "room_charges": 16248,
+            "doctor_fees": 24372,
+            "medicines": 12186,
+            "consumables": 8124,
+            "other": 20310
         }
     },
     {
@@ -598,13 +598,13 @@
         "reputation_score": 4.5,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 71607,
+        "estimated_total_cost": 71369,
         "breakdown": {
-            "room_charges": 14321,
-            "doctor_fees": 21482,
-            "medicines": 10741,
-            "consumables": 7160,
-            "other": 17901
+            "room_charges": 14273,
+            "doctor_fees": 21410,
+            "medicines": 10705,
+            "consumables": 7136,
+            "other": 17842
         }
     },
     {
@@ -617,13 +617,13 @@
         "reputation_score": 4.5,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 279407,
+        "estimated_total_cost": 252085,
         "breakdown": {
-            "room_charges": 55881,
-            "doctor_fees": 83822,
-            "medicines": 41911,
-            "consumables": 27940,
-            "other": 69851
+            "room_charges": 50417,
+            "doctor_fees": 75625,
+            "medicines": 37812,
+            "consumables": 25208,
+            "other": 63021
         }
     },
     {
@@ -636,13 +636,13 @@
         "reputation_score": 4.5,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 390539,
+        "estimated_total_cost": 369729,
         "breakdown": {
-            "room_charges": 78107,
-            "doctor_fees": 117161,
-            "medicines": 58580,
-            "consumables": 39053,
-            "other": 97634
+            "room_charges": 73945,
+            "doctor_fees": 110918,
+            "medicines": 55459,
+            "consumables": 36972,
+            "other": 92432
         }
     },
     {
@@ -655,13 +655,13 @@
         "reputation_score": 4.5,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 46246,
+        "estimated_total_cost": 47211,
         "breakdown": {
-            "room_charges": 9249,
-            "doctor_fees": 13873,
-            "medicines": 6936,
-            "consumables": 4624,
-            "other": 11561
+            "room_charges": 9442,
+            "doctor_fees": 14163,
+            "medicines": 7081,
+            "consumables": 4721,
+            "other": 11802
         }
     },
     {
@@ -674,13 +674,13 @@
         "reputation_score": 4.5,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 56212,
+        "estimated_total_cost": 54617,
         "breakdown": {
-            "room_charges": 11242,
-            "doctor_fees": 16863,
-            "medicines": 8431,
-            "consumables": 5621,
-            "other": 14053
+            "room_charges": 10923,
+            "doctor_fees": 16385,
+            "medicines": 8192,
+            "consumables": 5461,
+            "other": 13654
         }
     },
     {
@@ -693,13 +693,13 @@
         "reputation_score": 4.2,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 96657,
+        "estimated_total_cost": 84448,
         "breakdown": {
-            "room_charges": 19331,
-            "doctor_fees": 28997,
-            "medicines": 14498,
-            "consumables": 9665,
-            "other": 24164
+            "room_charges": 16889,
+            "doctor_fees": 25334,
+            "medicines": 12667,
+            "consumables": 8444,
+            "other": 21112
         }
     },
     {
@@ -712,13 +712,13 @@
         "reputation_score": 4.2,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 67114,
+        "estimated_total_cost": 72595,
         "breakdown": {
-            "room_charges": 13422,
-            "doctor_fees": 20134,
-            "medicines": 10067,
-            "consumables": 6711,
-            "other": 16778
+            "room_charges": 14519,
+            "doctor_fees": 21778,
+            "medicines": 10889,
+            "consumables": 7259,
+            "other": 18148
         }
     },
     {
@@ -731,13 +731,13 @@
         "reputation_score": 4.2,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 269930,
+        "estimated_total_cost": 262104,
         "breakdown": {
-            "room_charges": 53986,
-            "doctor_fees": 80979,
-            "medicines": 40489,
-            "consumables": 26993,
-            "other": 67482
+            "room_charges": 52420,
+            "doctor_fees": 78631,
+            "medicines": 39315,
+            "consumables": 26210,
+            "other": 65526
         }
     },
     {
@@ -750,13 +750,13 @@
         "reputation_score": 4.2,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 377175,
+        "estimated_total_cost": 387572,
         "breakdown": {
-            "room_charges": 75435,
-            "doctor_fees": 113152,
-            "medicines": 56576,
-            "consumables": 37717,
-            "other": 94293
+            "room_charges": 77514,
+            "doctor_fees": 116271,
+            "medicines": 58135,
+            "consumables": 38757,
+            "other": 96893
         }
     },
     {
@@ -769,13 +769,13 @@
         "reputation_score": 4.2,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 44840,
+        "estimated_total_cost": 49230,
         "breakdown": {
-            "room_charges": 8968,
-            "doctor_fees": 13452,
-            "medicines": 6726,
-            "consumables": 4484,
-            "other": 11210
+            "room_charges": 9846,
+            "doctor_fees": 14769,
+            "medicines": 7384,
+            "consumables": 4923,
+            "other": 12307
         }
     },
     {
@@ -788,13 +788,13 @@
         "reputation_score": 4.2,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 51980,
+        "estimated_total_cost": 58516,
         "breakdown": {
-            "room_charges": 10396,
-            "doctor_fees": 15594,
-            "medicines": 7797,
-            "consumables": 5198,
-            "other": 12995
+            "room_charges": 11703,
+            "doctor_fees": 17554,
+            "medicines": 8777,
+            "consumables": 5851,
+            "other": 14629
         }
     },
     {
@@ -807,13 +807,13 @@
         "reputation_score": 4.3,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 115454,
+        "estimated_total_cost": 96292,
         "breakdown": {
-            "room_charges": 23090,
-            "doctor_fees": 34636,
-            "medicines": 17318,
-            "consumables": 11545,
-            "other": 28863
+            "room_charges": 19258,
+            "doctor_fees": 28887,
+            "medicines": 14443,
+            "consumables": 9629,
+            "other": 24073
         }
     },
     {
@@ -826,13 +826,13 @@
         "reputation_score": 4.3,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 78377,
+        "estimated_total_cost": 86512,
         "breakdown": {
-            "room_charges": 15675,
-            "doctor_fees": 23513,
-            "medicines": 11756,
-            "consumables": 7837,
-            "other": 19594
+            "room_charges": 17302,
+            "doctor_fees": 25953,
+            "medicines": 12976,
+            "consumables": 8651,
+            "other": 21628
         }
     },
     {
@@ -845,13 +845,13 @@
         "reputation_score": 4.3,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 294039,
+        "estimated_total_cost": 287258,
         "breakdown": {
-            "room_charges": 58807,
-            "doctor_fees": 88211,
-            "medicines": 44105,
-            "consumables": 29403,
-            "other": 73509
+            "room_charges": 57451,
+            "doctor_fees": 86177,
+            "medicines": 43088,
+            "consumables": 28725,
+            "other": 71814
         }
     },
     {
@@ -864,13 +864,13 @@
         "reputation_score": 4.3,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 470968,
+        "estimated_total_cost": 420085,
         "breakdown": {
-            "room_charges": 94193,
-            "doctor_fees": 141290,
-            "medicines": 70645,
-            "consumables": 47096,
-            "other": 117742
+            "room_charges": 84017,
+            "doctor_fees": 126025,
+            "medicines": 63012,
+            "consumables": 42008,
+            "other": 105021
         }
     },
     {
@@ -883,13 +883,13 @@
         "reputation_score": 4.3,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 53013,
+        "estimated_total_cost": 58043,
         "breakdown": {
-            "room_charges": 10602,
-            "doctor_fees": 15903,
-            "medicines": 7951,
-            "consumables": 5301,
-            "other": 13253
+            "room_charges": 11608,
+            "doctor_fees": 17412,
+            "medicines": 8706,
+            "consumables": 5804,
+            "other": 14510
         }
     },
     {
@@ -902,13 +902,13 @@
         "reputation_score": 4.3,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 69087,
+        "estimated_total_cost": 63990,
         "breakdown": {
-            "room_charges": 13817,
-            "doctor_fees": 20726,
-            "medicines": 10363,
-            "consumables": 6908,
-            "other": 17271
+            "room_charges": 12798,
+            "doctor_fees": 19197,
+            "medicines": 9598,
+            "consumables": 6399,
+            "other": 15997
         }
     },
     {
@@ -921,13 +921,13 @@
         "reputation_score": 4.2,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 115144,
+        "estimated_total_cost": 105385,
         "breakdown": {
-            "room_charges": 23028,
-            "doctor_fees": 34543,
-            "medicines": 17271,
-            "consumables": 11514,
-            "other": 28786
+            "room_charges": 21077,
+            "doctor_fees": 31615,
+            "medicines": 15807,
+            "consumables": 10538,
+            "other": 26346
         }
     },
     {
@@ -940,13 +940,13 @@
         "reputation_score": 4.2,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 83121,
+        "estimated_total_cost": 86235,
         "breakdown": {
-            "room_charges": 16624,
-            "doctor_fees": 24936,
-            "medicines": 12468,
-            "consumables": 8312,
-            "other": 20780
+            "room_charges": 17247,
+            "doctor_fees": 25870,
+            "medicines": 12935,
+            "consumables": 8623,
+            "other": 21558
         }
     },
     {
@@ -959,13 +959,13 @@
         "reputation_score": 4.2,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 288425,
+        "estimated_total_cost": 326142,
         "breakdown": {
-            "room_charges": 57685,
-            "doctor_fees": 86527,
-            "medicines": 43263,
-            "consumables": 28842,
-            "other": 72106
+            "room_charges": 65228,
+            "doctor_fees": 97842,
+            "medicines": 48921,
+            "consumables": 32614,
+            "other": 81535
         }
     },
     {
@@ -978,13 +978,13 @@
         "reputation_score": 4.2,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 438929,
+        "estimated_total_cost": 412046,
         "breakdown": {
-            "room_charges": 87785,
-            "doctor_fees": 131678,
-            "medicines": 65839,
-            "consumables": 43892,
-            "other": 109732
+            "room_charges": 82409,
+            "doctor_fees": 123613,
+            "medicines": 61806,
+            "consumables": 41204,
+            "other": 103011
         }
     },
     {
@@ -997,13 +997,13 @@
         "reputation_score": 4.2,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 59088,
+        "estimated_total_cost": 53987,
         "breakdown": {
-            "room_charges": 11817,
-            "doctor_fees": 17726,
-            "medicines": 8863,
-            "consumables": 5908,
-            "other": 14772
+            "room_charges": 10797,
+            "doctor_fees": 16196,
+            "medicines": 8098,
+            "consumables": 5398,
+            "other": 13496
         }
     },
     {
@@ -1016,13 +1016,13 @@
         "reputation_score": 4.2,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 74972,
+        "estimated_total_cost": 67246,
         "breakdown": {
-            "room_charges": 14994,
-            "doctor_fees": 22491,
-            "medicines": 11245,
-            "consumables": 7497,
-            "other": 18743
+            "room_charges": 13449,
+            "doctor_fees": 20173,
+            "medicines": 10086,
+            "consumables": 6724,
+            "other": 16811
         }
     },
     {
@@ -1035,13 +1035,13 @@
         "reputation_score": 4.3,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 89067,
+        "estimated_total_cost": 86549,
         "breakdown": {
-            "room_charges": 17813,
-            "doctor_fees": 26720,
-            "medicines": 13360,
-            "consumables": 8906,
-            "other": 22266
+            "room_charges": 17309,
+            "doctor_fees": 25964,
+            "medicines": 12982,
+            "consumables": 8654,
+            "other": 21637
         }
     },
     {
@@ -1054,13 +1054,13 @@
         "reputation_score": 4.3,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 65292,
+        "estimated_total_cost": 68119,
         "breakdown": {
-            "room_charges": 13058,
-            "doctor_fees": 19587,
-            "medicines": 9793,
-            "consumables": 6529,
-            "other": 16323
+            "room_charges": 13623,
+            "doctor_fees": 20435,
+            "medicines": 10217,
+            "consumables": 6811,
+            "other": 17029
         }
     },
     {
@@ -1073,13 +1073,13 @@
         "reputation_score": 4.3,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 239932,
+        "estimated_total_cost": 263940,
         "breakdown": {
-            "room_charges": 47986,
-            "doctor_fees": 71979,
-            "medicines": 35989,
-            "consumables": 23993,
-            "other": 59983
+            "room_charges": 52788,
+            "doctor_fees": 79182,
+            "medicines": 39591,
+            "consumables": 26394,
+            "other": 65985
         }
     },
     {
@@ -1092,13 +1092,13 @@
         "reputation_score": 4.3,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 345911,
+        "estimated_total_cost": 382721,
         "breakdown": {
-            "room_charges": 69182,
-            "doctor_fees": 103773,
-            "medicines": 51886,
-            "consumables": 34591,
-            "other": 86477
+            "room_charges": 76544,
+            "doctor_fees": 114816,
+            "medicines": 57408,
+            "consumables": 38272,
+            "other": 95680
         }
     },
     {
@@ -1111,13 +1111,13 @@
         "reputation_score": 4.3,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 43298,
+        "estimated_total_cost": 46911,
         "breakdown": {
-            "room_charges": 8659,
-            "doctor_fees": 12989,
-            "medicines": 6494,
-            "consumables": 4329,
-            "other": 10824
+            "room_charges": 9382,
+            "doctor_fees": 14073,
+            "medicines": 7036,
+            "consumables": 4691,
+            "other": 11727
         }
     },
     {
@@ -1130,13 +1130,13 @@
         "reputation_score": 4.3,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 56122,
+        "estimated_total_cost": 52768,
         "breakdown": {
-            "room_charges": 11224,
-            "doctor_fees": 16836,
-            "medicines": 8418,
-            "consumables": 5612,
-            "other": 14030
+            "room_charges": 10553,
+            "doctor_fees": 15830,
+            "medicines": 7915,
+            "consumables": 5276,
+            "other": 13192
         }
     },
     {
@@ -1149,13 +1149,13 @@
         "reputation_score": 3.8,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 80353,
+        "estimated_total_cost": 88453,
         "breakdown": {
-            "room_charges": 16070,
-            "doctor_fees": 24105,
-            "medicines": 12052,
-            "consumables": 8035,
-            "other": 20088
+            "room_charges": 17690,
+            "doctor_fees": 26535,
+            "medicines": 13267,
+            "consumables": 8845,
+            "other": 22113
         }
     },
     {
@@ -1168,13 +1168,13 @@
         "reputation_score": 3.8,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 61625,
+        "estimated_total_cost": 68291,
         "breakdown": {
-            "room_charges": 12325,
-            "doctor_fees": 18487,
-            "medicines": 9243,
-            "consumables": 6162,
-            "other": 15406
+            "room_charges": 13658,
+            "doctor_fees": 20487,
+            "medicines": 10243,
+            "consumables": 6829,
+            "other": 17072
         }
     },
     {
@@ -1187,13 +1187,13 @@
         "reputation_score": 3.8,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 257206,
+        "estimated_total_cost": 286857,
         "breakdown": {
-            "room_charges": 51441,
-            "doctor_fees": 77161,
-            "medicines": 38580,
-            "consumables": 25720,
-            "other": 64301
+            "room_charges": 57371,
+            "doctor_fees": 86057,
+            "medicines": 43028,
+            "consumables": 28685,
+            "other": 71714
         }
     },
     {
@@ -1206,13 +1206,13 @@
         "reputation_score": 3.8,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 383782,
+        "estimated_total_cost": 398223,
         "breakdown": {
-            "room_charges": 76756,
-            "doctor_fees": 115134,
-            "medicines": 57567,
-            "consumables": 38378,
-            "other": 95945
+            "room_charges": 79644,
+            "doctor_fees": 119466,
+            "medicines": 59733,
+            "consumables": 39822,
+            "other": 99555
         }
     },
     {
@@ -1225,13 +1225,13 @@
         "reputation_score": 3.8,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 50482,
+        "estimated_total_cost": 50916,
         "breakdown": {
-            "room_charges": 10096,
-            "doctor_fees": 15144,
-            "medicines": 7572,
-            "consumables": 5048,
-            "other": 12620
+            "room_charges": 10183,
+            "doctor_fees": 15274,
+            "medicines": 7637,
+            "consumables": 5091,
+            "other": 12729
         }
     },
     {
@@ -1244,13 +1244,13 @@
         "reputation_score": 3.8,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 60803,
+        "estimated_total_cost": 53575,
         "breakdown": {
-            "room_charges": 12160,
-            "doctor_fees": 18240,
-            "medicines": 9120,
-            "consumables": 6080,
-            "other": 15200
+            "room_charges": 10715,
+            "doctor_fees": 16072,
+            "medicines": 8036,
+            "consumables": 5357,
+            "other": 13393
         }
     },
     {
@@ -1263,13 +1263,13 @@
         "reputation_score": 4.6,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 110960,
+        "estimated_total_cost": 104277,
         "breakdown": {
-            "room_charges": 22192,
-            "doctor_fees": 33288,
-            "medicines": 16644,
-            "consumables": 11096,
-            "other": 27740
+            "room_charges": 20855,
+            "doctor_fees": 31283,
+            "medicines": 15641,
+            "consumables": 10427,
+            "other": 26069
         }
     },
     {
@@ -1282,13 +1282,13 @@
         "reputation_score": 4.6,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 80681,
+        "estimated_total_cost": 83079,
         "breakdown": {
-            "room_charges": 16136,
-            "doctor_fees": 24204,
-            "medicines": 12102,
-            "consumables": 8068,
-            "other": 20170
+            "room_charges": 16615,
+            "doctor_fees": 24923,
+            "medicines": 12461,
+            "consumables": 8307,
+            "other": 20769
         }
     },
     {
@@ -1301,13 +1301,13 @@
         "reputation_score": 4.6,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 329781,
+        "estimated_total_cost": 284176,
         "breakdown": {
-            "room_charges": 65956,
-            "doctor_fees": 98934,
-            "medicines": 49467,
-            "consumables": 32978,
-            "other": 82445
+            "room_charges": 56835,
+            "doctor_fees": 85252,
+            "medicines": 42626,
+            "consumables": 28417,
+            "other": 71044
         }
     },
     {
@@ -1320,13 +1320,13 @@
         "reputation_score": 4.6,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 412388,
+        "estimated_total_cost": 405674,
         "breakdown": {
-            "room_charges": 82477,
-            "doctor_fees": 123716,
-            "medicines": 61858,
-            "consumables": 41238,
-            "other": 103097
+            "room_charges": 81134,
+            "doctor_fees": 121702,
+            "medicines": 60851,
+            "consumables": 40567,
+            "other": 101418
         }
     },
     {
@@ -1339,13 +1339,13 @@
         "reputation_score": 4.6,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 60177,
+        "estimated_total_cost": 61825,
         "breakdown": {
-            "room_charges": 12035,
-            "doctor_fees": 18053,
-            "medicines": 9026,
-            "consumables": 6017,
-            "other": 15044
+            "room_charges": 12365,
+            "doctor_fees": 18547,
+            "medicines": 9273,
+            "consumables": 6182,
+            "other": 15456
         }
     },
     {
@@ -1358,13 +1358,13 @@
         "reputation_score": 4.6,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 67041,
+        "estimated_total_cost": 67830,
         "breakdown": {
-            "room_charges": 13408,
-            "doctor_fees": 20112,
-            "medicines": 10056,
-            "consumables": 6704,
-            "other": 16760
+            "room_charges": 13566,
+            "doctor_fees": 20349,
+            "medicines": 10174,
+            "consumables": 6783,
+            "other": 16957
         }
     },
     {
@@ -1377,13 +1377,13 @@
         "reputation_score": 4.1,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 92174,
+        "estimated_total_cost": 94897,
         "breakdown": {
-            "room_charges": 18434,
-            "doctor_fees": 27652,
-            "medicines": 13826,
-            "consumables": 9217,
-            "other": 23043
+            "room_charges": 18979,
+            "doctor_fees": 28469,
+            "medicines": 14234,
+            "consumables": 9489,
+            "other": 23724
         }
     },
     {
@@ -1396,13 +1396,13 @@
         "reputation_score": 4.1,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 73293,
+        "estimated_total_cost": 67223,
         "breakdown": {
-            "room_charges": 14658,
-            "doctor_fees": 21987,
-            "medicines": 10993,
-            "consumables": 7329,
-            "other": 18323
+            "room_charges": 13444,
+            "doctor_fees": 20166,
+            "medicines": 10083,
+            "consumables": 6722,
+            "other": 16805
         }
     },
     {
@@ -1415,13 +1415,13 @@
         "reputation_score": 4.1,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 248990,
+        "estimated_total_cost": 267588,
         "breakdown": {
-            "room_charges": 49798,
-            "doctor_fees": 74697,
-            "medicines": 37348,
-            "consumables": 24899,
-            "other": 62247
+            "room_charges": 53517,
+            "doctor_fees": 80276,
+            "medicines": 40138,
+            "consumables": 26758,
+            "other": 66897
         }
     },
     {
@@ -1434,13 +1434,13 @@
         "reputation_score": 4.1,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 332439,
+        "estimated_total_cost": 360682,
         "breakdown": {
-            "room_charges": 66487,
-            "doctor_fees": 99731,
-            "medicines": 49865,
-            "consumables": 33243,
-            "other": 83109
+            "room_charges": 72136,
+            "doctor_fees": 108204,
+            "medicines": 54102,
+            "consumables": 36068,
+            "other": 90170
         }
     },
     {
@@ -1453,700 +1453,700 @@
         "reputation_score": 4.1,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 42938,
+        "estimated_total_cost": 51171,
         "breakdown": {
-            "room_charges": 8587,
-            "doctor_fees": 12881,
-            "medicines": 6440,
-            "consumables": 4293,
-            "other": 10734
-        }
-    },
-    {
-        "hospital_id": 13,
-        "hospital_name": "Lilavati Hospital",
-        "city": "Mumbai",
-        "lat": 19.11473715710253,
-        "lon": 72.9098183555533,
-        "tier": "High",
-        "reputation_score": 4.1,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 55760,
-        "breakdown": {
-            "room_charges": 11152,
-            "doctor_fees": 16728,
-            "medicines": 8364,
-            "consumables": 5576,
-            "other": 13940
-        }
-    },
-    {
-        "hospital_id": 14,
-        "hospital_name": "Breach Candy Hospital",
-        "city": "Mumbai",
-        "lat": 19.066875858684536,
-        "lon": 72.89140573369717,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 104032,
-        "breakdown": {
-            "room_charges": 20806,
-            "doctor_fees": 31209,
-            "medicines": 15604,
-            "consumables": 10403,
-            "other": 26008
-        }
-    },
-    {
-        "hospital_id": 14,
-        "hospital_name": "Breach Candy Hospital",
-        "city": "Mumbai",
-        "lat": 19.066875858684536,
-        "lon": 72.89140573369717,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 84237,
-        "breakdown": {
-            "room_charges": 16847,
-            "doctor_fees": 25271,
-            "medicines": 12635,
-            "consumables": 8423,
-            "other": 21059
-        }
-    },
-    {
-        "hospital_id": 14,
-        "hospital_name": "Breach Candy Hospital",
-        "city": "Mumbai",
-        "lat": 19.066875858684536,
-        "lon": 72.89140573369717,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 315867,
-        "breakdown": {
-            "room_charges": 63173,
-            "doctor_fees": 94760,
-            "medicines": 47380,
-            "consumables": 31586,
-            "other": 78966
-        }
-    },
-    {
-        "hospital_id": 14,
-        "hospital_name": "Breach Candy Hospital",
-        "city": "Mumbai",
-        "lat": 19.066875858684536,
-        "lon": 72.89140573369717,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 411737,
-        "breakdown": {
-            "room_charges": 82347,
-            "doctor_fees": 123521,
-            "medicines": 61760,
-            "consumables": 41173,
-            "other": 102934
-        }
-    },
-    {
-        "hospital_id": 14,
-        "hospital_name": "Breach Candy Hospital",
-        "city": "Mumbai",
-        "lat": 19.066875858684536,
-        "lon": 72.89140573369717,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 52681,
-        "breakdown": {
-            "room_charges": 10536,
-            "doctor_fees": 15804,
-            "medicines": 7902,
-            "consumables": 5268,
-            "other": 13170
-        }
-    },
-    {
-        "hospital_id": 14,
-        "hospital_name": "Breach Candy Hospital",
-        "city": "Mumbai",
-        "lat": 19.066875858684536,
-        "lon": 72.89140573369717,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 67378,
-        "breakdown": {
-            "room_charges": 13475,
-            "doctor_fees": 20213,
-            "medicines": 10106,
-            "consumables": 6737,
-            "other": 16844
-        }
-    },
-    {
-        "hospital_id": 15,
-        "hospital_name": "Ruby Hall Clinic",
-        "city": "Pune",
-        "lat": 18.471632947210054,
-        "lon": 73.85190657853154,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 103932,
-        "breakdown": {
-            "room_charges": 20786,
-            "doctor_fees": 31179,
-            "medicines": 15589,
-            "consumables": 10393,
-            "other": 25983
-        }
-    },
-    {
-        "hospital_id": 15,
-        "hospital_name": "Ruby Hall Clinic",
-        "city": "Pune",
-        "lat": 18.471632947210054,
-        "lon": 73.85190657853154,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 84393,
-        "breakdown": {
-            "room_charges": 16878,
-            "doctor_fees": 25317,
-            "medicines": 12658,
-            "consumables": 8439,
-            "other": 21098
-        }
-    },
-    {
-        "hospital_id": 15,
-        "hospital_name": "Ruby Hall Clinic",
-        "city": "Pune",
-        "lat": 18.471632947210054,
-        "lon": 73.85190657853154,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 282756,
-        "breakdown": {
-            "room_charges": 56551,
-            "doctor_fees": 84826,
-            "medicines": 42413,
-            "consumables": 28275,
-            "other": 70689
-        }
-    },
-    {
-        "hospital_id": 15,
-        "hospital_name": "Ruby Hall Clinic",
-        "city": "Pune",
-        "lat": 18.471632947210054,
-        "lon": 73.85190657853154,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 416835,
-        "breakdown": {
-            "room_charges": 83367,
-            "doctor_fees": 125050,
-            "medicines": 62525,
-            "consumables": 41683,
-            "other": 104208
-        }
-    },
-    {
-        "hospital_id": 15,
-        "hospital_name": "Ruby Hall Clinic",
-        "city": "Pune",
-        "lat": 18.471632947210054,
-        "lon": 73.85190657853154,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 57205,
-        "breakdown": {
-            "room_charges": 11441,
-            "doctor_fees": 17161,
-            "medicines": 8580,
-            "consumables": 5720,
-            "other": 14301
-        }
-    },
-    {
-        "hospital_id": 15,
-        "hospital_name": "Ruby Hall Clinic",
-        "city": "Pune",
-        "lat": 18.471632947210054,
-        "lon": 73.85190657853154,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 65245,
-        "breakdown": {
-            "room_charges": 13049,
-            "doctor_fees": 19573,
-            "medicines": 9786,
-            "consumables": 6524,
-            "other": 16311
-        }
-    },
-    {
-        "hospital_id": 16,
-        "hospital_name": "Deenanath Mangeshkar Hospital",
-        "city": "Pune",
-        "lat": 18.52559412076121,
-        "lon": 73.85775881120789,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 82838,
-        "breakdown": {
-            "room_charges": 16567,
-            "doctor_fees": 24851,
-            "medicines": 12425,
-            "consumables": 8283,
-            "other": 20709
-        }
-    },
-    {
-        "hospital_id": 16,
-        "hospital_name": "Deenanath Mangeshkar Hospital",
-        "city": "Pune",
-        "lat": 18.52559412076121,
-        "lon": 73.85775881120789,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 63662,
-        "breakdown": {
-            "room_charges": 12732,
-            "doctor_fees": 19098,
-            "medicines": 9549,
-            "consumables": 6366,
-            "other": 15915
-        }
-    },
-    {
-        "hospital_id": 16,
-        "hospital_name": "Deenanath Mangeshkar Hospital",
-        "city": "Pune",
-        "lat": 18.52559412076121,
-        "lon": 73.85775881120789,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 243276,
-        "breakdown": {
-            "room_charges": 48655,
-            "doctor_fees": 72982,
-            "medicines": 36491,
-            "consumables": 24327,
-            "other": 60819
-        }
-    },
-    {
-        "hospital_id": 16,
-        "hospital_name": "Deenanath Mangeshkar Hospital",
-        "city": "Pune",
-        "lat": 18.52559412076121,
-        "lon": 73.85775881120789,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 365201,
-        "breakdown": {
-            "room_charges": 73040,
-            "doctor_fees": 109560,
-            "medicines": 54780,
-            "consumables": 36520,
-            "other": 91300
-        }
-    },
-    {
-        "hospital_id": 16,
-        "hospital_name": "Deenanath Mangeshkar Hospital",
-        "city": "Pune",
-        "lat": 18.52559412076121,
-        "lon": 73.85775881120789,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 43832,
-        "breakdown": {
-            "room_charges": 8766,
-            "doctor_fees": 13149,
-            "medicines": 6574,
-            "consumables": 4383,
-            "other": 10958
-        }
-    },
-    {
-        "hospital_id": 16,
-        "hospital_name": "Deenanath Mangeshkar Hospital",
-        "city": "Pune",
-        "lat": 18.52559412076121,
-        "lon": 73.85775881120789,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 55668,
-        "breakdown": {
-            "room_charges": 11133,
-            "doctor_fees": 16700,
-            "medicines": 8350,
-            "consumables": 5566,
-            "other": 13917
-        }
-    },
-    {
-        "hospital_id": 17,
-        "hospital_name": "Jehangir Hospital",
-        "city": "Pune",
-        "lat": 18.523042416406785,
-        "lon": 73.8810937588684,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 89010,
-        "breakdown": {
-            "room_charges": 17802,
-            "doctor_fees": 26703,
-            "medicines": 13351,
-            "consumables": 8901,
-            "other": 22252
-        }
-    },
-    {
-        "hospital_id": 17,
-        "hospital_name": "Jehangir Hospital",
-        "city": "Pune",
-        "lat": 18.523042416406785,
-        "lon": 73.8810937588684,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 66763,
-        "breakdown": {
-            "room_charges": 13352,
-            "doctor_fees": 20028,
-            "medicines": 10014,
-            "consumables": 6676,
-            "other": 16690
-        }
-    },
-    {
-        "hospital_id": 17,
-        "hospital_name": "Jehangir Hospital",
-        "city": "Pune",
-        "lat": 18.523042416406785,
-        "lon": 73.8810937588684,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 266867,
-        "breakdown": {
-            "room_charges": 53373,
-            "doctor_fees": 80060,
-            "medicines": 40030,
-            "consumables": 26686,
-            "other": 66716
-        }
-    },
-    {
-        "hospital_id": 17,
-        "hospital_name": "Jehangir Hospital",
-        "city": "Pune",
-        "lat": 18.523042416406785,
-        "lon": 73.8810937588684,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 341110,
-        "breakdown": {
-            "room_charges": 68222,
-            "doctor_fees": 102333,
-            "medicines": 51166,
-            "consumables": 34111,
-            "other": 85277
-        }
-    },
-    {
-        "hospital_id": 17,
-        "hospital_name": "Jehangir Hospital",
-        "city": "Pune",
-        "lat": 18.523042416406785,
-        "lon": 73.8810937588684,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 51281,
-        "breakdown": {
-            "room_charges": 10256,
-            "doctor_fees": 15384,
-            "medicines": 7692,
-            "consumables": 5128,
-            "other": 12820
-        }
-    },
-    {
-        "hospital_id": 17,
-        "hospital_name": "Jehangir Hospital",
-        "city": "Pune",
-        "lat": 18.523042416406785,
-        "lon": 73.8810937588684,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 55277,
-        "breakdown": {
-            "room_charges": 11055,
-            "doctor_fees": 16583,
-            "medicines": 8291,
-            "consumables": 5527,
-            "other": 13819
-        }
-    },
-    {
-        "hospital_id": 18,
-        "hospital_name": "Aditya Birla Memorial Hospital",
-        "city": "Pune",
-        "lat": 18.48437132644605,
-        "lon": 73.83855096463218,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 98319,
-        "breakdown": {
-            "room_charges": 19663,
-            "doctor_fees": 29495,
-            "medicines": 14747,
-            "consumables": 9831,
-            "other": 24579
-        }
-    },
-    {
-        "hospital_id": 18,
-        "hospital_name": "Aditya Birla Memorial Hospital",
-        "city": "Pune",
-        "lat": 18.48437132644605,
-        "lon": 73.83855096463218,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 88676,
-        "breakdown": {
-            "room_charges": 17735,
-            "doctor_fees": 26602,
-            "medicines": 13301,
-            "consumables": 8867,
-            "other": 22169
-        }
-    },
-    {
-        "hospital_id": 18,
-        "hospital_name": "Aditya Birla Memorial Hospital",
-        "city": "Pune",
-        "lat": 18.48437132644605,
-        "lon": 73.83855096463218,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 284542,
-        "breakdown": {
-            "room_charges": 56908,
-            "doctor_fees": 85362,
-            "medicines": 42681,
-            "consumables": 28454,
-            "other": 71135
-        }
-    },
-    {
-        "hospital_id": 18,
-        "hospital_name": "Aditya Birla Memorial Hospital",
-        "city": "Pune",
-        "lat": 18.48437132644605,
-        "lon": 73.83855096463218,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 449391,
-        "breakdown": {
-            "room_charges": 89878,
-            "doctor_fees": 134817,
-            "medicines": 67408,
-            "consumables": 44939,
-            "other": 112347
-        }
-    },
-    {
-        "hospital_id": 18,
-        "hospital_name": "Aditya Birla Memorial Hospital",
-        "city": "Pune",
-        "lat": 18.48437132644605,
-        "lon": 73.83855096463218,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 51550,
-        "breakdown": {
-            "room_charges": 10310,
-            "doctor_fees": 15465,
-            "medicines": 7732,
-            "consumables": 5155,
-            "other": 12887
-        }
-    },
-    {
-        "hospital_id": 18,
-        "hospital_name": "Aditya Birla Memorial Hospital",
-        "city": "Pune",
-        "lat": 18.48437132644605,
-        "lon": 73.83855096463218,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 66985,
-        "breakdown": {
-            "room_charges": 13397,
-            "doctor_fees": 20095,
-            "medicines": 10047,
-            "consumables": 6698,
-            "other": 16746
-        }
-    },
-    {
-        "hospital_id": 19,
-        "hospital_name": "Manipal Hospital Pune",
-        "city": "Pune",
-        "lat": 18.53912343065114,
-        "lon": 73.87807183892582,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 85492,
-        "breakdown": {
-            "room_charges": 17098,
-            "doctor_fees": 25647,
-            "medicines": 12823,
-            "consumables": 8549,
-            "other": 21373
-        }
-    },
-    {
-        "hospital_id": 19,
-        "hospital_name": "Manipal Hospital Pune",
-        "city": "Pune",
-        "lat": 18.53912343065114,
-        "lon": 73.87807183892582,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 66230,
-        "breakdown": {
-            "room_charges": 13246,
-            "doctor_fees": 19869,
-            "medicines": 9934,
-            "consumables": 6623,
-            "other": 16557
-        }
-    },
-    {
-        "hospital_id": 19,
-        "hospital_name": "Manipal Hospital Pune",
-        "city": "Pune",
-        "lat": 18.53912343065114,
-        "lon": 73.87807183892582,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 269453,
-        "breakdown": {
-            "room_charges": 53890,
-            "doctor_fees": 80835,
-            "medicines": 40417,
-            "consumables": 26945,
-            "other": 67363
-        }
-    },
-    {
-        "hospital_id": 19,
-        "hospital_name": "Manipal Hospital Pune",
-        "city": "Pune",
-        "lat": 18.53912343065114,
-        "lon": 73.87807183892582,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 379065,
-        "breakdown": {
-            "room_charges": 75813,
-            "doctor_fees": 113719,
-            "medicines": 56859,
-            "consumables": 37906,
-            "other": 94766
-        }
-    },
-    {
-        "hospital_id": 19,
-        "hospital_name": "Manipal Hospital Pune",
-        "city": "Pune",
-        "lat": 18.53912343065114,
-        "lon": 73.87807183892582,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 51168,
-        "breakdown": {
-            "room_charges": 10233,
-            "doctor_fees": 15350,
+            "room_charges": 10234,
+            "doctor_fees": 15351,
             "medicines": 7675,
-            "consumables": 5116,
+            "consumables": 5117,
             "other": 12792
         }
     },
     {
+        "hospital_id": 13,
+        "hospital_name": "Lilavati Hospital",
+        "city": "Mumbai",
+        "lat": 19.11473715710253,
+        "lon": 72.9098183555533,
+        "tier": "High",
+        "reputation_score": 4.1,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 52453,
+        "breakdown": {
+            "room_charges": 10490,
+            "doctor_fees": 15735,
+            "medicines": 7867,
+            "consumables": 5245,
+            "other": 13113
+        }
+    },
+    {
+        "hospital_id": 14,
+        "hospital_name": "Breach Candy Hospital",
+        "city": "Mumbai",
+        "lat": 19.066875858684536,
+        "lon": 72.89140573369717,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 114142,
+        "breakdown": {
+            "room_charges": 22828,
+            "doctor_fees": 34242,
+            "medicines": 17121,
+            "consumables": 11414,
+            "other": 28535
+        }
+    },
+    {
+        "hospital_id": 14,
+        "hospital_name": "Breach Candy Hospital",
+        "city": "Mumbai",
+        "lat": 19.066875858684536,
+        "lon": 72.89140573369717,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 80140,
+        "breakdown": {
+            "room_charges": 16028,
+            "doctor_fees": 24042,
+            "medicines": 12021,
+            "consumables": 8014,
+            "other": 20035
+        }
+    },
+    {
+        "hospital_id": 14,
+        "hospital_name": "Breach Candy Hospital",
+        "city": "Mumbai",
+        "lat": 19.066875858684536,
+        "lon": 72.89140573369717,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 283197,
+        "breakdown": {
+            "room_charges": 56639,
+            "doctor_fees": 84959,
+            "medicines": 42479,
+            "consumables": 28319,
+            "other": 70799
+        }
+    },
+    {
+        "hospital_id": 14,
+        "hospital_name": "Breach Candy Hospital",
+        "city": "Mumbai",
+        "lat": 19.066875858684536,
+        "lon": 72.89140573369717,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 425853,
+        "breakdown": {
+            "room_charges": 85170,
+            "doctor_fees": 127755,
+            "medicines": 63877,
+            "consumables": 42585,
+            "other": 106463
+        }
+    },
+    {
+        "hospital_id": 14,
+        "hospital_name": "Breach Candy Hospital",
+        "city": "Mumbai",
+        "lat": 19.066875858684536,
+        "lon": 72.89140573369717,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 57391,
+        "breakdown": {
+            "room_charges": 11478,
+            "doctor_fees": 17217,
+            "medicines": 8608,
+            "consumables": 5739,
+            "other": 14347
+        }
+    },
+    {
+        "hospital_id": 14,
+        "hospital_name": "Breach Candy Hospital",
+        "city": "Mumbai",
+        "lat": 19.066875858684536,
+        "lon": 72.89140573369717,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 68201,
+        "breakdown": {
+            "room_charges": 13640,
+            "doctor_fees": 20460,
+            "medicines": 10230,
+            "consumables": 6820,
+            "other": 17050
+        }
+    },
+    {
+        "hospital_id": 15,
+        "hospital_name": "Ruby Hall Clinic",
+        "city": "Pune",
+        "lat": 18.471632947210054,
+        "lon": 73.85190657853154,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 103332,
+        "breakdown": {
+            "room_charges": 20666,
+            "doctor_fees": 30999,
+            "medicines": 15499,
+            "consumables": 10333,
+            "other": 25833
+        }
+    },
+    {
+        "hospital_id": 15,
+        "hospital_name": "Ruby Hall Clinic",
+        "city": "Pune",
+        "lat": 18.471632947210054,
+        "lon": 73.85190657853154,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 81803,
+        "breakdown": {
+            "room_charges": 16360,
+            "doctor_fees": 24540,
+            "medicines": 12270,
+            "consumables": 8180,
+            "other": 20450
+        }
+    },
+    {
+        "hospital_id": 15,
+        "hospital_name": "Ruby Hall Clinic",
+        "city": "Pune",
+        "lat": 18.471632947210054,
+        "lon": 73.85190657853154,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 305623,
+        "breakdown": {
+            "room_charges": 61124,
+            "doctor_fees": 91686,
+            "medicines": 45843,
+            "consumables": 30562,
+            "other": 76405
+        }
+    },
+    {
+        "hospital_id": 15,
+        "hospital_name": "Ruby Hall Clinic",
+        "city": "Pune",
+        "lat": 18.471632947210054,
+        "lon": 73.85190657853154,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 470039,
+        "breakdown": {
+            "room_charges": 94007,
+            "doctor_fees": 141011,
+            "medicines": 70505,
+            "consumables": 47003,
+            "other": 117509
+        }
+    },
+    {
+        "hospital_id": 15,
+        "hospital_name": "Ruby Hall Clinic",
+        "city": "Pune",
+        "lat": 18.471632947210054,
+        "lon": 73.85190657853154,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 56915,
+        "breakdown": {
+            "room_charges": 11383,
+            "doctor_fees": 17074,
+            "medicines": 8537,
+            "consumables": 5691,
+            "other": 14228
+        }
+    },
+    {
+        "hospital_id": 15,
+        "hospital_name": "Ruby Hall Clinic",
+        "city": "Pune",
+        "lat": 18.471632947210054,
+        "lon": 73.85190657853154,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 63683,
+        "breakdown": {
+            "room_charges": 12736,
+            "doctor_fees": 19104,
+            "medicines": 9552,
+            "consumables": 6368,
+            "other": 15920
+        }
+    },
+    {
+        "hospital_id": 16,
+        "hospital_name": "Deenanath Mangeshkar Hospital",
+        "city": "Pune",
+        "lat": 18.52559412076121,
+        "lon": 73.85775881120789,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 89404,
+        "breakdown": {
+            "room_charges": 17880,
+            "doctor_fees": 26821,
+            "medicines": 13410,
+            "consumables": 8940,
+            "other": 22351
+        }
+    },
+    {
+        "hospital_id": 16,
+        "hospital_name": "Deenanath Mangeshkar Hospital",
+        "city": "Pune",
+        "lat": 18.52559412076121,
+        "lon": 73.85775881120789,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 70663,
+        "breakdown": {
+            "room_charges": 14132,
+            "doctor_fees": 21198,
+            "medicines": 10599,
+            "consumables": 7066,
+            "other": 17665
+        }
+    },
+    {
+        "hospital_id": 16,
+        "hospital_name": "Deenanath Mangeshkar Hospital",
+        "city": "Pune",
+        "lat": 18.52559412076121,
+        "lon": 73.85775881120789,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 283266,
+        "breakdown": {
+            "room_charges": 56653,
+            "doctor_fees": 84979,
+            "medicines": 42489,
+            "consumables": 28326,
+            "other": 70816
+        }
+    },
+    {
+        "hospital_id": 16,
+        "hospital_name": "Deenanath Mangeshkar Hospital",
+        "city": "Pune",
+        "lat": 18.52559412076121,
+        "lon": 73.85775881120789,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 335069,
+        "breakdown": {
+            "room_charges": 67013,
+            "doctor_fees": 100520,
+            "medicines": 50260,
+            "consumables": 33506,
+            "other": 83767
+        }
+    },
+    {
+        "hospital_id": 16,
+        "hospital_name": "Deenanath Mangeshkar Hospital",
+        "city": "Pune",
+        "lat": 18.52559412076121,
+        "lon": 73.85775881120789,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 48886,
+        "breakdown": {
+            "room_charges": 9777,
+            "doctor_fees": 14665,
+            "medicines": 7332,
+            "consumables": 4888,
+            "other": 12221
+        }
+    },
+    {
+        "hospital_id": 16,
+        "hospital_name": "Deenanath Mangeshkar Hospital",
+        "city": "Pune",
+        "lat": 18.52559412076121,
+        "lon": 73.85775881120789,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 56410,
+        "breakdown": {
+            "room_charges": 11282,
+            "doctor_fees": 16923,
+            "medicines": 8461,
+            "consumables": 5641,
+            "other": 14102
+        }
+    },
+    {
+        "hospital_id": 17,
+        "hospital_name": "Jehangir Hospital",
+        "city": "Pune",
+        "lat": 18.523042416406785,
+        "lon": 73.8810937588684,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 87407,
+        "breakdown": {
+            "room_charges": 17481,
+            "doctor_fees": 26222,
+            "medicines": 13111,
+            "consumables": 8740,
+            "other": 21851
+        }
+    },
+    {
+        "hospital_id": 17,
+        "hospital_name": "Jehangir Hospital",
+        "city": "Pune",
+        "lat": 18.523042416406785,
+        "lon": 73.8810937588684,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 67982,
+        "breakdown": {
+            "room_charges": 13596,
+            "doctor_fees": 20394,
+            "medicines": 10197,
+            "consumables": 6798,
+            "other": 16995
+        }
+    },
+    {
+        "hospital_id": 17,
+        "hospital_name": "Jehangir Hospital",
+        "city": "Pune",
+        "lat": 18.523042416406785,
+        "lon": 73.8810937588684,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 254149,
+        "breakdown": {
+            "room_charges": 50829,
+            "doctor_fees": 76244,
+            "medicines": 38122,
+            "consumables": 25414,
+            "other": 63537
+        }
+    },
+    {
+        "hospital_id": 17,
+        "hospital_name": "Jehangir Hospital",
+        "city": "Pune",
+        "lat": 18.523042416406785,
+        "lon": 73.8810937588684,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 403452,
+        "breakdown": {
+            "room_charges": 80690,
+            "doctor_fees": 121035,
+            "medicines": 60517,
+            "consumables": 40345,
+            "other": 100863
+        }
+    },
+    {
+        "hospital_id": 17,
+        "hospital_name": "Jehangir Hospital",
+        "city": "Pune",
+        "lat": 18.523042416406785,
+        "lon": 73.8810937588684,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 50881,
+        "breakdown": {
+            "room_charges": 10176,
+            "doctor_fees": 15264,
+            "medicines": 7632,
+            "consumables": 5088,
+            "other": 12720
+        }
+    },
+    {
+        "hospital_id": 17,
+        "hospital_name": "Jehangir Hospital",
+        "city": "Pune",
+        "lat": 18.523042416406785,
+        "lon": 73.8810937588684,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 59698,
+        "breakdown": {
+            "room_charges": 11939,
+            "doctor_fees": 17909,
+            "medicines": 8954,
+            "consumables": 5969,
+            "other": 14924
+        }
+    },
+    {
+        "hospital_id": 18,
+        "hospital_name": "Aditya Birla Memorial Hospital",
+        "city": "Pune",
+        "lat": 18.48437132644605,
+        "lon": 73.83855096463218,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 112860,
+        "breakdown": {
+            "room_charges": 22572,
+            "doctor_fees": 33858,
+            "medicines": 16929,
+            "consumables": 11286,
+            "other": 28215
+        }
+    },
+    {
+        "hospital_id": 18,
+        "hospital_name": "Aditya Birla Memorial Hospital",
+        "city": "Pune",
+        "lat": 18.48437132644605,
+        "lon": 73.83855096463218,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 83706,
+        "breakdown": {
+            "room_charges": 16741,
+            "doctor_fees": 25111,
+            "medicines": 12555,
+            "consumables": 8370,
+            "other": 20926
+        }
+    },
+    {
+        "hospital_id": 18,
+        "hospital_name": "Aditya Birla Memorial Hospital",
+        "city": "Pune",
+        "lat": 18.48437132644605,
+        "lon": 73.83855096463218,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 332766,
+        "breakdown": {
+            "room_charges": 66553,
+            "doctor_fees": 99829,
+            "medicines": 49914,
+            "consumables": 33276,
+            "other": 83191
+        }
+    },
+    {
+        "hospital_id": 18,
+        "hospital_name": "Aditya Birla Memorial Hospital",
+        "city": "Pune",
+        "lat": 18.48437132644605,
+        "lon": 73.83855096463218,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 437950,
+        "breakdown": {
+            "room_charges": 87590,
+            "doctor_fees": 131385,
+            "medicines": 65692,
+            "consumables": 43795,
+            "other": 109487
+        }
+    },
+    {
+        "hospital_id": 18,
+        "hospital_name": "Aditya Birla Memorial Hospital",
+        "city": "Pune",
+        "lat": 18.48437132644605,
+        "lon": 73.83855096463218,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 56288,
+        "breakdown": {
+            "room_charges": 11257,
+            "doctor_fees": 16886,
+            "medicines": 8443,
+            "consumables": 5628,
+            "other": 14072
+        }
+    },
+    {
+        "hospital_id": 18,
+        "hospital_name": "Aditya Birla Memorial Hospital",
+        "city": "Pune",
+        "lat": 18.48437132644605,
+        "lon": 73.83855096463218,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 73860,
+        "breakdown": {
+            "room_charges": 14772,
+            "doctor_fees": 22158,
+            "medicines": 11079,
+            "consumables": 7386,
+            "other": 18465
+        }
+    },
+    {
+        "hospital_id": 19,
+        "hospital_name": "Manipal Hospital Pune",
+        "city": "Pune",
+        "lat": 18.53912343065114,
+        "lon": 73.87807183892582,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 97147,
+        "breakdown": {
+            "room_charges": 19429,
+            "doctor_fees": 29144,
+            "medicines": 14572,
+            "consumables": 9714,
+            "other": 24286
+        }
+    },
+    {
+        "hospital_id": 19,
+        "hospital_name": "Manipal Hospital Pune",
+        "city": "Pune",
+        "lat": 18.53912343065114,
+        "lon": 73.87807183892582,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 75018,
+        "breakdown": {
+            "room_charges": 15003,
+            "doctor_fees": 22505,
+            "medicines": 11252,
+            "consumables": 7501,
+            "other": 18754
+        }
+    },
+    {
+        "hospital_id": 19,
+        "hospital_name": "Manipal Hospital Pune",
+        "city": "Pune",
+        "lat": 18.53912343065114,
+        "lon": 73.87807183892582,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 274780,
+        "breakdown": {
+            "room_charges": 54956,
+            "doctor_fees": 82434,
+            "medicines": 41217,
+            "consumables": 27478,
+            "other": 68695
+        }
+    },
+    {
+        "hospital_id": 19,
+        "hospital_name": "Manipal Hospital Pune",
+        "city": "Pune",
+        "lat": 18.53912343065114,
+        "lon": 73.87807183892582,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 400626,
+        "breakdown": {
+            "room_charges": 80125,
+            "doctor_fees": 120187,
+            "medicines": 60093,
+            "consumables": 40062,
+            "other": 100156
+        }
+    },
+    {
+        "hospital_id": 19,
+        "hospital_name": "Manipal Hospital Pune",
+        "city": "Pune",
+        "lat": 18.53912343065114,
+        "lon": 73.87807183892582,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 48254,
+        "breakdown": {
+            "room_charges": 9650,
+            "doctor_fees": 14476,
+            "medicines": 7238,
+            "consumables": 4825,
+            "other": 12063
+        }
+    },
+    {
         "hospital_id": 19,
         "hospital_name": "Manipal Hospital Pune",
         "city": "Pune",
@@ -2156,13 +2156,13 @@
         "reputation_score": 4.4,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 59438,
+        "estimated_total_cost": 60046,
         "breakdown": {
-            "room_charges": 11887,
-            "doctor_fees": 17831,
-            "medicines": 8915,
-            "consumables": 5943,
-            "other": 14859
+            "room_charges": 12009,
+            "doctor_fees": 18013,
+            "medicines": 9006,
+            "consumables": 6004,
+            "other": 15011
         }
     },
     {
@@ -2175,13 +2175,13 @@
         "reputation_score": 4.5,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 75231,
+        "estimated_total_cost": 69843,
         "breakdown": {
-            "room_charges": 15046,
-            "doctor_fees": 22569,
-            "medicines": 11284,
-            "consumables": 7523,
-            "other": 18807
+            "room_charges": 13968,
+            "doctor_fees": 20952,
+            "medicines": 10476,
+            "consumables": 6984,
+            "other": 17460
         }
     },
     {
@@ -2194,1609 +2194,1609 @@
         "reputation_score": 4.5,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 60629,
-        "breakdown": {
-            "room_charges": 12125,
-            "doctor_fees": 18188,
-            "medicines": 9094,
-            "consumables": 6062,
-            "other": 15157
-        }
-    },
-    {
-        "hospital_id": 20,
-        "hospital_name": "Noble Hospital",
-        "city": "Pune",
-        "lat": 18.4854687916324,
-        "lon": 73.82901895891357,
-        "tier": "Mid",
-        "reputation_score": 4.5,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 217964,
-        "breakdown": {
-            "room_charges": 43592,
-            "doctor_fees": 65389,
-            "medicines": 32694,
-            "consumables": 21796,
-            "other": 54491
-        }
-    },
-    {
-        "hospital_id": 20,
-        "hospital_name": "Noble Hospital",
-        "city": "Pune",
-        "lat": 18.4854687916324,
-        "lon": 73.82901895891357,
-        "tier": "Mid",
-        "reputation_score": 4.5,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 291047,
-        "breakdown": {
-            "room_charges": 58209,
-            "doctor_fees": 87314,
-            "medicines": 43657,
-            "consumables": 29104,
-            "other": 72761
-        }
-    },
-    {
-        "hospital_id": 20,
-        "hospital_name": "Noble Hospital",
-        "city": "Pune",
-        "lat": 18.4854687916324,
-        "lon": 73.82901895891357,
-        "tier": "Mid",
-        "reputation_score": 4.5,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 40642,
-        "breakdown": {
-            "room_charges": 8128,
-            "doctor_fees": 12192,
-            "medicines": 6096,
-            "consumables": 4064,
-            "other": 10160
-        }
-    },
-    {
-        "hospital_id": 20,
-        "hospital_name": "Noble Hospital",
-        "city": "Pune",
-        "lat": 18.4854687916324,
-        "lon": 73.82901895891357,
-        "tier": "Mid",
-        "reputation_score": 4.5,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 47271,
-        "breakdown": {
-            "room_charges": 9454,
-            "doctor_fees": 14181,
-            "medicines": 7090,
-            "consumables": 4727,
-            "other": 11817
-        }
-    },
-    {
-        "hospital_id": 21,
-        "hospital_name": "Sahyadri Super Speciality Hospital",
-        "city": "Pune",
-        "lat": 18.485589262307762,
-        "lon": 73.83468963399264,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 95779,
-        "breakdown": {
-            "room_charges": 19155,
-            "doctor_fees": 28733,
-            "medicines": 14366,
-            "consumables": 9577,
-            "other": 23944
-        }
-    },
-    {
-        "hospital_id": 21,
-        "hospital_name": "Sahyadri Super Speciality Hospital",
-        "city": "Pune",
-        "lat": 18.485589262307762,
-        "lon": 73.83468963399264,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 65868,
-        "breakdown": {
-            "room_charges": 13173,
-            "doctor_fees": 19760,
-            "medicines": 9880,
-            "consumables": 6586,
-            "other": 16467
-        }
-    },
-    {
-        "hospital_id": 21,
-        "hospital_name": "Sahyadri Super Speciality Hospital",
-        "city": "Pune",
-        "lat": 18.485589262307762,
-        "lon": 73.83468963399264,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 249335,
-        "breakdown": {
-            "room_charges": 49867,
-            "doctor_fees": 74800,
-            "medicines": 37400,
-            "consumables": 24933,
-            "other": 62333
-        }
-    },
-    {
-        "hospital_id": 21,
-        "hospital_name": "Sahyadri Super Speciality Hospital",
-        "city": "Pune",
-        "lat": 18.485589262307762,
-        "lon": 73.83468963399264,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 400955,
-        "breakdown": {
-            "room_charges": 80191,
-            "doctor_fees": 120286,
-            "medicines": 60143,
-            "consumables": 40095,
-            "other": 100238
-        }
-    },
-    {
-        "hospital_id": 21,
-        "hospital_name": "Sahyadri Super Speciality Hospital",
-        "city": "Pune",
-        "lat": 18.485589262307762,
-        "lon": 73.83468963399264,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 49583,
-        "breakdown": {
-            "room_charges": 9916,
-            "doctor_fees": 14874,
-            "medicines": 7437,
-            "consumables": 4958,
-            "other": 12395
-        }
-    },
-    {
-        "hospital_id": 21,
-        "hospital_name": "Sahyadri Super Speciality Hospital",
-        "city": "Pune",
-        "lat": 18.485589262307762,
-        "lon": 73.83468963399264,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 59094,
-        "breakdown": {
-            "room_charges": 11818,
-            "doctor_fees": 17728,
-            "medicines": 8864,
-            "consumables": 5909,
-            "other": 14773
-        }
-    },
-    {
-        "hospital_id": 22,
-        "hospital_name": "AIIMS Delhi",
-        "city": "Delhi",
-        "lat": 28.566611874285528,
-        "lon": 77.22941253662545,
-        "tier": "Mid",
-        "reputation_score": 3.7,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 75547,
-        "breakdown": {
-            "room_charges": 15109,
-            "doctor_fees": 22664,
-            "medicines": 11332,
-            "consumables": 7554,
-            "other": 18886
-        }
-    },
-    {
-        "hospital_id": 22,
-        "hospital_name": "AIIMS Delhi",
-        "city": "Delhi",
-        "lat": 28.566611874285528,
-        "lon": 77.22941253662545,
-        "tier": "Mid",
-        "reputation_score": 3.7,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 60586,
-        "breakdown": {
-            "room_charges": 12117,
-            "doctor_fees": 18175,
-            "medicines": 9087,
-            "consumables": 6058,
-            "other": 15146
-        }
-    },
-    {
-        "hospital_id": 22,
-        "hospital_name": "AIIMS Delhi",
-        "city": "Delhi",
-        "lat": 28.566611874285528,
-        "lon": 77.22941253662545,
-        "tier": "Mid",
-        "reputation_score": 3.7,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 193880,
-        "breakdown": {
-            "room_charges": 38776,
-            "doctor_fees": 58164,
-            "medicines": 29082,
-            "consumables": 19388,
-            "other": 48470
-        }
-    },
-    {
-        "hospital_id": 22,
-        "hospital_name": "AIIMS Delhi",
-        "city": "Delhi",
-        "lat": 28.566611874285528,
-        "lon": 77.22941253662545,
-        "tier": "Mid",
-        "reputation_score": 3.7,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 294515,
-        "breakdown": {
-            "room_charges": 58903,
-            "doctor_fees": 88354,
-            "medicines": 44177,
-            "consumables": 29451,
-            "other": 73628
-        }
-    },
-    {
-        "hospital_id": 22,
-        "hospital_name": "AIIMS Delhi",
-        "city": "Delhi",
-        "lat": 28.566611874285528,
-        "lon": 77.22941253662545,
-        "tier": "Mid",
-        "reputation_score": 3.7,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 40954,
-        "breakdown": {
-            "room_charges": 8190,
-            "doctor_fees": 12286,
-            "medicines": 6143,
-            "consumables": 4095,
-            "other": 10238
-        }
-    },
-    {
-        "hospital_id": 22,
-        "hospital_name": "AIIMS Delhi",
-        "city": "Delhi",
-        "lat": 28.566611874285528,
-        "lon": 77.22941253662545,
-        "tier": "Mid",
-        "reputation_score": 3.7,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 48805,
-        "breakdown": {
-            "room_charges": 9761,
-            "doctor_fees": 14641,
-            "medicines": 7320,
-            "consumables": 4880,
-            "other": 12201
-        }
-    },
-    {
-        "hospital_id": 23,
-        "hospital_name": "Indraprastha Apollo Hospital",
-        "city": "Delhi",
-        "lat": 28.619648775458327,
-        "lon": 77.24480593919645,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 114800,
-        "breakdown": {
-            "room_charges": 22960,
-            "doctor_fees": 34440,
-            "medicines": 17220,
-            "consumables": 11480,
-            "other": 28700
-        }
-    },
-    {
-        "hospital_id": 23,
-        "hospital_name": "Indraprastha Apollo Hospital",
-        "city": "Delhi",
-        "lat": 28.619648775458327,
-        "lon": 77.24480593919645,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 78450,
-        "breakdown": {
-            "room_charges": 15690,
-            "doctor_fees": 23535,
-            "medicines": 11767,
-            "consumables": 7845,
-            "other": 19612
-        }
-    },
-    {
-        "hospital_id": 23,
-        "hospital_name": "Indraprastha Apollo Hospital",
-        "city": "Delhi",
-        "lat": 28.619648775458327,
-        "lon": 77.24480593919645,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 294004,
-        "breakdown": {
-            "room_charges": 58800,
-            "doctor_fees": 88201,
-            "medicines": 44100,
-            "consumables": 29400,
-            "other": 73501
-        }
-    },
-    {
-        "hospital_id": 23,
-        "hospital_name": "Indraprastha Apollo Hospital",
-        "city": "Delhi",
-        "lat": 28.619648775458327,
-        "lon": 77.24480593919645,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 407176,
-        "breakdown": {
-            "room_charges": 81435,
-            "doctor_fees": 122152,
-            "medicines": 61076,
-            "consumables": 40717,
-            "other": 101794
-        }
-    },
-    {
-        "hospital_id": 23,
-        "hospital_name": "Indraprastha Apollo Hospital",
-        "city": "Delhi",
-        "lat": 28.619648775458327,
-        "lon": 77.24480593919645,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 58814,
-        "breakdown": {
-            "room_charges": 11762,
-            "doctor_fees": 17644,
-            "medicines": 8822,
-            "consumables": 5881,
-            "other": 14703
-        }
-    },
-    {
-        "hospital_id": 23,
-        "hospital_name": "Indraprastha Apollo Hospital",
-        "city": "Delhi",
-        "lat": 28.619648775458327,
-        "lon": 77.24480593919645,
-        "tier": "Premium",
-        "reputation_score": 4.8,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 62062,
-        "breakdown": {
-            "room_charges": 12412,
-            "doctor_fees": 18618,
-            "medicines": 9309,
-            "consumables": 6206,
-            "other": 15515
-        }
-    },
-    {
-        "hospital_id": 24,
-        "hospital_name": "Sir Ganga Ram Hospital",
-        "city": "Delhi",
-        "lat": 28.616233573862253,
-        "lon": 77.22425667179556,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 81077,
-        "breakdown": {
-            "room_charges": 16215,
-            "doctor_fees": 24323,
-            "medicines": 12161,
-            "consumables": 8107,
-            "other": 20269
-        }
-    },
-    {
-        "hospital_id": 24,
-        "hospital_name": "Sir Ganga Ram Hospital",
-        "city": "Delhi",
-        "lat": 28.616233573862253,
-        "lon": 77.22425667179556,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 61788,
-        "breakdown": {
-            "room_charges": 12357,
-            "doctor_fees": 18536,
-            "medicines": 9268,
-            "consumables": 6178,
-            "other": 15447
-        }
-    },
-    {
-        "hospital_id": 24,
-        "hospital_name": "Sir Ganga Ram Hospital",
-        "city": "Delhi",
-        "lat": 28.616233573862253,
-        "lon": 77.22425667179556,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 242090,
-        "breakdown": {
-            "room_charges": 48418,
-            "doctor_fees": 72627,
-            "medicines": 36313,
-            "consumables": 24209,
-            "other": 60522
-        }
-    },
-    {
-        "hospital_id": 24,
-        "hospital_name": "Sir Ganga Ram Hospital",
-        "city": "Delhi",
-        "lat": 28.616233573862253,
-        "lon": 77.22425667179556,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 398005,
-        "breakdown": {
-            "room_charges": 79601,
-            "doctor_fees": 119401,
-            "medicines": 59700,
-            "consumables": 39800,
-            "other": 99501
-        }
-    },
-    {
-        "hospital_id": 24,
-        "hospital_name": "Sir Ganga Ram Hospital",
-        "city": "Delhi",
-        "lat": 28.616233573862253,
-        "lon": 77.22425667179556,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 47994,
-        "breakdown": {
-            "room_charges": 9598,
-            "doctor_fees": 14398,
-            "medicines": 7199,
-            "consumables": 4799,
-            "other": 11998
-        }
-    },
-    {
-        "hospital_id": 24,
-        "hospital_name": "Sir Ganga Ram Hospital",
-        "city": "Delhi",
-        "lat": 28.616233573862253,
-        "lon": 77.22425667179556,
-        "tier": "High",
-        "reputation_score": 3.6,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 63426,
-        "breakdown": {
-            "room_charges": 12685,
-            "doctor_fees": 19027,
-            "medicines": 9513,
-            "consumables": 6342,
-            "other": 15856
-        }
-    },
-    {
-        "hospital_id": 25,
-        "hospital_name": "BLK-Max Super Speciality Hospital",
-        "city": "Delhi",
-        "lat": 28.568216151476225,
-        "lon": 77.18408832523843,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 96236,
-        "breakdown": {
-            "room_charges": 19247,
-            "doctor_fees": 28870,
-            "medicines": 14435,
-            "consumables": 9623,
-            "other": 24059
-        }
-    },
-    {
-        "hospital_id": 25,
-        "hospital_name": "BLK-Max Super Speciality Hospital",
-        "city": "Delhi",
-        "lat": 28.568216151476225,
-        "lon": 77.18408832523843,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 67986,
-        "breakdown": {
-            "room_charges": 13597,
-            "doctor_fees": 20395,
-            "medicines": 10197,
-            "consumables": 6798,
-            "other": 16996
-        }
-    },
-    {
-        "hospital_id": 25,
-        "hospital_name": "BLK-Max Super Speciality Hospital",
-        "city": "Delhi",
-        "lat": 28.568216151476225,
-        "lon": 77.18408832523843,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 279433,
-        "breakdown": {
-            "room_charges": 55886,
-            "doctor_fees": 83829,
-            "medicines": 41914,
-            "consumables": 27943,
-            "other": 69858
-        }
-    },
-    {
-        "hospital_id": 25,
-        "hospital_name": "BLK-Max Super Speciality Hospital",
-        "city": "Delhi",
-        "lat": 28.568216151476225,
-        "lon": 77.18408832523843,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 389292,
-        "breakdown": {
-            "room_charges": 77858,
-            "doctor_fees": 116787,
-            "medicines": 58393,
-            "consumables": 38929,
-            "other": 97323
-        }
-    },
-    {
-        "hospital_id": 25,
-        "hospital_name": "BLK-Max Super Speciality Hospital",
-        "city": "Delhi",
-        "lat": 28.568216151476225,
-        "lon": 77.18408832523843,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 46464,
-        "breakdown": {
-            "room_charges": 9292,
-            "doctor_fees": 13939,
-            "medicines": 6969,
-            "consumables": 4646,
-            "other": 11616
-        }
-    },
-    {
-        "hospital_id": 25,
-        "hospital_name": "BLK-Max Super Speciality Hospital",
-        "city": "Delhi",
-        "lat": 28.568216151476225,
-        "lon": 77.18408832523843,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 53165,
-        "breakdown": {
-            "room_charges": 10633,
-            "doctor_fees": 15949,
-            "medicines": 7974,
-            "consumables": 5316,
-            "other": 13291
-        }
-    },
-    {
-        "hospital_id": 26,
-        "hospital_name": "Fortis Escorts Heart Institute",
-        "city": "Delhi",
-        "lat": 28.570801232060276,
-        "lon": 77.17863177782532,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 110395,
-        "breakdown": {
-            "room_charges": 22079,
-            "doctor_fees": 33118,
-            "medicines": 16559,
-            "consumables": 11039,
-            "other": 27598
-        }
-    },
-    {
-        "hospital_id": 26,
-        "hospital_name": "Fortis Escorts Heart Institute",
-        "city": "Delhi",
-        "lat": 28.570801232060276,
-        "lon": 77.17863177782532,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 74489,
-        "breakdown": {
-            "room_charges": 14897,
-            "doctor_fees": 22346,
-            "medicines": 11173,
-            "consumables": 7448,
-            "other": 18622
-        }
-    },
-    {
-        "hospital_id": 26,
-        "hospital_name": "Fortis Escorts Heart Institute",
-        "city": "Delhi",
-        "lat": 28.570801232060276,
-        "lon": 77.17863177782532,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 330173,
-        "breakdown": {
-            "room_charges": 66034,
-            "doctor_fees": 99051,
-            "medicines": 49525,
-            "consumables": 33017,
-            "other": 82543
-        }
-    },
-    {
-        "hospital_id": 26,
-        "hospital_name": "Fortis Escorts Heart Institute",
-        "city": "Delhi",
-        "lat": 28.570801232060276,
-        "lon": 77.17863177782532,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 455195,
-        "breakdown": {
-            "room_charges": 91039,
-            "doctor_fees": 136558,
-            "medicines": 68279,
-            "consumables": 45519,
-            "other": 113798
-        }
-    },
-    {
-        "hospital_id": 26,
-        "hospital_name": "Fortis Escorts Heart Institute",
-        "city": "Delhi",
-        "lat": 28.570801232060276,
-        "lon": 77.17863177782532,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 58479,
-        "breakdown": {
-            "room_charges": 11695,
-            "doctor_fees": 17543,
-            "medicines": 8771,
-            "consumables": 5847,
-            "other": 14619
-        }
-    },
-    {
-        "hospital_id": 26,
-        "hospital_name": "Fortis Escorts Heart Institute",
-        "city": "Delhi",
-        "lat": 28.570801232060276,
-        "lon": 77.17863177782532,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 67279,
-        "breakdown": {
-            "room_charges": 13455,
-            "doctor_fees": 20183,
-            "medicines": 10091,
-            "consumables": 6727,
-            "other": 16819
-        }
-    },
-    {
-        "hospital_id": 27,
-        "hospital_name": "Medanta The Medicity",
-        "city": "Delhi",
-        "lat": 28.64848506028053,
-        "lon": 77.18551843460757,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 99463,
-        "breakdown": {
-            "room_charges": 19892,
-            "doctor_fees": 29838,
-            "medicines": 14919,
-            "consumables": 9946,
-            "other": 24865
-        }
-    },
-    {
-        "hospital_id": 27,
-        "hospital_name": "Medanta The Medicity",
-        "city": "Delhi",
-        "lat": 28.64848506028053,
-        "lon": 77.18551843460757,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 74362,
-        "breakdown": {
-            "room_charges": 14872,
-            "doctor_fees": 22308,
-            "medicines": 11154,
-            "consumables": 7436,
-            "other": 18590
-        }
-    },
-    {
-        "hospital_id": 27,
-        "hospital_name": "Medanta The Medicity",
-        "city": "Delhi",
-        "lat": 28.64848506028053,
-        "lon": 77.18551843460757,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 326464,
-        "breakdown": {
-            "room_charges": 65292,
-            "doctor_fees": 97939,
-            "medicines": 48969,
-            "consumables": 32646,
-            "other": 81616
-        }
-    },
-    {
-        "hospital_id": 27,
-        "hospital_name": "Medanta The Medicity",
-        "city": "Delhi",
-        "lat": 28.64848506028053,
-        "lon": 77.18551843460757,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 464787,
-        "breakdown": {
-            "room_charges": 92957,
-            "doctor_fees": 139436,
-            "medicines": 69718,
-            "consumables": 46478,
-            "other": 116196
-        }
-    },
-    {
-        "hospital_id": 27,
-        "hospital_name": "Medanta The Medicity",
-        "city": "Delhi",
-        "lat": 28.64848506028053,
-        "lon": 77.18551843460757,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 50980,
-        "breakdown": {
-            "room_charges": 10196,
-            "doctor_fees": 15294,
-            "medicines": 7647,
-            "consumables": 5098,
-            "other": 12745
-        }
-    },
-    {
-        "hospital_id": 27,
-        "hospital_name": "Medanta The Medicity",
-        "city": "Delhi",
-        "lat": 28.64848506028053,
-        "lon": 77.18551843460757,
-        "tier": "Premium",
-        "reputation_score": 4.5,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 65583,
-        "breakdown": {
-            "room_charges": 13116,
-            "doctor_fees": 19674,
-            "medicines": 9837,
-            "consumables": 6558,
-            "other": 16395
-        }
-    },
-    {
-        "hospital_id": 28,
-        "hospital_name": "Max Super Speciality Hospital Saket",
-        "city": "Delhi",
-        "lat": 28.59168132917282,
-        "lon": 77.21597076655686,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 81255,
-        "breakdown": {
-            "room_charges": 16251,
-            "doctor_fees": 24376,
-            "medicines": 12188,
-            "consumables": 8125,
-            "other": 20313
-        }
-    },
-    {
-        "hospital_id": 28,
-        "hospital_name": "Max Super Speciality Hospital Saket",
-        "city": "Delhi",
-        "lat": 28.59168132917282,
-        "lon": 77.21597076655686,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 73122,
-        "breakdown": {
-            "room_charges": 14624,
-            "doctor_fees": 21936,
-            "medicines": 10968,
-            "consumables": 7312,
-            "other": 18280
-        }
-    },
-    {
-        "hospital_id": 28,
-        "hospital_name": "Max Super Speciality Hospital Saket",
-        "city": "Delhi",
-        "lat": 28.59168132917282,
-        "lon": 77.21597076655686,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 249844,
-        "breakdown": {
-            "room_charges": 49968,
-            "doctor_fees": 74953,
-            "medicines": 37476,
-            "consumables": 24984,
-            "other": 62461
-        }
-    },
-    {
-        "hospital_id": 28,
-        "hospital_name": "Max Super Speciality Hospital Saket",
-        "city": "Delhi",
-        "lat": 28.59168132917282,
-        "lon": 77.21597076655686,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 396344,
-        "breakdown": {
-            "room_charges": 79268,
-            "doctor_fees": 118903,
-            "medicines": 59451,
-            "consumables": 39634,
-            "other": 99086
-        }
-    },
-    {
-        "hospital_id": 28,
-        "hospital_name": "Max Super Speciality Hospital Saket",
-        "city": "Delhi",
-        "lat": 28.59168132917282,
-        "lon": 77.21597076655686,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 47297,
-        "breakdown": {
-            "room_charges": 9459,
-            "doctor_fees": 14189,
-            "medicines": 7094,
-            "consumables": 4729,
-            "other": 11824
-        }
-    },
-    {
-        "hospital_id": 28,
-        "hospital_name": "Max Super Speciality Hospital Saket",
-        "city": "Delhi",
-        "lat": 28.59168132917282,
-        "lon": 77.21597076655686,
-        "tier": "High",
-        "reputation_score": 4.4,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 52277,
-        "breakdown": {
-            "room_charges": 10455,
-            "doctor_fees": 15683,
-            "medicines": 7841,
-            "consumables": 5227,
-            "other": 13069
-        }
-    },
-    {
-        "hospital_id": 29,
-        "hospital_name": "Aster CMI Hospital",
-        "city": "Bangalore",
-        "lat": 13.006716885769654,
-        "lon": 77.61217385446214,
-        "tier": "Premium",
-        "reputation_score": 4.1,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 97898,
-        "breakdown": {
-            "room_charges": 19579,
-            "doctor_fees": 29369,
-            "medicines": 14684,
-            "consumables": 9789,
-            "other": 24474
-        }
-    },
-    {
-        "hospital_id": 29,
-        "hospital_name": "Aster CMI Hospital",
-        "city": "Bangalore",
-        "lat": 13.006716885769654,
-        "lon": 77.61217385446214,
-        "tier": "Premium",
-        "reputation_score": 4.1,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 78731,
-        "breakdown": {
-            "room_charges": 15746,
-            "doctor_fees": 23619,
-            "medicines": 11809,
-            "consumables": 7873,
-            "other": 19682
-        }
-    },
-    {
-        "hospital_id": 29,
-        "hospital_name": "Aster CMI Hospital",
-        "city": "Bangalore",
-        "lat": 13.006716885769654,
-        "lon": 77.61217385446214,
-        "tier": "Premium",
-        "reputation_score": 4.1,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 336011,
-        "breakdown": {
-            "room_charges": 67202,
-            "doctor_fees": 100803,
-            "medicines": 50401,
-            "consumables": 33601,
-            "other": 84002
-        }
-    },
-    {
-        "hospital_id": 29,
-        "hospital_name": "Aster CMI Hospital",
-        "city": "Bangalore",
-        "lat": 13.006716885769654,
-        "lon": 77.61217385446214,
-        "tier": "Premium",
-        "reputation_score": 4.1,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 414440,
-        "breakdown": {
-            "room_charges": 82888,
-            "doctor_fees": 124332,
-            "medicines": 62166,
-            "consumables": 41444,
-            "other": 103610
-        }
-    },
-    {
-        "hospital_id": 29,
-        "hospital_name": "Aster CMI Hospital",
-        "city": "Bangalore",
-        "lat": 13.006716885769654,
-        "lon": 77.61217385446214,
-        "tier": "Premium",
-        "reputation_score": 4.1,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 60300,
-        "breakdown": {
-            "room_charges": 12060,
-            "doctor_fees": 18090,
-            "medicines": 9045,
-            "consumables": 6030,
-            "other": 15075
-        }
-    },
-    {
-        "hospital_id": 29,
-        "hospital_name": "Aster CMI Hospital",
-        "city": "Bangalore",
-        "lat": 13.006716885769654,
-        "lon": 77.61217385446214,
-        "tier": "Premium",
-        "reputation_score": 4.1,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 66266,
-        "breakdown": {
-            "room_charges": 13253,
-            "doctor_fees": 19879,
-            "medicines": 9939,
-            "consumables": 6626,
-            "other": 16566
-        }
-    },
-    {
-        "hospital_id": 30,
-        "hospital_name": "Manipal Hospital Old Airport Road",
-        "city": "Bangalore",
-        "lat": 12.983024420892374,
-        "lon": 77.59834862159641,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 97826,
-        "breakdown": {
-            "room_charges": 19565,
-            "doctor_fees": 29347,
-            "medicines": 14673,
-            "consumables": 9782,
-            "other": 24456
-        }
-    },
-    {
-        "hospital_id": 30,
-        "hospital_name": "Manipal Hospital Old Airport Road",
-        "city": "Bangalore",
-        "lat": 12.983024420892374,
-        "lon": 77.59834862159641,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 86103,
-        "breakdown": {
-            "room_charges": 17220,
-            "doctor_fees": 25830,
-            "medicines": 12915,
-            "consumables": 8610,
-            "other": 21525
-        }
-    },
-    {
-        "hospital_id": 30,
-        "hospital_name": "Manipal Hospital Old Airport Road",
-        "city": "Bangalore",
-        "lat": 12.983024420892374,
-        "lon": 77.59834862159641,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 342929,
-        "breakdown": {
-            "room_charges": 68585,
-            "doctor_fees": 102878,
-            "medicines": 51439,
-            "consumables": 34292,
-            "other": 85732
-        }
-    },
-    {
-        "hospital_id": 30,
-        "hospital_name": "Manipal Hospital Old Airport Road",
-        "city": "Bangalore",
-        "lat": 12.983024420892374,
-        "lon": 77.59834862159641,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 480832,
-        "breakdown": {
-            "room_charges": 96166,
-            "doctor_fees": 144249,
-            "medicines": 72124,
-            "consumables": 48083,
-            "other": 120208
-        }
-    },
-    {
-        "hospital_id": 30,
-        "hospital_name": "Manipal Hospital Old Airport Road",
-        "city": "Bangalore",
-        "lat": 12.983024420892374,
-        "lon": 77.59834862159641,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 56844,
-        "breakdown": {
-            "room_charges": 11368,
-            "doctor_fees": 17053,
-            "medicines": 8526,
-            "consumables": 5684,
-            "other": 14211
-        }
-    },
-    {
-        "hospital_id": 30,
-        "hospital_name": "Manipal Hospital Old Airport Road",
-        "city": "Bangalore",
-        "lat": 12.983024420892374,
-        "lon": 77.59834862159641,
-        "tier": "Premium",
-        "reputation_score": 4.2,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 70633,
-        "breakdown": {
-            "room_charges": 14126,
-            "doctor_fees": 21189,
-            "medicines": 10594,
-            "consumables": 7063,
-            "other": 17658
-        }
-    },
-    {
-        "hospital_id": 31,
-        "hospital_name": "Fortis Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 13.008012924242305,
-        "lon": 77.62197485251173,
-        "tier": "High",
-        "reputation_score": 3.9,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 81647,
-        "breakdown": {
-            "room_charges": 16329,
-            "doctor_fees": 24494,
-            "medicines": 12247,
-            "consumables": 8164,
-            "other": 20411
-        }
-    },
-    {
-        "hospital_id": 31,
-        "hospital_name": "Fortis Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 13.008012924242305,
-        "lon": 77.62197485251173,
-        "tier": "High",
-        "reputation_score": 3.9,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 69429,
-        "breakdown": {
-            "room_charges": 13885,
-            "doctor_fees": 20828,
-            "medicines": 10414,
-            "consumables": 6942,
-            "other": 17357
-        }
-    },
-    {
-        "hospital_id": 31,
-        "hospital_name": "Fortis Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 13.008012924242305,
-        "lon": 77.62197485251173,
-        "tier": "High",
-        "reputation_score": 3.9,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 276034,
-        "breakdown": {
-            "room_charges": 55206,
-            "doctor_fees": 82810,
-            "medicines": 41405,
-            "consumables": 27603,
-            "other": 69008
-        }
-    },
-    {
-        "hospital_id": 31,
-        "hospital_name": "Fortis Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 13.008012924242305,
-        "lon": 77.62197485251173,
-        "tier": "High",
-        "reputation_score": 3.9,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 346620,
-        "breakdown": {
-            "room_charges": 69324,
-            "doctor_fees": 103986,
-            "medicines": 51993,
-            "consumables": 34662,
-            "other": 86655
-        }
-    },
-    {
-        "hospital_id": 31,
-        "hospital_name": "Fortis Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 13.008012924242305,
-        "lon": 77.62197485251173,
-        "tier": "High",
-        "reputation_score": 3.9,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 50219,
-        "breakdown": {
-            "room_charges": 10043,
-            "doctor_fees": 15065,
-            "medicines": 7532,
-            "consumables": 5021,
-            "other": 12554
-        }
-    },
-    {
-        "hospital_id": 31,
-        "hospital_name": "Fortis Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 13.008012924242305,
-        "lon": 77.62197485251173,
-        "tier": "High",
-        "reputation_score": 3.9,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 59789,
-        "breakdown": {
-            "room_charges": 11957,
-            "doctor_fees": 17936,
-            "medicines": 8968,
-            "consumables": 5978,
-            "other": 14947
-        }
-    },
-    {
-        "hospital_id": 32,
-        "hospital_name": "Apollo Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 12.9551158722617,
-        "lon": 77.61896535972562,
-        "tier": "High",
-        "reputation_score": 3.7,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 95453,
-        "breakdown": {
-            "room_charges": 19090,
-            "doctor_fees": 28635,
-            "medicines": 14317,
-            "consumables": 9545,
-            "other": 23863
-        }
-    },
-    {
-        "hospital_id": 32,
-        "hospital_name": "Apollo Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 12.9551158722617,
-        "lon": 77.61896535972562,
-        "tier": "High",
-        "reputation_score": 3.7,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 69191,
-        "breakdown": {
-            "room_charges": 13838,
-            "doctor_fees": 20757,
-            "medicines": 10378,
-            "consumables": 6919,
-            "other": 17297
-        }
-    },
-    {
-        "hospital_id": 32,
-        "hospital_name": "Apollo Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 12.9551158722617,
-        "lon": 77.61896535972562,
-        "tier": "High",
-        "reputation_score": 3.7,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 285074,
-        "breakdown": {
-            "room_charges": 57014,
-            "doctor_fees": 85522,
-            "medicines": 42761,
-            "consumables": 28507,
-            "other": 71268
-        }
-    },
-    {
-        "hospital_id": 32,
-        "hospital_name": "Apollo Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 12.9551158722617,
-        "lon": 77.61896535972562,
-        "tier": "High",
-        "reputation_score": 3.7,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 398784,
-        "breakdown": {
-            "room_charges": 79756,
-            "doctor_fees": 119635,
-            "medicines": 59817,
-            "consumables": 39878,
-            "other": 99696
-        }
-    },
-    {
-        "hospital_id": 32,
-        "hospital_name": "Apollo Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 12.9551158722617,
-        "lon": 77.61896535972562,
-        "tier": "High",
-        "reputation_score": 3.7,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 44768,
-        "breakdown": {
-            "room_charges": 8953,
-            "doctor_fees": 13430,
-            "medicines": 6715,
-            "consumables": 4476,
-            "other": 11192
-        }
-    },
-    {
-        "hospital_id": 32,
-        "hospital_name": "Apollo Hospital Bannerghatta Road",
-        "city": "Bangalore",
-        "lat": 12.9551158722617,
-        "lon": 77.61896535972562,
-        "tier": "High",
-        "reputation_score": 3.7,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 53565,
-        "breakdown": {
-            "room_charges": 10713,
-            "doctor_fees": 16069,
-            "medicines": 8034,
-            "consumables": 5356,
-            "other": 13391
-        }
-    },
-    {
-        "hospital_id": 33,
-        "hospital_name": "Sakra World Hospital",
-        "city": "Bangalore",
-        "lat": 12.936633189829525,
-        "lon": 77.5458212278305,
-        "tier": "High",
-        "reputation_score": 4.0,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 90435,
-        "breakdown": {
-            "room_charges": 18087,
-            "doctor_fees": 27130,
-            "medicines": 13565,
-            "consumables": 9043,
-            "other": 22608
-        }
-    },
-    {
-        "hospital_id": 33,
-        "hospital_name": "Sakra World Hospital",
-        "city": "Bangalore",
-        "lat": 12.936633189829525,
-        "lon": 77.5458212278305,
-        "tier": "High",
-        "reputation_score": 4.0,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 72859,
-        "breakdown": {
-            "room_charges": 14571,
-            "doctor_fees": 21857,
-            "medicines": 10928,
-            "consumables": 7285,
-            "other": 18214
-        }
-    },
-    {
-        "hospital_id": 33,
-        "hospital_name": "Sakra World Hospital",
-        "city": "Bangalore",
-        "lat": 12.936633189829525,
-        "lon": 77.5458212278305,
-        "tier": "High",
-        "reputation_score": 4.0,
-        "procedure": "Angioplasty",
-        "icd10_code": "I25.10",
-        "estimated_total_cost": 250919,
-        "breakdown": {
-            "room_charges": 50183,
-            "doctor_fees": 75275,
-            "medicines": 37637,
-            "consumables": 25091,
-            "other": 62729
-        }
-    },
-    {
-        "hospital_id": 33,
-        "hospital_name": "Sakra World Hospital",
-        "city": "Bangalore",
-        "lat": 12.936633189829525,
-        "lon": 77.5458212278305,
-        "tier": "High",
-        "reputation_score": 4.0,
-        "procedure": "Knee Replacement",
-        "icd10_code": "M17.1",
-        "estimated_total_cost": 369637,
-        "breakdown": {
-            "room_charges": 73927,
-            "doctor_fees": 110891,
-            "medicines": 55445,
-            "consumables": 36963,
-            "other": 92409
-        }
-    },
-    {
-        "hospital_id": 33,
-        "hospital_name": "Sakra World Hospital",
-        "city": "Bangalore",
-        "lat": 12.936633189829525,
-        "lon": 77.5458212278305,
-        "tier": "High",
-        "reputation_score": 4.0,
-        "procedure": "Cataract Surgery",
-        "icd10_code": "H25.0",
-        "estimated_total_cost": 49537,
-        "breakdown": {
-            "room_charges": 9907,
-            "doctor_fees": 14861,
-            "medicines": 7430,
-            "consumables": 4953,
-            "other": 12384
-        }
-    },
-    {
-        "hospital_id": 33,
-        "hospital_name": "Sakra World Hospital",
-        "city": "Bangalore",
-        "lat": 12.936633189829525,
-        "lon": 77.5458212278305,
-        "tier": "High",
-        "reputation_score": 4.0,
-        "procedure": "Hernia Repair",
-        "icd10_code": "K40",
-        "estimated_total_cost": 53158,
-        "breakdown": {
-            "room_charges": 10631,
-            "doctor_fees": 15947,
-            "medicines": 7973,
-            "consumables": 5315,
-            "other": 13289
-        }
-    },
-    {
-        "hospital_id": 34,
-        "hospital_name": "Narayana Health City",
-        "city": "Bangalore",
-        "lat": 12.961828089878404,
-        "lon": 77.63117505502343,
-        "tier": "Mid",
-        "reputation_score": 3.9,
-        "procedure": "Kidney Stone Removal",
-        "icd10_code": "N20.0",
-        "estimated_total_cost": 70854,
-        "breakdown": {
-            "room_charges": 14170,
-            "doctor_fees": 21256,
-            "medicines": 10628,
-            "consumables": 7085,
-            "other": 17713
-        }
-    },
-    {
-        "hospital_id": 34,
-        "hospital_name": "Narayana Health City",
-        "city": "Bangalore",
-        "lat": 12.961828089878404,
-        "lon": 77.63117505502343,
-        "tier": "Mid",
-        "reputation_score": 3.9,
-        "procedure": "Appendectomy",
-        "icd10_code": "K35",
-        "estimated_total_cost": 56781,
-        "breakdown": {
-            "room_charges": 11356,
-            "doctor_fees": 17034,
-            "medicines": 8517,
+        "estimated_total_cost": 56789,
+        "breakdown": {
+            "room_charges": 11357,
+            "doctor_fees": 17036,
+            "medicines": 8518,
             "consumables": 5678,
-            "other": 14195
+            "other": 14197
+        }
+    },
+    {
+        "hospital_id": 20,
+        "hospital_name": "Noble Hospital",
+        "city": "Pune",
+        "lat": 18.4854687916324,
+        "lon": 73.82901895891357,
+        "tier": "Mid",
+        "reputation_score": 4.5,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 193622,
+        "breakdown": {
+            "room_charges": 38724,
+            "doctor_fees": 58086,
+            "medicines": 29043,
+            "consumables": 19362,
+            "other": 48405
+        }
+    },
+    {
+        "hospital_id": 20,
+        "hospital_name": "Noble Hospital",
+        "city": "Pune",
+        "lat": 18.4854687916324,
+        "lon": 73.82901895891357,
+        "tier": "Mid",
+        "reputation_score": 4.5,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 322824,
+        "breakdown": {
+            "room_charges": 64564,
+            "doctor_fees": 96847,
+            "medicines": 48423,
+            "consumables": 32282,
+            "other": 80706
+        }
+    },
+    {
+        "hospital_id": 20,
+        "hospital_name": "Noble Hospital",
+        "city": "Pune",
+        "lat": 18.4854687916324,
+        "lon": 73.82901895891357,
+        "tier": "Mid",
+        "reputation_score": 4.5,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 40025,
+        "breakdown": {
+            "room_charges": 8005,
+            "doctor_fees": 12007,
+            "medicines": 6003,
+            "consumables": 4002,
+            "other": 10006
+        }
+    },
+    {
+        "hospital_id": 20,
+        "hospital_name": "Noble Hospital",
+        "city": "Pune",
+        "lat": 18.4854687916324,
+        "lon": 73.82901895891357,
+        "tier": "Mid",
+        "reputation_score": 4.5,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 49133,
+        "breakdown": {
+            "room_charges": 9826,
+            "doctor_fees": 14739,
+            "medicines": 7369,
+            "consumables": 4913,
+            "other": 12283
+        }
+    },
+    {
+        "hospital_id": 21,
+        "hospital_name": "Sahyadri Super Speciality Hospital",
+        "city": "Pune",
+        "lat": 18.485589262307762,
+        "lon": 73.83468963399264,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 82190,
+        "breakdown": {
+            "room_charges": 16438,
+            "doctor_fees": 24657,
+            "medicines": 12328,
+            "consumables": 8219,
+            "other": 20547
+        }
+    },
+    {
+        "hospital_id": 21,
+        "hospital_name": "Sahyadri Super Speciality Hospital",
+        "city": "Pune",
+        "lat": 18.485589262307762,
+        "lon": 73.83468963399264,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 71302,
+        "breakdown": {
+            "room_charges": 14260,
+            "doctor_fees": 21390,
+            "medicines": 10695,
+            "consumables": 7130,
+            "other": 17825
+        }
+    },
+    {
+        "hospital_id": 21,
+        "hospital_name": "Sahyadri Super Speciality Hospital",
+        "city": "Pune",
+        "lat": 18.485589262307762,
+        "lon": 73.83468963399264,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 256073,
+        "breakdown": {
+            "room_charges": 51214,
+            "doctor_fees": 76821,
+            "medicines": 38410,
+            "consumables": 25607,
+            "other": 64018
+        }
+    },
+    {
+        "hospital_id": 21,
+        "hospital_name": "Sahyadri Super Speciality Hospital",
+        "city": "Pune",
+        "lat": 18.485589262307762,
+        "lon": 73.83468963399264,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 362924,
+        "breakdown": {
+            "room_charges": 72584,
+            "doctor_fees": 108877,
+            "medicines": 54438,
+            "consumables": 36292,
+            "other": 90731
+        }
+    },
+    {
+        "hospital_id": 21,
+        "hospital_name": "Sahyadri Super Speciality Hospital",
+        "city": "Pune",
+        "lat": 18.485589262307762,
+        "lon": 73.83468963399264,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 48071,
+        "breakdown": {
+            "room_charges": 9614,
+            "doctor_fees": 14421,
+            "medicines": 7210,
+            "consumables": 4807,
+            "other": 12017
+        }
+    },
+    {
+        "hospital_id": 21,
+        "hospital_name": "Sahyadri Super Speciality Hospital",
+        "city": "Pune",
+        "lat": 18.485589262307762,
+        "lon": 73.83468963399264,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 55651,
+        "breakdown": {
+            "room_charges": 11130,
+            "doctor_fees": 16695,
+            "medicines": 8347,
+            "consumables": 5565,
+            "other": 13912
+        }
+    },
+    {
+        "hospital_id": 22,
+        "hospital_name": "AIIMS Delhi",
+        "city": "Delhi",
+        "lat": 28.566611874285528,
+        "lon": 77.22941253662545,
+        "tier": "Mid",
+        "reputation_score": 3.7,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 76633,
+        "breakdown": {
+            "room_charges": 15326,
+            "doctor_fees": 22989,
+            "medicines": 11494,
+            "consumables": 7663,
+            "other": 19158
+        }
+    },
+    {
+        "hospital_id": 22,
+        "hospital_name": "AIIMS Delhi",
+        "city": "Delhi",
+        "lat": 28.566611874285528,
+        "lon": 77.22941253662545,
+        "tier": "Mid",
+        "reputation_score": 3.7,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 55717,
+        "breakdown": {
+            "room_charges": 11143,
+            "doctor_fees": 16715,
+            "medicines": 8357,
+            "consumables": 5571,
+            "other": 13929
+        }
+    },
+    {
+        "hospital_id": 22,
+        "hospital_name": "AIIMS Delhi",
+        "city": "Delhi",
+        "lat": 28.566611874285528,
+        "lon": 77.22941253662545,
+        "tier": "Mid",
+        "reputation_score": 3.7,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 222210,
+        "breakdown": {
+            "room_charges": 44442,
+            "doctor_fees": 66663,
+            "medicines": 33331,
+            "consumables": 22221,
+            "other": 55552
+        }
+    },
+    {
+        "hospital_id": 22,
+        "hospital_name": "AIIMS Delhi",
+        "city": "Delhi",
+        "lat": 28.566611874285528,
+        "lon": 77.22941253662545,
+        "tier": "Mid",
+        "reputation_score": 3.7,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 303758,
+        "breakdown": {
+            "room_charges": 60751,
+            "doctor_fees": 91127,
+            "medicines": 45563,
+            "consumables": 30375,
+            "other": 75939
+        }
+    },
+    {
+        "hospital_id": 22,
+        "hospital_name": "AIIMS Delhi",
+        "city": "Delhi",
+        "lat": 28.566611874285528,
+        "lon": 77.22941253662545,
+        "tier": "Mid",
+        "reputation_score": 3.7,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 37231,
+        "breakdown": {
+            "room_charges": 7446,
+            "doctor_fees": 11169,
+            "medicines": 5584,
+            "consumables": 3723,
+            "other": 9307
+        }
+    },
+    {
+        "hospital_id": 22,
+        "hospital_name": "AIIMS Delhi",
+        "city": "Delhi",
+        "lat": 28.566611874285528,
+        "lon": 77.22941253662545,
+        "tier": "Mid",
+        "reputation_score": 3.7,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 44998,
+        "breakdown": {
+            "room_charges": 8999,
+            "doctor_fees": 13499,
+            "medicines": 6749,
+            "consumables": 4499,
+            "other": 11249
+        }
+    },
+    {
+        "hospital_id": 23,
+        "hospital_name": "Indraprastha Apollo Hospital",
+        "city": "Delhi",
+        "lat": 28.619648775458327,
+        "lon": 77.24480593919645,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 96623,
+        "breakdown": {
+            "room_charges": 19324,
+            "doctor_fees": 28986,
+            "medicines": 14493,
+            "consumables": 9662,
+            "other": 24155
+        }
+    },
+    {
+        "hospital_id": 23,
+        "hospital_name": "Indraprastha Apollo Hospital",
+        "city": "Delhi",
+        "lat": 28.619648775458327,
+        "lon": 77.24480593919645,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 83297,
+        "breakdown": {
+            "room_charges": 16659,
+            "doctor_fees": 24989,
+            "medicines": 12494,
+            "consumables": 8329,
+            "other": 20824
+        }
+    },
+    {
+        "hospital_id": 23,
+        "hospital_name": "Indraprastha Apollo Hospital",
+        "city": "Delhi",
+        "lat": 28.619648775458327,
+        "lon": 77.24480593919645,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 325239,
+        "breakdown": {
+            "room_charges": 65047,
+            "doctor_fees": 97571,
+            "medicines": 48785,
+            "consumables": 32523,
+            "other": 81309
+        }
+    },
+    {
+        "hospital_id": 23,
+        "hospital_name": "Indraprastha Apollo Hospital",
+        "city": "Delhi",
+        "lat": 28.619648775458327,
+        "lon": 77.24480593919645,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 399522,
+        "breakdown": {
+            "room_charges": 79904,
+            "doctor_fees": 119856,
+            "medicines": 59928,
+            "consumables": 39952,
+            "other": 99880
+        }
+    },
+    {
+        "hospital_id": 23,
+        "hospital_name": "Indraprastha Apollo Hospital",
+        "city": "Delhi",
+        "lat": 28.619648775458327,
+        "lon": 77.24480593919645,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 53390,
+        "breakdown": {
+            "room_charges": 10678,
+            "doctor_fees": 16017,
+            "medicines": 8008,
+            "consumables": 5339,
+            "other": 13347
+        }
+    },
+    {
+        "hospital_id": 23,
+        "hospital_name": "Indraprastha Apollo Hospital",
+        "city": "Delhi",
+        "lat": 28.619648775458327,
+        "lon": 77.24480593919645,
+        "tier": "Premium",
+        "reputation_score": 4.8,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 66815,
+        "breakdown": {
+            "room_charges": 13363,
+            "doctor_fees": 20044,
+            "medicines": 10022,
+            "consumables": 6681,
+            "other": 16703
+        }
+    },
+    {
+        "hospital_id": 24,
+        "hospital_name": "Sir Ganga Ram Hospital",
+        "city": "Delhi",
+        "lat": 28.616233573862253,
+        "lon": 77.22425667179556,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 85526,
+        "breakdown": {
+            "room_charges": 17105,
+            "doctor_fees": 25657,
+            "medicines": 12828,
+            "consumables": 8552,
+            "other": 21381
+        }
+    },
+    {
+        "hospital_id": 24,
+        "hospital_name": "Sir Ganga Ram Hospital",
+        "city": "Delhi",
+        "lat": 28.616233573862253,
+        "lon": 77.22425667179556,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 65887,
+        "breakdown": {
+            "room_charges": 13177,
+            "doctor_fees": 19766,
+            "medicines": 9883,
+            "consumables": 6588,
+            "other": 16471
+        }
+    },
+    {
+        "hospital_id": 24,
+        "hospital_name": "Sir Ganga Ram Hospital",
+        "city": "Delhi",
+        "lat": 28.616233573862253,
+        "lon": 77.22425667179556,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 250199,
+        "breakdown": {
+            "room_charges": 50039,
+            "doctor_fees": 75059,
+            "medicines": 37529,
+            "consumables": 25019,
+            "other": 62549
+        }
+    },
+    {
+        "hospital_id": 24,
+        "hospital_name": "Sir Ganga Ram Hospital",
+        "city": "Delhi",
+        "lat": 28.616233573862253,
+        "lon": 77.22425667179556,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 364975,
+        "breakdown": {
+            "room_charges": 72995,
+            "doctor_fees": 109492,
+            "medicines": 54746,
+            "consumables": 36497,
+            "other": 91243
+        }
+    },
+    {
+        "hospital_id": 24,
+        "hospital_name": "Sir Ganga Ram Hospital",
+        "city": "Delhi",
+        "lat": 28.616233573862253,
+        "lon": 77.22425667179556,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 50457,
+        "breakdown": {
+            "room_charges": 10091,
+            "doctor_fees": 15137,
+            "medicines": 7568,
+            "consumables": 5045,
+            "other": 12614
+        }
+    },
+    {
+        "hospital_id": 24,
+        "hospital_name": "Sir Ganga Ram Hospital",
+        "city": "Delhi",
+        "lat": 28.616233573862253,
+        "lon": 77.22425667179556,
+        "tier": "High",
+        "reputation_score": 3.6,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 52430,
+        "breakdown": {
+            "room_charges": 10486,
+            "doctor_fees": 15729,
+            "medicines": 7864,
+            "consumables": 5243,
+            "other": 13107
+        }
+    },
+    {
+        "hospital_id": 25,
+        "hospital_name": "BLK-Max Super Speciality Hospital",
+        "city": "Delhi",
+        "lat": 28.568216151476225,
+        "lon": 77.18408832523843,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 85817,
+        "breakdown": {
+            "room_charges": 17163,
+            "doctor_fees": 25745,
+            "medicines": 12872,
+            "consumables": 8581,
+            "other": 21454
+        }
+    },
+    {
+        "hospital_id": 25,
+        "hospital_name": "BLK-Max Super Speciality Hospital",
+        "city": "Delhi",
+        "lat": 28.568216151476225,
+        "lon": 77.18408832523843,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 66044,
+        "breakdown": {
+            "room_charges": 13208,
+            "doctor_fees": 19813,
+            "medicines": 9906,
+            "consumables": 6604,
+            "other": 16511
+        }
+    },
+    {
+        "hospital_id": 25,
+        "hospital_name": "BLK-Max Super Speciality Hospital",
+        "city": "Delhi",
+        "lat": 28.568216151476225,
+        "lon": 77.18408832523843,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 241580,
+        "breakdown": {
+            "room_charges": 48316,
+            "doctor_fees": 72474,
+            "medicines": 36237,
+            "consumables": 24158,
+            "other": 60395
+        }
+    },
+    {
+        "hospital_id": 25,
+        "hospital_name": "BLK-Max Super Speciality Hospital",
+        "city": "Delhi",
+        "lat": 28.568216151476225,
+        "lon": 77.18408832523843,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 331396,
+        "breakdown": {
+            "room_charges": 66279,
+            "doctor_fees": 99418,
+            "medicines": 49709,
+            "consumables": 33139,
+            "other": 82849
+        }
+    },
+    {
+        "hospital_id": 25,
+        "hospital_name": "BLK-Max Super Speciality Hospital",
+        "city": "Delhi",
+        "lat": 28.568216151476225,
+        "lon": 77.18408832523843,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 45623,
+        "breakdown": {
+            "room_charges": 9124,
+            "doctor_fees": 13686,
+            "medicines": 6843,
+            "consumables": 4562,
+            "other": 11405
+        }
+    },
+    {
+        "hospital_id": 25,
+        "hospital_name": "BLK-Max Super Speciality Hospital",
+        "city": "Delhi",
+        "lat": 28.568216151476225,
+        "lon": 77.18408832523843,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 57414,
+        "breakdown": {
+            "room_charges": 11482,
+            "doctor_fees": 17224,
+            "medicines": 8612,
+            "consumables": 5741,
+            "other": 14353
+        }
+    },
+    {
+        "hospital_id": 26,
+        "hospital_name": "Fortis Escorts Heart Institute",
+        "city": "Delhi",
+        "lat": 28.570801232060276,
+        "lon": 77.17863177782532,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 103183,
+        "breakdown": {
+            "room_charges": 20636,
+            "doctor_fees": 30954,
+            "medicines": 15477,
+            "consumables": 10318,
+            "other": 25795
+        }
+    },
+    {
+        "hospital_id": 26,
+        "hospital_name": "Fortis Escorts Heart Institute",
+        "city": "Delhi",
+        "lat": 28.570801232060276,
+        "lon": 77.17863177782532,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 83770,
+        "breakdown": {
+            "room_charges": 16754,
+            "doctor_fees": 25131,
+            "medicines": 12565,
+            "consumables": 8377,
+            "other": 20942
+        }
+    },
+    {
+        "hospital_id": 26,
+        "hospital_name": "Fortis Escorts Heart Institute",
+        "city": "Delhi",
+        "lat": 28.570801232060276,
+        "lon": 77.17863177782532,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 331592,
+        "breakdown": {
+            "room_charges": 66318,
+            "doctor_fees": 99477,
+            "medicines": 49738,
+            "consumables": 33159,
+            "other": 82898
+        }
+    },
+    {
+        "hospital_id": 26,
+        "hospital_name": "Fortis Escorts Heart Institute",
+        "city": "Delhi",
+        "lat": 28.570801232060276,
+        "lon": 77.17863177782532,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 465609,
+        "breakdown": {
+            "room_charges": 93121,
+            "doctor_fees": 139682,
+            "medicines": 69841,
+            "consumables": 46560,
+            "other": 116402
+        }
+    },
+    {
+        "hospital_id": 26,
+        "hospital_name": "Fortis Escorts Heart Institute",
+        "city": "Delhi",
+        "lat": 28.570801232060276,
+        "lon": 77.17863177782532,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 50835,
+        "breakdown": {
+            "room_charges": 10167,
+            "doctor_fees": 15250,
+            "medicines": 7625,
+            "consumables": 5083,
+            "other": 12708
+        }
+    },
+    {
+        "hospital_id": 26,
+        "hospital_name": "Fortis Escorts Heart Institute",
+        "city": "Delhi",
+        "lat": 28.570801232060276,
+        "lon": 77.17863177782532,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 62595,
+        "breakdown": {
+            "room_charges": 12519,
+            "doctor_fees": 18778,
+            "medicines": 9389,
+            "consumables": 6259,
+            "other": 15648
+        }
+    },
+    {
+        "hospital_id": 27,
+        "hospital_name": "Medanta The Medicity",
+        "city": "Delhi",
+        "lat": 28.64848506028053,
+        "lon": 77.18551843460757,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 103111,
+        "breakdown": {
+            "room_charges": 20622,
+            "doctor_fees": 30933,
+            "medicines": 15466,
+            "consumables": 10311,
+            "other": 25777
+        }
+    },
+    {
+        "hospital_id": 27,
+        "hospital_name": "Medanta The Medicity",
+        "city": "Delhi",
+        "lat": 28.64848506028053,
+        "lon": 77.18551843460757,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 75808,
+        "breakdown": {
+            "room_charges": 15161,
+            "doctor_fees": 22742,
+            "medicines": 11371,
+            "consumables": 7580,
+            "other": 18952
+        }
+    },
+    {
+        "hospital_id": 27,
+        "hospital_name": "Medanta The Medicity",
+        "city": "Delhi",
+        "lat": 28.64848506028053,
+        "lon": 77.18551843460757,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 320362,
+        "breakdown": {
+            "room_charges": 64072,
+            "doctor_fees": 96108,
+            "medicines": 48054,
+            "consumables": 32036,
+            "other": 80090
+        }
+    },
+    {
+        "hospital_id": 27,
+        "hospital_name": "Medanta The Medicity",
+        "city": "Delhi",
+        "lat": 28.64848506028053,
+        "lon": 77.18551843460757,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 478309,
+        "breakdown": {
+            "room_charges": 95661,
+            "doctor_fees": 143492,
+            "medicines": 71746,
+            "consumables": 47830,
+            "other": 119577
+        }
+    },
+    {
+        "hospital_id": 27,
+        "hospital_name": "Medanta The Medicity",
+        "city": "Delhi",
+        "lat": 28.64848506028053,
+        "lon": 77.18551843460757,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 55575,
+        "breakdown": {
+            "room_charges": 11115,
+            "doctor_fees": 16672,
+            "medicines": 8336,
+            "consumables": 5557,
+            "other": 13893
+        }
+    },
+    {
+        "hospital_id": 27,
+        "hospital_name": "Medanta The Medicity",
+        "city": "Delhi",
+        "lat": 28.64848506028053,
+        "lon": 77.18551843460757,
+        "tier": "Premium",
+        "reputation_score": 4.5,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 74871,
+        "breakdown": {
+            "room_charges": 14974,
+            "doctor_fees": 22461,
+            "medicines": 11230,
+            "consumables": 7487,
+            "other": 18717
+        }
+    },
+    {
+        "hospital_id": 28,
+        "hospital_name": "Max Super Speciality Hospital Saket",
+        "city": "Delhi",
+        "lat": 28.59168132917282,
+        "lon": 77.21597076655686,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 83850,
+        "breakdown": {
+            "room_charges": 16770,
+            "doctor_fees": 25155,
+            "medicines": 12577,
+            "consumables": 8385,
+            "other": 20962
+        }
+    },
+    {
+        "hospital_id": 28,
+        "hospital_name": "Max Super Speciality Hospital Saket",
+        "city": "Delhi",
+        "lat": 28.59168132917282,
+        "lon": 77.21597076655686,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 68282,
+        "breakdown": {
+            "room_charges": 13656,
+            "doctor_fees": 20484,
+            "medicines": 10242,
+            "consumables": 6828,
+            "other": 17070
+        }
+    },
+    {
+        "hospital_id": 28,
+        "hospital_name": "Max Super Speciality Hospital Saket",
+        "city": "Delhi",
+        "lat": 28.59168132917282,
+        "lon": 77.21597076655686,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 252051,
+        "breakdown": {
+            "room_charges": 50410,
+            "doctor_fees": 75615,
+            "medicines": 37807,
+            "consumables": 25205,
+            "other": 63012
+        }
+    },
+    {
+        "hospital_id": 28,
+        "hospital_name": "Max Super Speciality Hospital Saket",
+        "city": "Delhi",
+        "lat": 28.59168132917282,
+        "lon": 77.21597076655686,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 352063,
+        "breakdown": {
+            "room_charges": 70412,
+            "doctor_fees": 105618,
+            "medicines": 52809,
+            "consumables": 35206,
+            "other": 88015
+        }
+    },
+    {
+        "hospital_id": 28,
+        "hospital_name": "Max Super Speciality Hospital Saket",
+        "city": "Delhi",
+        "lat": 28.59168132917282,
+        "lon": 77.21597076655686,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 50136,
+        "breakdown": {
+            "room_charges": 10027,
+            "doctor_fees": 15040,
+            "medicines": 7520,
+            "consumables": 5013,
+            "other": 12534
+        }
+    },
+    {
+        "hospital_id": 28,
+        "hospital_name": "Max Super Speciality Hospital Saket",
+        "city": "Delhi",
+        "lat": 28.59168132917282,
+        "lon": 77.21597076655686,
+        "tier": "High",
+        "reputation_score": 4.4,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 53283,
+        "breakdown": {
+            "room_charges": 10656,
+            "doctor_fees": 15984,
+            "medicines": 7992,
+            "consumables": 5328,
+            "other": 13320
+        }
+    },
+    {
+        "hospital_id": 29,
+        "hospital_name": "Aster CMI Hospital",
+        "city": "Bangalore",
+        "lat": 13.006716885769654,
+        "lon": 77.61217385446214,
+        "tier": "Premium",
+        "reputation_score": 4.1,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 115536,
+        "breakdown": {
+            "room_charges": 23107,
+            "doctor_fees": 34660,
+            "medicines": 17330,
+            "consumables": 11553,
+            "other": 28884
+        }
+    },
+    {
+        "hospital_id": 29,
+        "hospital_name": "Aster CMI Hospital",
+        "city": "Bangalore",
+        "lat": 13.006716885769654,
+        "lon": 77.61217385446214,
+        "tier": "Premium",
+        "reputation_score": 4.1,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 76763,
+        "breakdown": {
+            "room_charges": 15352,
+            "doctor_fees": 23028,
+            "medicines": 11514,
+            "consumables": 7676,
+            "other": 19190
+        }
+    },
+    {
+        "hospital_id": 29,
+        "hospital_name": "Aster CMI Hospital",
+        "city": "Bangalore",
+        "lat": 13.006716885769654,
+        "lon": 77.61217385446214,
+        "tier": "Premium",
+        "reputation_score": 4.1,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 305363,
+        "breakdown": {
+            "room_charges": 61072,
+            "doctor_fees": 91608,
+            "medicines": 45804,
+            "consumables": 30536,
+            "other": 76340
+        }
+    },
+    {
+        "hospital_id": 29,
+        "hospital_name": "Aster CMI Hospital",
+        "city": "Bangalore",
+        "lat": 13.006716885769654,
+        "lon": 77.61217385446214,
+        "tier": "Premium",
+        "reputation_score": 4.1,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 479320,
+        "breakdown": {
+            "room_charges": 95864,
+            "doctor_fees": 143796,
+            "medicines": 71898,
+            "consumables": 47932,
+            "other": 119830
+        }
+    },
+    {
+        "hospital_id": 29,
+        "hospital_name": "Aster CMI Hospital",
+        "city": "Bangalore",
+        "lat": 13.006716885769654,
+        "lon": 77.61217385446214,
+        "tier": "Premium",
+        "reputation_score": 4.1,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 56752,
+        "breakdown": {
+            "room_charges": 11350,
+            "doctor_fees": 17025,
+            "medicines": 8512,
+            "consumables": 5675,
+            "other": 14188
+        }
+    },
+    {
+        "hospital_id": 29,
+        "hospital_name": "Aster CMI Hospital",
+        "city": "Bangalore",
+        "lat": 13.006716885769654,
+        "lon": 77.61217385446214,
+        "tier": "Premium",
+        "reputation_score": 4.1,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 68721,
+        "breakdown": {
+            "room_charges": 13744,
+            "doctor_fees": 20616,
+            "medicines": 10308,
+            "consumables": 6872,
+            "other": 17180
+        }
+    },
+    {
+        "hospital_id": 30,
+        "hospital_name": "Manipal Hospital Old Airport Road",
+        "city": "Bangalore",
+        "lat": 12.983024420892374,
+        "lon": 77.59834862159641,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 102153,
+        "breakdown": {
+            "room_charges": 20430,
+            "doctor_fees": 30645,
+            "medicines": 15322,
+            "consumables": 10215,
+            "other": 25538
+        }
+    },
+    {
+        "hospital_id": 30,
+        "hospital_name": "Manipal Hospital Old Airport Road",
+        "city": "Bangalore",
+        "lat": 12.983024420892374,
+        "lon": 77.59834862159641,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 81897,
+        "breakdown": {
+            "room_charges": 16379,
+            "doctor_fees": 24569,
+            "medicines": 12284,
+            "consumables": 8189,
+            "other": 20474
+        }
+    },
+    {
+        "hospital_id": 30,
+        "hospital_name": "Manipal Hospital Old Airport Road",
+        "city": "Bangalore",
+        "lat": 12.983024420892374,
+        "lon": 77.59834862159641,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 313793,
+        "breakdown": {
+            "room_charges": 62758,
+            "doctor_fees": 94137,
+            "medicines": 47068,
+            "consumables": 31379,
+            "other": 78448
+        }
+    },
+    {
+        "hospital_id": 30,
+        "hospital_name": "Manipal Hospital Old Airport Road",
+        "city": "Bangalore",
+        "lat": 12.983024420892374,
+        "lon": 77.59834862159641,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 467174,
+        "breakdown": {
+            "room_charges": 93434,
+            "doctor_fees": 140152,
+            "medicines": 70076,
+            "consumables": 46717,
+            "other": 116793
+        }
+    },
+    {
+        "hospital_id": 30,
+        "hospital_name": "Manipal Hospital Old Airport Road",
+        "city": "Bangalore",
+        "lat": 12.983024420892374,
+        "lon": 77.59834862159641,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 55745,
+        "breakdown": {
+            "room_charges": 11149,
+            "doctor_fees": 16723,
+            "medicines": 8361,
+            "consumables": 5574,
+            "other": 13936
+        }
+    },
+    {
+        "hospital_id": 30,
+        "hospital_name": "Manipal Hospital Old Airport Road",
+        "city": "Bangalore",
+        "lat": 12.983024420892374,
+        "lon": 77.59834862159641,
+        "tier": "Premium",
+        "reputation_score": 4.2,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 73716,
+        "breakdown": {
+            "room_charges": 14743,
+            "doctor_fees": 22114,
+            "medicines": 11057,
+            "consumables": 7371,
+            "other": 18429
+        }
+    },
+    {
+        "hospital_id": 31,
+        "hospital_name": "Fortis Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 13.008012924242305,
+        "lon": 77.62197485251173,
+        "tier": "High",
+        "reputation_score": 3.9,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 85650,
+        "breakdown": {
+            "room_charges": 17130,
+            "doctor_fees": 25695,
+            "medicines": 12847,
+            "consumables": 8565,
+            "other": 21412
+        }
+    },
+    {
+        "hospital_id": 31,
+        "hospital_name": "Fortis Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 13.008012924242305,
+        "lon": 77.62197485251173,
+        "tier": "High",
+        "reputation_score": 3.9,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 74173,
+        "breakdown": {
+            "room_charges": 14834,
+            "doctor_fees": 22251,
+            "medicines": 11125,
+            "consumables": 7417,
+            "other": 18543
+        }
+    },
+    {
+        "hospital_id": 31,
+        "hospital_name": "Fortis Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 13.008012924242305,
+        "lon": 77.62197485251173,
+        "tier": "High",
+        "reputation_score": 3.9,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 265509,
+        "breakdown": {
+            "room_charges": 53101,
+            "doctor_fees": 79652,
+            "medicines": 39826,
+            "consumables": 26550,
+            "other": 66377
+        }
+    },
+    {
+        "hospital_id": 31,
+        "hospital_name": "Fortis Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 13.008012924242305,
+        "lon": 77.62197485251173,
+        "tier": "High",
+        "reputation_score": 3.9,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 376374,
+        "breakdown": {
+            "room_charges": 75274,
+            "doctor_fees": 112912,
+            "medicines": 56456,
+            "consumables": 37637,
+            "other": 94093
+        }
+    },
+    {
+        "hospital_id": 31,
+        "hospital_name": "Fortis Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 13.008012924242305,
+        "lon": 77.62197485251173,
+        "tier": "High",
+        "reputation_score": 3.9,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 43790,
+        "breakdown": {
+            "room_charges": 8758,
+            "doctor_fees": 13137,
+            "medicines": 6568,
+            "consumables": 4379,
+            "other": 10947
+        }
+    },
+    {
+        "hospital_id": 31,
+        "hospital_name": "Fortis Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 13.008012924242305,
+        "lon": 77.62197485251173,
+        "tier": "High",
+        "reputation_score": 3.9,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 53173,
+        "breakdown": {
+            "room_charges": 10634,
+            "doctor_fees": 15951,
+            "medicines": 7975,
+            "consumables": 5317,
+            "other": 13293
+        }
+    },
+    {
+        "hospital_id": 32,
+        "hospital_name": "Apollo Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 12.9551158722617,
+        "lon": 77.61896535972562,
+        "tier": "High",
+        "reputation_score": 3.7,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 85885,
+        "breakdown": {
+            "room_charges": 17177,
+            "doctor_fees": 25765,
+            "medicines": 12882,
+            "consumables": 8588,
+            "other": 21471
+        }
+    },
+    {
+        "hospital_id": 32,
+        "hospital_name": "Apollo Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 12.9551158722617,
+        "lon": 77.61896535972562,
+        "tier": "High",
+        "reputation_score": 3.7,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 74943,
+        "breakdown": {
+            "room_charges": 14988,
+            "doctor_fees": 22482,
+            "medicines": 11241,
+            "consumables": 7494,
+            "other": 18735
+        }
+    },
+    {
+        "hospital_id": 32,
+        "hospital_name": "Apollo Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 12.9551158722617,
+        "lon": 77.61896535972562,
+        "tier": "High",
+        "reputation_score": 3.7,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 257351,
+        "breakdown": {
+            "room_charges": 51470,
+            "doctor_fees": 77205,
+            "medicines": 38602,
+            "consumables": 25735,
+            "other": 64337
+        }
+    },
+    {
+        "hospital_id": 32,
+        "hospital_name": "Apollo Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 12.9551158722617,
+        "lon": 77.61896535972562,
+        "tier": "High",
+        "reputation_score": 3.7,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 389232,
+        "breakdown": {
+            "room_charges": 77846,
+            "doctor_fees": 116769,
+            "medicines": 58384,
+            "consumables": 38923,
+            "other": 97308
+        }
+    },
+    {
+        "hospital_id": 32,
+        "hospital_name": "Apollo Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 12.9551158722617,
+        "lon": 77.61896535972562,
+        "tier": "High",
+        "reputation_score": 3.7,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 47107,
+        "breakdown": {
+            "room_charges": 9421,
+            "doctor_fees": 14132,
+            "medicines": 7066,
+            "consumables": 4710,
+            "other": 11776
+        }
+    },
+    {
+        "hospital_id": 32,
+        "hospital_name": "Apollo Hospital Bannerghatta Road",
+        "city": "Bangalore",
+        "lat": 12.9551158722617,
+        "lon": 77.61896535972562,
+        "tier": "High",
+        "reputation_score": 3.7,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 53332,
+        "breakdown": {
+            "room_charges": 10666,
+            "doctor_fees": 15999,
+            "medicines": 7999,
+            "consumables": 5333,
+            "other": 13333
+        }
+    },
+    {
+        "hospital_id": 33,
+        "hospital_name": "Sakra World Hospital",
+        "city": "Bangalore",
+        "lat": 12.936633189829525,
+        "lon": 77.5458212278305,
+        "tier": "High",
+        "reputation_score": 4.0,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 83989,
+        "breakdown": {
+            "room_charges": 16797,
+            "doctor_fees": 25196,
+            "medicines": 12598,
+            "consumables": 8398,
+            "other": 20997
+        }
+    },
+    {
+        "hospital_id": 33,
+        "hospital_name": "Sakra World Hospital",
+        "city": "Bangalore",
+        "lat": 12.936633189829525,
+        "lon": 77.5458212278305,
+        "tier": "High",
+        "reputation_score": 4.0,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 68136,
+        "breakdown": {
+            "room_charges": 13627,
+            "doctor_fees": 20440,
+            "medicines": 10220,
+            "consumables": 6813,
+            "other": 17034
+        }
+    },
+    {
+        "hospital_id": 33,
+        "hospital_name": "Sakra World Hospital",
+        "city": "Bangalore",
+        "lat": 12.936633189829525,
+        "lon": 77.5458212278305,
+        "tier": "High",
+        "reputation_score": 4.0,
+        "procedure": "Angioplasty",
+        "icd10_code": "I25.10",
+        "estimated_total_cost": 271433,
+        "breakdown": {
+            "room_charges": 54286,
+            "doctor_fees": 81429,
+            "medicines": 40714,
+            "consumables": 27143,
+            "other": 67858
+        }
+    },
+    {
+        "hospital_id": 33,
+        "hospital_name": "Sakra World Hospital",
+        "city": "Bangalore",
+        "lat": 12.936633189829525,
+        "lon": 77.5458212278305,
+        "tier": "High",
+        "reputation_score": 4.0,
+        "procedure": "Knee Replacement",
+        "icd10_code": "M17.1",
+        "estimated_total_cost": 359640,
+        "breakdown": {
+            "room_charges": 71928,
+            "doctor_fees": 107892,
+            "medicines": 53946,
+            "consumables": 35964,
+            "other": 89910
+        }
+    },
+    {
+        "hospital_id": 33,
+        "hospital_name": "Sakra World Hospital",
+        "city": "Bangalore",
+        "lat": 12.936633189829525,
+        "lon": 77.5458212278305,
+        "tier": "High",
+        "reputation_score": 4.0,
+        "procedure": "Cataract Surgery",
+        "icd10_code": "H25.0",
+        "estimated_total_cost": 46214,
+        "breakdown": {
+            "room_charges": 9242,
+            "doctor_fees": 13864,
+            "medicines": 6932,
+            "consumables": 4621,
+            "other": 11553
+        }
+    },
+    {
+        "hospital_id": 33,
+        "hospital_name": "Sakra World Hospital",
+        "city": "Bangalore",
+        "lat": 12.936633189829525,
+        "lon": 77.5458212278305,
+        "tier": "High",
+        "reputation_score": 4.0,
+        "procedure": "Hernia Repair",
+        "icd10_code": "K40",
+        "estimated_total_cost": 58958,
+        "breakdown": {
+            "room_charges": 11791,
+            "doctor_fees": 17687,
+            "medicines": 8843,
+            "consumables": 5895,
+            "other": 14739
+        }
+    },
+    {
+        "hospital_id": 34,
+        "hospital_name": "Narayana Health City",
+        "city": "Bangalore",
+        "lat": 12.961828089878404,
+        "lon": 77.63117505502343,
+        "tier": "Mid",
+        "reputation_score": 3.9,
+        "procedure": "Kidney Stone Removal",
+        "icd10_code": "N20.0",
+        "estimated_total_cost": 76327,
+        "breakdown": {
+            "room_charges": 15265,
+            "doctor_fees": 22898,
+            "medicines": 11449,
+            "consumables": 7632,
+            "other": 19081
+        }
+    },
+    {
+        "hospital_id": 34,
+        "hospital_name": "Narayana Health City",
+        "city": "Bangalore",
+        "lat": 12.961828089878404,
+        "lon": 77.63117505502343,
+        "tier": "Mid",
+        "reputation_score": 3.9,
+        "procedure": "Appendectomy",
+        "icd10_code": "K35",
+        "estimated_total_cost": 56796,
+        "breakdown": {
+            "room_charges": 11359,
+            "doctor_fees": 17038,
+            "medicines": 8519,
+            "consumables": 5679,
+            "other": 14199
         }
     },
     {
@@ -3809,13 +3809,13 @@
         "reputation_score": 3.9,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 209643,
+        "estimated_total_cost": 221450,
         "breakdown": {
-            "room_charges": 41928,
-            "doctor_fees": 62892,
-            "medicines": 31446,
-            "consumables": 20964,
-            "other": 52410
+            "room_charges": 44290,
+            "doctor_fees": 66435,
+            "medicines": 33217,
+            "consumables": 22145,
+            "other": 55362
         }
     },
     {
@@ -3828,13 +3828,13 @@
         "reputation_score": 3.9,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 321113,
+        "estimated_total_cost": 322005,
         "breakdown": {
-            "room_charges": 64222,
-            "doctor_fees": 96333,
-            "medicines": 48166,
-            "consumables": 32111,
-            "other": 80278
+            "room_charges": 64401,
+            "doctor_fees": 96601,
+            "medicines": 48300,
+            "consumables": 32200,
+            "other": 80501
         }
     },
     {
@@ -3847,13 +3847,13 @@
         "reputation_score": 3.9,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 37457,
+        "estimated_total_cost": 39821,
         "breakdown": {
-            "room_charges": 7491,
-            "doctor_fees": 11237,
-            "medicines": 5618,
-            "consumables": 3745,
-            "other": 9364
+            "room_charges": 7964,
+            "doctor_fees": 11946,
+            "medicines": 5973,
+            "consumables": 3982,
+            "other": 9955
         }
     },
     {
@@ -3866,13 +3866,13 @@
         "reputation_score": 3.9,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 42611,
+        "estimated_total_cost": 45851,
         "breakdown": {
-            "room_charges": 8522,
-            "doctor_fees": 12783,
-            "medicines": 6391,
-            "consumables": 4261,
-            "other": 10652
+            "room_charges": 9170,
+            "doctor_fees": 13755,
+            "medicines": 6877,
+            "consumables": 4585,
+            "other": 11462
         }
     },
     {
@@ -3885,13 +3885,13 @@
         "reputation_score": 4.0,
         "procedure": "Kidney Stone Removal",
         "icd10_code": "N20.0",
-        "estimated_total_cost": 73150,
+        "estimated_total_cost": 67789,
         "breakdown": {
-            "room_charges": 14630,
-            "doctor_fees": 21945,
-            "medicines": 10972,
-            "consumables": 7315,
-            "other": 18287
+            "room_charges": 13557,
+            "doctor_fees": 20336,
+            "medicines": 10168,
+            "consumables": 6778,
+            "other": 16947
         }
     },
     {
@@ -3904,13 +3904,13 @@
         "reputation_score": 4.0,
         "procedure": "Appendectomy",
         "icd10_code": "K35",
-        "estimated_total_cost": 58411,
+        "estimated_total_cost": 58913,
         "breakdown": {
-            "room_charges": 11682,
-            "doctor_fees": 17523,
-            "medicines": 8761,
-            "consumables": 5841,
-            "other": 14602
+            "room_charges": 11782,
+            "doctor_fees": 17673,
+            "medicines": 8836,
+            "consumables": 5891,
+            "other": 14728
         }
     },
     {
@@ -3923,13 +3923,13 @@
         "reputation_score": 4.0,
         "procedure": "Angioplasty",
         "icd10_code": "I25.10",
-        "estimated_total_cost": 210564,
+        "estimated_total_cost": 201827,
         "breakdown": {
-            "room_charges": 42112,
-            "doctor_fees": 63169,
-            "medicines": 31584,
-            "consumables": 21056,
-            "other": 52641
+            "room_charges": 40365,
+            "doctor_fees": 60548,
+            "medicines": 30274,
+            "consumables": 20182,
+            "other": 50456
         }
     },
     {
@@ -3942,13 +3942,13 @@
         "reputation_score": 4.0,
         "procedure": "Knee Replacement",
         "icd10_code": "M17.1",
-        "estimated_total_cost": 322842,
+        "estimated_total_cost": 270073,
         "breakdown": {
-            "room_charges": 64568,
-            "doctor_fees": 96852,
-            "medicines": 48426,
-            "consumables": 32284,
-            "other": 80710
+            "room_charges": 54014,
+            "doctor_fees": 81021,
+            "medicines": 40510,
+            "consumables": 27007,
+            "other": 67518
         }
     },
     {
@@ -3961,13 +3961,13 @@
         "reputation_score": 4.0,
         "procedure": "Cataract Surgery",
         "icd10_code": "H25.0",
-        "estimated_total_cost": 35627,
+        "estimated_total_cost": 38505,
         "breakdown": {
-            "room_charges": 7125,
-            "doctor_fees": 10688,
-            "medicines": 5344,
-            "consumables": 3562,
-            "other": 8906
+            "room_charges": 7701,
+            "doctor_fees": 11551,
+            "medicines": 5775,
+            "consumables": 3850,
+            "other": 9626
         }
     },
     {
@@ -3980,13 +3980,13 @@
         "reputation_score": 4.0,
         "procedure": "Hernia Repair",
         "icd10_code": "K40",
-        "estimated_total_cost": 43222,
+        "estimated_total_cost": 47118,
         "breakdown": {
-            "room_charges": 8644,
-            "doctor_fees": 12966,
-            "medicines": 6483,
-            "consumables": 4322,
-            "other": 10805
+            "room_charges": 9423,
+            "doctor_fees": 14135,
+            "medicines": 7067,
+            "consumables": 4711,
+            "other": 11779
         }
     }
 ]

@@ -69,7 +69,7 @@ const RegistrationForm = ({ onRegister }) => {
 
     try {
       const response = await axios.post(`${API_BASE_URL}/api/register-user`, payload);
-      onRegister(response.data);
+      onRegister({ ...payload, ...response.data });
     } catch (err) {
       const detail = err.response?.data?.detail;
       setError(typeof detail === 'string' ? detail : 'Registration failed. Please check the fields and try again.');

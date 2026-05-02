@@ -51,5 +51,23 @@
         "fair_market_price": 78377,
         "hospital_count": 7,
         "timestamp": "2026-05-02T11:33:53.722153"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "N20.0",
+        "procedure": "Kidney Stone Removal",
+        "fair_market_price": 89404,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:28:21.957908"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "N20.0",
+        "procedure": "Kidney Stone Removal",
+        "fair_market_price": 89404,
+        "hospital_count": 7,
+        "timestamp": "2026-05-02T15:28:21.965861"
     }
 ]

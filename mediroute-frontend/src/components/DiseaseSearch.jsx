@@ -35,6 +35,15 @@ const DiseaseSearch = ({ user, onSearch }) => {
       className="max-w-3xl mx-auto"
     >
       <div className="text-center mb-12">
+        {user?.name && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="inline-block px-3 py-1 bg-teal-500/10 border border-teal-500/20 rounded-full text-teal-400 text-[10px] uppercase tracking-widest font-bold mb-4"
+          >
+            Welcome Back, {user.name}
+          </motion.div>
+        )}
         <h2 className="text-4xl font-bold mb-4">What's the medical concern?</h2>
         <p className="text-slate-400">Describe your symptoms in natural language (Hindi or English). We'll map them to standardized ICD-10 codes.</p>
       </div>
