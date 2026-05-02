@@ -19,7 +19,7 @@ import MediRouteFlow from './MediRouteFlow'
 const App = () => {
   return (
     <AppContextProvider>
-      <div className='mx-4 sm:mx-[10%]'>
+      <div className='mx-4 sm:mx-[10%] max-w-[1440px] xl:mx-auto'>
         <ToastContainer />
         <Navbar />
         <Routes>

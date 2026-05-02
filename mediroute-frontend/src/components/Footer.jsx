@@ -1,46 +1,59 @@
 import React from 'react'
-import { Shield } from 'lucide-react'
+import { Shield, Mail, Phone, MapPin, Code, MessageCircle, Briefcase } from 'lucide-react'
 
 const Footer = () => {
   return (
-    <div className='md:mx-10'>
-      <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10  mt-40 text-sm'>
+    <div className='md:mx-10 mt-20 pb-10'>
+      <div className='glass-card p-10 md:p-16 flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10'>
 
-        <div>
-          <div className='flex items-center gap-2 mb-5'>
-            <div className="bg-primary p-1.5 rounded-lg">
-              <Shield className="w-6 h-6 text-white fill-current" />
+        {/* ------- Left Side ------- */}
+        <div className='space-y-6'>
+            <div className='flex items-center gap-2'>
+                <div className="bg-primary p-2 rounded-xl">
+                    <Shield className="w-7 h-7 text-white fill-current" />
+                </div>
+                <span className="text-3xl font-bold tracking-tight text-slate-900">MediRoute <span className="text-primary">AI</span></span>
             </div>
-            <span className="text-2xl font-bold tracking-tight text-slate-900">MediRoute <span className="text-primary">AI</span></span>
-          </div>
-          <p className='w-full md:w-2/3 text-gray-600 leading-6'>MediRoute AI is an institutional-grade clinical intelligence platform providing multi-turn diagnostic analysis, regional cost auditing, and medical loan underwriting to ensure healthcare transparency for all.</p>
+            <p className='w-full md:w-2/3 text-slate-500 leading-relaxed font-medium'>
+                Empowering patients with institutional-grade clinical intelligence. Our AI-driven engine provides multi-turn diagnostics, regional cost auditing, and instant medical loan underwriting to ensure your health and financial security.
+            </p>
+            <div className='flex gap-4'>
+                <div className='p-3 bg-slate-50 rounded-xl border border-slate-100 hover:text-primary hover:border-primary/30 transition-all cursor-pointer'><MessageCircle className='w-5 h-5' /></div>
+                <div className='p-3 bg-slate-50 rounded-xl border border-slate-100 hover:text-primary hover:border-primary/30 transition-all cursor-pointer'><Code className='w-5 h-5' /></div>
+                <div className='p-3 bg-slate-50 rounded-xl border border-slate-100 hover:text-primary hover:border-primary/30 transition-all cursor-pointer'><Briefcase className='w-5 h-5' /></div>
+            </div>
         </div>
 
+        {/* ------- Center Side ------- */}
         <div>
-          <p className='text-xl font-medium mb-5'>PLATFORM</p>
-          <ul className='flex flex-col gap-2 text-gray-600'>
-            <li className="cursor-pointer hover:text-primary">Clinical Intake</li>
-            <li className="cursor-pointer hover:text-primary">Cost Auditor</li>
-            <li className="cursor-pointer hover:text-primary">Loan Bridge</li>
-            <li className="cursor-pointer hover:text-primary">Privacy Policy</li>
-          </ul>
+            <p className='text-xl font-bold text-slate-900 mb-6 uppercase tracking-wider'>Company</p>
+            <ul className='flex flex-col gap-3 text-slate-500 font-medium'>
+                <li className='hover:text-primary transition-colors cursor-pointer'>Home Portal</li>
+                <li className='hover:text-primary transition-colors cursor-pointer'>About Intelligence</li>
+                <li className='hover:text-primary transition-colors cursor-pointer'>Contact Institution</li>
+                <li className='hover:text-primary transition-colors cursor-pointer'>Privacy Protocol</li>
+            </ul>
         </div>
 
+        {/* ------- Right Side ------- */}
         <div>
-          <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
-          <ul className='flex flex-col gap-2 text-gray-600'>
-            <li>+91-9352339808</li>
-            <li>support@mediroute.ai</li>
-          </ul>
+            <p className='text-xl font-bold text-slate-900 mb-6 uppercase tracking-wider'>Connect</p>
+            <ul className='flex flex-col gap-4 text-slate-500 font-medium'>
+                <li className='flex items-center gap-3 hover:text-primary transition-colors cursor-pointer'><Phone className='w-4 h-4' /> +1-212-456-7890</li>
+                <li className='flex items-center gap-3 hover:text-primary transition-colors cursor-pointer'><Mail className='w-4 h-4' /> audit@mediroute.ai</li>
+                <li className='flex items-center gap-3 hover:text-primary transition-colors cursor-pointer'><MapPin className='w-4 h-4' /> Global Clinical Center</li>
+            </ul>
         </div>
 
       </div>
 
-      <div>
-        <hr className="border-slate-200" />
-        <p className='py-5 text-sm text-center text-slate-500'>Copyright 2026 @ MediRoute.ai - All Rights Reserved.</p>
+      {/* ------- Copyright Text ------- */}
+      <div className='px-4'>
+        <hr className='border-slate-200' />
+        <p className='py-8 text-sm text-center text-slate-400 font-bold uppercase tracking-[0.2em]'>
+            Copyright 2024 @ MediRoute AI - Institutional Clinical Intelligence
+        </p>
       </div>
-
     </div>
   )
 }

@@ -1,18 +1,36 @@
 import React from 'react'
 import { specialityData } from '../assets/assets'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const SpecialityMenu = () => {
     return (
-        <div className='flex flex-col items-center gap-4 py-16 text-gray-800' id='speciality'>
-            <h1 className='text-3xl font-medium'>Clinical Analysis Domains</h1>
-            <p className='sm:w-1/3 text-center text-sm'>Select a clinical domain to explore AI-driven diagnostic insights, regional cost auditing, and tailored treatment paths.</p>
-            <div className='flex sm:justify-center gap-4 pt-5 w-full overflow-x-auto scrollbar-hide'>
+        <div className='flex flex-col items-center gap-6 py-24 px-4' id='speciality'>
+            <div className='text-center space-y-3 mb-8'>
+                <h2 className='text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight'>Clinical <span className='text-primary'>Analysis</span> Domains</h2>
+                <p className='max-w-2xl mx-auto text-slate-500 font-medium text-lg leading-relaxed'>Select a clinical domain to explore AI-driven diagnostic insights, regional cost auditing, and tailored treatment paths.</p>
+            </div>
+            
+            <div className='flex sm:justify-center gap-6 pt-5 w-full overflow-x-auto scrollbar-hide pb-10'>
                 {specialityData.map((item, index) => (
-                    <Link to={`/doctors/${item.speciality}`} onClick={() => scrollTo(0, 0)} className='flex flex-col items-center text-xs cursor-pointer flex-shrink-0 hover:translate-y-[-10px] transition-all duration-500' key={index}>
-                        <img className='w-16 sm:w-24 mb-2 ' src={item.image} alt="" />
-                        <p>{item.speciality}</p>
-                    </Link>
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: index * 0.05 }}
+                        viewport={{ once: true }}
+                    >
+                        <Link 
+                            to={`/doctors/${item.speciality}`} 
+                            onClick={() => scrollTo(0, 0)} 
+                            className='flex flex-col items-center gap-4 cursor-pointer flex-shrink-0 group'
+                        >
+                            <div className='w-24 h-24 sm:w-32 sm:h-32 glass-card flex items-center justify-center p-6 group-hover:shadow-2xl group-hover:shadow-primary/10 transition-all duration-500'>
+                                <img className='w-full h-full object-contain group-hover:scale-110 transition-transform duration-500' src={item.image} alt={item.speciality} />
+                            </div>
+                            <p className='text-sm font-bold text-slate-700 group-hover:text-primary transition-colors tracking-tight uppercase'>{item.speciality}</p>
+                        </Link>
+                    </motion.div>
                 ))}
             </div>
         </div>
