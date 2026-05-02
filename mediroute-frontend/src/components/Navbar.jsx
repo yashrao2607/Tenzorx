@@ -17,8 +17,8 @@ const Navbar = () => {
   }
 
   return (
-    <div className='sticky top-6 z-[100] px-4 md:px-0'>
-      <div className='flex items-center justify-between py-4 px-8 glass-card mx-auto max-w-7xl backdrop-blur-3xl'>
+    <div className='sticky top-4 z-[100] px-4 md:px-0'>
+      <div className='flex items-center justify-between py-2 px-8 glass-card mx-auto max-w-7xl backdrop-blur-3xl'>
         
         {/* Logo */}
         <div onClick={() => navigate('/')} className='flex items-center gap-3 cursor-pointer group'>
