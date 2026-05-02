@@ -8,8 +8,17 @@ from config import settings
 
 logger = logging.getLogger(__name__)
 
-llm = ChatGoogleGenerativeAI(
-    model=settings.GEMINI_MODEL,
+PRIMARY_MODEL = settings.GEMINI_MODEL or "gemini-2.5-flash"
+FALLBACK_MODEL = "gemini-2.5-flash"
+
+llm_primary = ChatGoogleGenerativeAI(
+    model=PRIMARY_MODEL,
+    google_api_key=settings.GEMINI_API_KEY,
+    temperature=0.2,
+)
+
+llm_fallback = ChatGoogleGenerativeAI(
+    model=FALLBACK_MODEL,
     google_api_key=settings.GEMINI_API_KEY,
     temperature=0.2,
 )
@@ -43,6 +52,13 @@ class DiagnosticianAgent:
         except Exception:
             return None
 
+    async def _invoke_model(self, model: ChatGoogleGenerativeAI, prompt: str) -> Optional[Dict[str, Any]]:
+        response = await asyncio.wait_for(
+            model.ainvoke(prompt),
+            timeout=settings.API_TIMEOUT
+        )
+        return self._extract_json(response.content)
+
     async def analyze(self, symptom_text: str) -> Dict[str, Any]:
         start_time = time.perf_counter()
         
@@ -53,29 +69,31 @@ class DiagnosticianAgent:
         prompt = f"{MINIMAL_PROMPT}\n\nSymptom: {symptom_text}\nJSON:"
 
         try:
-            response = await asyncio.wait_for(
-                llm.ainvoke(prompt), 
-                timeout=settings.API_TIMEOUT
-            )
-            
-            result = self._extract_json(response.content)
+            result = await self._invoke_model(llm_primary, prompt)
             if result:
                 duration = time.perf_counter() - start_time
-                logger.info(f"[Diagnostician] Logic Success | Duration: {duration:.2f}s")
+                logger.info(f"[Diagnostician] Logic Success ({PRIMARY_MODEL}) | Duration: {duration:.2f}s")
                 self._cache[symptom_text] = result
                 return result
-                
+            logger.warning(f"[Diagnostician] Invalid/empty JSON from {PRIMARY_MODEL}.")
         except asyncio.TimeoutError:
-            logger.error(f"[Diagnostician] Timeout exceeded")
-            return {
-                "condition": "Service timeout",
-                "icd10_code": "N/A",
-                "recommended_procedure": "Retry",
-                "confidence_score": 0.0,
-                "procedure_aliases": ["Retry", "Try again"]
-            }
+            logger.error(f"[Diagnostician] Timeout on {PRIMARY_MODEL}")
         except Exception as e:
-            logger.error(f"[Diagnostician] Error: {e}")
+            logger.error(f"[Diagnostician] Primary model error ({PRIMARY_MODEL}): {e}")
+
+        # Hard fallback to Gemini 2.5 Flash
+        try:
+            result = await self._invoke_model(llm_fallback, prompt)
+            if result:
+                duration = time.perf_counter() - start_time
+                logger.info(f"[Diagnostician] Fallback success ({FALLBACK_MODEL}) | Duration: {duration:.2f}s")
+                self._cache[symptom_text] = result
+                return result
+            logger.warning(f"[Diagnostician] Invalid/empty JSON from fallback model {FALLBACK_MODEL}.")
+        except asyncio.TimeoutError:
+            logger.error(f"[Diagnostician] Timeout on fallback model {FALLBACK_MODEL}")
+        except Exception as e:
+            logger.error(f"[Diagnostician] Fallback model error ({FALLBACK_MODEL}): {e}")
 
         return {
             "condition": "Unknown",

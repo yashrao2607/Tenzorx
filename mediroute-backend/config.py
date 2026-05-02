@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     APP_NAME: str = "MediRoute AI API"
     DEBUG: bool = False
     VERSION: str = "2.0.0"
-    PORT: int = 8001
+    PORT: int = 8011
     HOST: str = "0.0.0.0"
 
     # API Keys

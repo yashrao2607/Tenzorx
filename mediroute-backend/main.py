@@ -150,15 +150,40 @@ def _procedure_aliases(icd10_code: str, procedure: str) -> list[str]:
     return [procedure, procedure.lower(), f"{procedure} treatment"]
 
 
-def _resolve_market_matches(all_data: list[dict], city: str, icd10_code: str, procedure: str) -> tuple[list[dict], str, str]:
-    city_rows = [h for h in all_data if h["city"].lower() == city.lower()]
+def _load_hospitals_data() -> list[dict]:
+    data = read_json("hospitals_data.json")
+    if data:
+        return data
+    try:
+        from seed_storage import seed
+        logger.warning("[Hospitals] hospitals_data.json missing/empty. Auto-seeding storage...")
+        seed()
+        data = read_json("hospitals_data.json")
+    except Exception as e:
+        logger.error(f"[Hospitals] Auto-seed failed: {e}")
+    return data
+
+
+def _resolve_market_matches(all_data: list[dict], city: str, icd10_code: str, procedure: str) -> tuple[list[dict], str, str, str]:
+    requested_city = (city or "").strip()
+    city_rows = [h for h in all_data if h["city"].lower() == requested_city.lower()]
     if not city_rows:
-        return [], icd10_code, procedure
+        unique_cities = sorted({h.get("city", "").strip() for h in all_data if h.get("city")})
+        if not unique_cities:
+            return [], icd10_code, procedure, requested_city or "Unknown"
+        best_city = max(
+            unique_cities,
+            key=lambda c: fuzz.ratio(requested_city.lower(), c.lower()) if requested_city else 0
+        )
+        city_rows = [h for h in all_data if h.get("city", "").strip().lower() == best_city.lower()]
+        if city_rows:
+            logger.warning(f"[Hospitals] City '{requested_city}' not found. Falling back to '{best_city}'.")
+            requested_city = best_city
 
     exact_code = [h for h in city_rows if h.get("icd10_code") == icd10_code]
     if exact_code:
         resolved_proc = exact_code[0].get("procedure", procedure)
-        return exact_code, icd10_code, resolved_proc
+        return exact_code, icd10_code, resolved_proc, requested_city
 
     proc_rows = [
         h for h in city_rows
@@ -167,16 +192,16 @@ def _resolve_market_matches(all_data: list[dict], city: str, icd10_code: str, pr
     if proc_rows:
         resolved_code = proc_rows[0].get("icd10_code", icd10_code)
         resolved_proc = proc_rows[0].get("procedure", procedure)
-        return proc_rows, resolved_code, resolved_proc
+        return proc_rows, resolved_code, resolved_proc, requested_city
 
     unique_procedures = sorted({h.get("procedure", "") for h in city_rows if h.get("procedure")})
     if not unique_procedures:
-        return [], icd10_code, procedure
+        return [], icd10_code, procedure, requested_city
 
     best = max(unique_procedures, key=lambda p: fuzz.partial_ratio(procedure.lower(), p.lower()) if procedure else 0)
     fuzzy_rows = [h for h in city_rows if h.get("procedure") == best]
     resolved_code = fuzzy_rows[0].get("icd10_code", icd10_code)
-    return fuzzy_rows, resolved_code, best
+    return fuzzy_rows, resolved_code, best, requested_city
 
 # ──────────────────────────────────────────────
 # EXISTING ENDPOINTS (unchanged)
@@ -293,20 +318,20 @@ async def search_disease(req: SearchDiseaseRequest):
 async def hospitals_by_city(req: HospitalsByCityRequest):
     logger.info(f"[Hospitals] city={req.city} proc={req.procedure} icd={req.icd10_code}")
 
-    all_data = read_json("hospitals_data.json")
+    all_data = _load_hospitals_data()
 
-    matches, resolved_icd10, resolved_procedure = _resolve_market_matches(
+    matches, resolved_icd10, resolved_procedure, resolved_city = _resolve_market_matches(
         all_data, req.city, req.icd10_code, req.procedure
     )
 
     if not matches:
-        raise HTTPException(status_code=404, detail=f"No hospitals found in {req.city} for {req.procedure}")
+        raise HTTPException(status_code=404, detail=f"No hospitals found in {req.city} for {req.procedure}. Run seed_storage.py.")
 
     costs = [h["estimated_total_cost"] for h in matches]
     fair_market_price = int(statistics.median(costs))
 
     response = {
-        "city": req.city,
+        "city": resolved_city,
         "icd10_code": resolved_icd10,
         "procedure": resolved_procedure,
         "fair_market_price": fair_market_price,
@@ -319,6 +344,7 @@ async def hospitals_by_city(req: HospitalsByCityRequest):
     # Save for audit
     append_json("cost_comparisons.json", {
         "city": req.city,
+        "resolved_city": resolved_city,
         "icd10_code": resolved_icd10,
         "procedure": resolved_procedure,
         "fair_market_price": fair_market_price,
@@ -339,8 +365,8 @@ async def apply_for_loan(req: ApplyLoanRequest):
 
     logger.info(f"[Loan] user={req.user_id} hospital={req.hospital_name or req.hospital_id} amount={req.requested_amount}")
 
-    all_data = read_json("hospitals_data.json")
-    city_matches, resolved_icd10, resolved_procedure = _resolve_market_matches(
+    all_data = _load_hospitals_data()
+    city_matches, resolved_icd10, resolved_procedure, resolved_city = _resolve_market_matches(
         all_data, resolved_city, req.icd10_code, req.procedure
     )
 
