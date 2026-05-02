@@ -210,7 +210,7 @@ def _resolve_market_matches(all_data: list[dict], city: str, icd10_code: str, pr
 @app.get("/")
 async def root():
     return {
-        "message": "MediRoute AI API is running on port 8001",
+        "message": f"MediRoute AI API is running on port {settings.PORT}",
         "docs": "/docs",
         "health": "/health"
     }
