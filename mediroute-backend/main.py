@@ -174,12 +174,9 @@ def _resolve_market_matches(all_data: list[dict], city: str, icd10_code: str, pr
         return [], icd10_code, procedure
 
     best = max(unique_procedures, key=lambda p: fuzz.partial_ratio(procedure.lower(), p.lower()) if procedure else 0)
-    if procedure and fuzz.partial_ratio(procedure.lower(), best.lower()) >= 55:
-        fuzzy_rows = [h for h in city_rows if h.get("procedure") == best]
-        resolved_code = fuzzy_rows[0].get("icd10_code", icd10_code)
-        return fuzzy_rows, resolved_code, best
-
-    return [], icd10_code, procedure
+    fuzzy_rows = [h for h in city_rows if h.get("procedure") == best]
+    resolved_code = fuzzy_rows[0].get("icd10_code", icd10_code)
+    return fuzzy_rows, resolved_code, best
 
 # ──────────────────────────────────────────────
 # EXISTING ENDPOINTS (unchanged)

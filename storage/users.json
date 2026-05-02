@@ -20,5 +20,16 @@
     "city": "Nagpur",
     "phone": "9876543210",
     "registered_at": "2026-05-02T15:41:33.602299"
+  },
+  {
+    "user_id": "USR-db4902a7",
+    "name": "Test User",
+    "age": 30,
+    "aadhaar": "XXXX-XXXX-1234",
+    "pan": "ABCDE1234F",
+    "occupation": "Salaried",
+    "city": "Nagpur",
+    "phone": "9876543210",
+    "registered_at": "2026-05-02T15:42:42.787716"
   }
 ]

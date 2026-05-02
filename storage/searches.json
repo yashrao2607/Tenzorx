@@ -9,5 +9,16 @@
       "confidence_score": 0.9
     },
     "timestamp": "2026-05-02T15:41:42.130093"
+  },
+  {
+    "user_id": "USR-db4902a7",
+    "symptom_text": "Mere pet me pathri hai",
+    "result": {
+      "condition": "Cholelithiasis",
+      "icd10_code": "K80.20",
+      "recommended_procedure": "Cholecystectomy",
+      "confidence_score": 0.9
+    },
+    "timestamp": "2026-05-02T15:42:44.847292"
   }
 ]
