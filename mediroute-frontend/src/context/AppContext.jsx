@@ -14,48 +14,52 @@ const AppContextProvider = (props) => {
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
     const [userData, setUserData] = useState(false)
 
-    // SILENCED LEGACY CALLS (Doctor/Prescripto endpoints do not exist in MediRoute AI Backend)
-    /*
-    const getDoctosData = async () => {
-
+    // FETCH NATIONAL HOSPITAL DATASET
+    const getDoctorsData = async () => {
         try {
-
-            const { data } = await axios.get(backendUrl + '/api/doctor/list')
+            const { data } = await axios.get(backendUrl + '/api/hospitals')
             if (data.success) {
-                setDoctors(data.doctors)
+                // Map backend hospital schema to frontend 'doctors' schema for compatibility
+                const mappedHospitals = data.hospitals.map(h => ({
+                    _id: `hosp-${h.hospital_id}`,
+                    name: h.hospital_name,
+                    image: h.image || assets.doc1, 
+                    speciality: h.specialties && h.specialties.length > 0 ? h.specialties[0] : h.procedure,
+                    specialties: h.specialties || [],
+                    degree: h.tier,
+                    experience: `${h.reputation_score} Rating`,
+                    about: `Institutional clinical partner in ${h.city}, ${h.state}. Tier: ${h.tier}. ER Wait Time: ${h.er_wait_time} mins.`,
+                    fees: h.estimated_total_cost || 500,
+                    address: {
+                        line1: h.city,
+                        line2: h.state
+                    },
+                    city: h.city,
+                    state: h.state
+                }))
+
+                // Deduplicate for general listing
+                const uniqueHospitals = [];
+                const seenNames = new Set();
+                mappedHospitals.forEach(h => {
+                    if (!seenNames.has(h.name)) {
+                        seenNames.add(h.name);
+                        uniqueHospitals.push(h);
+                    }
+                });
+
+                setDoctors(uniqueHospitals)
             } else {
                 toast.error(data.message)
             }
-
         } catch (error) {
             console.log(error)
-            toast.error(error.message)
+            toast.error("Failed to load clinical dataset")
         }
-
     }
-
-    const loadUserProfileData = async () => {
-
-        try {
-
-            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } })
-
-            if (data.success) {
-                setUserData(data.userData)
-            } else {
-                toast.error(data.message)
-            }
-
-        } catch (error) {
-            console.log(error)
-            toast.error(error.message)
-        }
-
-    }
-    */
 
     useEffect(() => {
-        // getDoctosData()
+        getDoctorsData()
     }, [])
 
     const loadUserProfileData = async () => {

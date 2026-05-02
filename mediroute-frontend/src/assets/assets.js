@@ -64,24 +64,40 @@ export const specialityData = [
         image: General_physician
     },
     {
-        speciality: 'Gynecologist',
-        image: Gynecologist
+        speciality: 'Cardiology',
+        image: Neurologist // Placeholder for Cardiology
     },
     {
-        speciality: 'Dermatologist',
-        image: Dermatologist
+        speciality: 'Orthopedics',
+        image: Dermatologist // Placeholder for Orthopedics
+    },
+    {
+        speciality: 'Oncology',
+        image: Gastroenterologist // Placeholder for Oncology
+    },
+    {
+        speciality: 'Neurology',
+        image: Neurologist
+    },
+    {
+        speciality: 'Gastroenterology',
+        image: Gastroenterologist
+    },
+    {
+        speciality: 'Ophthalmology',
+        image: General_physician // Placeholder
+    },
+    {
+        speciality: 'Urology',
+        image: Gastroenterologist // Placeholder
+    },
+    {
+        speciality: 'Maternity',
+        image: Gynecologist
     },
     {
         speciality: 'Pediatricians',
         image: Pediatricians
-    },
-    {
-        speciality: 'Neurologist',
-        image: Neurologist
-    },
-    {
-        speciality: 'Gastroenterologist',
-        image: Gastroenterologist
     },
 ]
 

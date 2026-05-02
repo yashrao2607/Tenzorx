@@ -2,8 +2,8 @@ import json
 import os
 import random
 
-# The storage directory is at the root of the project
-STORAGE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "storage")
+# The storage directory is inside the backend folder
+STORAGE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "storage")
 HOSPITALS_FILE = "hospitals.json"
 
 def seed():
@@ -44,6 +44,8 @@ def seed():
                 "lon": h["lon"],
                 "tier": h["tier"],
                 "reputation_score": h["reputation_score"],
+                "specialties": h.get("specialties", []),
+                "image": h.get("image", ""),
                 "procedure": p["name"],
                 "icd10_code": p["icd10"],
                 "estimated_total_cost": estimated_cost,

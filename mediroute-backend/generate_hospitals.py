@@ -1,6 +1,23 @@
 import json
 import random
 
+HOSPITAL_IMAGES = [
+    "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1504813184591-01592fd03cfd?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1538108149393-fdfd81895907?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1519494080410-f9aa76cb4283?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800"
+]
+
 # Comprehensive Hospital Data for 20+ States/UTs in India
 # Each entry will contribute to 20 hospitals per state
 STATE_DATA = {
@@ -144,8 +161,9 @@ for state, state_info in STATE_DATA.items():
             "ventilators_available": random.randint(0, 50),
             "blood_inventory": random.choice(["Stable", "Stable", "High", "Critical", "Low"]),
             "uav_dock_status": random.choice(["Available", "Active", "Maintenance"]),
+            "image": random.choice(HOSPITAL_IMAGES),
             "edge_node_utilization": round(random.uniform(30.0, 95.0), 1),
-            "specialties": random.sample(["Cardiology", "Neurology", "Oncology", "Orthopedics", "Pediatrics", "Gastroenterology", "Gynecology", "Ophthalmology", "Urology"], random.randint(4, 7))
+            "specialties": random.sample(["General physician", "Cardiology", "Neurology", "Oncology", "Orthopedics", "Pediatricians", "Gastroenterology", "Gynecology", "Ophthalmology", "Urology", "Maternity"], random.randint(5, 8))
         })
         id_counter += 1
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Shield, MapPin, Star, Search } from 'lucide-react'
+import { AppContext } from '../context/AppContext'
 
 // Professional Hospital Images for variety
 const hospitalImages = [
@@ -18,8 +19,8 @@ const hospitalImages = [
 
 const Hospitals = () => {
     const { speciality } = useParams()
+    const { doctors } = React.useContext(AppContext)
     const [filterHosp, setFilterHosp] = useState([])
-    const [allHospitals, setAllHospitals] = useState([])
     const [showFilter, setShowFilter] = useState(false)
     const navigate = useNavigate()
 
@@ -36,52 +37,20 @@ const Hospitals = () => {
         "Pediatricians"
     ]
 
-    useEffect(() => {
-        const fetchHospitals = async () => {
-            try {
-                const backendUrl = "http://localhost:8011"; // Standard fallback
-                const response = await fetch(`${backendUrl}/api/hospitals`);
-                const result = await response.json();
-                
-                if (result.success && result.hospitals) {
-                    // Since backend data has multiple entries per hospital (one per procedure),
-                    // we deduplicate by hospital name for this listing page.
-                    const uniqueHospitalsMap = new Map();
-                    result.hospitals.forEach(h => {
-                        if (!uniqueHospitalsMap.has(h.hospital_name)) {
-                            uniqueHospitalsMap.set(h.hospital_name, {
-                                name: h.hospital_name,
-                                city: h.city,
-                                state: h.state || 'India',
-                                specialty: h.procedure, 
-                                rating: h.reputation_score || 4.5,
-                                tier: h.tier
-                            });
-                        }
-                    });
-                    
-                    const deduplicatedData = Array.from(uniqueHospitalsMap.values());
-                    setAllHospitals(deduplicatedData);
-                    applyFilter(deduplicatedData);
-                }
-            } catch (err) {
-                console.error("Failed to load hospitals from backend", err);
-            }
-        };
-        fetchHospitals();
-    }, []);
-
-    const applyFilter = (data) => {
+    const applyFilter = () => {
         if (speciality) {
-            setFilterHosp(data.filter(h => h.specialty.toLowerCase() === speciality.toLowerCase()))
+            // Check if the selected category exists in the hospital's specialties list
+            setFilterHosp(doctors.filter(h => 
+                (h.specialties || []).some(s => s.toLowerCase() === speciality.toLowerCase())
+            ))
         } else {
-            setFilterHosp(data)
+            setFilterHosp(doctors)
         }
     }
 
     useEffect(() => {
-        applyFilter(allHospitals)
-    }, [speciality, allHospitals])
+        applyFilter()
+    }, [speciality, doctors])
 
     return (
         <div className='pt-5'>
@@ -119,7 +88,7 @@ const Hospitals = () => {
                             <div className="relative h-56 overflow-hidden bg-slate-100">
                                 <img 
                                     className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-110' 
-                                    src={hospitalImages[index % hospitalImages.length]} 
+                                    src={item.image} 
                                     alt={item.name} 
                                     onError={(e) => {
                                         e.target.src = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800"
