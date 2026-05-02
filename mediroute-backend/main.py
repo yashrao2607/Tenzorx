@@ -1,6 +1,7 @@
 import time
 import uuid
 import statistics
+import re
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -123,11 +124,29 @@ class HospitalsByCityRequest(BaseModel):
 class ApplyLoanRequest(BaseModel):
     user_id: str
     hospital_id: int
-    hospital_name: str
+    hospital_name: Optional[str] = None
     icd10_code: str
     procedure: str
     requested_amount: int
-    city: str
+    city: Optional[str] = None
+
+
+def _normalize_digits(value: str) -> str:
+    return "".join(ch for ch in str(value) if ch.isdigit())
+
+
+def _procedure_aliases(icd10_code: str, procedure: str) -> list[str]:
+    aliases_by_code = {
+        "N20.0": ["Pathri ka operation", "Stone removal", "ESWL", "Laser stone treatment"],
+        "K35": ["Appendix operation", "Appendix surgery", "Appendicitis operation"],
+        "I25.10": ["Heart stent", "Stent procedure", "Coronary angioplasty"],
+        "M17.1": ["Ghutan badalne ka operation", "Knee implant surgery", "TKR"],
+        "H25.0": ["Motiyabind operation", "Lens replacement", "Phaco surgery"],
+        "K40": ["Hernia operation", "Jhaad ka operation", "Mesh hernia repair"],
+    }
+    if icd10_code in aliases_by_code:
+        return aliases_by_code[icd10_code]
+    return [procedure, procedure.lower(), f"{procedure} treatment"]
 
 # ──────────────────────────────────────────────
 # EXISTING ENDPOINTS (unchanged)
@@ -191,16 +210,27 @@ async def api_update_comorbidity(req: EstimateRequest):
 
 @app.post("/api/register-user")
 async def register_user(req: RegisterUserRequest):
+    aadhaar_digits = _normalize_digits(req.aadhaar)
+    phone_digits = _normalize_digits(req.phone)
+    pan = req.pan.strip().upper()
+
+    if len(aadhaar_digits) != 12:
+        raise HTTPException(status_code=422, detail="Aadhaar must be exactly 12 digits")
+    if len(phone_digits) != 10:
+        raise HTTPException(status_code=422, detail="Phone number must be exactly 10 digits")
+    if not re.fullmatch(r"[A-Z]{5}[0-9]{4}[A-Z]", pan):
+        raise HTTPException(status_code=422, detail="PAN must match format ABCDE1234F")
+
     user_id = f"USR-{uuid.uuid4().hex[:8]}"
     record = {
         "user_id": user_id,
         "name": req.name,
         "age": req.age,
-        "aadhaar": f"XXXX-XXXX-{req.aadhaar[-4:]}",
-        "pan": req.pan.upper(),
+        "aadhaar": f"XXXX-XXXX-{aadhaar_digits[-4:]}",
+        "pan": pan,
         "occupation": req.occupation,
         "city": req.city,
-        "phone": req.phone,
+        "phone": phone_digits,
         "registered_at": now_iso(),
     }
     append_json("users.json", record)
@@ -212,6 +242,11 @@ async def register_user(req: RegisterUserRequest):
 async def search_disease(req: SearchDiseaseRequest):
     logger.info(f"[Search] user={req.user_id} symptom={req.symptom_text[:40]}")
     result = await diagnostician.analyze(req.symptom_text)
+    if "procedure_aliases" not in result or not result.get("procedure_aliases"):
+        result["procedure_aliases"] = _procedure_aliases(
+            result.get("icd10_code", ""),
+            result.get("recommended_procedure", "Treatment"),
+        )
 
     # Save search log
     append_json("searches.json", {
@@ -275,12 +310,18 @@ async def hospitals_by_city(req: HospitalsByCityRequest):
 
 @app.post("/api/apply-for-loan")
 async def apply_for_loan(req: ApplyLoanRequest):
-    logger.info(f"[Loan] user={req.user_id} hospital={req.hospital_name} amount={req.requested_amount}")
+    users = read_json("users.json")
+    user_record = next((u for u in users if u.get("user_id") == req.user_id), None)
+    resolved_city = req.city or (user_record.get("city") if user_record else None)
+    if not resolved_city:
+        raise HTTPException(status_code=422, detail="City is required (or must exist on registered user)")
+
+    logger.info(f"[Loan] user={req.user_id} hospital={req.hospital_name or req.hospital_id} amount={req.requested_amount}")
 
     all_data = read_json("hospitals_data.json")
     city_matches = [
         h for h in all_data
-        if h["city"].lower() == req.city.lower() and h["icd10_code"] == req.icd10_code
+        if h["city"].lower() == resolved_city.lower() and h["icd10_code"] == req.icd10_code
     ]
 
     if not city_matches:
@@ -344,7 +385,8 @@ async def apply_for_loan(req: ApplyLoanRequest):
     # Save decision
     append_json("loan_decisions.json", {
         "user_id": req.user_id,
-        "hospital_name": req.hospital_name,
+        "hospital_name": req.hospital_name or (selected["hospital_name"] if selected else "Unknown"),
+        "city": resolved_city,
         "icd10_code": req.icd10_code,
         "requested_amount": req.requested_amount,
         "decision": decision,

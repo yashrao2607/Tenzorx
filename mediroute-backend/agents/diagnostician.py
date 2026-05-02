@@ -20,7 +20,8 @@ Return JSON only:
   "condition": "...",
   "icd10_code": "...",
   "recommended_procedure": "...",
-  "confidence_score": 0-1
+  "confidence_score": 0-1,
+  "procedure_aliases": ["...", "..."]
 }}
 
 Rules:
@@ -66,12 +67,13 @@ class DiagnosticianAgent:
                 
         except asyncio.TimeoutError:
             logger.error(f"[Diagnostician] Timeout exceeded")
-            return {
-                "condition": "Service timeout",
-                "icd10_code": "N/A",
-                "recommended_procedure": "Retry",
-                "confidence_score": 0.0
-            }
+        return {
+            "condition": "Service timeout",
+            "icd10_code": "N/A",
+            "recommended_procedure": "Retry",
+            "confidence_score": 0.0,
+            "procedure_aliases": ["Retry", "Try again"]
+        }
         except Exception as e:
             logger.error(f"[Diagnostician] Error: {e}")
 
@@ -79,5 +81,6 @@ class DiagnosticianAgent:
             "condition": "Unknown",
             "icd10_code": "N/A",
             "recommended_procedure": "Consult physician",
-            "confidence_score": 0.0
+            "confidence_score": 0.0,
+            "procedure_aliases": ["Consult doctor", "Clinical consultation"]
         }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, UserPlus, Search, MapPin, FileCheck, RefreshCcw } from 'lucide-react';
@@ -17,8 +17,6 @@ function App() {
   // Phase 2 State
   const [user, setUser] = useState(null);
   const [diagnosis, setDiagnosis] = useState(null);
-  const [hospitalsData, setHospitalsData] = useState(null);
-  const [selectedHospital, setSelectedHospital] = useState(null);
   const [loanResult, setLoanResult] = useState(null);
 
   const steps = [
@@ -38,8 +36,7 @@ function App() {
     setStep(2);
   };
 
-  const handleHospitalSelect = async (hospital, contextData) => {
-    setSelectedHospital(hospital);
+  const handleHospitalSelect = async (hospital) => {
     setLoading(true);
     try {
       // For underwriting, we need to provide a "requested amount". 
@@ -67,7 +64,6 @@ function App() {
     setStep(0);
     setUser(null);
     setDiagnosis(null);
-    setSelectedHospital(null);
     setLoanResult(null);
     setError(null);
   };

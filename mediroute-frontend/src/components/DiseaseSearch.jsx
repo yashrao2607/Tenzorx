@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Activity, Info } from 'lucide-react';
 import axios from 'axios';
@@ -38,6 +38,11 @@ const DiseaseSearch = ({ user, onSearch }) => {
       </div>
 
       <div className="glass-card p-8">
+        {error && (
+          <div className="mb-6 p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg text-rose-400 text-sm">
+            {error}
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <label className="text-sm font-medium text-slate-300 flex items-center gap-2">
