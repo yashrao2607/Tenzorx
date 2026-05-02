@@ -37,35 +37,35 @@ const Hospitals = () => {
     ]
 
     useEffect(() => {
-        // Fetch hospitals from local JSON (mirrored from backend)
-        // For demo, we'll use a subset of the actual dataset to ensure performance
         const fetchHospitals = async () => {
             try {
-                // In a real app, this would be an API call
-                // Here we simulate loading from the hospitals_data.json
-                const response = await fetch('/hospitals_data.json'); 
-                // Wait, the file is in public or needs to be served.
-                // Since I can't easily fetch local files outside public, I'll use a sample
-                const sampleData = [
-                    { name: "Alexis Multispeciality", city: "Nagpur", specialty: "General physician", rating: 4.5 },
-                    { name: "Apollo Cardiology Center", city: "Pune", specialty: "Cardiology", rating: 4.8 },
-                    { name: "Fortis Bone & Joint", city: "Gurugram", specialty: "Orthopedics", rating: 4.7 },
-                    { name: "Max Cancer Care", city: "Delhi", specialty: "Oncology", rating: 4.6 },
-                    { name: "Manipal Children Hospital", city: "Bangalore", specialty: "Pediatricians", rating: 4.5 },
-                    { name: "Kokilaben Ambani Gastric", city: "Mumbai", specialty: "Gastroenterologist", rating: 4.9 },
-                    { name: "Lilavati Eye Institute", city: "Mumbai", specialty: "Ophthalmology", rating: 4.7 },
-                    { name: "Medanta Neurosciences", city: "Gurugram", specialty: "Neurology", rating: 4.8 },
-                    { name: "Cloudnine Maternity", city: "Pune", specialty: "Maternity", rating: 4.6 },
-                    { name: "HCG Oncology Center", city: "Ahmedabad", specialty: "Oncology", rating: 4.7 },
-                    { name: "Narayana Cardiac", city: "Bangalore", specialty: "Cardiology", rating: 4.9 },
-                    { name: "Dr. Agarwal's Eye", city: "Chennai", specialty: "Ophthalmology", rating: 4.5 },
-                    { name: "KIMS Urology", city: "Hyderabad", specialty: "Urology", rating: 4.6 },
-                    { name: "Artemis Orthopedics", city: "Gurugram", specialty: "Orthopedics", rating: 4.7 },
-                ];
-                setAllHospitals(sampleData);
-                applyFilter(sampleData);
+                const backendUrl = "http://localhost:8011"; // Standard fallback
+                const response = await fetch(`${backendUrl}/api/hospitals`);
+                const result = await response.json();
+                
+                if (result.success && result.hospitals) {
+                    // Since backend data has multiple entries per hospital (one per procedure),
+                    // we deduplicate by hospital name for this listing page.
+                    const uniqueHospitalsMap = new Map();
+                    result.hospitals.forEach(h => {
+                        if (!uniqueHospitalsMap.has(h.hospital_name)) {
+                            uniqueHospitalsMap.set(h.hospital_name, {
+                                name: h.hospital_name,
+                                city: h.city,
+                                state: h.state || 'India',
+                                specialty: h.procedure, 
+                                rating: h.reputation_score || 4.5,
+                                tier: h.tier
+                            });
+                        }
+                    });
+                    
+                    const deduplicatedData = Array.from(uniqueHospitalsMap.values());
+                    setAllHospitals(deduplicatedData);
+                    applyFilter(deduplicatedData);
+                }
             } catch (err) {
-                console.error("Failed to load hospitals", err);
+                console.error("Failed to load hospitals from backend", err);
             }
         };
         fetchHospitals();
@@ -139,7 +139,7 @@ const Hospitals = () => {
                                     </div>
                                     <div className="bg-slate-50 px-3 py-1 rounded-full border border-slate-100 flex items-center gap-1.5 ml-auto">
                                         <MapPin className="w-3 h-3 text-slate-400" />
-                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">{item.city}</span>
+                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">{item.city}, {item.state || 'IN'}</span>
                                     </div>
                                 </div>
                                 

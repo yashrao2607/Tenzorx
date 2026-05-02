@@ -253,6 +253,14 @@ def _resolve_market_matches(all_data: list[dict], city: str, icd10_code: str, pr
     resolved_code = fuzzy_rows[0].get("icd10_code", icd10_code)
     return fuzzy_rows, resolved_code, best, requested_city
 
+
+@app.get("/api/hospitals")
+async def get_all_hospitals():
+    """Returns all available hospital data from storage."""
+    all_data = _load_hospitals_data()
+    return {"success": True, "hospitals": all_data}
+
+
 # ──────────────────────────────────────────────
 # EXISTING ENDPOINTS (unchanged)
 # ──────────────────────────────────────────────

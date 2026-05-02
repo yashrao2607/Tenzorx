@@ -39,6 +39,7 @@ def seed():
                 "hospital_id": h["id"],
                 "hospital_name": h["name"],
                 "city": h["city"],
+                "state": h.get("state", "India"),
                 "lat": h["lat"],
                 "lon": h["lon"],
                 "tier": h["tier"],
