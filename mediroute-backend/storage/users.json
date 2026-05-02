@@ -296,5 +296,17 @@
         "city": "GURGOAN",
         "phone": "9352339808",
         "registered_at": "2026-05-02T16:56:06.369259"
+    },
+    {
+        "user_id": "USR-2df478cc",
+        "name": "krish rathi ",
+        "age": 20,
+        "gender": "Male",
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Salaried",
+        "city": "delhi ",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T17:24:32.746333"
     }
 ]

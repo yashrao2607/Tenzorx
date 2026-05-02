@@ -80,76 +80,81 @@ const Login = () => {
   }, [token])
 
   return (
-    <div className='min-h-screen flex items-center justify-center py-12 px-4'>
+    <div className='min-h-screen flex items-center justify-center py-12 px-4 bg-[#fcfdfe]'>
       <motion.form 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
         onSubmit={onSubmitHandler} 
-        className='w-full max-w-[900px] flex flex-col md:flex-row glass-card overflow-hidden shadow-2xl backdrop-blur-3xl'
+        className='w-full max-w-[1000px] flex flex-col md:flex-row glass-card overflow-hidden shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)] border-white/80'
       >
         {/* Left Side - Visual Branding */}
-        <div className='md:w-[350px] bg-primary p-12 text-white flex flex-col justify-between relative overflow-hidden'>
-          <div className='relative z-10 space-y-4'>
-            <div className="bg-white/20 w-12 h-12 rounded-2xl flex items-center justify-center backdrop-blur-md">
+        <div className='md:w-[380px] bg-gradient-to-br from-primary via-[#4F5FEF] to-[#3B4ADF] p-12 text-white flex flex-col justify-between relative overflow-hidden'>
+          <div className='relative z-10 space-y-6'>
+            <div className="bg-white/10 w-14 h-14 rounded-2xl flex items-center justify-center backdrop-blur-xl border border-white/20 shadow-xl">
               <Shield className="w-8 h-8 text-white fill-current" />
             </div>
-            <h2 className='text-3xl font-black tracking-tight leading-tight uppercase'>
-              MediRoute <br /> <span className='opacity-60'>Institutional</span>
-            </h2>
+            <div className='space-y-1'>
+              <h2 className='text-3xl font-black tracking-tighter leading-none uppercase'>
+                MediRoute
+              </h2>
+              <p className='text-xl font-bold opacity-70 tracking-[0.2em] uppercase'>Institutional</p>
+            </div>
           </div>
           
-          <div className='relative z-10 space-y-6'>
-            <p className='text-white/80 font-medium'>
+          <div className='relative z-10 space-y-8'>
+            <p className='text-white/90 font-medium text-lg leading-relaxed italic'>
               "The most advanced clinical intelligence portal for cost auditing and medical diagnostics."
             </p>
-            <div className='flex -space-x-2'>
-              {[1,2,3,4].map(i => (
-                <div key={i} className='w-8 h-8 rounded-full border-2 border-primary bg-slate-200' />
-              ))}
-              <div className='w-8 h-8 rounded-full border-2 border-primary bg-primary-light flex items-center justify-center text-[10px] text-primary font-bold'>+2k</div>
+            <div className='flex items-center gap-4'>
+              <div className='flex -space-x-3'>
+                {[1,2,3,4].map(i => (
+                  <div key={i} className='w-10 h-10 rounded-full border-2 border-primary bg-white/20 backdrop-blur-md' />
+                ))}
+              </div>
+              <p className='text-sm font-bold text-white/80'>Trusted by 2,000+ Providers</p>
             </div>
           </div>
 
-          {/* Abstract Shapes */}
-          <div className='absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2' />
-          <div className='absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2' />
+          {/* Decorative Elements */}
+          <div className='absolute -top-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl' />
+          <div className='absolute -bottom-24 -left-24 w-64 h-64 bg-primary-light/10 rounded-full blur-3xl' />
         </div>
 
         {/* Right Side - Form */}
-        <div className='flex-1 p-8 md:p-12 space-y-8 bg-white/50'>
-          <div className='space-y-1'>
-            <h1 className='text-3xl font-black text-slate-900 tracking-tight'>
+        <div className='flex-1 p-10 md:p-14 space-y-8 bg-white/40 backdrop-blur-xl'>
+          <div className='space-y-2'>
+            <h1 className='text-4xl font-black text-slate-900 tracking-tight'>
               {state === 'Sign Up' ? "Create Account" : "Welcome Back"}
             </h1>
-            <p className='text-slate-500 font-medium'>
+            <p className='text-slate-500 font-semibold text-sm uppercase tracking-widest'>
               {state === 'Sign Up' ? "Institutional Registration Protocol" : "Secure Clinical Portal Access"}
             </p>
           </div>
 
-          <div className={`${state === 'Sign Up' ? 'grid grid-cols-1 md:grid-cols-2 gap-5' : 'space-y-5'} w-full`}>
+          <div className={`${state === 'Sign Up' ? 'grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5' : 'space-y-5'} w-full`}>
             {state === 'Sign Up' && (
               <>
                 <div className='md:col-span-2 space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>Full Name</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>Full Name</label>
                   <div className='relative group'>
-                    <User className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <input onChange={(e) => setName(e.target.value)} value={name} className='input-field w-full pl-12 py-3.5 bg-white/60' type="text" placeholder="John Doe" required />
+                    <User className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <input onChange={(e) => setName(e.target.value)} value={name} className='input-field w-full pl-12 py-3 bg-white/80 border-slate-200/60' type="text" placeholder="John Doe" required />
                   </div>
                 </div>
 
                 <div className='space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>Age</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>Age</label>
                   <div className='relative group'>
-                    <UserCircle className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <input onChange={(e) => setAge(e.target.value)} value={age} className='input-field w-full pl-12 py-3.5 bg-white/60' type="number" placeholder="25" required />
+                    <UserCircle className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <input onChange={(e) => setAge(e.target.value)} value={age} className='input-field w-full pl-12 py-3 bg-white/80 border-slate-200/60' type="number" placeholder="25" required />
                   </div>
                 </div>
 
                 <div className='space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>Employment</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>Employment</label>
                   <div className='relative group'>
-                    <Briefcase className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <select onChange={(e) => setEmploymentType(e.target.value)} value={employmentType} className='input-field w-full pl-12 py-3.5 bg-white/60 appearance-none'>
+                    <Briefcase className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <select onChange={(e) => setEmploymentType(e.target.value)} value={employmentType} className='input-field w-full pl-12 py-3 bg-white/80 border-slate-200/60 appearance-none cursor-pointer'>
                       <option value="Salaried">Salaried</option>
                       <option value="Self-Employed">Self-Employed</option>
                       <option value="Student">Student</option>
@@ -158,10 +163,10 @@ const Login = () => {
                 </div>
 
                 <div className='space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>Gender</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>Gender</label>
                   <div className='relative group'>
-                    <UserCircle className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <select onChange={(e) => setGender(e.target.value)} value={gender} className='input-field w-full pl-12 py-3.5 bg-white/60 appearance-none'>
+                    <UserCircle className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <select onChange={(e) => setGender(e.target.value)} value={gender} className='input-field w-full pl-12 py-3 bg-white/80 border-slate-200/60 appearance-none cursor-pointer'>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
                       <option value="Other">Other</option>
@@ -170,34 +175,34 @@ const Login = () => {
                 </div>
 
                 <div className='space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>City</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>City</label>
                   <div className='relative group'>
-                    <MapPin className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <input onChange={(e) => setCity(e.target.value)} value={city} className='input-field w-full pl-12 py-3.5 bg-white/60' type="text" placeholder="Mumbai" required />
+                    <MapPin className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <input onChange={(e) => setCity(e.target.value)} value={city} className='input-field w-full pl-12 py-3 bg-white/80 border-slate-200/60' type="text" placeholder="Mumbai" required />
                   </div>
                 </div>
 
                 <div className='space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>Phone</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>Phone</label>
                   <div className='relative group'>
-                    <Phone className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <input onChange={(e) => setPhone(e.target.value)} value={phone} className='input-field w-full pl-12 py-3.5 bg-white/60' type="tel" placeholder="9876543210" required />
+                    <Phone className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <input onChange={(e) => setPhone(e.target.value)} value={phone} className='input-field w-full pl-12 py-3 bg-white/80 border-slate-200/60' type="tel" placeholder="9876543210" required />
                   </div>
                 </div>
 
                 <div className='space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>PAN Card</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>PAN Card</label>
                   <div className='relative group'>
-                    <IdCard className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <input onChange={(e) => setPanCard(e.target.value)} value={panCard} className='input-field w-full pl-12 py-3.5 bg-white/60 uppercase' type="text" placeholder="ABCDE1234F" required />
+                    <IdCard className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <input onChange={(e) => setPanCard(e.target.value)} value={panCard} className='input-field w-full pl-12 py-3 bg-white/80 border-slate-200/60 uppercase' type="text" placeholder="ABCDE1234F" required />
                   </div>
                 </div>
 
                 <div className='md:col-span-2 space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>Aadhaar Number</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>Aadhaar Number</label>
                   <div className='relative group'>
-                    <IdCard className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <input onChange={(e) => setAadharCard(e.target.value)} value={aadharCard} className='input-field w-full pl-12 py-3.5 bg-white/60' type="text" placeholder="1234 5678 9012" required />
+                    <IdCard className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <input onChange={(e) => setAadharCard(e.target.value)} value={aadharCard} className='input-field w-full pl-12 py-3 bg-white/80 border-slate-200/60' type="text" placeholder="1234 5678 9012" required />
                   </div>
                 </div>
               </>
@@ -206,36 +211,36 @@ const Login = () => {
             {state === 'Login' && (
               <>
                 <div className='space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>Institutional ID</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>Institutional ID</label>
                   <div className='relative group'>
-                    <Mail className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <input onChange={(e) => setEmail(e.target.value)} value={email} className='input-field w-full pl-12 py-4 bg-white/60' type="text" placeholder="USR-d65781ec" required />
+                    <Mail className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <input onChange={(e) => setEmail(e.target.value)} value={email} className='input-field w-full pl-12 py-4 bg-white/80 border-slate-200/60' type="text" placeholder="USR-d65781ec" required />
                   </div>
                 </div>
                 <div className='space-y-1.5'>
-                  <label className='text-xs font-bold text-slate-400 uppercase tracking-widest'>Password</label>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>Password</label>
                   <div className='relative group'>
-                    <Lock className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary transition-colors' />
-                    <input onChange={(e) => setPassword(e.target.value)} value={password} className='input-field w-full pl-12 py-4 bg-white/60' type="password" placeholder="••••••••" required />
+                    <Lock className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <input onChange={(e) => setPassword(e.target.value)} value={password} className='input-field w-full pl-12 py-4 bg-white/80 border-slate-200/60' type="password" placeholder="••••••••" required />
                   </div>
                 </div>
               </>
             )}
           </div>
 
-          <div className='space-y-6 pt-4'>
-            <button className='btn-primary w-full py-4 text-sm tracking-widest uppercase'>
-              {state === 'Sign Up' ? 'Initialize Institutional Account' : 'Authenticate Session'}
+          <div className='space-y-6 pt-6'>
+            <button className='btn-primary w-full py-4 text-xs font-black tracking-[0.2em] uppercase shadow-2xl shadow-primary/40'>
+              {state === 'Sign Up' ? 'Initialize Account' : 'Authenticate Session'}
             </button>
             
-            <p className='text-center text-slate-500 font-medium'>
-              {state === 'Sign Up' ? "Already registered?" : "New to the network?"} 
+            <p className='text-center text-slate-400 font-bold text-sm'>
+              {state === 'Sign Up' ? "ALREADY REGISTERED?" : "NEW TO THE NETWORK?"} 
               <button 
                 type='button'
                 onClick={() => setState(state === 'Sign Up' ? 'Login' : 'Sign Up')} 
-                className='ml-2 text-primary font-bold hover:underline underline-offset-4'
+                className='ml-2 text-primary hover:text-primary/80 transition-colors underline underline-offset-8'
               >
-                {state === 'Sign Up' ? "Sign In" : "Initialize Identity"}
+                {state === 'Sign Up' ? "SIGN IN" : "INITIALIZE IDENTITY"}
               </button>
             </p>
           </div>
