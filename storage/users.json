@@ -75,5 +75,16 @@
     "city": "Delhi",
     "phone": "9876543210",
     "registered_at": "2026-05-02T16:06:41.934012"
+  },
+  {
+    "user_id": "USR-93ae9824",
+    "name": "Test User",
+    "age": 22,
+    "aadhaar": "XXXX-XXXX-1234",
+    "pan": "ABCDE1234F",
+    "occupation": "Student",
+    "city": "Nagpur",
+    "phone": "9876543210",
+    "registered_at": "2026-05-02T16:09:37.243465"
   }
 ]
