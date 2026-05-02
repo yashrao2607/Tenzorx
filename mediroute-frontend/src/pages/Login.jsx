@@ -17,6 +17,7 @@ const Login = () => {
   const [employmentType, setEmploymentType] = useState('Salaried')
   const [city, setCity] = useState('')
   const [phone, setPhone] = useState('')
+  const [gender, setGender] = useState('Male')
 
   const navigate = useNavigate()
   const { backendUrl, token, setToken } = useContext(AppContext)
@@ -29,6 +30,7 @@ const Login = () => {
         const payload = {
           name,
           age: parseInt(age),
+          gender,
           aadhaar: aadharCard,
           pan: panCard,
           occupation: employmentType,
@@ -48,12 +50,22 @@ const Login = () => {
         }
 
       } else {
-        // Simple login simulation based on the same endpoint or a search
-        // Since backend doesn't have a dedicated login, we simulate success
-        const mockToken = 'USR-' + Math.random().toString(36).substr(2, 8)
-        localStorage.setItem('token', mockToken)
-        setToken(mockToken)
-        toast.success("Welcome back to MediRoute AI")
+        // Real User ID login check
+        if (!email.startsWith('USR-')) {
+          toast.error("Please enter a valid Institutional ID (starting with USR-)")
+          return
+        }
+
+        try {
+          const { data } = await axios.get(backendUrl + '/api/get-user-profile/' + email)
+          if (data.success) {
+            localStorage.setItem('token', email)
+            setToken(email)
+            toast.success("Welcome back to MediRoute AI")
+          }
+        } catch (error) {
+          toast.error("Invalid Institutional ID. Please Sign Up if you don't have one.")
+        }
       }
     } catch (error) {
       console.error(error)
@@ -93,6 +105,18 @@ const Login = () => {
                 <option value="Salaried">Salaried</option>
                 <option value="Self-Employed">Self-Employed</option>
                 <option value="Student">Student</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div className='w-full'>
+              <p className='font-medium mb-1'>Gender</p>
+              <select 
+                onChange={(e) => setGender(e.target.value)} 
+                value={gender} 
+                className='border border-slate-200 rounded-lg w-full p-2.5 focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white'
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
                 <option value="Other">Other</option>
               </select>
             </div>

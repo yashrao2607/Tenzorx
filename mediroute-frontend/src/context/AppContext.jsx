@@ -66,6 +66,11 @@ const AppContextProvider = (props) => {
             }
         } catch (error) {
             console.log(error)
+            if (error.response?.status === 404) {
+                // If token is invalid/not found, clear it
+                setToken('')
+                localStorage.removeItem('token')
+            }
         }
     }
 

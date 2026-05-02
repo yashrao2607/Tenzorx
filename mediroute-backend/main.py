@@ -107,6 +107,7 @@ class LoanRequest(BaseModel):
 class RegisterUserRequest(BaseModel):
     name: str
     age: int
+    gender: str
     aadhaar: str
     pan: str
     occupation: str
@@ -332,6 +333,7 @@ async def register_user(req: RegisterUserRequest):
         "user_id": user_id,
         "name": req.name,
         "age": req.age,
+        "gender": req.gender,
         "aadhaar": f"XXXX-XXXX-{aadhaar_digits[-4:]}",
         "pan": pan,
         "occupation": req.occupation,

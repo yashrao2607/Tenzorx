@@ -32,7 +32,7 @@ const Verhoeff = {
 
 const RegistrationForm = ({ onRegister, initialData = null }) => {
   const [formData, setFormData] = useState(initialData || {
-    name: '', age: '', aadhaar: '', pan: '', occupation: 'Salaried', city: '', phone: ''
+    name: '', age: '', gender: 'Male', aadhaar: '', pan: '', occupation: 'Salaried', city: '', phone: ''
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -44,6 +44,7 @@ const RegistrationForm = ({ onRegister, initialData = null }) => {
 
     const payload = {
       ...formData, age: Number(formData.age),
+      gender: formData.gender,
       aadhaar: onlyDigits(formData.aadhaar),
       pan: normalizePan(formData.pan),
       phone: onlyDigits(formData.phone),
@@ -91,6 +92,14 @@ const RegistrationForm = ({ onRegister, initialData = null }) => {
           <div className="space-y-3">
             <label className="text-sm font-bold text-slate-600 ml-1">Age</label>
             <input required type="number" className="input-field w-full" placeholder="25" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} />
+          </div>
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-slate-600 ml-1">Gender</label>
+            <select className="input-field w-full appearance-none" value={formData.gender} onChange={(e) => setFormData({ ...formData, gender: e.target.value })}>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
         </div>
 
