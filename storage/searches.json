@@ -47,5 +47,16 @@
       ]
     },
     "timestamp": "2026-05-02T15:47:44.429086"
+  },
+  {
+    "user_id": "USR-18f382e1",
+    "symptom_text": "Mere pet mein pathri hai",
+    "result": {
+      "condition": "Cholelithiasis",
+      "icd10_code": "K80.20",
+      "recommended_procedure": "Laparoscopic Cholecystectomy",
+      "confidence_score": 0.9
+    },
+    "timestamp": "2026-05-02T16:00:13.673108"
   }
 ]

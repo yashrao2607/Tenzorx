@@ -53,5 +53,16 @@
     "city": "Nagpur",
     "phone": "9876543210",
     "registered_at": "2026-05-02T15:47:35.093767"
+  },
+  {
+    "user_id": "USR-18f382e1",
+    "name": "Yash Yadav",
+    "age": 20,
+    "aadhaar": "XXXX-XXXX-0922",
+    "pan": "PQR6977L",
+    "occupation": "Salaried",
+    "city": "Delhi",
+    "phone": "8053555872",
+    "registered_at": "2026-05-02T15:59:46.831825"
   }
 ]
