@@ -116,6 +116,10 @@ class RegisterUserRequest(BaseModel):
 class SearchDiseaseRequest(BaseModel):
     user_id: str
     symptom_text: str
+    answers: Optional[List[Dict[str, str]]] = None
+
+class GetQuestionsRequest(BaseModel):
+    concern: str
 
 class HospitalsByCityRequest(BaseModel):
     city: str
@@ -130,6 +134,51 @@ class ApplyLoanRequest(BaseModel):
     procedure: str
     requested_amount: int
     city: Optional[str] = None
+
+
+# ──────────────────────────────────────────────
+# VALIDATION UTILS
+# ──────────────────────────────────────────────
+
+class Verhoeff:
+    d = [
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
+        [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
+        [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
+        [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
+        [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
+        [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
+        [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
+        [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
+        [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    ]
+    p = [
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
+        [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
+        [8, 9, 1, 6, 0, 4, 3, 5, 2, 7],
+        [9, 4, 5, 3, 1, 2, 6, 8, 7, 0],
+        [4, 2, 8, 6, 5, 7, 3, 9, 0, 1],
+        [2, 7, 9, 3, 8, 0, 6, 4, 1, 5],
+        [7, 0, 4, 6, 9, 1, 3, 2, 5, 8]
+    ]
+
+    @staticmethod
+    def validate(number: str) -> bool:
+        if not number.isdigit() or len(number) != 12:
+            return False
+        if number[0] in ['0', '1']:
+            return False
+        try:
+            c = 0
+            # Verhoeff algorithm requires reversing the digits
+            # and checking if the final result of multiplications is 0
+            for i, digit in enumerate(reversed(number)):
+                c = Verhoeff.d[c][Verhoeff.p[i % 8][int(digit)]]
+            return c == 0
+        except Exception:
+            return False
 
 
 def _normalize_digits(value: str) -> str:
@@ -269,12 +318,14 @@ async def register_user(req: RegisterUserRequest):
     phone_digits = _normalize_digits(req.phone)
     pan = req.pan.strip().upper()
 
-    if len(aadhaar_digits) != 12:
-        raise HTTPException(status_code=422, detail="Aadhaar must be exactly 12 digits")
+    if not Verhoeff.validate(aadhaar_digits):
+        raise HTTPException(status_code=422, detail="Invalid Aadhaar: Checksum failed or incorrect format (12 digits, cannot start with 0 or 1)")
     if len(phone_digits) != 10:
         raise HTTPException(status_code=422, detail="Phone number must be exactly 10 digits")
+    if phone_digits[0] not in ['6', '7', '8', '9']:
+        raise HTTPException(status_code=422, detail="Invalid Mobile: Indian numbers must start with 6, 7, 8, or 9")
     if not re.fullmatch(r"[A-Z]{5}[0-9]{4}[A-Z]", pan):
-        raise HTTPException(status_code=422, detail="PAN must match format ABCDE1234F")
+        raise HTTPException(status_code=422, detail="Invalid PAN: Must follow format AAAAA9999A (5 Letters, 4 Digits, 1 Letter)")
 
     user_id = f"USR-{uuid.uuid4().hex[:8]}"
     record = {
@@ -293,10 +344,16 @@ async def register_user(req: RegisterUserRequest):
     return {"user_id": user_id, "status": "registered", "city": req.city}
 
 
+@app.post("/api/get-questions")
+async def get_questions(req: GetQuestionsRequest):
+    logger.info(f"[Questions] concern={req.concern[:40]}")
+    return await diagnostician.get_clarifying_questions(req.concern)
+
+
 @app.post("/api/search-disease")
 async def search_disease(req: SearchDiseaseRequest):
     logger.info(f"[Search] user={req.user_id} symptom={req.symptom_text[:40]}")
-    result = await diagnostician.analyze(req.symptom_text)
+    result = await diagnostician.analyze(req.symptom_text, req.answers)
     if "procedure_aliases" not in result or not result.get("procedure_aliases"):
         result["procedure_aliases"] = _procedure_aliases(
             result.get("icd10_code", ""),

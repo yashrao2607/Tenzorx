@@ -8,6 +8,42 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8011
 const onlyDigits = (value) => value.replace(/\D/g, '');
 const normalizePan = (value) => value.replace(/[^a-z0-9]/gi, '').toUpperCase();
 
+// Verhoeff Algorithm for Aadhaar Validation
+const Verhoeff = {
+  d: [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
+    [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
+    [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
+    [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
+    [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
+    [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
+    [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
+    [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
+    [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+  ],
+  p: [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
+    [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
+    [8, 9, 1, 6, 0, 4, 3, 5, 2, 7],
+    [9, 4, 5, 3, 1, 2, 6, 8, 7, 0],
+    [4, 2, 8, 6, 5, 7, 3, 9, 0, 1],
+    [2, 7, 9, 3, 8, 0, 6, 4, 1, 5],
+    [7, 0, 4, 6, 9, 1, 3, 2, 5, 8]
+  ],
+  validate: (number) => {
+    if (!/^\d{12}$/.test(number)) return false;
+    if (number[0] === '0' || number[0] === '1') return false;
+    let c = 0;
+    const digits = number.split('').reverse().map(Number);
+    for (let i = 0; i < digits.length; i++) {
+      c = Verhoeff.d[c][Verhoeff.p[i % 8][digits[i]]];
+    }
+    return c === 0;
+  }
+};
+
 const RegistrationForm = ({ onRegister, initialData = null }) => {
   const [formData, setFormData] = useState(initialData || {
     name: '',
@@ -46,18 +82,18 @@ const RegistrationForm = ({ onRegister, initialData = null }) => {
       setLoading(false);
       return;
     }
-    if (payload.aadhaar.length !== 12) {
-      setError('Aadhaar must contain exactly 12 digits.');
+    if (!Verhoeff.validate(payload.aadhaar)) {
+      setError('Invalid Aadhaar number. It must be 12 digits, pass checksum, and not start with 0 or 1.');
       setLoading(false);
       return;
     }
     if (!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(payload.pan)) {
-      setError('PAN must use the format ABCDE1234F.');
+      setError('Invalid PAN format. Must use ABCDE1234F format.');
       setLoading(false);
       return;
     }
-    if (payload.phone.length !== 10) {
-      setError('Phone number must contain exactly 10 digits.');
+    if (payload.phone.length !== 10 || !/^[6-9]/.test(payload.phone)) {
+      setError('Invalid mobile number. Must be 10 digits starting with 6-9.');
       setLoading(false);
       return;
     }

@@ -1,0 +1,18 @@
+[
+    {
+        "user_id": "USR-323ca350",
+        "symptom_text": "i have problem in my eyes",
+        "result": {
+            "condition": "Cataract",
+            "icd10_code": "H25.9",
+            "recommended_procedure": "Cataract Extraction",
+            "confidence_score": 0.4,
+            "procedure_aliases": [
+                "Phacoemulsification",
+                "Lens Replacement Surgery",
+                "Cataract Surgery"
+            ]
+        },
+        "timestamp": "2026-05-02T15:54:43.376233"
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "H25.0",
+        "procedure": "Cataract Surgery",
+        "fair_market_price": 53353,
+        "hospital_count": 6,
+        "timestamp": "2026-05-02T15:54:43.396141"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "H25.0",
+        "procedure": "Cataract Surgery",
+        "fair_market_price": 53353,
+        "hospital_count": 6,
+        "timestamp": "2026-05-02T15:54:43.405452"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "H25.0",
+        "procedure": "Cataract Surgery",
+        "fair_market_price": 53353,
+        "hospital_count": 6,
+        "timestamp": "2026-05-02T15:55:32.168607"
+    },
+    {
+        "city": "Pune",
+        "resolved_city": "Pune",
+        "icd10_code": "H25.0",
+        "procedure": "Cataract Surgery",
+        "fair_market_price": 53353,
+        "hospital_count": 6,
+        "timestamp": "2026-05-02T15:55:32.259715"
+    }
+]

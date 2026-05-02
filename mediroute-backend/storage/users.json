@@ -174,5 +174,16 @@
         "city": "Pune",
         "phone": "9352339808",
         "registered_at": "2026-05-02T15:43:41.072587"
+    },
+    {
+        "user_id": "USR-323ca350",
+        "name": "Krish rathi",
+        "age": 20,
+        "aadhaar": "XXXX-XXXX-6171",
+        "pan": "GZIPR5922R",
+        "occupation": "Student",
+        "city": "Pune",
+        "phone": "9352339808",
+        "registered_at": "2026-05-02T15:51:59.882088"
     }
 ]

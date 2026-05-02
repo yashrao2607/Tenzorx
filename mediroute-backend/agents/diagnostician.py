@@ -2,14 +2,14 @@ import json
 import logging
 import time
 import asyncio
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from langchain_google_genai import ChatGoogleGenerativeAI
 from config import settings
 
 logger = logging.getLogger(__name__)
 
-PRIMARY_MODEL = settings.GEMINI_MODEL or "gemini-2.5-flash"
-FALLBACK_MODEL = "gemini-2.5-flash"
+PRIMARY_MODEL = settings.GEMINI_MODEL or "gemini-2.0-flash"
+FALLBACK_MODEL = "gemini-2.0-flash"
 
 llm_primary = ChatGoogleGenerativeAI(
     model=PRIMARY_MODEL,
@@ -23,20 +23,33 @@ llm_fallback = ChatGoogleGenerativeAI(
     temperature=0.2,
 )
 
-MINIMAL_PROMPT = """You are a clinical AI.
+QUESTIONS_PROMPT = """You are a clinical AI agent. A user has a medical concern. 
+Your goal is to ask 3-4 highly relevant clarifying questions to help narrow down the likely medical procedure needed.
+Return JSON only:
+{{
+  "questions": [
+    "Question 1...",
+    "Question 2...",
+    "Question 3...",
+    "Question 4..."
+  ]
+}}
+Ensure questions are concise and directly help in surgical/procedure identification."""
+
+DIAGNOSIS_PROMPT = """You are a clinical AI agent. 
+Based on the initial concern and the user's answers to clarifying questions, identify the most likely medical condition and required procedure.
 Return JSON only:
 {{
   "condition": "...",
   "icd10_code": "...",
   "recommended_procedure": "...",
-  "confidence_score": 0-1,
+  "confidence_score": 0.0-1.0,
   "procedure_aliases": ["...", "..."]
 }}
-
 Rules:
 * Always return a SPECIFIC medical procedure (e.g., Appendectomy, Angioplasty, Knee Replacement).
-* AVOID vague terms like 'Consultation', 'Evaluation', or 'Checkup'.
-* Use valid ICD-10 codes. Prefer common conditions."""
+* AVOID vague terms like 'Consultation' or 'Evaluation'.
+* Use valid ICD-10 codes."""
 
 class DiagnosticianAgent:
     def __init__(self):
@@ -53,52 +66,42 @@ class DiagnosticianAgent:
             return None
 
     async def _invoke_model(self, model: ChatGoogleGenerativeAI, prompt: str) -> Optional[Dict[str, Any]]:
-        response = await asyncio.wait_for(
-            model.ainvoke(prompt),
-            timeout=settings.API_TIMEOUT
-        )
-        return self._extract_json(response.content)
-
-    async def analyze(self, symptom_text: str) -> Dict[str, Any]:
-        start_time = time.perf_counter()
-        
-        if symptom_text in self._cache:
-            logger.info(f"[Diagnostician] Cache hit: {symptom_text[:20]}")
-            return self._cache[symptom_text]
-
-        prompt = f"{MINIMAL_PROMPT}\n\nSymptom: {symptom_text}\nJSON:"
-
         try:
-            result = await self._invoke_model(llm_primary, prompt)
-            if result:
-                duration = time.perf_counter() - start_time
-                logger.info(f"[Diagnostician] Logic Success ({PRIMARY_MODEL}) | Duration: {duration:.2f}s")
-                self._cache[symptom_text] = result
-                return result
-            logger.warning(f"[Diagnostician] Invalid/empty JSON from {PRIMARY_MODEL}.")
-        except asyncio.TimeoutError:
-            logger.error(f"[Diagnostician] Timeout on {PRIMARY_MODEL}")
+            response = await asyncio.wait_for(
+                model.ainvoke(prompt),
+                timeout=settings.API_TIMEOUT
+            )
+            return self._extract_json(response.content)
         except Exception as e:
-            logger.error(f"[Diagnostician] Primary model error ({PRIMARY_MODEL}): {e}")
+            logger.error(f"Model invocation error: {e}")
+            return None
 
-        # Hard fallback to Gemini 2.5 Flash
-        try:
+    async def get_clarifying_questions(self, concern: str) -> Dict[str, Any]:
+        prompt = f"{QUESTIONS_PROMPT}\n\nMedical Concern: {concern}\nJSON:"
+        result = await self._invoke_model(llm_primary, prompt)
+        if not result:
             result = await self._invoke_model(llm_fallback, prompt)
-            if result:
-                duration = time.perf_counter() - start_time
-                logger.info(f"[Diagnostician] Fallback success ({FALLBACK_MODEL}) | Duration: {duration:.2f}s")
-                self._cache[symptom_text] = result
-                return result
-            logger.warning(f"[Diagnostician] Invalid/empty JSON from fallback model {FALLBACK_MODEL}.")
-        except asyncio.TimeoutError:
-            logger.error(f"[Diagnostician] Timeout on fallback model {FALLBACK_MODEL}")
-        except Exception as e:
-            logger.error(f"[Diagnostician] Fallback model error ({FALLBACK_MODEL}): {e}")
+        return result or {"questions": ["Can you describe the pain in more detail?", "How long have you been experiencing this?", "Are there any other symptoms?"]}
 
-        return {
-            "condition": "Unknown",
-            "icd10_code": "N/A",
-            "recommended_procedure": "Consult physician",
-            "confidence_score": 0.0,
-            "procedure_aliases": ["Consult doctor", "Clinical consultation"]
-        }
+    async def analyze(self, symptom_text: str, answers: Optional[List[Dict[str, str]]] = None) -> Dict[str, Any]:
+        if not answers:
+            # Traditional one-shot analysis (legacy support or if direct analysis requested)
+            prompt = f"{DIAGNOSIS_PROMPT}\n\nSymptom: {symptom_text}\nJSON:"
+        else:
+            # Multi-turn analysis
+            answers_str = "\n".join([f"Q: {a['question']}\nA: {a['answer']}" for a in answers])
+            prompt = f"{DIAGNOSIS_PROMPT}\n\nInitial Concern: {symptom_text}\n\nClarifying Answers:\n{answers_str}\nJSON:"
+
+        result = await self._invoke_model(llm_primary, prompt)
+        if not result:
+            result = await self._invoke_model(llm_fallback, prompt)
+            
+        if not result:
+            return {
+                "condition": "Unknown",
+                "icd10_code": "N/A",
+                "recommended_procedure": "Consult physician",
+                "confidence_score": 0.0,
+                "procedure_aliases": ["Consult doctor"]
+            }
+        return result
