@@ -54,7 +54,7 @@ class DiagnosticianAgent:
         try:
             response = await asyncio.wait_for(
                 llm.ainvoke(prompt), 
-                timeout=settings.OLLAMA_TIMEOUT
+                timeout=settings.API_TIMEOUT
             )
             
             result = self._extract_json(response.content)
