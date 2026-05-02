@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, AlertTriangle, XCircle, Info, Landmark, ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
 
@@ -8,7 +7,6 @@ const LoanDecision = ({ data, onBack, isPhase2 = false }) => {
   // Handle both Phase 1 and Phase 2 data structures
   const decision = isPhase2 ? data.decision : (data.underwriting?.loan_recommendation || 'PENDING');
   const recommendationText = isPhase2 ? data.recommendation : data.summary;
-  const requestedAmount = isPhase2 ? data.requested_amount : data.requested_amount; // summary has this info
   const fairMarketPrice = isPhase2 ? data.fair_market_price : data.cost_analysis?.base_cost_estimate;
   const overpricingPct = isPhase2 ? data.overpricing_pct : data.underwriting?.overpricing_percentage;
 

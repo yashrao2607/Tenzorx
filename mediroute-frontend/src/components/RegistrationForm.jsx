@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { UserPlus, CreditCard, Briefcase, MapPin, Phone } from 'lucide-react';
 import axios from 'axios';
 
-const RegistrationForm = ({ onRegister, loading: parentLoading }) => {
+const RegistrationForm = ({ onRegister }) => {
   const [formData, setFormData] = useState({
     name: '',
     age: '',
