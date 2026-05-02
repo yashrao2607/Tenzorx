@@ -1,0 +1,4202 @@
+[
+  {
+    "hospital_id": 1,
+    "hospital_name": "Wockhardt Super Speciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.18152220450814,
+    "lon": 79.12478728926266,
+    "tier": "Premium",
+    "quality_score": 9.2,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 51596,
+    "cost_breakdown": {
+      "consultation_fee": 2302,
+      "room_rent_per_day": 1548,
+      "surgery_fee": 21252,
+      "medicines_injections": 6255,
+      "diagnostics": 2842,
+      "miscellaneous": 11202
+    }
+  },
+  {
+    "hospital_id": 1,
+    "hospital_name": "Wockhardt Super Speciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.18152220450814,
+    "lon": 79.12478728926266,
+    "tier": "Premium",
+    "quality_score": 9.2,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 157312,
+    "cost_breakdown": {
+      "consultation_fee": 7247,
+      "room_rent_per_day": 5520,
+      "surgery_fee": 72923,
+      "medicines_injections": 20272,
+      "diagnostics": 13174,
+      "miscellaneous": 16094
+    }
+  },
+  {
+    "hospital_id": 1,
+    "hospital_name": "Wockhardt Super Speciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.18152220450814,
+    "lon": 79.12478728926266,
+    "tier": "Premium",
+    "quality_score": 9.2,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 381510,
+    "cost_breakdown": {
+      "consultation_fee": 15009,
+      "room_rent_per_day": 11446,
+      "surgery_fee": 169590,
+      "medicines_injections": 39380,
+      "diagnostics": 36988,
+      "miscellaneous": 63312
+    }
+  },
+  {
+    "hospital_id": 1,
+    "hospital_name": "Wockhardt Super Speciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.18152220450814,
+    "lon": 79.12478728926266,
+    "tier": "Premium",
+    "quality_score": 9.2,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 412534,
+    "cost_breakdown": {
+      "consultation_fee": 13622,
+      "room_rent_per_day": 15522,
+      "surgery_fee": 185238,
+      "medicines_injections": 50558,
+      "diagnostics": 40821,
+      "miscellaneous": 44683
+    }
+  },
+  {
+    "hospital_id": 1,
+    "hospital_name": "Wockhardt Super Speciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.18152220450814,
+    "lon": 79.12478728926266,
+    "tier": "Premium",
+    "quality_score": 9.2,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 75265,
+    "cost_breakdown": {
+      "consultation_fee": 2665,
+      "room_rent_per_day": 2946,
+      "surgery_fee": 35257,
+      "medicines_injections": 10917,
+      "diagnostics": 7012,
+      "miscellaneous": 4683
+    }
+  },
+  {
+    "hospital_id": 1,
+    "hospital_name": "Wockhardt Super Speciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.18152220450814,
+    "lon": 79.12478728926266,
+    "tier": "Premium",
+    "quality_score": 9.2,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 108168,
+    "cost_breakdown": {
+      "consultation_fee": 3424,
+      "room_rent_per_day": 3977,
+      "surgery_fee": 51543,
+      "medicines_injections": 13727,
+      "diagnostics": 7960,
+      "miscellaneous": 11626
+    }
+  },
+  {
+    "hospital_id": 2,
+    "hospital_name": "KIMS-Kingsway Hospitals",
+    "city": "Nagpur",
+    "lat": 21.183639240695836,
+    "lon": 79.04104519110767,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 90487,
+    "cost_breakdown": {
+      "consultation_fee": 3693,
+      "room_rent_per_day": 3500,
+      "surgery_fee": 42115,
+      "medicines_injections": 11882,
+      "diagnostics": 7170,
+      "miscellaneous": 8127
+    }
+  },
+  {
+    "hospital_id": 2,
+    "hospital_name": "KIMS-Kingsway Hospitals",
+    "city": "Nagpur",
+    "lat": 21.183639240695836,
+    "lon": 79.04104519110767,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 112164,
+    "cost_breakdown": {
+      "consultation_fee": 4480,
+      "room_rent_per_day": 3435,
+      "surgery_fee": 53995,
+      "medicines_injections": 15371,
+      "diagnostics": 5754,
+      "miscellaneous": 15386
+    }
+  },
+  {
+    "hospital_id": 2,
+    "hospital_name": "KIMS-Kingsway Hospitals",
+    "city": "Nagpur",
+    "lat": 21.183639240695836,
+    "lon": 79.04104519110767,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 418052,
+    "cost_breakdown": {
+      "consultation_fee": 17252,
+      "room_rent_per_day": 15214,
+      "surgery_fee": 173492,
+      "medicines_injections": 60006,
+      "diagnostics": 39469,
+      "miscellaneous": 51762
+    }
+  },
+  {
+    "hospital_id": 2,
+    "hospital_name": "KIMS-Kingsway Hospitals",
+    "city": "Nagpur",
+    "lat": 21.183639240695836,
+    "lon": 79.04104519110767,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 474579,
+    "cost_breakdown": {
+      "consultation_fee": 19557,
+      "room_rent_per_day": 16627,
+      "surgery_fee": 205363,
+      "medicines_injections": 50883,
+      "diagnostics": 33231,
+      "miscellaneous": 82409
+    }
+  },
+  {
+    "hospital_id": 2,
+    "hospital_name": "KIMS-Kingsway Hospitals",
+    "city": "Nagpur",
+    "lat": 21.183639240695836,
+    "lon": 79.04104519110767,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 30729,
+    "cost_breakdown": {
+      "consultation_fee": 1498,
+      "room_rent_per_day": 925,
+      "surgery_fee": 14465,
+      "medicines_injections": 3150,
+      "diagnostics": 2977,
+      "miscellaneous": 4010
+    }
+  },
+  {
+    "hospital_id": 2,
+    "hospital_name": "KIMS-Kingsway Hospitals",
+    "city": "Nagpur",
+    "lat": 21.183639240695836,
+    "lon": 79.04104519110767,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 54242,
+    "cost_breakdown": {
+      "consultation_fee": 1658,
+      "room_rent_per_day": 1632,
+      "surgery_fee": 24591,
+      "medicines_injections": 7034,
+      "diagnostics": 4757,
+      "miscellaneous": 8042
+    }
+  },
+  {
+    "hospital_id": 3,
+    "hospital_name": "Alexis Multispeciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.176718346460028,
+    "lon": 79.10243910746117,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 76246,
+    "cost_breakdown": {
+      "consultation_fee": 3740,
+      "room_rent_per_day": 2996,
+      "surgery_fee": 35611,
+      "medicines_injections": 10391,
+      "diagnostics": 6014,
+      "miscellaneous": 5510
+    }
+  },
+  {
+    "hospital_id": 3,
+    "hospital_name": "Alexis Multispeciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.176718346460028,
+    "lon": 79.10243910746117,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 110660,
+    "cost_breakdown": {
+      "consultation_fee": 3449,
+      "room_rent_per_day": 4339,
+      "surgery_fee": 50282,
+      "medicines_injections": 11780,
+      "diagnostics": 11042,
+      "miscellaneous": 12410
+    }
+  },
+  {
+    "hospital_id": 3,
+    "hospital_name": "Alexis Multispeciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.176718346460028,
+    "lon": 79.10243910746117,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 253539,
+    "cost_breakdown": {
+      "consultation_fee": 9290,
+      "room_rent_per_day": 7989,
+      "surgery_fee": 125543,
+      "medicines_injections": 29428,
+      "diagnostics": 20639,
+      "miscellaneous": 28692
+    }
+  },
+  {
+    "hospital_id": 3,
+    "hospital_name": "Alexis Multispeciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.176718346460028,
+    "lon": 79.10243910746117,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 406518,
+    "cost_breakdown": {
+      "consultation_fee": 19615,
+      "room_rent_per_day": 15174,
+      "surgery_fee": 172109,
+      "medicines_injections": 53518,
+      "diagnostics": 24165,
+      "miscellaneous": 61238
+    }
+  },
+  {
+    "hospital_id": 3,
+    "hospital_name": "Alexis Multispeciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.176718346460028,
+    "lon": 79.10243910746117,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 71635,
+    "cost_breakdown": {
+      "consultation_fee": 2741,
+      "room_rent_per_day": 2865,
+      "surgery_fee": 32800,
+      "medicines_injections": 10286,
+      "diagnostics": 6305,
+      "miscellaneous": 5177
+    }
+  },
+  {
+    "hospital_id": 3,
+    "hospital_name": "Alexis Multispeciality Hospital",
+    "city": "Nagpur",
+    "lat": 21.176718346460028,
+    "lon": 79.10243910746117,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 44631,
+    "cost_breakdown": {
+      "consultation_fee": 1593,
+      "room_rent_per_day": 1349,
+      "surgery_fee": 18515,
+      "medicines_injections": 4613,
+      "diagnostics": 4114,
+      "miscellaneous": 9050
+    }
+  },
+  {
+    "hospital_id": 4,
+    "hospital_name": "Orange City Hospital & Research Institute",
+    "city": "Nagpur",
+    "lat": 21.195453026509192,
+    "lon": 79.10644394503666,
+    "tier": "Mid",
+    "quality_score": 8.0,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 119680,
+    "cost_breakdown": {
+      "consultation_fee": 4597,
+      "room_rent_per_day": 4056,
+      "surgery_fee": 51420,
+      "medicines_injections": 12819,
+      "diagnostics": 9953,
+      "miscellaneous": 20611
+    }
+  },
+  {
+    "hospital_id": 4,
+    "hospital_name": "Orange City Hospital & Research Institute",
+    "city": "Nagpur",
+    "lat": 21.195453026509192,
+    "lon": 79.10644394503666,
+    "tier": "Mid",
+    "quality_score": 8.0,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 54643,
+    "cost_breakdown": {
+      "consultation_fee": 2073,
+      "room_rent_per_day": 1978,
+      "surgery_fee": 26233,
+      "medicines_injections": 7900,
+      "diagnostics": 4149,
+      "miscellaneous": 4398
+    }
+  },
+  {
+    "hospital_id": 4,
+    "hospital_name": "Orange City Hospital & Research Institute",
+    "city": "Nagpur",
+    "lat": 21.195453026509192,
+    "lon": 79.10644394503666,
+    "tier": "Mid",
+    "quality_score": 8.0,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 259917,
+    "cost_breakdown": {
+      "consultation_fee": 8410,
+      "room_rent_per_day": 9610,
+      "surgery_fee": 117184,
+      "medicines_injections": 32751,
+      "diagnostics": 13679,
+      "miscellaneous": 39842
+    }
+  },
+  {
+    "hospital_id": 4,
+    "hospital_name": "Orange City Hospital & Research Institute",
+    "city": "Nagpur",
+    "lat": 21.195453026509192,
+    "lon": 79.10644394503666,
+    "tier": "Mid",
+    "quality_score": 8.0,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 371943,
+    "cost_breakdown": {
+      "consultation_fee": 13418,
+      "room_rent_per_day": 13942,
+      "surgery_fee": 155827,
+      "medicines_injections": 42634,
+      "diagnostics": 34873,
+      "miscellaneous": 55481
+    }
+  },
+  {
+    "hospital_id": 4,
+    "hospital_name": "Orange City Hospital & Research Institute",
+    "city": "Nagpur",
+    "lat": 21.195453026509192,
+    "lon": 79.10644394503666,
+    "tier": "Mid",
+    "quality_score": 8.0,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 52321,
+    "cost_breakdown": {
+      "consultation_fee": 2550,
+      "room_rent_per_day": 2050,
+      "surgery_fee": 25679,
+      "medicines_injections": 7143,
+      "diagnostics": 4034,
+      "miscellaneous": 2665
+    }
+  },
+  {
+    "hospital_id": 4,
+    "hospital_name": "Orange City Hospital & Research Institute",
+    "city": "Nagpur",
+    "lat": 21.195453026509192,
+    "lon": 79.10644394503666,
+    "tier": "Mid",
+    "quality_score": 8.0,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 61098,
+    "cost_breakdown": {
+      "consultation_fee": 2001,
+      "room_rent_per_day": 2407,
+      "surgery_fee": 26802,
+      "medicines_injections": 7895,
+      "diagnostics": 4928,
+      "miscellaneous": 7434
+    }
+  },
+  {
+    "hospital_id": 5,
+    "hospital_name": "AIIMS Nagpur",
+    "city": "Nagpur",
+    "lat": 21.176540131445574,
+    "lon": 79.04527675134884,
+    "tier": "Mid",
+    "quality_score": 9.0,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 91312,
+    "cost_breakdown": {
+      "consultation_fee": 3631,
+      "room_rent_per_day": 3377,
+      "surgery_fee": 40820,
+      "medicines_injections": 9628,
+      "diagnostics": 6146,
+      "miscellaneous": 14200
+    }
+  },
+  {
+    "hospital_id": 5,
+    "hospital_name": "AIIMS Nagpur",
+    "city": "Nagpur",
+    "lat": 21.176540131445574,
+    "lon": 79.04527675134884,
+    "tier": "Mid",
+    "quality_score": 9.0,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 118291,
+    "cost_breakdown": {
+      "consultation_fee": 4396,
+      "room_rent_per_day": 3947,
+      "surgery_fee": 54062,
+      "medicines_injections": 12021,
+      "diagnostics": 10500,
+      "miscellaneous": 17575
+    }
+  },
+  {
+    "hospital_id": 5,
+    "hospital_name": "AIIMS Nagpur",
+    "city": "Nagpur",
+    "lat": 21.176540131445574,
+    "lon": 79.04527675134884,
+    "tier": "Mid",
+    "quality_score": 9.0,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 250689,
+    "cost_breakdown": {
+      "consultation_fee": 11344,
+      "room_rent_per_day": 8559,
+      "surgery_fee": 122008,
+      "medicines_injections": 35382,
+      "diagnostics": 21369,
+      "miscellaneous": 17791
+    }
+  },
+  {
+    "hospital_id": 5,
+    "hospital_name": "AIIMS Nagpur",
+    "city": "Nagpur",
+    "lat": 21.176540131445574,
+    "lon": 79.04527675134884,
+    "tier": "Mid",
+    "quality_score": 9.0,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 284915,
+    "cost_breakdown": {
+      "consultation_fee": 12735,
+      "room_rent_per_day": 9289,
+      "surgery_fee": 126085,
+      "medicines_injections": 36566,
+      "diagnostics": 28101,
+      "miscellaneous": 34979
+    }
+  },
+  {
+    "hospital_id": 5,
+    "hospital_name": "AIIMS Nagpur",
+    "city": "Nagpur",
+    "lat": 21.176540131445574,
+    "lon": 79.04527675134884,
+    "tier": "Mid",
+    "quality_score": 9.0,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 50513,
+    "cost_breakdown": {
+      "consultation_fee": 2057,
+      "room_rent_per_day": 1524,
+      "surgery_fee": 24185,
+      "medicines_injections": 5249,
+      "diagnostics": 2781,
+      "miscellaneous": 8621
+    }
+  },
+  {
+    "hospital_id": 5,
+    "hospital_name": "AIIMS Nagpur",
+    "city": "Nagpur",
+    "lat": 21.176540131445574,
+    "lon": 79.04527675134884,
+    "tier": "Mid",
+    "quality_score": 9.0,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 57876,
+    "cost_breakdown": {
+      "consultation_fee": 2856,
+      "room_rent_per_day": 2286,
+      "surgery_fee": 28189,
+      "medicines_injections": 6635,
+      "diagnostics": 4076,
+      "miscellaneous": 4690
+    }
+  },
+  {
+    "hospital_id": 6,
+    "hospital_name": "Care Hospital Nagpur",
+    "city": "Nagpur",
+    "lat": 21.171729850218284,
+    "lon": 79.03861199826017,
+    "tier": "High",
+    "quality_score": 8.5,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 146729,
+    "cost_breakdown": {
+      "consultation_fee": 7313,
+      "room_rent_per_day": 4823,
+      "surgery_fee": 61539,
+      "medicines_injections": 21423,
+      "diagnostics": 13984,
+      "miscellaneous": 18352
+    }
+  },
+  {
+    "hospital_id": 6,
+    "hospital_name": "Care Hospital Nagpur",
+    "city": "Nagpur",
+    "lat": 21.171729850218284,
+    "lon": 79.03861199826017,
+    "tier": "High",
+    "quality_score": 8.5,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 94378,
+    "cost_breakdown": {
+      "consultation_fee": 4623,
+      "room_rent_per_day": 3699,
+      "surgery_fee": 41041,
+      "medicines_injections": 13266,
+      "diagnostics": 5966,
+      "miscellaneous": 10987
+    }
+  },
+  {
+    "hospital_id": 6,
+    "hospital_name": "Care Hospital Nagpur",
+    "city": "Nagpur",
+    "lat": 21.171729850218284,
+    "lon": 79.03861199826017,
+    "tier": "High",
+    "quality_score": 8.5,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 227440,
+    "cost_breakdown": {
+      "consultation_fee": 11000,
+      "room_rent_per_day": 7531,
+      "surgery_fee": 96023,
+      "medicines_injections": 24677,
+      "diagnostics": 16546,
+      "miscellaneous": 41535
+    }
+  },
+  {
+    "hospital_id": 6,
+    "hospital_name": "Care Hospital Nagpur",
+    "city": "Nagpur",
+    "lat": 21.171729850218284,
+    "lon": 79.03861199826017,
+    "tier": "High",
+    "quality_score": 8.5,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 342193,
+    "cost_breakdown": {
+      "consultation_fee": 12453,
+      "room_rent_per_day": 10721,
+      "surgery_fee": 162735,
+      "medicines_injections": 48157,
+      "diagnostics": 22705,
+      "miscellaneous": 42538
+    }
+  },
+  {
+    "hospital_id": 6,
+    "hospital_name": "Care Hospital Nagpur",
+    "city": "Nagpur",
+    "lat": 21.171729850218284,
+    "lon": 79.03861199826017,
+    "tier": "High",
+    "quality_score": 8.5,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 35039,
+    "cost_breakdown": {
+      "consultation_fee": 1214,
+      "room_rent_per_day": 1272,
+      "surgery_fee": 16234,
+      "medicines_injections": 4291,
+      "diagnostics": 2548,
+      "miscellaneous": 4392
+    }
+  },
+  {
+    "hospital_id": 6,
+    "hospital_name": "Care Hospital Nagpur",
+    "city": "Nagpur",
+    "lat": 21.171729850218284,
+    "lon": 79.03861199826017,
+    "tier": "High",
+    "quality_score": 8.5,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 95989,
+    "cost_breakdown": {
+      "consultation_fee": 3126,
+      "room_rent_per_day": 3178,
+      "surgery_fee": 41277,
+      "medicines_injections": 12663,
+      "diagnostics": 5829,
+      "miscellaneous": 17204
+    }
+  },
+  {
+    "hospital_id": 7,
+    "hospital_name": "Kingsway Hospital",
+    "city": "Nagpur",
+    "lat": 21.168599361866647,
+    "lon": 79.08695403246749,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 150271,
+    "cost_breakdown": {
+      "consultation_fee": 5052,
+      "room_rent_per_day": 5770,
+      "surgery_fee": 67608,
+      "medicines_injections": 16618,
+      "diagnostics": 13232,
+      "miscellaneous": 18911
+    }
+  },
+  {
+    "hospital_id": 7,
+    "hospital_name": "Kingsway Hospital",
+    "city": "Nagpur",
+    "lat": 21.168599361866647,
+    "lon": 79.08695403246749,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 74365,
+    "cost_breakdown": {
+      "consultation_fee": 2582,
+      "room_rent_per_day": 2755,
+      "surgery_fee": 33112,
+      "medicines_injections": 8121,
+      "diagnostics": 4765,
+      "miscellaneous": 12009
+    }
+  },
+  {
+    "hospital_id": 7,
+    "hospital_name": "Kingsway Hospital",
+    "city": "Nagpur",
+    "lat": 21.168599361866647,
+    "lon": 79.08695403246749,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 236104,
+    "cost_breakdown": {
+      "consultation_fee": 8741,
+      "room_rent_per_day": 8348,
+      "surgery_fee": 97999,
+      "medicines_injections": 30590,
+      "diagnostics": 13739,
+      "miscellaneous": 43294
+    }
+  },
+  {
+    "hospital_id": 7,
+    "hospital_name": "Kingsway Hospital",
+    "city": "Nagpur",
+    "lat": 21.168599361866647,
+    "lon": 79.08695403246749,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 481280,
+    "cost_breakdown": {
+      "consultation_fee": 23370,
+      "room_rent_per_day": 18129,
+      "surgery_fee": 233946,
+      "medicines_injections": 52317,
+      "diagnostics": 45853,
+      "miscellaneous": 35145
+    }
+  },
+  {
+    "hospital_id": 7,
+    "hospital_name": "Kingsway Hospital",
+    "city": "Nagpur",
+    "lat": 21.168599361866647,
+    "lon": 79.08695403246749,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 69695,
+    "cost_breakdown": {
+      "consultation_fee": 3171,
+      "room_rent_per_day": 2095,
+      "surgery_fee": 28190,
+      "medicines_injections": 8168,
+      "diagnostics": 5498,
+      "miscellaneous": 14192
+    }
+  },
+  {
+    "hospital_id": 7,
+    "hospital_name": "Kingsway Hospital",
+    "city": "Nagpur",
+    "lat": 21.168599361866647,
+    "lon": 79.08695403246749,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 73231,
+    "cost_breakdown": {
+      "consultation_fee": 2285,
+      "room_rent_per_day": 2561,
+      "surgery_fee": 30955,
+      "medicines_injections": 7648,
+      "diagnostics": 4555,
+      "miscellaneous": 14982
+    }
+  },
+  {
+    "hospital_id": 8,
+    "hospital_name": "Kokilaben Dhirubhai Ambani Hospital",
+    "city": "Mumbai",
+    "lat": 19.050672772178427,
+    "lon": 72.84109180490046,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 67515,
+    "cost_breakdown": {
+      "consultation_fee": 2480,
+      "room_rent_per_day": 2396,
+      "surgery_fee": 31574,
+      "medicines_injections": 8486,
+      "diagnostics": 6711,
+      "miscellaneous": 6281
+    }
+  },
+  {
+    "hospital_id": 8,
+    "hospital_name": "Kokilaben Dhirubhai Ambani Hospital",
+    "city": "Mumbai",
+    "lat": 19.050672772178427,
+    "lon": 72.84109180490046,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 67318,
+    "cost_breakdown": {
+      "consultation_fee": 3254,
+      "room_rent_per_day": 2556,
+      "surgery_fee": 32075,
+      "medicines_injections": 10094,
+      "diagnostics": 3673,
+      "miscellaneous": 5438
+    }
+  },
+  {
+    "hospital_id": 8,
+    "hospital_name": "Kokilaben Dhirubhai Ambani Hospital",
+    "city": "Mumbai",
+    "lat": 19.050672772178427,
+    "lon": 72.84109180490046,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 341428,
+    "cost_breakdown": {
+      "consultation_fee": 15998,
+      "room_rent_per_day": 11626,
+      "surgery_fee": 157566,
+      "medicines_injections": 44155,
+      "diagnostics": 21352,
+      "miscellaneous": 44226
+    }
+  },
+  {
+    "hospital_id": 8,
+    "hospital_name": "Kokilaben Dhirubhai Ambani Hospital",
+    "city": "Mumbai",
+    "lat": 19.050672772178427,
+    "lon": 72.84109180490046,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 472888,
+    "cost_breakdown": {
+      "consultation_fee": 17023,
+      "room_rent_per_day": 15442,
+      "surgery_fee": 196805,
+      "medicines_injections": 57638,
+      "diagnostics": 31384,
+      "miscellaneous": 92827
+    }
+  },
+  {
+    "hospital_id": 8,
+    "hospital_name": "Kokilaben Dhirubhai Ambani Hospital",
+    "city": "Mumbai",
+    "lat": 19.050672772178427,
+    "lon": 72.84109180490046,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 61480,
+    "cost_breakdown": {
+      "consultation_fee": 2388,
+      "room_rent_per_day": 2336,
+      "surgery_fee": 27904,
+      "medicines_injections": 6498,
+      "diagnostics": 5113,
+      "miscellaneous": 7897
+    }
+  },
+  {
+    "hospital_id": 8,
+    "hospital_name": "Kokilaben Dhirubhai Ambani Hospital",
+    "city": "Mumbai",
+    "lat": 19.050672772178427,
+    "lon": 72.84109180490046,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 54348,
+    "cost_breakdown": {
+      "consultation_fee": 2042,
+      "room_rent_per_day": 1851,
+      "surgery_fee": 26772,
+      "medicines_injections": 7716,
+      "diagnostics": 4833,
+      "miscellaneous": 3729
+    }
+  },
+  {
+    "hospital_id": 9,
+    "hospital_name": "P. D. Hinduja Hospital",
+    "city": "Mumbai",
+    "lat": 19.056352350838452,
+    "lon": 72.9205660588113,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 80751,
+    "cost_breakdown": {
+      "consultation_fee": 3867,
+      "room_rent_per_day": 2610,
+      "surgery_fee": 39556,
+      "medicines_injections": 10111,
+      "diagnostics": 4363,
+      "miscellaneous": 9804
+    }
+  },
+  {
+    "hospital_id": 9,
+    "hospital_name": "P. D. Hinduja Hospital",
+    "city": "Mumbai",
+    "lat": 19.056352350838452,
+    "lon": 72.9205660588113,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 161137,
+    "cost_breakdown": {
+      "consultation_fee": 7605,
+      "room_rent_per_day": 6315,
+      "surgery_fee": 69883,
+      "medicines_injections": 22971,
+      "diagnostics": 14907,
+      "miscellaneous": 14194
+    }
+  },
+  {
+    "hospital_id": 9,
+    "hospital_name": "P. D. Hinduja Hospital",
+    "city": "Mumbai",
+    "lat": 19.056352350838452,
+    "lon": 72.9205660588113,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 297430,
+    "cost_breakdown": {
+      "consultation_fee": 14251,
+      "room_rent_per_day": 11546,
+      "surgery_fee": 130962,
+      "medicines_injections": 32254,
+      "diagnostics": 29223,
+      "miscellaneous": 33009
+    }
+  },
+  {
+    "hospital_id": 9,
+    "hospital_name": "P. D. Hinduja Hospital",
+    "city": "Mumbai",
+    "lat": 19.056352350838452,
+    "lon": 72.9205660588113,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 378932,
+    "cost_breakdown": {
+      "consultation_fee": 18835,
+      "room_rent_per_day": 11436,
+      "surgery_fee": 187461,
+      "medicines_injections": 45724,
+      "diagnostics": 24226,
+      "miscellaneous": 45503
+    }
+  },
+  {
+    "hospital_id": 9,
+    "hospital_name": "P. D. Hinduja Hospital",
+    "city": "Mumbai",
+    "lat": 19.056352350838452,
+    "lon": 72.9205660588113,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 69534,
+    "cost_breakdown": {
+      "consultation_fee": 2696,
+      "room_rent_per_day": 2445,
+      "surgery_fee": 32706,
+      "medicines_injections": 8156,
+      "diagnostics": 6511,
+      "miscellaneous": 7236
+    }
+  },
+  {
+    "hospital_id": 9,
+    "hospital_name": "P. D. Hinduja Hospital",
+    "city": "Mumbai",
+    "lat": 19.056352350838452,
+    "lon": 72.9205660588113,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 116890,
+    "cost_breakdown": {
+      "consultation_fee": 5556,
+      "room_rent_per_day": 4481,
+      "surgery_fee": 54334,
+      "medicines_injections": 14147,
+      "diagnostics": 7467,
+      "miscellaneous": 12977
+    }
+  },
+  {
+    "hospital_id": 10,
+    "hospital_name": "Fortis Hospital, Mulund",
+    "city": "Mumbai",
+    "lat": 19.095666913523193,
+    "lon": 72.88763782320932,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 58341,
+    "cost_breakdown": {
+      "consultation_fee": 2905,
+      "room_rent_per_day": 2286,
+      "surgery_fee": 28353,
+      "medicines_injections": 8734,
+      "diagnostics": 2993,
+      "miscellaneous": 3925
+    }
+  },
+  {
+    "hospital_id": 10,
+    "hospital_name": "Fortis Hospital, Mulund",
+    "city": "Mumbai",
+    "lat": 19.095666913523193,
+    "lon": 72.88763782320932,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 90307,
+    "cost_breakdown": {
+      "consultation_fee": 4428,
+      "room_rent_per_day": 2773,
+      "surgery_fee": 39374,
+      "medicines_injections": 11884,
+      "diagnostics": 6768,
+      "miscellaneous": 13985
+    }
+  },
+  {
+    "hospital_id": 10,
+    "hospital_name": "Fortis Hospital, Mulund",
+    "city": "Mumbai",
+    "lat": 19.095666913523193,
+    "lon": 72.88763782320932,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 349290,
+    "cost_breakdown": {
+      "consultation_fee": 11000,
+      "room_rent_per_day": 13933,
+      "surgery_fee": 161998,
+      "medicines_injections": 48796,
+      "diagnostics": 30022,
+      "miscellaneous": 27805
+    }
+  },
+  {
+    "hospital_id": 10,
+    "hospital_name": "Fortis Hospital, Mulund",
+    "city": "Mumbai",
+    "lat": 19.095666913523193,
+    "lon": 72.88763782320932,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 438485,
+    "cost_breakdown": {
+      "consultation_fee": 14908,
+      "room_rent_per_day": 15886,
+      "surgery_fee": 179744,
+      "medicines_injections": 49361,
+      "diagnostics": 42745,
+      "miscellaneous": 72295
+    }
+  },
+  {
+    "hospital_id": 10,
+    "hospital_name": "Fortis Hospital, Mulund",
+    "city": "Mumbai",
+    "lat": 19.095666913523193,
+    "lon": 72.88763782320932,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 49188,
+    "cost_breakdown": {
+      "consultation_fee": 1950,
+      "room_rent_per_day": 1603,
+      "surgery_fee": 22929,
+      "medicines_injections": 5865,
+      "diagnostics": 3775,
+      "miscellaneous": 6654
+    }
+  },
+  {
+    "hospital_id": 10,
+    "hospital_name": "Fortis Hospital, Mulund",
+    "city": "Mumbai",
+    "lat": 19.095666913523193,
+    "lon": 72.88763782320932,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 73784,
+    "cost_breakdown": {
+      "consultation_fee": 3048,
+      "room_rent_per_day": 2763,
+      "surgery_fee": 29537,
+      "medicines_injections": 7558,
+      "diagnostics": 3890,
+      "miscellaneous": 15932
+    }
+  },
+  {
+    "hospital_id": 11,
+    "hospital_name": "Nanavati Max Super Speciality Hospital",
+    "city": "Mumbai",
+    "lat": 19.097764164002697,
+    "lon": 72.89789082213117,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 154860,
+    "cost_breakdown": {
+      "consultation_fee": 5220,
+      "room_rent_per_day": 5064,
+      "surgery_fee": 63260,
+      "medicines_injections": 21360,
+      "diagnostics": 12705,
+      "miscellaneous": 26991
+    }
+  },
+  {
+    "hospital_id": 11,
+    "hospital_name": "Nanavati Max Super Speciality Hospital",
+    "city": "Mumbai",
+    "lat": 19.097764164002697,
+    "lon": 72.89789082213117,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 155873,
+    "cost_breakdown": {
+      "consultation_fee": 5926,
+      "room_rent_per_day": 4865,
+      "surgery_fee": 74052,
+      "medicines_injections": 21885,
+      "diagnostics": 8623,
+      "miscellaneous": 21059
+    }
+  },
+  {
+    "hospital_id": 11,
+    "hospital_name": "Nanavati Max Super Speciality Hospital",
+    "city": "Mumbai",
+    "lat": 19.097764164002697,
+    "lon": 72.89789082213117,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 223653,
+    "cost_breakdown": {
+      "consultation_fee": 8492,
+      "room_rent_per_day": 8358,
+      "surgery_fee": 102762,
+      "medicines_injections": 28320,
+      "diagnostics": 17966,
+      "miscellaneous": 24319
+    }
+  },
+  {
+    "hospital_id": 11,
+    "hospital_name": "Nanavati Max Super Speciality Hospital",
+    "city": "Mumbai",
+    "lat": 19.097764164002697,
+    "lon": 72.89789082213117,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 489330,
+    "cost_breakdown": {
+      "consultation_fee": 23446,
+      "room_rent_per_day": 18839,
+      "surgery_fee": 232346,
+      "medicines_injections": 58279,
+      "diagnostics": 41910,
+      "miscellaneous": 39154
+    }
+  },
+  {
+    "hospital_id": 11,
+    "hospital_name": "Nanavati Max Super Speciality Hospital",
+    "city": "Mumbai",
+    "lat": 19.097764164002697,
+    "lon": 72.89789082213117,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 62323,
+    "cost_breakdown": {
+      "consultation_fee": 2388,
+      "room_rent_per_day": 2491,
+      "surgery_fee": 27876,
+      "medicines_injections": 6494,
+      "diagnostics": 3545,
+      "miscellaneous": 9562
+    }
+  },
+  {
+    "hospital_id": 11,
+    "hospital_name": "Nanavati Max Super Speciality Hospital",
+    "city": "Mumbai",
+    "lat": 19.097764164002697,
+    "lon": 72.89789082213117,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 118547,
+    "cost_breakdown": {
+      "consultation_fee": 5301,
+      "room_rent_per_day": 4147,
+      "surgery_fee": 49304,
+      "medicines_injections": 14507,
+      "diagnostics": 10288,
+      "miscellaneous": 18411
+    }
+  },
+  {
+    "hospital_id": 12,
+    "hospital_name": "Sir HN Reliance Foundation Hospital",
+    "city": "Mumbai",
+    "lat": 19.078625502468974,
+    "lon": 72.84628710092574,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 154419,
+    "cost_breakdown": {
+      "consultation_fee": 6044,
+      "room_rent_per_day": 5355,
+      "surgery_fee": 70949,
+      "medicines_injections": 17163,
+      "diagnostics": 13656,
+      "miscellaneous": 19832
+    }
+  },
+  {
+    "hospital_id": 12,
+    "hospital_name": "Sir HN Reliance Foundation Hospital",
+    "city": "Mumbai",
+    "lat": 19.078625502468974,
+    "lon": 72.84628710092574,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 60594,
+    "cost_breakdown": {
+      "consultation_fee": 2739,
+      "room_rent_per_day": 1971,
+      "surgery_fee": 26920,
+      "medicines_injections": 6826,
+      "diagnostics": 5941,
+      "miscellaneous": 8313
+    }
+  },
+  {
+    "hospital_id": 12,
+    "hospital_name": "Sir HN Reliance Foundation Hospital",
+    "city": "Mumbai",
+    "lat": 19.078625502468974,
+    "lon": 72.84628710092574,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 408585,
+    "cost_breakdown": {
+      "consultation_fee": 18549,
+      "room_rent_per_day": 13947,
+      "surgery_fee": 203727,
+      "medicines_injections": 60623,
+      "diagnostics": 35496,
+      "miscellaneous": 20455
+    }
+  },
+  {
+    "hospital_id": 12,
+    "hospital_name": "Sir HN Reliance Foundation Hospital",
+    "city": "Mumbai",
+    "lat": 19.078625502468974,
+    "lon": 72.84628710092574,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 404839,
+    "cost_breakdown": {
+      "consultation_fee": 19936,
+      "room_rent_per_day": 13175,
+      "surgery_fee": 191918,
+      "medicines_injections": 56863,
+      "diagnostics": 35643,
+      "miscellaneous": 34604
+    }
+  },
+  {
+    "hospital_id": 12,
+    "hospital_name": "Sir HN Reliance Foundation Hospital",
+    "city": "Mumbai",
+    "lat": 19.078625502468974,
+    "lon": 72.84628710092574,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 47715,
+    "cost_breakdown": {
+      "consultation_fee": 2364,
+      "room_rent_per_day": 1564,
+      "surgery_fee": 20334,
+      "medicines_injections": 7012,
+      "diagnostics": 3753,
+      "miscellaneous": 6431
+    }
+  },
+  {
+    "hospital_id": 12,
+    "hospital_name": "Sir HN Reliance Foundation Hospital",
+    "city": "Mumbai",
+    "lat": 19.078625502468974,
+    "lon": 72.84628710092574,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 120710,
+    "cost_breakdown": {
+      "consultation_fee": 4700,
+      "room_rent_per_day": 4073,
+      "surgery_fee": 57481,
+      "medicines_injections": 13772,
+      "diagnostics": 11856,
+      "miscellaneous": 12535
+    }
+  },
+  {
+    "hospital_id": 13,
+    "hospital_name": "Lilavati Hospital",
+    "city": "Mumbai",
+    "lat": 19.11473715710253,
+    "lon": 72.9098183555533,
+    "tier": "High",
+    "quality_score": 9.1,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 87854,
+    "cost_breakdown": {
+      "consultation_fee": 2780,
+      "room_rent_per_day": 3333,
+      "surgery_fee": 43073,
+      "medicines_injections": 11977,
+      "diagnostics": 8696,
+      "miscellaneous": 4662
+    }
+  },
+  {
+    "hospital_id": 13,
+    "hospital_name": "Lilavati Hospital",
+    "city": "Mumbai",
+    "lat": 19.11473715710253,
+    "lon": 72.9098183555533,
+    "tier": "High",
+    "quality_score": 9.1,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 69945,
+    "cost_breakdown": {
+      "consultation_fee": 2132,
+      "room_rent_per_day": 2594,
+      "surgery_fee": 34872,
+      "medicines_injections": 7097,
+      "diagnostics": 3497,
+      "miscellaneous": 9377
+    }
+  },
+  {
+    "hospital_id": 13,
+    "hospital_name": "Lilavati Hospital",
+    "city": "Mumbai",
+    "lat": 19.11473715710253,
+    "lon": 72.9098183555533,
+    "tier": "High",
+    "quality_score": 9.1,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 210548,
+    "cost_breakdown": {
+      "consultation_fee": 8806,
+      "room_rent_per_day": 7081,
+      "surgery_fee": 84854,
+      "medicines_injections": 29789,
+      "diagnostics": 14393,
+      "miscellaneous": 37300
+    }
+  },
+  {
+    "hospital_id": 13,
+    "hospital_name": "Lilavati Hospital",
+    "city": "Mumbai",
+    "lat": 19.11473715710253,
+    "lon": 72.9098183555533,
+    "tier": "High",
+    "quality_score": 9.1,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 371394,
+    "cost_breakdown": {
+      "consultation_fee": 18400,
+      "room_rent_per_day": 14408,
+      "surgery_fee": 183156,
+      "medicines_injections": 42308,
+      "diagnostics": 22315,
+      "miscellaneous": 33173
+    }
+  },
+  {
+    "hospital_id": 13,
+    "hospital_name": "Lilavati Hospital",
+    "city": "Mumbai",
+    "lat": 19.11473715710253,
+    "lon": 72.9098183555533,
+    "tier": "High",
+    "quality_score": 9.1,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 73093,
+    "cost_breakdown": {
+      "consultation_fee": 2781,
+      "room_rent_per_day": 2624,
+      "surgery_fee": 32404,
+      "medicines_injections": 9502,
+      "diagnostics": 3888,
+      "miscellaneous": 11394
+    }
+  },
+  {
+    "hospital_id": 13,
+    "hospital_name": "Lilavati Hospital",
+    "city": "Mumbai",
+    "lat": 19.11473715710253,
+    "lon": 72.9098183555533,
+    "tier": "High",
+    "quality_score": 9.1,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 95119,
+    "cost_breakdown": {
+      "consultation_fee": 4745,
+      "room_rent_per_day": 3349,
+      "surgery_fee": 41492,
+      "medicines_injections": 9662,
+      "diagnostics": 6633,
+      "miscellaneous": 15838
+    }
+  },
+  {
+    "hospital_id": 14,
+    "hospital_name": "Breach Candy Hospital",
+    "city": "Mumbai",
+    "lat": 19.066875858684536,
+    "lon": 72.89140573369717,
+    "tier": "Premium",
+    "quality_score": 9.4,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 146941,
+    "cost_breakdown": {
+      "consultation_fee": 6138,
+      "room_rent_per_day": 4657,
+      "surgery_fee": 65854,
+      "medicines_injections": 20741,
+      "diagnostics": 14131,
+      "miscellaneous": 16790
+    }
+  },
+  {
+    "hospital_id": 14,
+    "hospital_name": "Breach Candy Hospital",
+    "city": "Mumbai",
+    "lat": 19.066875858684536,
+    "lon": 72.89140573369717,
+    "tier": "Premium",
+    "quality_score": 9.4,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 61032,
+    "cost_breakdown": {
+      "consultation_fee": 2771,
+      "room_rent_per_day": 2251,
+      "surgery_fee": 25147,
+      "medicines_injections": 8392,
+      "diagnostics": 5943,
+      "miscellaneous": 7522
+    }
+  },
+  {
+    "hospital_id": 14,
+    "hospital_name": "Breach Candy Hospital",
+    "city": "Mumbai",
+    "lat": 19.066875858684536,
+    "lon": 72.89140573369717,
+    "tier": "Premium",
+    "quality_score": 9.4,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 251520,
+    "cost_breakdown": {
+      "consultation_fee": 10349,
+      "room_rent_per_day": 7730,
+      "surgery_fee": 121965,
+      "medicines_injections": 33420,
+      "diagnostics": 19868,
+      "miscellaneous": 27267
+    }
+  },
+  {
+    "hospital_id": 14,
+    "hospital_name": "Breach Candy Hospital",
+    "city": "Mumbai",
+    "lat": 19.066875858684536,
+    "lon": 72.89140573369717,
+    "tier": "Premium",
+    "quality_score": 9.4,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 319212,
+    "cost_breakdown": {
+      "consultation_fee": 14419,
+      "room_rent_per_day": 11015,
+      "surgery_fee": 145807,
+      "medicines_injections": 36325,
+      "diagnostics": 16250,
+      "miscellaneous": 51336
+    }
+  },
+  {
+    "hospital_id": 14,
+    "hospital_name": "Breach Candy Hospital",
+    "city": "Mumbai",
+    "lat": 19.066875858684536,
+    "lon": 72.89140573369717,
+    "tier": "Premium",
+    "quality_score": 9.4,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 68548,
+    "cost_breakdown": {
+      "consultation_fee": 2405,
+      "room_rent_per_day": 2168,
+      "surgery_fee": 29589,
+      "medicines_injections": 10108,
+      "diagnostics": 4975,
+      "miscellaneous": 10628
+    }
+  },
+  {
+    "hospital_id": 14,
+    "hospital_name": "Breach Candy Hospital",
+    "city": "Mumbai",
+    "lat": 19.066875858684536,
+    "lon": 72.89140573369717,
+    "tier": "Premium",
+    "quality_score": 9.4,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 143552,
+    "cost_breakdown": {
+      "consultation_fee": 5161,
+      "room_rent_per_day": 4440,
+      "surgery_fee": 58966,
+      "medicines_injections": 17794,
+      "diagnostics": 9733,
+      "miscellaneous": 29697
+    }
+  },
+  {
+    "hospital_id": 15,
+    "hospital_name": "Ruby Hall Clinic",
+    "city": "Pune",
+    "lat": 18.471632947210054,
+    "lon": 73.85190657853154,
+    "tier": "Premium",
+    "quality_score": 9.3,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 114964,
+    "cost_breakdown": {
+      "consultation_fee": 4693,
+      "room_rent_per_day": 4177,
+      "surgery_fee": 53454,
+      "medicines_injections": 15716,
+      "diagnostics": 6431,
+      "miscellaneous": 13785
+    }
+  },
+  {
+    "hospital_id": 15,
+    "hospital_name": "Ruby Hall Clinic",
+    "city": "Pune",
+    "lat": 18.471632947210054,
+    "lon": 73.85190657853154,
+    "tier": "Premium",
+    "quality_score": 9.3,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 162877,
+    "cost_breakdown": {
+      "consultation_fee": 6351,
+      "room_rent_per_day": 5511,
+      "surgery_fee": 70086,
+      "medicines_injections": 22588,
+      "diagnostics": 11066,
+      "miscellaneous": 25230
+    }
+  },
+  {
+    "hospital_id": 15,
+    "hospital_name": "Ruby Hall Clinic",
+    "city": "Pune",
+    "lat": 18.471632947210054,
+    "lon": 73.85190657853154,
+    "tier": "Premium",
+    "quality_score": 9.3,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 350334,
+    "cost_breakdown": {
+      "consultation_fee": 16154,
+      "room_rent_per_day": 13152,
+      "surgery_fee": 159794,
+      "medicines_injections": 37086,
+      "diagnostics": 24352,
+      "miscellaneous": 47186
+    }
+  },
+  {
+    "hospital_id": 15,
+    "hospital_name": "Ruby Hall Clinic",
+    "city": "Pune",
+    "lat": 18.471632947210054,
+    "lon": 73.85190657853154,
+    "tier": "Premium",
+    "quality_score": 9.3,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 356550,
+    "cost_breakdown": {
+      "consultation_fee": 17641,
+      "room_rent_per_day": 14003,
+      "surgery_fee": 149672,
+      "medicines_injections": 41486,
+      "diagnostics": 19651,
+      "miscellaneous": 58085
+    }
+  },
+  {
+    "hospital_id": 15,
+    "hospital_name": "Ruby Hall Clinic",
+    "city": "Pune",
+    "lat": 18.471632947210054,
+    "lon": 73.85190657853154,
+    "tier": "Premium",
+    "quality_score": 9.3,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 65097,
+    "cost_breakdown": {
+      "consultation_fee": 2417,
+      "room_rent_per_day": 2013,
+      "surgery_fee": 27362,
+      "medicines_injections": 6586,
+      "diagnostics": 4018,
+      "miscellaneous": 14647
+    }
+  },
+  {
+    "hospital_id": 15,
+    "hospital_name": "Ruby Hall Clinic",
+    "city": "Pune",
+    "lat": 18.471632947210054,
+    "lon": 73.85190657853154,
+    "tier": "Premium",
+    "quality_score": 9.3,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 132787,
+    "cost_breakdown": {
+      "consultation_fee": 4673,
+      "room_rent_per_day": 4537,
+      "surgery_fee": 58264,
+      "medicines_injections": 18544,
+      "diagnostics": 8100,
+      "miscellaneous": 20519
+    }
+  },
+  {
+    "hospital_id": 16,
+    "hospital_name": "Deenanath Mangeshkar Hospital",
+    "city": "Pune",
+    "lat": 18.52559412076121,
+    "lon": 73.85775881120789,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 83314,
+    "cost_breakdown": {
+      "consultation_fee": 2896,
+      "room_rent_per_day": 3284,
+      "surgery_fee": 35050,
+      "medicines_injections": 12052,
+      "diagnostics": 5291,
+      "miscellaneous": 11601
+    }
+  },
+  {
+    "hospital_id": 16,
+    "hospital_name": "Deenanath Mangeshkar Hospital",
+    "city": "Pune",
+    "lat": 18.52559412076121,
+    "lon": 73.85775881120789,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 90632,
+    "cost_breakdown": {
+      "consultation_fee": 3812,
+      "room_rent_per_day": 3032,
+      "surgery_fee": 41733,
+      "medicines_injections": 12988,
+      "diagnostics": 7805,
+      "miscellaneous": 9133
+    }
+  },
+  {
+    "hospital_id": 16,
+    "hospital_name": "Deenanath Mangeshkar Hospital",
+    "city": "Pune",
+    "lat": 18.52559412076121,
+    "lon": 73.85775881120789,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 359303,
+    "cost_breakdown": {
+      "consultation_fee": 15534,
+      "room_rent_per_day": 11269,
+      "surgery_fee": 148492,
+      "medicines_injections": 40819,
+      "diagnostics": 32098,
+      "miscellaneous": 66015
+    }
+  },
+  {
+    "hospital_id": 16,
+    "hospital_name": "Deenanath Mangeshkar Hospital",
+    "city": "Pune",
+    "lat": 18.52559412076121,
+    "lon": 73.85775881120789,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 349638,
+    "cost_breakdown": {
+      "consultation_fee": 16562,
+      "room_rent_per_day": 13493,
+      "surgery_fee": 154717,
+      "medicines_injections": 47012,
+      "diagnostics": 23327,
+      "miscellaneous": 40553
+    }
+  },
+  {
+    "hospital_id": 16,
+    "hospital_name": "Deenanath Mangeshkar Hospital",
+    "city": "Pune",
+    "lat": 18.52559412076121,
+    "lon": 73.85775881120789,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 30664,
+    "cost_breakdown": {
+      "consultation_fee": 1163,
+      "room_rent_per_day": 950,
+      "surgery_fee": 13865,
+      "medicines_injections": 4117,
+      "diagnostics": 2797,
+      "miscellaneous": 3971
+    }
+  },
+  {
+    "hospital_id": 16,
+    "hospital_name": "Deenanath Mangeshkar Hospital",
+    "city": "Pune",
+    "lat": 18.52559412076121,
+    "lon": 73.85775881120789,
+    "tier": "High",
+    "quality_score": 9.0,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 105423,
+    "cost_breakdown": {
+      "consultation_fee": 3921,
+      "room_rent_per_day": 3368,
+      "surgery_fee": 48145,
+      "medicines_injections": 14550,
+      "diagnostics": 7252,
+      "miscellaneous": 14711
+    }
+  },
+  {
+    "hospital_id": 17,
+    "hospital_name": "Jehangir Hospital",
+    "city": "Pune",
+    "lat": 18.523042416406785,
+    "lon": 73.8810937588684,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 105296,
+    "cost_breakdown": {
+      "consultation_fee": 5077,
+      "room_rent_per_day": 4106,
+      "surgery_fee": 46970,
+      "medicines_injections": 14050,
+      "diagnostics": 8436,
+      "miscellaneous": 10230
+    }
+  },
+  {
+    "hospital_id": 17,
+    "hospital_name": "Jehangir Hospital",
+    "city": "Pune",
+    "lat": 18.523042416406785,
+    "lon": 73.8810937588684,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 118987,
+    "cost_breakdown": {
+      "consultation_fee": 5743,
+      "room_rent_per_day": 4351,
+      "surgery_fee": 48494,
+      "medicines_injections": 15425,
+      "diagnostics": 5963,
+      "miscellaneous": 21607
+    }
+  },
+  {
+    "hospital_id": 17,
+    "hospital_name": "Jehangir Hospital",
+    "city": "Pune",
+    "lat": 18.523042416406785,
+    "lon": 73.8810937588684,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 177442,
+    "cost_breakdown": {
+      "consultation_fee": 7760,
+      "room_rent_per_day": 6838,
+      "surgery_fee": 74756,
+      "medicines_injections": 19173,
+      "diagnostics": 12412,
+      "miscellaneous": 29147
+    }
+  },
+  {
+    "hospital_id": 17,
+    "hospital_name": "Jehangir Hospital",
+    "city": "Pune",
+    "lat": 18.523042416406785,
+    "lon": 73.8810937588684,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 280592,
+    "cost_breakdown": {
+      "consultation_fee": 13701,
+      "room_rent_per_day": 8999,
+      "surgery_fee": 137756,
+      "medicines_injections": 34950,
+      "diagnostics": 14276,
+      "miscellaneous": 34912
+    }
+  },
+  {
+    "hospital_id": 17,
+    "hospital_name": "Jehangir Hospital",
+    "city": "Pune",
+    "lat": 18.523042416406785,
+    "lon": 73.8810937588684,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 45824,
+    "cost_breakdown": {
+      "consultation_fee": 1941,
+      "room_rent_per_day": 1428,
+      "surgery_fee": 19629,
+      "medicines_injections": 6322,
+      "diagnostics": 2881,
+      "miscellaneous": 7907
+    }
+  },
+  {
+    "hospital_id": 17,
+    "hospital_name": "Jehangir Hospital",
+    "city": "Pune",
+    "lat": 18.523042416406785,
+    "lon": 73.8810937588684,
+    "tier": "High",
+    "quality_score": 8.8,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 77201,
+    "cost_breakdown": {
+      "consultation_fee": 2935,
+      "room_rent_per_day": 2593,
+      "surgery_fee": 34211,
+      "medicines_injections": 9692,
+      "diagnostics": 7257,
+      "miscellaneous": 10140
+    }
+  },
+  {
+    "hospital_id": 18,
+    "hospital_name": "Aditya Birla Memorial Hospital",
+    "city": "Pune",
+    "lat": 18.48437132644605,
+    "lon": 73.83855096463218,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 63956,
+    "cost_breakdown": {
+      "consultation_fee": 2529,
+      "room_rent_per_day": 2341,
+      "surgery_fee": 26916,
+      "medicines_injections": 6765,
+      "diagnostics": 3743,
+      "miscellaneous": 12294
+    }
+  },
+  {
+    "hospital_id": 18,
+    "hospital_name": "Aditya Birla Memorial Hospital",
+    "city": "Pune",
+    "lat": 18.48437132644605,
+    "lon": 73.83855096463218,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 91076,
+    "cost_breakdown": {
+      "consultation_fee": 3172,
+      "room_rent_per_day": 2993,
+      "surgery_fee": 36592,
+      "medicines_injections": 10162,
+      "diagnostics": 8000,
+      "miscellaneous": 18183
+    }
+  },
+  {
+    "hospital_id": 18,
+    "hospital_name": "Aditya Birla Memorial Hospital",
+    "city": "Pune",
+    "lat": 18.48437132644605,
+    "lon": 73.83855096463218,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 402108,
+    "cost_breakdown": {
+      "consultation_fee": 15910,
+      "room_rent_per_day": 12849,
+      "surgery_fee": 196037,
+      "medicines_injections": 49868,
+      "diagnostics": 38409,
+      "miscellaneous": 37637
+    }
+  },
+  {
+    "hospital_id": 18,
+    "hospital_name": "Aditya Birla Memorial Hospital",
+    "city": "Pune",
+    "lat": 18.48437132644605,
+    "lon": 73.83855096463218,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 300584,
+    "cost_breakdown": {
+      "consultation_fee": 11645,
+      "room_rent_per_day": 9175,
+      "surgery_fee": 125322,
+      "medicines_injections": 36006,
+      "diagnostics": 18659,
+      "miscellaneous": 63075
+    }
+  },
+  {
+    "hospital_id": 18,
+    "hospital_name": "Aditya Birla Memorial Hospital",
+    "city": "Pune",
+    "lat": 18.48437132644605,
+    "lon": 73.83855096463218,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 34536,
+    "cost_breakdown": {
+      "consultation_fee": 1192,
+      "room_rent_per_day": 1375,
+      "surgery_fee": 16230,
+      "medicines_injections": 3634,
+      "diagnostics": 2789,
+      "miscellaneous": 3812
+    }
+  },
+  {
+    "hospital_id": 18,
+    "hospital_name": "Aditya Birla Memorial Hospital",
+    "city": "Pune",
+    "lat": 18.48437132644605,
+    "lon": 73.83855096463218,
+    "tier": "Premium",
+    "quality_score": 9.5,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 87280,
+    "cost_breakdown": {
+      "consultation_fee": 3075,
+      "room_rent_per_day": 2713,
+      "surgery_fee": 42948,
+      "medicines_injections": 9355,
+      "diagnostics": 6774,
+      "miscellaneous": 11563
+    }
+  },
+  {
+    "hospital_id": 19,
+    "hospital_name": "Manipal Hospital Pune",
+    "city": "Pune",
+    "lat": 18.53912343065114,
+    "lon": 73.87807183892582,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 48139,
+    "cost_breakdown": {
+      "consultation_fee": 1929,
+      "room_rent_per_day": 1447,
+      "surgery_fee": 23801,
+      "medicines_injections": 5484,
+      "diagnostics": 4673,
+      "miscellaneous": 5017
+    }
+  },
+  {
+    "hospital_id": 19,
+    "hospital_name": "Manipal Hospital Pune",
+    "city": "Pune",
+    "lat": 18.53912343065114,
+    "lon": 73.87807183892582,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 106547,
+    "cost_breakdown": {
+      "consultation_fee": 3963,
+      "room_rent_per_day": 3484,
+      "surgery_fee": 46663,
+      "medicines_injections": 13426,
+      "diagnostics": 5602,
+      "miscellaneous": 19473
+    }
+  },
+  {
+    "hospital_id": 19,
+    "hospital_name": "Manipal Hospital Pune",
+    "city": "Pune",
+    "lat": 18.53912343065114,
+    "lon": 73.87807183892582,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 236350,
+    "cost_breakdown": {
+      "consultation_fee": 9656,
+      "room_rent_per_day": 7739,
+      "surgery_fee": 107896,
+      "medicines_injections": 26830,
+      "diagnostics": 23164,
+      "miscellaneous": 30109
+    }
+  },
+  {
+    "hospital_id": 19,
+    "hospital_name": "Manipal Hospital Pune",
+    "city": "Pune",
+    "lat": 18.53912343065114,
+    "lon": 73.87807183892582,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 269259,
+    "cost_breakdown": {
+      "consultation_fee": 11713,
+      "room_rent_per_day": 9437,
+      "surgery_fee": 123576,
+      "medicines_injections": 27287,
+      "diagnostics": 23700,
+      "miscellaneous": 35794
+    }
+  },
+  {
+    "hospital_id": 19,
+    "hospital_name": "Manipal Hospital Pune",
+    "city": "Pune",
+    "lat": 18.53912343065114,
+    "lon": 73.87807183892582,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 38457,
+    "cost_breakdown": {
+      "consultation_fee": 1461,
+      "room_rent_per_day": 1194,
+      "surgery_fee": 18672,
+      "medicines_injections": 4720,
+      "diagnostics": 3458,
+      "miscellaneous": 4175
+    }
+  },
+  {
+    "hospital_id": 19,
+    "hospital_name": "Manipal Hospital Pune",
+    "city": "Pune",
+    "lat": 18.53912343065114,
+    "lon": 73.87807183892582,
+    "tier": "High",
+    "quality_score": 8.7,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 50404,
+    "cost_breakdown": {
+      "consultation_fee": 1999,
+      "room_rent_per_day": 1934,
+      "surgery_fee": 22214,
+      "medicines_injections": 5274,
+      "diagnostics": 3498,
+      "miscellaneous": 7747
+    }
+  },
+  {
+    "hospital_id": 20,
+    "hospital_name": "Noble Hospital",
+    "city": "Pune",
+    "lat": 18.4854687916324,
+    "lon": 73.82901895891357,
+    "tier": "Mid",
+    "quality_score": 8.2,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 41020,
+    "cost_breakdown": {
+      "consultation_fee": 1903,
+      "room_rent_per_day": 1469,
+      "surgery_fee": 17785,
+      "medicines_injections": 4530,
+      "diagnostics": 3782,
+      "miscellaneous": 5675
+    }
+  },
+  {
+    "hospital_id": 20,
+    "hospital_name": "Noble Hospital",
+    "city": "Pune",
+    "lat": 18.4854687916324,
+    "lon": 73.82901895891357,
+    "tier": "Mid",
+    "quality_score": 8.2,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 96639,
+    "cost_breakdown": {
+      "consultation_fee": 4634,
+      "room_rent_per_day": 3472,
+      "surgery_fee": 44452,
+      "medicines_injections": 10340,
+      "diagnostics": 8096,
+      "miscellaneous": 11757
+    }
+  },
+  {
+    "hospital_id": 20,
+    "hospital_name": "Noble Hospital",
+    "city": "Pune",
+    "lat": 18.4854687916324,
+    "lon": 73.82901895891357,
+    "tier": "Mid",
+    "quality_score": 8.2,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 248979,
+    "cost_breakdown": {
+      "consultation_fee": 8432,
+      "room_rent_per_day": 9740,
+      "surgery_fee": 123688,
+      "medicines_injections": 28148,
+      "diagnostics": 14217,
+      "miscellaneous": 25791
+    }
+  },
+  {
+    "hospital_id": 20,
+    "hospital_name": "Noble Hospital",
+    "city": "Pune",
+    "lat": 18.4854687916324,
+    "lon": 73.82901895891357,
+    "tier": "Mid",
+    "quality_score": 8.2,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 360632,
+    "cost_breakdown": {
+      "consultation_fee": 14013,
+      "room_rent_per_day": 11620,
+      "surgery_fee": 156359,
+      "medicines_injections": 49071,
+      "diagnostics": 20771,
+      "miscellaneous": 62314
+    }
+  },
+  {
+    "hospital_id": 20,
+    "hospital_name": "Noble Hospital",
+    "city": "Pune",
+    "lat": 18.4854687916324,
+    "lon": 73.82901895891357,
+    "tier": "Mid",
+    "quality_score": 8.2,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 59070,
+    "cost_breakdown": {
+      "consultation_fee": 1880,
+      "room_rent_per_day": 2229,
+      "surgery_fee": 29135,
+      "medicines_injections": 8476,
+      "diagnostics": 4953,
+      "miscellaneous": 3481
+    }
+  },
+  {
+    "hospital_id": 20,
+    "hospital_name": "Noble Hospital",
+    "city": "Pune",
+    "lat": 18.4854687916324,
+    "lon": 73.82901895891357,
+    "tier": "Mid",
+    "quality_score": 8.2,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 88867,
+    "cost_breakdown": {
+      "consultation_fee": 3705,
+      "room_rent_per_day": 3547,
+      "surgery_fee": 40697,
+      "medicines_injections": 12371,
+      "diagnostics": 7247,
+      "miscellaneous": 7108
+    }
+  },
+  {
+    "hospital_id": 21,
+    "hospital_name": "Sahyadri Super Speciality Hospital",
+    "city": "Pune",
+    "lat": 18.485589262307762,
+    "lon": 73.83468963399264,
+    "tier": "High",
+    "quality_score": 8.6,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 88739,
+    "cost_breakdown": {
+      "consultation_fee": 3937,
+      "room_rent_per_day": 3469,
+      "surgery_fee": 38407,
+      "medicines_injections": 12771,
+      "diagnostics": 7292,
+      "miscellaneous": 8987
+    }
+  },
+  {
+    "hospital_id": 21,
+    "hospital_name": "Sahyadri Super Speciality Hospital",
+    "city": "Pune",
+    "lat": 18.485589262307762,
+    "lon": 73.83468963399264,
+    "tier": "High",
+    "quality_score": 8.6,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 71715,
+    "cost_breakdown": {
+      "consultation_fee": 2778,
+      "room_rent_per_day": 2350,
+      "surgery_fee": 29045,
+      "medicines_injections": 9422,
+      "diagnostics": 4030,
+      "miscellaneous": 14689
+    }
+  },
+  {
+    "hospital_id": 21,
+    "hospital_name": "Sahyadri Super Speciality Hospital",
+    "city": "Pune",
+    "lat": 18.485589262307762,
+    "lon": 73.83468963399264,
+    "tier": "High",
+    "quality_score": 8.6,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 326607,
+    "cost_breakdown": {
+      "consultation_fee": 12986,
+      "room_rent_per_day": 9839,
+      "surgery_fee": 146610,
+      "medicines_injections": 46019,
+      "diagnostics": 21834,
+      "miscellaneous": 49959
+    }
+  },
+  {
+    "hospital_id": 21,
+    "hospital_name": "Sahyadri Super Speciality Hospital",
+    "city": "Pune",
+    "lat": 18.485589262307762,
+    "lon": 73.83468963399264,
+    "tier": "High",
+    "quality_score": 8.6,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 480980,
+    "cost_breakdown": {
+      "consultation_fee": 21341,
+      "room_rent_per_day": 15132,
+      "surgery_fee": 193633,
+      "medicines_injections": 65451,
+      "diagnostics": 33226,
+      "miscellaneous": 91669
+    }
+  },
+  {
+    "hospital_id": 21,
+    "hospital_name": "Sahyadri Super Speciality Hospital",
+    "city": "Pune",
+    "lat": 18.485589262307762,
+    "lon": 73.83468963399264,
+    "tier": "High",
+    "quality_score": 8.6,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 68871,
+    "cost_breakdown": {
+      "consultation_fee": 2649,
+      "room_rent_per_day": 2753,
+      "surgery_fee": 30486,
+      "medicines_injections": 7232,
+      "diagnostics": 4569,
+      "miscellaneous": 10170
+    }
+  },
+  {
+    "hospital_id": 21,
+    "hospital_name": "Sahyadri Super Speciality Hospital",
+    "city": "Pune",
+    "lat": 18.485589262307762,
+    "lon": 73.83468963399264,
+    "tier": "High",
+    "quality_score": 8.6,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 45760,
+    "cost_breakdown": {
+      "consultation_fee": 2229,
+      "room_rent_per_day": 1512,
+      "surgery_fee": 18968,
+      "medicines_injections": 5438,
+      "diagnostics": 3007,
+      "miscellaneous": 8556
+    }
+  },
+  {
+    "hospital_id": 22,
+    "hospital_name": "AIIMS Delhi",
+    "city": "Delhi",
+    "lat": 28.566611874285528,
+    "lon": 77.22941253662545,
+    "tier": "Mid",
+    "quality_score": 9.9,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 41270,
+    "cost_breakdown": {
+      "consultation_fee": 1613,
+      "room_rent_per_day": 1332,
+      "surgery_fee": 19807,
+      "medicines_injections": 5571,
+      "diagnostics": 3648,
+      "miscellaneous": 3970
+    }
+  },
+  {
+    "hospital_id": 22,
+    "hospital_name": "AIIMS Delhi",
+    "city": "Delhi",
+    "lat": 28.566611874285528,
+    "lon": 77.22941253662545,
+    "tier": "Mid",
+    "quality_score": 9.9,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 125749,
+    "cost_breakdown": {
+      "consultation_fee": 4744,
+      "room_rent_per_day": 4198,
+      "surgery_fee": 59854,
+      "medicines_injections": 14946,
+      "diagnostics": 7821,
+      "miscellaneous": 17392
+    }
+  },
+  {
+    "hospital_id": 22,
+    "hospital_name": "AIIMS Delhi",
+    "city": "Delhi",
+    "lat": 28.566611874285528,
+    "lon": 77.22941253662545,
+    "tier": "Mid",
+    "quality_score": 9.9,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 263952,
+    "cost_breakdown": {
+      "consultation_fee": 9006,
+      "room_rent_per_day": 10143,
+      "surgery_fee": 123894,
+      "medicines_injections": 38420,
+      "diagnostics": 15946,
+      "miscellaneous": 25969
+    }
+  },
+  {
+    "hospital_id": 22,
+    "hospital_name": "AIIMS Delhi",
+    "city": "Delhi",
+    "lat": 28.566611874285528,
+    "lon": 77.22941253662545,
+    "tier": "Mid",
+    "quality_score": 9.9,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 337909,
+    "cost_breakdown": {
+      "consultation_fee": 11155,
+      "room_rent_per_day": 11051,
+      "surgery_fee": 147041,
+      "medicines_injections": 33861,
+      "diagnostics": 33092,
+      "miscellaneous": 57501
+    }
+  },
+  {
+    "hospital_id": 22,
+    "hospital_name": "AIIMS Delhi",
+    "city": "Delhi",
+    "lat": 28.566611874285528,
+    "lon": 77.22941253662545,
+    "tier": "Mid",
+    "quality_score": 9.9,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 57824,
+    "cost_breakdown": {
+      "consultation_fee": 2355,
+      "room_rent_per_day": 2267,
+      "surgery_fee": 23352,
+      "medicines_injections": 7905,
+      "diagnostics": 5745,
+      "miscellaneous": 7130
+    }
+  },
+  {
+    "hospital_id": 22,
+    "hospital_name": "AIIMS Delhi",
+    "city": "Delhi",
+    "lat": 28.566611874285528,
+    "lon": 77.22941253662545,
+    "tier": "Mid",
+    "quality_score": 9.9,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 82229,
+    "cost_breakdown": {
+      "consultation_fee": 3559,
+      "room_rent_per_day": 3091,
+      "surgery_fee": 33441,
+      "medicines_injections": 12228,
+      "diagnostics": 6329,
+      "miscellaneous": 11216
+    }
+  },
+  {
+    "hospital_id": 23,
+    "hospital_name": "Indraprastha Apollo Hospital",
+    "city": "Delhi",
+    "lat": 28.619648775458327,
+    "lon": 77.24480593919645,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 173750,
+    "cost_breakdown": {
+      "consultation_fee": 6808,
+      "room_rent_per_day": 6819,
+      "surgery_fee": 76129,
+      "medicines_injections": 19920,
+      "diagnostics": 10880,
+      "miscellaneous": 25918
+    }
+  },
+  {
+    "hospital_id": 23,
+    "hospital_name": "Indraprastha Apollo Hospital",
+    "city": "Delhi",
+    "lat": 28.619648775458327,
+    "lon": 77.24480593919645,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 86968,
+    "cost_breakdown": {
+      "consultation_fee": 2820,
+      "room_rent_per_day": 2819,
+      "surgery_fee": 35008,
+      "medicines_injections": 11176,
+      "diagnostics": 6171,
+      "miscellaneous": 17697
+    }
+  },
+  {
+    "hospital_id": 23,
+    "hospital_name": "Indraprastha Apollo Hospital",
+    "city": "Delhi",
+    "lat": 28.619648775458327,
+    "lon": 77.24480593919645,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 351583,
+    "cost_breakdown": {
+      "consultation_fee": 15357,
+      "room_rent_per_day": 12925,
+      "surgery_fee": 170502,
+      "medicines_injections": 39272,
+      "diagnostics": 19267,
+      "miscellaneous": 42560
+    }
+  },
+  {
+    "hospital_id": 23,
+    "hospital_name": "Indraprastha Apollo Hospital",
+    "city": "Delhi",
+    "lat": 28.619648775458327,
+    "lon": 77.24480593919645,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 531464,
+    "cost_breakdown": {
+      "consultation_fee": 21391,
+      "room_rent_per_day": 20111,
+      "surgery_fee": 258089,
+      "medicines_injections": 71571,
+      "diagnostics": 26594,
+      "miscellaneous": 53261
+    }
+  },
+  {
+    "hospital_id": 23,
+    "hospital_name": "Indraprastha Apollo Hospital",
+    "city": "Delhi",
+    "lat": 28.619648775458327,
+    "lon": 77.24480593919645,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 83462,
+    "cost_breakdown": {
+      "consultation_fee": 3468,
+      "room_rent_per_day": 2903,
+      "surgery_fee": 39854,
+      "medicines_injections": 10976,
+      "diagnostics": 7581,
+      "miscellaneous": 7065
+    }
+  },
+  {
+    "hospital_id": 23,
+    "hospital_name": "Indraprastha Apollo Hospital",
+    "city": "Delhi",
+    "lat": 28.619648775458327,
+    "lon": 77.24480593919645,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 52034,
+    "cost_breakdown": {
+      "consultation_fee": 2427,
+      "room_rent_per_day": 1976,
+      "surgery_fee": 25567,
+      "medicines_injections": 6916,
+      "diagnostics": 3662,
+      "miscellaneous": 3582
+    }
+  },
+  {
+    "hospital_id": 24,
+    "hospital_name": "Sir Ganga Ram Hospital",
+    "city": "Delhi",
+    "lat": 28.616233573862253,
+    "lon": 77.22425667179556,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 86153,
+    "cost_breakdown": {
+      "consultation_fee": 2929,
+      "room_rent_per_day": 3308,
+      "surgery_fee": 41417,
+      "medicines_injections": 9071,
+      "diagnostics": 6276,
+      "miscellaneous": 9917
+    }
+  },
+  {
+    "hospital_id": 24,
+    "hospital_name": "Sir Ganga Ram Hospital",
+    "city": "Delhi",
+    "lat": 28.616233573862253,
+    "lon": 77.22425667179556,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 66721,
+    "cost_breakdown": {
+      "consultation_fee": 2324,
+      "room_rent_per_day": 2147,
+      "surgery_fee": 31784,
+      "medicines_injections": 6893,
+      "diagnostics": 4866,
+      "miscellaneous": 10119
+    }
+  },
+  {
+    "hospital_id": 24,
+    "hospital_name": "Sir Ganga Ram Hospital",
+    "city": "Delhi",
+    "lat": 28.616233573862253,
+    "lon": 77.22425667179556,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 323160,
+    "cost_breakdown": {
+      "consultation_fee": 13718,
+      "room_rent_per_day": 10120,
+      "surgery_fee": 148902,
+      "medicines_injections": 39139,
+      "diagnostics": 21900,
+      "miscellaneous": 48898
+    }
+  },
+  {
+    "hospital_id": 24,
+    "hospital_name": "Sir Ganga Ram Hospital",
+    "city": "Delhi",
+    "lat": 28.616233573862253,
+    "lon": 77.22425667179556,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 371822,
+    "cost_breakdown": {
+      "consultation_fee": 13176,
+      "room_rent_per_day": 14267,
+      "surgery_fee": 163261,
+      "medicines_injections": 55204,
+      "diagnostics": 34098,
+      "miscellaneous": 34745
+    }
+  },
+  {
+    "hospital_id": 24,
+    "hospital_name": "Sir Ganga Ram Hospital",
+    "city": "Delhi",
+    "lat": 28.616233573862253,
+    "lon": 77.22425667179556,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 39341,
+    "cost_breakdown": {
+      "consultation_fee": 1450,
+      "room_rent_per_day": 1534,
+      "surgery_fee": 17952,
+      "medicines_injections": 3945,
+      "diagnostics": 2984,
+      "miscellaneous": 5340
+    }
+  },
+  {
+    "hospital_id": 24,
+    "hospital_name": "Sir Ganga Ram Hospital",
+    "city": "Delhi",
+    "lat": 28.616233573862253,
+    "lon": 77.22425667179556,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 60054,
+    "cost_breakdown": {
+      "consultation_fee": 2701,
+      "room_rent_per_day": 2158,
+      "surgery_fee": 28221,
+      "medicines_injections": 7352,
+      "diagnostics": 3015,
+      "miscellaneous": 7972
+    }
+  },
+  {
+    "hospital_id": 25,
+    "hospital_name": "BLK-Max Super Speciality Hospital",
+    "city": "Delhi",
+    "lat": 28.568216151476225,
+    "lon": 77.18408832523843,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 87593,
+    "cost_breakdown": {
+      "consultation_fee": 2975,
+      "room_rent_per_day": 2852,
+      "surgery_fee": 42564,
+      "medicines_injections": 11807,
+      "diagnostics": 7690,
+      "miscellaneous": 8296
+    }
+  },
+  {
+    "hospital_id": 25,
+    "hospital_name": "BLK-Max Super Speciality Hospital",
+    "city": "Delhi",
+    "lat": 28.568216151476225,
+    "lon": 77.18408832523843,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 68978,
+    "cost_breakdown": {
+      "consultation_fee": 2255,
+      "room_rent_per_day": 2731,
+      "surgery_fee": 33734,
+      "medicines_injections": 8633,
+      "diagnostics": 6491,
+      "miscellaneous": 4210
+    }
+  },
+  {
+    "hospital_id": 25,
+    "hospital_name": "BLK-Max Super Speciality Hospital",
+    "city": "Delhi",
+    "lat": 28.568216151476225,
+    "lon": 77.18408832523843,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 222412,
+    "cost_breakdown": {
+      "consultation_fee": 10296,
+      "room_rent_per_day": 7260,
+      "surgery_fee": 106987,
+      "medicines_injections": 31732,
+      "diagnostics": 14031,
+      "miscellaneous": 23062
+    }
+  },
+  {
+    "hospital_id": 25,
+    "hospital_name": "BLK-Max Super Speciality Hospital",
+    "city": "Delhi",
+    "lat": 28.568216151476225,
+    "lon": 77.18408832523843,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 341924,
+    "cost_breakdown": {
+      "consultation_fee": 16699,
+      "room_rent_per_day": 11646,
+      "surgery_fee": 143067,
+      "medicines_injections": 40205,
+      "diagnostics": 31311,
+      "miscellaneous": 52412
+    }
+  },
+  {
+    "hospital_id": 25,
+    "hospital_name": "BLK-Max Super Speciality Hospital",
+    "city": "Delhi",
+    "lat": 28.568216151476225,
+    "lon": 77.18408832523843,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 80404,
+    "cost_breakdown": {
+      "consultation_fee": 3938,
+      "room_rent_per_day": 2674,
+      "surgery_fee": 37208,
+      "medicines_injections": 9483,
+      "diagnostics": 6188,
+      "miscellaneous": 10214
+    }
+  },
+  {
+    "hospital_id": 25,
+    "hospital_name": "BLK-Max Super Speciality Hospital",
+    "city": "Delhi",
+    "lat": 28.568216151476225,
+    "lon": 77.18408832523843,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 105746,
+    "cost_breakdown": {
+      "consultation_fee": 4832,
+      "room_rent_per_day": 3841,
+      "surgery_fee": 52754,
+      "medicines_injections": 11657,
+      "diagnostics": 7286,
+      "miscellaneous": 10009
+    }
+  },
+  {
+    "hospital_id": 26,
+    "hospital_name": "Fortis Escorts Heart Institute",
+    "city": "Delhi",
+    "lat": 28.570801232060276,
+    "lon": 77.17863177782532,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 72348,
+    "cost_breakdown": {
+      "consultation_fee": 3105,
+      "room_rent_per_day": 2658,
+      "surgery_fee": 33023,
+      "medicines_injections": 9130,
+      "diagnostics": 6313,
+      "miscellaneous": 7486
+    }
+  },
+  {
+    "hospital_id": 26,
+    "hospital_name": "Fortis Escorts Heart Institute",
+    "city": "Delhi",
+    "lat": 28.570801232060276,
+    "lon": 77.17863177782532,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 146928,
+    "cost_breakdown": {
+      "consultation_fee": 5364,
+      "room_rent_per_day": 4915,
+      "surgery_fee": 61643,
+      "medicines_injections": 15014,
+      "diagnostics": 11449,
+      "miscellaneous": 28880
+    }
+  },
+  {
+    "hospital_id": 26,
+    "hospital_name": "Fortis Escorts Heart Institute",
+    "city": "Delhi",
+    "lat": 28.570801232060276,
+    "lon": 77.17863177782532,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 262436,
+    "cost_breakdown": {
+      "consultation_fee": 11261,
+      "room_rent_per_day": 9019,
+      "surgery_fee": 131042,
+      "medicines_injections": 33226,
+      "diagnostics": 25293,
+      "miscellaneous": 16515
+    }
+  },
+  {
+    "hospital_id": 26,
+    "hospital_name": "Fortis Escorts Heart Institute",
+    "city": "Delhi",
+    "lat": 28.570801232060276,
+    "lon": 77.17863177782532,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 597067,
+    "cost_breakdown": {
+      "consultation_fee": 22861,
+      "room_rent_per_day": 22719,
+      "surgery_fee": 266819,
+      "medicines_injections": 66788,
+      "diagnostics": 35287,
+      "miscellaneous": 91714
+    }
+  },
+  {
+    "hospital_id": 26,
+    "hospital_name": "Fortis Escorts Heart Institute",
+    "city": "Delhi",
+    "lat": 28.570801232060276,
+    "lon": 77.17863177782532,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 75885,
+    "cost_breakdown": {
+      "consultation_fee": 2370,
+      "room_rent_per_day": 2518,
+      "surgery_fee": 32848,
+      "medicines_injections": 10750,
+      "diagnostics": 5210,
+      "miscellaneous": 12117
+    }
+  },
+  {
+    "hospital_id": 26,
+    "hospital_name": "Fortis Escorts Heart Institute",
+    "city": "Delhi",
+    "lat": 28.570801232060276,
+    "lon": 77.17863177782532,
+    "tier": "Premium",
+    "quality_score": 9.8,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 52462,
+    "cost_breakdown": {
+      "consultation_fee": 1924,
+      "room_rent_per_day": 1919,
+      "surgery_fee": 23804,
+      "medicines_injections": 5657,
+      "diagnostics": 2633,
+      "miscellaneous": 8846
+    }
+  },
+  {
+    "hospital_id": 27,
+    "hospital_name": "Medanta The Medicity",
+    "city": "Delhi",
+    "lat": 28.64848506028053,
+    "lon": 77.18551843460757,
+    "tier": "Premium",
+    "quality_score": 9.9,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 52569,
+    "cost_breakdown": {
+      "consultation_fee": 2075,
+      "room_rent_per_day": 1733,
+      "surgery_fee": 21386,
+      "medicines_injections": 5345,
+      "diagnostics": 2822,
+      "miscellaneous": 12272
+    }
+  },
+  {
+    "hospital_id": 27,
+    "hospital_name": "Medanta The Medicity",
+    "city": "Delhi",
+    "lat": 28.64848506028053,
+    "lon": 77.18551843460757,
+    "tier": "Premium",
+    "quality_score": 9.9,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 78127,
+    "cost_breakdown": {
+      "consultation_fee": 3739,
+      "room_rent_per_day": 2753,
+      "surgery_fee": 34833,
+      "medicines_injections": 11296,
+      "diagnostics": 6580,
+      "miscellaneous": 7914
+    }
+  },
+  {
+    "hospital_id": 27,
+    "hospital_name": "Medanta The Medicity",
+    "city": "Delhi",
+    "lat": 28.64848506028053,
+    "lon": 77.18551843460757,
+    "tier": "Premium",
+    "quality_score": 9.9,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 192501,
+    "cost_breakdown": {
+      "consultation_fee": 7678,
+      "room_rent_per_day": 6203,
+      "surgery_fee": 80694,
+      "medicines_injections": 28865,
+      "diagnostics": 17154,
+      "miscellaneous": 27092
+    }
+  },
+  {
+    "hospital_id": 27,
+    "hospital_name": "Medanta The Medicity",
+    "city": "Delhi",
+    "lat": 28.64848506028053,
+    "lon": 77.18551843460757,
+    "tier": "Premium",
+    "quality_score": 9.9,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 484833,
+    "cost_breakdown": {
+      "consultation_fee": 17548,
+      "room_rent_per_day": 15371,
+      "surgery_fee": 228142,
+      "medicines_injections": 58596,
+      "diagnostics": 37906,
+      "miscellaneous": 65782
+    }
+  },
+  {
+    "hospital_id": 27,
+    "hospital_name": "Medanta The Medicity",
+    "city": "Delhi",
+    "lat": 28.64848506028053,
+    "lon": 77.18551843460757,
+    "tier": "Premium",
+    "quality_score": 9.9,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 51322,
+    "cost_breakdown": {
+      "consultation_fee": 1718,
+      "room_rent_per_day": 1549,
+      "surgery_fee": 23066,
+      "medicines_injections": 7278,
+      "diagnostics": 5081,
+      "miscellaneous": 6434
+    }
+  },
+  {
+    "hospital_id": 27,
+    "hospital_name": "Medanta The Medicity",
+    "city": "Delhi",
+    "lat": 28.64848506028053,
+    "lon": 77.18551843460757,
+    "tier": "Premium",
+    "quality_score": 9.9,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 127728,
+    "cost_breakdown": {
+      "consultation_fee": 5455,
+      "room_rent_per_day": 4233,
+      "surgery_fee": 53485,
+      "medicines_injections": 14859,
+      "diagnostics": 9101,
+      "miscellaneous": 23662
+    }
+  },
+  {
+    "hospital_id": 28,
+    "hospital_name": "Max Super Speciality Hospital Saket",
+    "city": "Delhi",
+    "lat": 28.59168132917282,
+    "lon": 77.21597076655686,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 95887,
+    "cost_breakdown": {
+      "consultation_fee": 4657,
+      "room_rent_per_day": 2878,
+      "surgery_fee": 39335,
+      "medicines_injections": 11030,
+      "diagnostics": 6042,
+      "miscellaneous": 20429
+    }
+  },
+  {
+    "hospital_id": 28,
+    "hospital_name": "Max Super Speciality Hospital Saket",
+    "city": "Delhi",
+    "lat": 28.59168132917282,
+    "lon": 77.21597076655686,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 79260,
+    "cost_breakdown": {
+      "consultation_fee": 3815,
+      "room_rent_per_day": 2594,
+      "surgery_fee": 38829,
+      "medicines_injections": 10578,
+      "diagnostics": 7091,
+      "miscellaneous": 5977
+    }
+  },
+  {
+    "hospital_id": 28,
+    "hospital_name": "Max Super Speciality Hospital Saket",
+    "city": "Delhi",
+    "lat": 28.59168132917282,
+    "lon": 77.21597076655686,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 263996,
+    "cost_breakdown": {
+      "consultation_fee": 9714,
+      "room_rent_per_day": 8343,
+      "surgery_fee": 130960,
+      "medicines_injections": 27191,
+      "diagnostics": 21454,
+      "miscellaneous": 32961
+    }
+  },
+  {
+    "hospital_id": 28,
+    "hospital_name": "Max Super Speciality Hospital Saket",
+    "city": "Delhi",
+    "lat": 28.59168132917282,
+    "lon": 77.21597076655686,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 420206,
+    "cost_breakdown": {
+      "consultation_fee": 17835,
+      "room_rent_per_day": 14247,
+      "surgery_fee": 174391,
+      "medicines_injections": 58471,
+      "diagnostics": 28492,
+      "miscellaneous": 69781
+    }
+  },
+  {
+    "hospital_id": 28,
+    "hospital_name": "Max Super Speciality Hospital Saket",
+    "city": "Delhi",
+    "lat": 28.59168132917282,
+    "lon": 77.21597076655686,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 76318,
+    "cost_breakdown": {
+      "consultation_fee": 3319,
+      "room_rent_per_day": 2361,
+      "surgery_fee": 32507,
+      "medicines_injections": 10296,
+      "diagnostics": 4186,
+      "miscellaneous": 14204
+    }
+  },
+  {
+    "hospital_id": 28,
+    "hospital_name": "Max Super Speciality Hospital Saket",
+    "city": "Delhi",
+    "lat": 28.59168132917282,
+    "lon": 77.21597076655686,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 120941,
+    "cost_breakdown": {
+      "consultation_fee": 3816,
+      "room_rent_per_day": 4646,
+      "surgery_fee": 50308,
+      "medicines_injections": 15269,
+      "diagnostics": 11990,
+      "miscellaneous": 16327
+    }
+  },
+  {
+    "hospital_id": 29,
+    "hospital_name": "Aster CMI Hospital",
+    "city": "Bangalore",
+    "lat": 13.006716885769654,
+    "lon": 77.61217385446214,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 94047,
+    "cost_breakdown": {
+      "consultation_fee": 3572,
+      "room_rent_per_day": 3678,
+      "surgery_fee": 43747,
+      "medicines_injections": 12335,
+      "diagnostics": 7249,
+      "miscellaneous": 8751
+    }
+  },
+  {
+    "hospital_id": 29,
+    "hospital_name": "Aster CMI Hospital",
+    "city": "Bangalore",
+    "lat": 13.006716885769654,
+    "lon": 77.61217385446214,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 79734,
+    "cost_breakdown": {
+      "consultation_fee": 3642,
+      "room_rent_per_day": 2522,
+      "surgery_fee": 38506,
+      "medicines_injections": 11708,
+      "diagnostics": 4749,
+      "miscellaneous": 8519
+    }
+  },
+  {
+    "hospital_id": 29,
+    "hospital_name": "Aster CMI Hospital",
+    "city": "Bangalore",
+    "lat": 13.006716885769654,
+    "lon": 77.61217385446214,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 302247,
+    "cost_breakdown": {
+      "consultation_fee": 14994,
+      "room_rent_per_day": 11663,
+      "surgery_fee": 148597,
+      "medicines_injections": 39103,
+      "diagnostics": 21589,
+      "miscellaneous": 19646
+    }
+  },
+  {
+    "hospital_id": 29,
+    "hospital_name": "Aster CMI Hospital",
+    "city": "Bangalore",
+    "lat": 13.006716885769654,
+    "lon": 77.61217385446214,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 375138,
+    "cost_breakdown": {
+      "consultation_fee": 18105,
+      "room_rent_per_day": 11826,
+      "surgery_fee": 153655,
+      "medicines_injections": 52504,
+      "diagnostics": 26989,
+      "miscellaneous": 64753
+    }
+  },
+  {
+    "hospital_id": 29,
+    "hospital_name": "Aster CMI Hospital",
+    "city": "Bangalore",
+    "lat": 13.006716885769654,
+    "lon": 77.61217385446214,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 52472,
+    "cost_breakdown": {
+      "consultation_fee": 1795,
+      "room_rent_per_day": 1729,
+      "surgery_fee": 24220,
+      "medicines_injections": 7046,
+      "diagnostics": 3882,
+      "miscellaneous": 6880
+    }
+  },
+  {
+    "hospital_id": 29,
+    "hospital_name": "Aster CMI Hospital",
+    "city": "Bangalore",
+    "lat": 13.006716885769654,
+    "lon": 77.61217385446214,
+    "tier": "Premium",
+    "quality_score": 9.6,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 89600,
+    "cost_breakdown": {
+      "consultation_fee": 2755,
+      "room_rent_per_day": 3433,
+      "surgery_fee": 36697,
+      "medicines_injections": 12657,
+      "diagnostics": 8937,
+      "miscellaneous": 11388
+    }
+  },
+  {
+    "hospital_id": 30,
+    "hospital_name": "Manipal Hospital Old Airport Road",
+    "city": "Bangalore",
+    "lat": 12.983024420892374,
+    "lon": 77.59834862159641,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 91783,
+    "cost_breakdown": {
+      "consultation_fee": 4585,
+      "room_rent_per_day": 3670,
+      "surgery_fee": 43191,
+      "medicines_injections": 10580,
+      "diagnostics": 9155,
+      "miscellaneous": 5918
+    }
+  },
+  {
+    "hospital_id": 30,
+    "hospital_name": "Manipal Hospital Old Airport Road",
+    "city": "Bangalore",
+    "lat": 12.983024420892374,
+    "lon": 77.59834862159641,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 90656,
+    "cost_breakdown": {
+      "consultation_fee": 4287,
+      "room_rent_per_day": 2879,
+      "surgery_fee": 37120,
+      "medicines_injections": 9305,
+      "diagnostics": 6312,
+      "miscellaneous": 19237
+    }
+  },
+  {
+    "hospital_id": 30,
+    "hospital_name": "Manipal Hospital Old Airport Road",
+    "city": "Bangalore",
+    "lat": 12.983024420892374,
+    "lon": 77.59834862159641,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 384854,
+    "cost_breakdown": {
+      "consultation_fee": 11696,
+      "room_rent_per_day": 14789,
+      "surgery_fee": 168691,
+      "medicines_injections": 42663,
+      "diagnostics": 26079,
+      "miscellaneous": 61778
+    }
+  },
+  {
+    "hospital_id": 30,
+    "hospital_name": "Manipal Hospital Old Airport Road",
+    "city": "Bangalore",
+    "lat": 12.983024420892374,
+    "lon": 77.59834862159641,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 519126,
+    "cost_breakdown": {
+      "consultation_fee": 19337,
+      "room_rent_per_day": 17045,
+      "surgery_fee": 237745,
+      "medicines_injections": 72380,
+      "diagnostics": 40344,
+      "miscellaneous": 64093
+    }
+  },
+  {
+    "hospital_id": 30,
+    "hospital_name": "Manipal Hospital Old Airport Road",
+    "city": "Bangalore",
+    "lat": 12.983024420892374,
+    "lon": 77.59834862159641,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 50895,
+    "cost_breakdown": {
+      "consultation_fee": 1989,
+      "room_rent_per_day": 1781,
+      "surgery_fee": 21825,
+      "medicines_injections": 5151,
+      "diagnostics": 4316,
+      "miscellaneous": 8709
+    }
+  },
+  {
+    "hospital_id": 30,
+    "hospital_name": "Manipal Hospital Old Airport Road",
+    "city": "Bangalore",
+    "lat": 12.983024420892374,
+    "lon": 77.59834862159641,
+    "tier": "Premium",
+    "quality_score": 9.7,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 123654,
+    "cost_breakdown": {
+      "consultation_fee": 5150,
+      "room_rent_per_day": 4843,
+      "surgery_fee": 51446,
+      "medicines_injections": 17650,
+      "diagnostics": 6851,
+      "miscellaneous": 18340
+    }
+  },
+  {
+    "hospital_id": 31,
+    "hospital_name": "Fortis Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 13.008012924242305,
+    "lon": 77.62197485251173,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 99881,
+    "cost_breakdown": {
+      "consultation_fee": 4818,
+      "room_rent_per_day": 3742,
+      "surgery_fee": 42648,
+      "medicines_injections": 10618,
+      "diagnostics": 7422,
+      "miscellaneous": 15664
+    }
+  },
+  {
+    "hospital_id": 31,
+    "hospital_name": "Fortis Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 13.008012924242305,
+    "lon": 77.62197485251173,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 86843,
+    "cost_breakdown": {
+      "consultation_fee": 3198,
+      "room_rent_per_day": 2936,
+      "surgery_fee": 40501,
+      "medicines_injections": 10263,
+      "diagnostics": 4405,
+      "miscellaneous": 13792
+    }
+  },
+  {
+    "hospital_id": 31,
+    "hospital_name": "Fortis Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 13.008012924242305,
+    "lon": 77.62197485251173,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 335794,
+    "cost_breakdown": {
+      "consultation_fee": 12483,
+      "room_rent_per_day": 10807,
+      "surgery_fee": 158363,
+      "medicines_injections": 48492,
+      "diagnostics": 29040,
+      "miscellaneous": 33377
+    }
+  },
+  {
+    "hospital_id": 31,
+    "hospital_name": "Fortis Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 13.008012924242305,
+    "lon": 77.62197485251173,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 305626,
+    "cost_breakdown": {
+      "consultation_fee": 12745,
+      "room_rent_per_day": 11268,
+      "surgery_fee": 149712,
+      "medicines_injections": 30676,
+      "diagnostics": 22948,
+      "miscellaneous": 33203
+    }
+  },
+  {
+    "hospital_id": 31,
+    "hospital_name": "Fortis Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 13.008012924242305,
+    "lon": 77.62197485251173,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 43787,
+    "cost_breakdown": {
+      "consultation_fee": 1488,
+      "room_rent_per_day": 1595,
+      "surgery_fee": 21053,
+      "medicines_injections": 4453,
+      "diagnostics": 3090,
+      "miscellaneous": 5727
+    }
+  },
+  {
+    "hospital_id": 31,
+    "hospital_name": "Fortis Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 13.008012924242305,
+    "lon": 77.62197485251173,
+    "tier": "High",
+    "quality_score": 9.3,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 110893,
+    "cost_breakdown": {
+      "consultation_fee": 4896,
+      "room_rent_per_day": 3356,
+      "surgery_fee": 46060,
+      "medicines_injections": 15299,
+      "diagnostics": 5767,
+      "miscellaneous": 22090
+    }
+  },
+  {
+    "hospital_id": 32,
+    "hospital_name": "Apollo Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 12.9551158722617,
+    "lon": 77.61896535972562,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 115123,
+    "cost_breakdown": {
+      "consultation_fee": 4752,
+      "room_rent_per_day": 3839,
+      "surgery_fee": 49671,
+      "medicines_injections": 15081,
+      "diagnostics": 9793,
+      "miscellaneous": 16627
+    }
+  },
+  {
+    "hospital_id": 32,
+    "hospital_name": "Apollo Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 12.9551158722617,
+    "lon": 77.61896535972562,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 143857,
+    "cost_breakdown": {
+      "consultation_fee": 5932,
+      "room_rent_per_day": 4445,
+      "surgery_fee": 67522,
+      "medicines_injections": 16974,
+      "diagnostics": 8855,
+      "miscellaneous": 22345
+    }
+  },
+  {
+    "hospital_id": 32,
+    "hospital_name": "Apollo Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 12.9551158722617,
+    "lon": 77.61896535972562,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 265651,
+    "cost_breakdown": {
+      "consultation_fee": 8331,
+      "room_rent_per_day": 9072,
+      "surgery_fee": 119380,
+      "medicines_injections": 31117,
+      "diagnostics": 16996,
+      "miscellaneous": 44463
+    }
+  },
+  {
+    "hospital_id": 32,
+    "hospital_name": "Apollo Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 12.9551158722617,
+    "lon": 77.61896535972562,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 365830,
+    "cost_breakdown": {
+      "consultation_fee": 14288,
+      "room_rent_per_day": 12823,
+      "surgery_fee": 146995,
+      "medicines_injections": 46287,
+      "diagnostics": 28269,
+      "miscellaneous": 65876
+    }
+  },
+  {
+    "hospital_id": 32,
+    "hospital_name": "Apollo Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 12.9551158722617,
+    "lon": 77.61896535972562,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 36023,
+    "cost_breakdown": {
+      "consultation_fee": 1327,
+      "room_rent_per_day": 1259,
+      "surgery_fee": 16464,
+      "medicines_injections": 4993,
+      "diagnostics": 2684,
+      "miscellaneous": 4258
+    }
+  },
+  {
+    "hospital_id": 32,
+    "hospital_name": "Apollo Hospital Bannerghatta Road",
+    "city": "Bangalore",
+    "lat": 12.9551158722617,
+    "lon": 77.61896535972562,
+    "tier": "High",
+    "quality_score": 9.2,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 65185,
+    "cost_breakdown": {
+      "consultation_fee": 2154,
+      "room_rent_per_day": 2274,
+      "surgery_fee": 29839,
+      "medicines_injections": 9542,
+      "diagnostics": 5924,
+      "miscellaneous": 6356
+    }
+  },
+  {
+    "hospital_id": 33,
+    "hospital_name": "Sakra World Hospital",
+    "city": "Bangalore",
+    "lat": 12.936633189829525,
+    "lon": 77.5458212278305,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 72542,
+    "cost_breakdown": {
+      "consultation_fee": 2516,
+      "room_rent_per_day": 2185,
+      "surgery_fee": 32679,
+      "medicines_injections": 8548,
+      "diagnostics": 5864,
+      "miscellaneous": 12010
+    }
+  },
+  {
+    "hospital_id": 33,
+    "hospital_name": "Sakra World Hospital",
+    "city": "Bangalore",
+    "lat": 12.936633189829525,
+    "lon": 77.5458212278305,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 134847,
+    "cost_breakdown": {
+      "consultation_fee": 5277,
+      "room_rent_per_day": 4458,
+      "surgery_fee": 57436,
+      "medicines_injections": 16790,
+      "diagnostics": 11334,
+      "miscellaneous": 21716
+    }
+  },
+  {
+    "hospital_id": 33,
+    "hospital_name": "Sakra World Hospital",
+    "city": "Bangalore",
+    "lat": 12.936633189829525,
+    "lon": 77.5458212278305,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 357115,
+    "cost_breakdown": {
+      "consultation_fee": 13071,
+      "room_rent_per_day": 13645,
+      "surgery_fee": 168644,
+      "medicines_injections": 45535,
+      "diagnostics": 33574,
+      "miscellaneous": 28063
+    }
+  },
+  {
+    "hospital_id": 33,
+    "hospital_name": "Sakra World Hospital",
+    "city": "Bangalore",
+    "lat": 12.936633189829525,
+    "lon": 77.5458212278305,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 399559,
+    "cost_breakdown": {
+      "consultation_fee": 16557,
+      "room_rent_per_day": 13720,
+      "surgery_fee": 188679,
+      "medicines_injections": 57022,
+      "diagnostics": 24901,
+      "miscellaneous": 43800
+    }
+  },
+  {
+    "hospital_id": 33,
+    "hospital_name": "Sakra World Hospital",
+    "city": "Bangalore",
+    "lat": 12.936633189829525,
+    "lon": 77.5458212278305,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 43778,
+    "cost_breakdown": {
+      "consultation_fee": 2113,
+      "room_rent_per_day": 1650,
+      "surgery_fee": 20931,
+      "medicines_injections": 4515,
+      "diagnostics": 3029,
+      "miscellaneous": 4940
+    }
+  },
+  {
+    "hospital_id": 33,
+    "hospital_name": "Sakra World Hospital",
+    "city": "Bangalore",
+    "lat": 12.936633189829525,
+    "lon": 77.5458212278305,
+    "tier": "High",
+    "quality_score": 9.4,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 101733,
+    "cost_breakdown": {
+      "consultation_fee": 4895,
+      "room_rent_per_day": 4060,
+      "surgery_fee": 43181,
+      "medicines_injections": 13989,
+      "diagnostics": 9927,
+      "miscellaneous": 9439
+    }
+  },
+  {
+    "hospital_id": 34,
+    "hospital_name": "Narayana Health City",
+    "city": "Bangalore",
+    "lat": 12.961828089878404,
+    "lon": 77.63117505502343,
+    "tier": "Mid",
+    "quality_score": 9.5,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 49808,
+    "cost_breakdown": {
+      "consultation_fee": 2090,
+      "room_rent_per_day": 1535,
+      "surgery_fee": 20061,
+      "medicines_injections": 6542,
+      "diagnostics": 4349,
+      "miscellaneous": 9090
+    }
+  },
+  {
+    "hospital_id": 34,
+    "hospital_name": "Narayana Health City",
+    "city": "Bangalore",
+    "lat": 12.961828089878404,
+    "lon": 77.63117505502343,
+    "tier": "Mid",
+    "quality_score": 9.5,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 90793,
+    "cost_breakdown": {
+      "consultation_fee": 3063,
+      "room_rent_per_day": 3018,
+      "surgery_fee": 39686,
+      "medicines_injections": 10314,
+      "diagnostics": 7283,
+      "miscellaneous": 15353
+    }
+  },
+  {
+    "hospital_id": 34,
+    "hospital_name": "Narayana Health City",
+    "city": "Bangalore",
+    "lat": 12.961828089878404,
+    "lon": 77.63117505502343,
+    "tier": "Mid",
+    "quality_score": 9.5,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 283077,
+    "cost_breakdown": {
+      "consultation_fee": 12869,
+      "room_rent_per_day": 10331,
+      "surgery_fee": 123993,
+      "medicines_injections": 33317,
+      "diagnostics": 18335,
+      "miscellaneous": 42905
+    }
+  },
+  {
+    "hospital_id": 34,
+    "hospital_name": "Narayana Health City",
+    "city": "Bangalore",
+    "lat": 12.961828089878404,
+    "lon": 77.63117505502343,
+    "tier": "Mid",
+    "quality_score": 9.5,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 255014,
+    "cost_breakdown": {
+      "consultation_fee": 9525,
+      "room_rent_per_day": 8507,
+      "surgery_fee": 109208,
+      "medicines_injections": 27338,
+      "diagnostics": 21334,
+      "miscellaneous": 45074
+    }
+  },
+  {
+    "hospital_id": 34,
+    "hospital_name": "Narayana Health City",
+    "city": "Bangalore",
+    "lat": 12.961828089878404,
+    "lon": 77.63117505502343,
+    "tier": "Mid",
+    "quality_score": 9.5,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 31398,
+    "cost_breakdown": {
+      "consultation_fee": 1105,
+      "room_rent_per_day": 1030,
+      "surgery_fee": 13682,
+      "medicines_injections": 4602,
+      "diagnostics": 2279,
+      "miscellaneous": 4576
+    }
+  },
+  {
+    "hospital_id": 34,
+    "hospital_name": "Narayana Health City",
+    "city": "Bangalore",
+    "lat": 12.961828089878404,
+    "lon": 77.63117505502343,
+    "tier": "Mid",
+    "quality_score": 9.5,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 39180,
+    "cost_breakdown": {
+      "consultation_fee": 1778,
+      "room_rent_per_day": 1268,
+      "surgery_fee": 18043,
+      "medicines_injections": 4396,
+      "diagnostics": 2094,
+      "miscellaneous": 6529
+    }
+  },
+  {
+    "hospital_id": 35,
+    "hospital_name": "St. John's Medical College Hospital",
+    "city": "Bangalore",
+    "lat": 12.998462325533376,
+    "lon": 77.60258296159405,
+    "tier": "Mid",
+    "quality_score": 8.5,
+    "icd10_code": "N20.0",
+    "procedure": "Lithotripsy",
+    "estimated_total_cost": 50487,
+    "cost_breakdown": {
+      "consultation_fee": 2423,
+      "room_rent_per_day": 1688,
+      "surgery_fee": 21889,
+      "medicines_injections": 5975,
+      "diagnostics": 4427,
+      "miscellaneous": 7331
+    }
+  },
+  {
+    "hospital_id": 35,
+    "hospital_name": "St. John's Medical College Hospital",
+    "city": "Bangalore",
+    "lat": 12.998462325533376,
+    "lon": 77.60258296159405,
+    "tier": "Mid",
+    "quality_score": 8.5,
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "estimated_total_cost": 104535,
+    "cost_breakdown": {
+      "consultation_fee": 3265,
+      "room_rent_per_day": 4118,
+      "surgery_fee": 52109,
+      "medicines_injections": 11113,
+      "diagnostics": 7432,
+      "miscellaneous": 10022
+    }
+  },
+  {
+    "hospital_id": 35,
+    "hospital_name": "St. John's Medical College Hospital",
+    "city": "Bangalore",
+    "lat": 12.998462325533376,
+    "lon": 77.60258296159405,
+    "tier": "Mid",
+    "quality_score": 8.5,
+    "icd10_code": "I25.10",
+    "procedure": "Angioplasty",
+    "estimated_total_cost": 188735,
+    "cost_breakdown": {
+      "consultation_fee": 6694,
+      "room_rent_per_day": 7042,
+      "surgery_fee": 82754,
+      "medicines_injections": 28139,
+      "diagnostics": 12431,
+      "miscellaneous": 23504
+    }
+  },
+  {
+    "hospital_id": 35,
+    "hospital_name": "St. John's Medical College Hospital",
+    "city": "Bangalore",
+    "lat": 12.998462325533376,
+    "lon": 77.60258296159405,
+    "tier": "Mid",
+    "quality_score": 8.5,
+    "icd10_code": "M17.1",
+    "procedure": "Knee Replacement",
+    "estimated_total_cost": 284723,
+    "cost_breakdown": {
+      "consultation_fee": 13685,
+      "room_rent_per_day": 8701,
+      "surgery_fee": 139639,
+      "medicines_injections": 37761,
+      "diagnostics": 26864,
+      "miscellaneous": 23268
+    }
+  },
+  {
+    "hospital_id": 35,
+    "hospital_name": "St. John's Medical College Hospital",
+    "city": "Bangalore",
+    "lat": 12.998462325533376,
+    "lon": 77.60258296159405,
+    "tier": "Mid",
+    "quality_score": 8.5,
+    "icd10_code": "H25.0",
+    "procedure": "Cataract Surgery",
+    "estimated_total_cost": 28012,
+    "cost_breakdown": {
+      "consultation_fee": 928,
+      "room_rent_per_day": 1034,
+      "surgery_fee": 13739,
+      "medicines_injections": 3283,
+      "diagnostics": 2038,
+      "miscellaneous": 2851
+    }
+  },
+  {
+    "hospital_id": 35,
+    "hospital_name": "St. John's Medical College Hospital",
+    "city": "Bangalore",
+    "lat": 12.998462325533376,
+    "lon": 77.60258296159405,
+    "tier": "Mid",
+    "quality_score": 8.5,
+    "icd10_code": "K40",
+    "procedure": "Hernia Repair",
+    "estimated_total_cost": 61570,
+    "cost_breakdown": {
+      "consultation_fee": 2850,
+      "room_rent_per_day": 2435,
+      "surgery_fee": 28468,
+      "medicines_injections": 7740,
+      "diagnostics": 5604,
+      "miscellaneous": 4731
+    }
+  }
+]

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Building2, TrendingUp } from 'lucide-react';
 

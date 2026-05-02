@@ -1,4 +1,3 @@
-import React from 'react';
 import { ActivitySquare, User, Building2 } from 'lucide-react';
 
 const Header = ({ step, viewMode, setViewMode }) => {

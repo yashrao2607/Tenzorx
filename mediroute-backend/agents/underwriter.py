@@ -11,7 +11,7 @@ class UnderwriterAgent:
         loan_recommendation = "N/A"
         fraud_flag = False
         reason = "No loan requested"
-        overpricing_percent = 0.0
+        overpricing_percentage = 0.0
         decision_confidence = "N/A"
         
         if requested_amount > 0:

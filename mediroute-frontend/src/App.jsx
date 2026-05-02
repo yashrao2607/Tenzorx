@@ -1,43 +1,70 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, LayoutDashboard, FileCheck, RefreshCcw } from 'lucide-react';
-import SymptomForm from './components/SymptomForm';
-import CostDashboard from './components/CostDashboard';
+import { Shield, UserPlus, Search, MapPin, FileCheck, RefreshCcw } from 'lucide-react';
+import RegistrationForm from './components/RegistrationForm';
+import DiseaseSearch from './components/DiseaseSearch';
+import HospitalMapView from './components/HospitalMapView';
 import LoanDecision from './components/LoanDecision';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8011';
 
 function App() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
+  
+  // Phase 2 State
+  const [user, setUser] = useState(null);
+  const [diagnosis, setDiagnosis] = useState(null);
+  const [loanResult, setLoanResult] = useState(null);
 
   const steps = [
-    { id: 1, label: 'Clinical Intake', icon: Shield },
-    { id: 2, label: 'Cost Audit', icon: LayoutDashboard },
-    { id: 3, label: 'Loan Underwriting', icon: FileCheck },
+    { id: 0, label: 'Registration', icon: UserPlus },
+    { id: 1, label: 'Disease Search', icon: Search },
+    { id: 2, label: 'Hospital Map', icon: MapPin },
+    { id: 3, label: 'Loan Decision', icon: FileCheck },
   ];
 
-  const handleAnalysis = async (formData) => {
+  const handleRegistration = (userData) => {
+    setUser(userData);
+    setStep(1);
+  };
+
+  const handleSearch = (diagnosisData) => {
+    setDiagnosis(diagnosisData);
+    setStep(2);
+  };
+
+  const handleHospitalSelect = async (hospital) => {
     setLoading(true);
-    setError(null);
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/full-analysis`, formData);
-      setData(response.json || response.data);
-      setStep(2);
+      // For underwriting, we need to provide a "requested amount". 
+      // By default, we'll request exactly what the hospital costs.
+      const response = await axios.post(`${API_BASE_URL}/api/apply-for-loan`, {
+        user_id: user.user_id,
+        hospital_id: hospital.hospital_id,
+        hospital_name: hospital.hospital_name,
+        icd10_code: diagnosis.icd10_code,
+        procedure: diagnosis.recommended_procedure,
+        requested_amount: hospital.estimated_total_cost,
+        city: user.city
+      });
+      setLoanResult(response.data);
+      setStep(3);
     } catch (err) {
+      setError('Underwriting failed. Please try again.');
       console.error(err);
-      setError('Unable to reach the MediRoute Intelligence Engine. Please ensure the backend is running.');
     } finally {
       setLoading(false);
     }
   };
 
   const reset = () => {
-    setStep(1);
-    setData(null);
+    setStep(0);
+    setUser(null);
+    setDiagnosis(null);
+    setLoanResult(null);
     setError(null);
   };
 
@@ -52,7 +79,7 @@ function App() {
           <h1 className="text-2xl font-black tracking-tighter text-white">MEDIROUTE <span className="text-teal-400">AI</span></h1>
         </div>
         
-        {step > 1 && (
+        {step > 0 && (
           <button 
             onClick={reset}
             className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium"
@@ -63,7 +90,7 @@ function App() {
       </div>
 
       {/* Step Indicator */}
-      <div className="max-w-xl mx-auto mb-16">
+      <div className="max-w-2xl mx-auto mb-16">
         <div className="flex justify-between relative">
           <div className="absolute top-1/2 left-0 w-full h-[2px] bg-slate-800 -translate-y-1/2 z-0" />
           {steps.map((s) => {
@@ -97,16 +124,19 @@ function App() {
       )}
 
       {/* Main Content */}
-      <main>
+      <main className="max-w-7xl mx-auto">
         <AnimatePresence mode="wait">
+          {step === 0 && (
+            <RegistrationForm key="step0" onRegister={handleRegistration} loading={loading} />
+          )}
           {step === 1 && (
-            <SymptomForm key="step1" onSubmit={handleAnalysis} loading={loading} />
+            <DiseaseSearch key="step1" user={user} onSearch={handleSearch} />
           )}
           {step === 2 && (
-            <CostDashboard key="step2" data={data} onNext={() => setStep(3)} />
+            <HospitalMapView key="step2" user={user} diagnosis={diagnosis} onSelect={handleHospitalSelect} />
           )}
           {step === 3 && (
-            <LoanDecision key="step3" data={data} onBack={() => setStep(2)} />
+            <LoanDecision key="step3" data={loanResult} onBack={() => setStep(2)} isPhase2={true} />
           )}
         </AnimatePresence>
       </main>

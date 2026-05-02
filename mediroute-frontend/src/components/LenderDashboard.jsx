@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldAlert, TrendingDown, Users, FileText, AlertCircle } from 'lucide-react';
 import GlassCard from './GlassCard';

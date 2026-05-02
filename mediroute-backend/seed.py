@@ -45,10 +45,10 @@ def seed_data():
         
         db.add_all(hospitals)
         db.commit()
-        print(f"✅ Successfully seeded {len(hospitals)} hospitals into PostgreSQL.")
+        print(f"Successfully seeded {len(hospitals)} hospitals.")
         
     except Exception as e:
-        print(f"❌ Error seeding data: {e}")
+        print(f"Error seeding data: {e}")
         db.rollback()
     finally:
         db.close()
