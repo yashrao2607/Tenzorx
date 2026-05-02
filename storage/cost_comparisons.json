@@ -6,5 +6,14 @@
     "fair_market_price": 110660,
     "hospital_count": 7,
     "timestamp": "2026-05-02T15:47:46.558114"
+  },
+  {
+    "city": "Nagpur",
+    "resolved_city": "Nagpur",
+    "icd10_code": "K35",
+    "procedure": "Appendectomy",
+    "fair_market_price": 110660,
+    "hospital_count": 7,
+    "timestamp": "2026-05-02T16:06:30.552935"
   }
 ]
