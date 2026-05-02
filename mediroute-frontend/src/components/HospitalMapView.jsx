@@ -83,10 +83,12 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
 
   const sortedHospitals = [...(data?.hospitals || [])].sort((a, b) => {
     if (sortBy === 'quality') {
-      return b.quality_score - a.quality_score;
+      return (b.reputation_score || 0) - (a.reputation_score || 0);
     }
     if (sortBy === 'value') {
-      return (b.quality_score / b.estimated_total_cost) - (a.quality_score / a.estimated_total_cost);
+      const valA = (a.reputation_score || 0) / (a.estimated_total_cost || 1);
+      const valB = (b.reputation_score || 0) / (b.estimated_total_cost || 1);
+      return valB - valA;
     }
     return a.estimated_total_cost - b.estimated_total_cost;
   });
@@ -195,7 +197,7 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
                         <h4 className="font-bold text-slate-100">{h.hospital_name}</h4>
                         <div className="flex items-center gap-3 mt-1">
                           <span className="flex items-center gap-1 text-[10px] font-bold text-amber-400 uppercase tracking-wider">
-                            <Star className="w-3 h-3 fill-amber-400" /> {h.quality_score} Quality
+                            <Star className="w-3 h-3 fill-amber-400" /> {h.reputation_score} Rating
                           </span>
                           <span className={`text-[10px] font-bold uppercase tracking-wider ${
                             h.tier === 'Premium' ? 'text-purple-400' : h.tier === 'High' ? 'text-blue-400' : 'text-slate-500'

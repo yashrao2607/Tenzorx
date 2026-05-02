@@ -8,8 +8,8 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8011
 const onlyDigits = (value) => value.replace(/\D/g, '');
 const normalizePan = (value) => value.replace(/[^a-z0-9]/gi, '').toUpperCase();
 
-const RegistrationForm = ({ onRegister }) => {
-  const [formData, setFormData] = useState({
+const RegistrationForm = ({ onRegister, initialData = null }) => {
+  const [formData, setFormData] = useState(initialData || {
     name: '',
     age: '',
     aadhaar: '',
@@ -90,8 +90,8 @@ const RegistrationForm = ({ onRegister }) => {
           <UserPlus className="text-teal-400 w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold">Patient Registration</h2>
-          <p className="text-slate-400">Enter your KYC details to access medical transparency services.</p>
+          <h2 className="text-2xl font-bold">{initialData ? 'Update Profile' : 'Patient Registration'}</h2>
+          <p className="text-slate-400">{initialData ? 'Modify your details for more accurate underwriting.' : 'Enter your KYC details to access medical transparency services.'}</p>
         </div>
       </div>
 
@@ -211,7 +211,7 @@ const RegistrationForm = ({ onRegister }) => {
           type="submit"
           className="btn-primary w-full mt-4 flex items-center justify-center gap-2 disabled:opacity-50"
         >
-          {loading ? 'Registering...' : 'Register & Continue'}
+          {loading ? (initialData ? 'Updating...' : 'Registering...') : (initialData ? 'Save Changes' : 'Register & Continue')}
         </button>
       </form>
     </motion.div>

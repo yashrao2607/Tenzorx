@@ -111,24 +111,12 @@ function App() {
         
         {step > 0 && (
           <div className="flex gap-4">
-            <div className="flex items-center gap-3 pr-4 border-r border-slate-800">
+            <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-teal-400 font-bold text-xs border border-slate-700">
                 {user?.name?.charAt(0) || 'U'}
               </div>
               <span className="text-slate-300 text-sm font-medium">{user?.name || 'User'}</span>
             </div>
-            <button 
-              onClick={reset}
-              className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium"
-            >
-              <RefreshCcw className="w-4 h-4" /> New Search
-            </button>
-            <button 
-              onClick={fullReset}
-              className="flex items-center gap-2 text-slate-500 hover:text-rose-400 transition-colors text-sm font-medium"
-            >
-              Reset Profile
-            </button>
           </div>
         )}
       </div>
@@ -192,7 +180,12 @@ function App() {
       <main className="max-w-7xl mx-auto">
         <AnimatePresence mode="wait">
           {step === 0 && (
-            <RegistrationForm key="step0" onRegister={handleRegistration} loading={loading} />
+            <RegistrationForm 
+              key="step0" 
+              onRegister={handleRegistration} 
+              loading={loading} 
+              initialData={user}
+            />
           )}
           {step === 1 && (
             <DiseaseSearch key="step1" user={user} onSearch={handleSearch} />
@@ -299,7 +292,16 @@ function App() {
                 </div>
               </div>
 
-              <div className="p-6 bg-slate-900/50 border-t border-slate-800 flex justify-end">
+              <div className="p-6 bg-slate-900/50 border-t border-slate-800 flex justify-between items-center">
+                <button 
+                  onClick={() => {
+                    setStep(0);
+                    setShowProfile(false);
+                  }}
+                  className="flex items-center gap-2 px-6 py-2 bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 rounded-xl transition-colors font-bold text-sm border border-teal-500/20"
+                >
+                  <RefreshCcw className="w-4 h-4" /> Edit Profile
+                </button>
                 <button 
                   onClick={() => setShowProfile(false)}
                   className="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl transition-colors font-medium text-sm"
