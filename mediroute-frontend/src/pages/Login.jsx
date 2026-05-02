@@ -18,6 +18,7 @@ const Login = () => {
   const [aadharCard, setAadharCard] = useState('')
   const [employmentType, setEmploymentType] = useState('Salaried')
   const [city, setCity] = useState('')
+  const [selectedState, setSelectedState] = useState('Maharashtra')
   const [phone, setPhone] = useState('')
   const [gender, setGender] = useState('Male')
 
@@ -37,6 +38,7 @@ const Login = () => {
           pan: panCard,
           occupation: employmentType,
           city,
+          state: selectedState,
           phone
         }
 
@@ -170,6 +172,18 @@ const Login = () => {
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
                       <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className='space-y-1.5'>
+                  <label className='text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1'>State</label>
+                  <div className='relative group'>
+                    <MapPin className='absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary transition-colors' />
+                    <select onChange={(e) => setSelectedState(e.target.value)} value={selectedState} className='input-field w-full pl-12 py-3 bg-white/80 border-slate-200/60 appearance-none cursor-pointer'>
+                      {["Maharashtra", "Karnataka", "Delhi", "Tamil Nadu", "Telangana", "Gujarat", "West Bengal", "Uttar Pradesh", "Kerala", "Punjab", "Rajasthan", "Madhya Pradesh", "Andhra Pradesh", "Haryana", "Bihar", "Odisha", "Assam", "Goa", "Chandigarh", "Jammu and Kashmir"].map(s => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
                     </select>
                   </div>
                 </div>

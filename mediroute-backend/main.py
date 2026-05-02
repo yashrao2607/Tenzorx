@@ -112,6 +112,7 @@ class RegisterUserRequest(BaseModel):
     pan: str
     occupation: str
     city: str
+    state: str
     phone: str
 
 class SearchDiseaseRequest(BaseModel):
@@ -350,8 +351,8 @@ async def register_user(req: RegisterUserRequest):
         "registered_at": now_iso(),
     }
     append_json("users.json", record)
-    logger.info(f"[Register] New user {user_id} from {req.city}")
-    return {"user_id": user_id, "status": "registered", "city": req.city, "userData": record}
+    logger.info(f"[Register] New user {user_id} from {req.city}, {req.state}")
+    return {"user_id": user_id, "status": "registered", "city": req.city, "state": req.state, "userData": record}
 
 
 @app.get("/api/get-user-profile/{user_id}")

@@ -42,5 +42,19 @@
             ]
         },
         "timestamp": "2026-05-02T16:46:52.189492"
+    },
+    {
+        "user_id": "USR-faa2b15f",
+        "symptom_text": "i have pain in my eye \n",
+        "result": {
+            "condition": "Unknown",
+            "icd10_code": "N/A",
+            "recommended_procedure": "Consult physician",
+            "confidence_score": 0.0,
+            "procedure_aliases": [
+                "Consult doctor"
+            ]
+        },
+        "timestamp": "2026-05-02T17:49:03.311627"
     }
 ]

@@ -19,7 +19,7 @@ const hospitalImages = [
 
 const Hospitals = () => {
     const { speciality } = useParams()
-    const { doctors } = React.useContext(AppContext)
+    const { doctors, userData } = React.useContext(AppContext)
     const [filterHosp, setFilterHosp] = useState([])
     const [showFilter, setShowFilter] = useState(false)
     const navigate = useNavigate()
@@ -38,19 +38,40 @@ const Hospitals = () => {
     ]
 
     const applyFilter = () => {
+        let filtered = doctors;
+
         if (speciality) {
-            // Check if the selected category exists in the hospital's specialties list
-            setFilterHosp(doctors.filter(h => 
+            filtered = doctors.filter(h => 
                 (h.specialties || []).some(s => s.toLowerCase() === speciality.toLowerCase())
-            ))
-        } else {
-            setFilterHosp(doctors)
+            )
         }
+
+        // Location-based prioritization
+        if (userData && (userData.city || userData.state)) {
+            const userCity = (userData.city || "").toLowerCase();
+            const userState = (userData.state || "").toLowerCase();
+
+            filtered = [...filtered].sort((a, b) => {
+                const aCityMatch = (a.city || "").toLowerCase() === userCity;
+                const bCityMatch = (b.city || "").toLowerCase() === userCity;
+                if (aCityMatch && !bCityMatch) return -1;
+                if (!aCityMatch && bCityMatch) return 1;
+
+                const aStateMatch = (a.state || "").toLowerCase() === userState;
+                const bStateMatch = (b.state || "").toLowerCase() === userState;
+                if (aStateMatch && !bStateMatch) return -1;
+                if (!aStateMatch && bStateMatch) return 1;
+
+                return 0;
+            });
+        }
+
+        setFilterHosp(filtered)
     }
 
     useEffect(() => {
         applyFilter()
-    }, [speciality, doctors])
+    }, [speciality, doctors, userData])
 
     return (
         <div className='pt-5'>
