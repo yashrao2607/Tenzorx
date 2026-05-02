@@ -2,6 +2,7 @@ import time
 import uuid
 import statistics
 import re
+from rapidfuzz import fuzz
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -148,6 +149,38 @@ def _procedure_aliases(icd10_code: str, procedure: str) -> list[str]:
         return aliases_by_code[icd10_code]
     return [procedure, procedure.lower(), f"{procedure} treatment"]
 
+
+def _resolve_market_matches(all_data: list[dict], city: str, icd10_code: str, procedure: str) -> tuple[list[dict], str, str]:
+    city_rows = [h for h in all_data if h["city"].lower() == city.lower()]
+    if not city_rows:
+        return [], icd10_code, procedure
+
+    exact_code = [h for h in city_rows if h.get("icd10_code") == icd10_code]
+    if exact_code:
+        resolved_proc = exact_code[0].get("procedure", procedure)
+        return exact_code, icd10_code, resolved_proc
+
+    proc_rows = [
+        h for h in city_rows
+        if procedure and procedure.lower() in h.get("procedure", "").lower()
+    ]
+    if proc_rows:
+        resolved_code = proc_rows[0].get("icd10_code", icd10_code)
+        resolved_proc = proc_rows[0].get("procedure", procedure)
+        return proc_rows, resolved_code, resolved_proc
+
+    unique_procedures = sorted({h.get("procedure", "") for h in city_rows if h.get("procedure")})
+    if not unique_procedures:
+        return [], icd10_code, procedure
+
+    best = max(unique_procedures, key=lambda p: fuzz.partial_ratio(procedure.lower(), p.lower()) if procedure else 0)
+    if procedure and fuzz.partial_ratio(procedure.lower(), best.lower()) >= 55:
+        fuzzy_rows = [h for h in city_rows if h.get("procedure") == best]
+        resolved_code = fuzzy_rows[0].get("icd10_code", icd10_code)
+        return fuzzy_rows, resolved_code, best
+
+    return [], icd10_code, procedure
+
 # ──────────────────────────────────────────────
 # EXISTING ENDPOINTS (unchanged)
 # ──────────────────────────────────────────────
@@ -265,18 +298,9 @@ async def hospitals_by_city(req: HospitalsByCityRequest):
 
     all_data = read_json("hospitals_data.json")
 
-    # Filter by city + icd10 code
-    matches = [
-        h for h in all_data
-        if h["city"].lower() == req.city.lower() and h["icd10_code"] == req.icd10_code
-    ]
-
-    if not matches:
-        # Fallback: match by procedure name
-        matches = [
-            h for h in all_data
-            if h["city"].lower() == req.city.lower() and req.procedure.lower() in h["procedure"].lower()
-        ]
+    matches, resolved_icd10, resolved_procedure = _resolve_market_matches(
+        all_data, req.city, req.icd10_code, req.procedure
+    )
 
     if not matches:
         raise HTTPException(status_code=404, detail=f"No hospitals found in {req.city} for {req.procedure}")
@@ -286,8 +310,8 @@ async def hospitals_by_city(req: HospitalsByCityRequest):
 
     response = {
         "city": req.city,
-        "icd10_code": req.icd10_code,
-        "procedure": req.procedure,
+        "icd10_code": resolved_icd10,
+        "procedure": resolved_procedure,
         "fair_market_price": fair_market_price,
         "min_cost": min(costs),
         "max_cost": max(costs),
@@ -298,8 +322,8 @@ async def hospitals_by_city(req: HospitalsByCityRequest):
     # Save for audit
     append_json("cost_comparisons.json", {
         "city": req.city,
-        "icd10_code": req.icd10_code,
-        "procedure": req.procedure,
+        "icd10_code": resolved_icd10,
+        "procedure": resolved_procedure,
         "fair_market_price": fair_market_price,
         "hospital_count": len(matches),
         "timestamp": now_iso(),
@@ -319,10 +343,9 @@ async def apply_for_loan(req: ApplyLoanRequest):
     logger.info(f"[Loan] user={req.user_id} hospital={req.hospital_name or req.hospital_id} amount={req.requested_amount}")
 
     all_data = read_json("hospitals_data.json")
-    city_matches = [
-        h for h in all_data
-        if h["city"].lower() == resolved_city.lower() and h["icd10_code"] == req.icd10_code
-    ]
+    city_matches, resolved_icd10, resolved_procedure = _resolve_market_matches(
+        all_data, resolved_city, req.icd10_code, req.procedure
+    )
 
     if not city_matches:
         raise HTTPException(status_code=404, detail="No market data available")
@@ -370,6 +393,8 @@ async def apply_for_loan(req: ApplyLoanRequest):
 
     result = {
         "decision": decision,
+        "icd10_code": resolved_icd10,
+        "procedure": resolved_procedure,
         "fair_market_price": fair_market_price,
         "max_approvable": max_approvable,
         "requested_amount": req.requested_amount,
@@ -387,7 +412,8 @@ async def apply_for_loan(req: ApplyLoanRequest):
         "user_id": req.user_id,
         "hospital_name": req.hospital_name or (selected["hospital_name"] if selected else "Unknown"),
         "city": resolved_city,
-        "icd10_code": req.icd10_code,
+        "icd10_code": resolved_icd10,
+        "procedure": resolved_procedure,
         "requested_amount": req.requested_amount,
         "decision": decision,
         "fair_market_price": fair_market_price,
