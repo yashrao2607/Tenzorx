@@ -55,7 +55,6 @@ const Navbar = () => {
               <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg shadow-sm uppercase">
                 {userData?.name ? userData.name.charAt(0) : "U"}
               </div>
-              <img className='w-2.5' src={assets.dropdown_icon} alt="" />
               <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
                 <div className='min-w-48 bg-white border border-slate-100 shadow-2xl rounded-xl flex flex-col gap-2 p-2'>
                   <p onClick={() => navigate('/my-profile')} className='hover:bg-slate-50 p-2.5 rounded-lg transition-colors cursor-pointer flex items-center gap-2 text-sm'>My Clinical Profile</p>
