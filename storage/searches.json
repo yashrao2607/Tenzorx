@@ -58,5 +58,22 @@
       "confidence_score": 0.9
     },
     "timestamp": "2026-05-02T16:00:13.673108"
+  },
+  {
+    "user_id": "USR-3b6155a6",
+    "symptom_text": "chest pain and breathlessness",
+    "result": {
+      "condition": "Acute Myocardial Infarction",
+      "icd10_code": "I21.9",
+      "recommended_procedure": "Percutaneous Coronary Intervention with Stent Placement",
+      "confidence_score": 0.9,
+      "procedure_aliases": [
+        "Coronary Angioplasty",
+        "PCI",
+        "Balloon Angioplasty with Stenting",
+        "Coronary Artery Stenting"
+      ]
+    },
+    "timestamp": "2026-05-02T16:06:48.101356"
   }
 ]

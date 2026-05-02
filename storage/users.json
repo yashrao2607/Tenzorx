@@ -64,5 +64,16 @@
     "city": "Delhi",
     "phone": "8053555872",
     "registered_at": "2026-05-02T15:59:46.831825"
+  },
+  {
+    "user_id": "USR-3b6155a6",
+    "name": "Demo User",
+    "age": 28,
+    "aadhaar": "XXXX-XXXX-1234",
+    "pan": "ABCDE1234F",
+    "occupation": "Salaried",
+    "city": "Delhi",
+    "phone": "9876543210",
+    "registered_at": "2026-05-02T16:06:41.934012"
   }
 ]
