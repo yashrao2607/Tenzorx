@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../context/AppContext'
 
 const hospitalData = [
   { id: 1, name: "Apollo Hospital", city: "Pune", image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&q=80&w=800", specialty: "Multi-Specialty" },
@@ -16,6 +17,7 @@ const hospitalData = [
 
 const TopHospitals = () => {
     const navigate = useNavigate()
+    const { token } = useContext(AppContext)
 
     return (
         <div className='flex flex-col items-center gap-4 my-16 text-gray-800 md:mx-10'>
@@ -52,12 +54,14 @@ const TopHospitals = () => {
                     </div>
                 ))}
             </div>
-            <button 
-                onClick={() => { navigate('/login'); scrollTo(0, 0) }} 
-                className='bg-secondary text-primary font-bold px-12 py-3 rounded-full mt-10 hover:bg-primary hover:text-white transition-all shadow-md'
-            >
-                View All Facilities
-            </button>
+            {!token && (
+                <button 
+                    onClick={() => { navigate('/login'); scrollTo(0, 0) }} 
+                    className='bg-secondary text-primary font-bold px-12 py-3 rounded-full mt-10 hover:bg-primary hover:text-white transition-all shadow-md'
+                >
+                    View All Facilities
+                </button>
+            )}
         </div>
     )
 }

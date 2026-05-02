@@ -30,7 +30,8 @@ const MyProfile = () => {
     }
 
     return userData ? (
-        <div className='max-w-2xl flex flex-col gap-4 text-sm pt-5'>
+        <div className='max-w-4xl mx-auto glass-card p-10 mt-10 backdrop-blur-2xl'>
+            <div className='flex flex-col gap-6 text-sm'>
             <div className="flex items-center gap-5">
                 <div className="w-24 h-24 rounded-2xl bg-primary flex items-center justify-center text-white font-bold text-4xl shadow-md uppercase">
                     {userData?.name ? userData.name.charAt(0) : "U"}
@@ -48,7 +49,7 @@ const MyProfile = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
                 {/* Identification */}
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col gap-4">
+                <div className="glass-panel p-6 shadow-lg shadow-slate-100/20 flex flex-col gap-4">
                     <p className='text-gray-600 font-bold underline uppercase tracking-wider text-[10px]'>Institutional Identification</p>
                     <div className='grid grid-cols-[1fr_2fr] gap-y-4 text-[#363636]'>
                         <p className='font-bold text-slate-400 uppercase text-[10px]'>PAN Card</p>
@@ -66,7 +67,7 @@ const MyProfile = () => {
                 </div>
 
                 {/* Account Details */}
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col gap-4">
+                <div className="glass-panel p-6 shadow-lg shadow-slate-100/20 flex flex-col gap-4">
                     <p className='text-gray-600 font-bold underline uppercase tracking-wider text-[10px]'>Clinical Profile</p>
                     <div className='grid grid-cols-[1fr_2fr] gap-y-4 text-[#363636]'>
                         <p className='font-bold text-slate-400 uppercase text-[10px]'>Employment</p>
@@ -99,7 +100,7 @@ const MyProfile = () => {
                 </div>
 
                 {/* Contact & Location */}
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col gap-4 md:col-span-2">
+                <div className="glass-panel p-6 shadow-lg shadow-slate-100/20 flex flex-col gap-4 md:col-span-2">
                     <p className='text-gray-600 font-bold underline uppercase tracking-wider text-[10px]'>Communication & Location</p>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-6 text-[#363636]'>
                         <div>
@@ -135,6 +136,7 @@ const MyProfile = () => {
                 <button onClick={() => navigate('/mediroute')} className='border border-slate-200 px-8 py-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50 transition-all'>New Clinical Intake</button>
                 <button onClick={() => window.print()} className='border border-slate-200 px-8 py-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50 transition-all'>Export Identity Card</button>
             </div>
+          </div>
         </div>
     ) : (
         <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">

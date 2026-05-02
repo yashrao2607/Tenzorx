@@ -81,9 +81,16 @@ const Login = () => {
 
   return (
     <form onSubmit={onSubmitHandler} className='min-h-[80vh] flex items-center py-10'>
-      <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-[480px] border border-slate-200 rounded-2xl text-[#5E5E5E] text-sm shadow-xl bg-white'>
-        <p className='text-3xl font-bold text-slate-900'>{state === 'Sign Up' ? 'Institutional Account' : 'Login'}</p>
-        <p className='mb-2 text-slate-500'>{state === 'Sign Up' ? 'Complete your clinical identity to access AI diagnostics.' : 'Please log in to your MediRoute AI portal.'}</p>
+      <div className='flex flex-col gap-6 m-auto items-start p-10 min-w-[340px] sm:min-w-[480px] glass-card backdrop-blur-xl'>
+        <div className="flex items-center gap-3 mb-2">
+          <div className="bg-primary p-2 rounded-xl shadow-lg shadow-primary/30">
+            <Shield className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <p className='text-3xl font-bold text-slate-900'>{state === 'Sign Up' ? "Create Account" : "Login"}</p>
+            <p className='text-slate-500 font-medium text-sm'>{state === 'Sign Up' ? "Institutional Clinical Identity" : "Access your medical dashboard"}</p>
+          </div>
+        </div>
         
         {state === 'Sign Up' && (
           <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-4'>

@@ -18,8 +18,8 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex items-center justify-between text-sm py-4 mb-5 border-b border-b-slate-200'>
-      <div onClick={() => navigate('/')} className='flex items-center gap-2 cursor-pointer'>
+    <div className='flex items-center justify-between text-sm py-4 px-6 mb-5 sticky top-4 z-50 glass-card mx-auto max-w-[95%]'>
+      <div onClick={() => navigate('/')} className='flex items-center gap-2 cursor-pointer group'>
         <div className="bg-primary p-1.5 rounded-lg">
           <Shield className="w-6 h-6 text-white fill-current" />
         </div>

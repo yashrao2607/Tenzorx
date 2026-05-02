@@ -355,6 +355,21 @@ async def get_user_profile(user_id: str):
     return {"success": True, "userData": user_record}
 
 
+@app.get("/api/get-user-history/{user_id}")
+async def get_user_history(user_id: str):
+    searches = read_json("searches.json")
+    loans = read_json("loan_decisions.json")
+    
+    user_searches = [s for s in searches if s.get("user_id") == user_id]
+    user_loans = [l for l in loans if l.get("user_id") == user_id]
+    
+    return {
+        "success": True, 
+        "searches": user_searches[::-1], 
+        "loans": user_loans[::-1]
+    }
+
+
 @app.post("/api/get-questions")
 async def get_questions(req: GetQuestionsRequest):
     logger.info(f"[Questions] concern={req.concern[:40]}")
