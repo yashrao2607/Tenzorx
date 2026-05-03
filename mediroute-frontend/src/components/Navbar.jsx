@@ -18,20 +18,20 @@ const Navbar = () => {
 
   return (
     <div className='sticky top-4 z-[100] px-4 md:px-0'>
-      <div className='flex items-center justify-between py-2 px-8 glass-card mx-auto max-w-7xl backdrop-blur-3xl'>
+      <div className='flex items-center justify-between py-3.5 px-10 glass-card mx-auto max-w-7xl backdrop-blur-3xl border-white/50 shadow-2xl'>
         
         {/* Logo */}
-        <div onClick={() => navigate('/')} className='flex items-center gap-3 cursor-pointer group'>
-          <div className="bg-primary p-2 rounded-xl shadow-lg shadow-primary/20 group-hover:rotate-12 transition-transform duration-500">
-            <Shield className="w-6 h-6 text-white fill-current" />
+        <div onClick={() => navigate('/')} className='flex items-center gap-4 cursor-pointer group'>
+          <div className="bg-primary p-2 rounded-2xl shadow-xl shadow-primary/20 group-hover:rotate-12 transition-transform duration-500">
+            <Shield className="w-8 h-8 text-white fill-current" />
           </div>
-          <span className="text-2xl font-black tracking-tighter text-slate-900 uppercase">
+          <span className="text-4xl font-black tracking-tighter text-slate-900 uppercase">
             MediRoute <span className="text-primary">AI</span>
           </span>
         </div>
 
         {/* Desktop Navigation */}
-        <ul className='hidden lg:flex items-center gap-8 font-bold text-slate-500 text-[11px] tracking-[0.15em]'>
+        <ul className='hidden lg:flex items-center gap-10 font-black text-slate-500 text-[16px] tracking-[0.2em]'>
           <NavLink to='/' className={({isActive}) => isActive ? 'text-primary' : 'hover:text-slate-900 transition-colors'}>
             <li className='py-1'>HOME</li>
           </NavLink>
@@ -50,35 +50,35 @@ const Navbar = () => {
         </ul>
 
         {/* Action Area */}
-        <div className='flex items-center gap-4'>
+        <div className='flex items-center gap-6'>
           {token && userData ? (
             <div className='flex items-center gap-3 cursor-pointer group relative py-2'>
-              <div className="w-10 h-10 rounded-2xl bg-primary flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform uppercase">
+              <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform uppercase">
                 {userData.name.charAt(0)}
               </div>
               
               {/* Dropdown Menu */}
-              <div className='absolute top-full right-0 pt-2 hidden group-hover:block z-[200]'>
-                <div className='min-w-[240px] glass-card p-3 shadow-2xl border-white/60 backdrop-blur-3xl'>
-                  <div className="px-3 py-4 mb-2 border-b border-slate-100">
+              <div className='absolute top-full right-0 pt-4 hidden group-hover:block z-[200]'>
+                <div className='min-w-[260px] glass-card p-4 shadow-2xl border-white/60 backdrop-blur-3xl'>
+                  <div className="px-3 py-4 mb-3 border-b border-slate-100">
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Active Institution</p>
-                    <p className="text-slate-900 font-bold truncate">{userData.name}</p>
+                    <p className="text-slate-900 font-bold truncate text-lg">{userData.name}</p>
                   </div>
-                  <button onClick={() => navigate('/my-profile')} className='w-full flex items-center gap-3 hover:bg-primary/10 p-3 rounded-xl transition-all text-slate-600 hover:text-primary font-bold text-sm'>
-                    <User className="w-4 h-4" /> Profile Identity
+                  <button onClick={() => navigate('/my-profile')} className='w-full flex items-center gap-3 hover:bg-primary/10 p-4 rounded-2xl transition-all text-slate-600 hover:text-primary font-bold text-sm'>
+                    <User className="w-5 h-5" /> Profile Identity
                   </button>
-                  <button onClick={() => navigate('/my-appointments')} className='w-full flex items-center gap-3 hover:bg-primary/10 p-3 rounded-xl transition-all text-slate-600 hover:text-primary font-bold text-sm'>
-                    <LayoutDashboard className="w-4 h-4" /> Clinical Diagnostics
+                  <button onClick={() => navigate('/my-appointments')} className='w-full flex items-center gap-3 hover:bg-primary/10 p-4 rounded-2xl transition-all text-slate-600 hover:text-primary font-bold text-sm'>
+                    <LayoutDashboard className="w-5 h-5" /> Clinical Diagnostics
                   </button>
-                  <hr className="my-2 border-slate-100" />
-                  <button onClick={logout} className='w-full flex items-center gap-3 hover:bg-rose-50 p-3 rounded-xl transition-all text-rose-600 font-bold text-sm'>
-                    <LogOut className="w-4 h-4" /> Terminate Session
+                  <hr className="my-3 border-slate-100" />
+                  <button onClick={logout} className='w-full flex items-center gap-3 hover:bg-rose-50 p-4 rounded-2xl transition-all text-rose-600 font-bold text-sm'>
+                    <LogOut className="w-5 h-5" /> Terminate Session
                   </button>
                 </div>
               </div>
             </div>
           ) : (
-            <button onClick={() => navigate('/login')} className='btn-primary px-8 py-3.5 text-xs tracking-widest hidden md:block'>
+            <button onClick={() => navigate('/login')} className='btn-primary px-12 py-3.5 text-[13px] font-black tracking-[0.2em] hidden md:block'>
               CREATE PROFILE
             </button>
           )}

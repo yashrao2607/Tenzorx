@@ -146,5 +146,26 @@
         "is_clinical_anomaly": false,
         "decision": "APPROVED",
         "recommendation": "Loan within fair market range. Approved with PM-JAY Gap Funding."
+    },
+    {
+        "timestamp": "2026-05-03T10:32:54.625850",
+        "application_id": "LOAN-1777804374",
+        "user_id": "USR-680f3816",
+        "patient_name": "Rahul Sharma",
+        "hospital_id": 40,
+        "hospital_name": "Fortis Shalimar Bagh",
+        "city": "New Delhi",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "requested_amount": 431602,
+        "insurance_coverage": 280541,
+        "gap_loan": 151061,
+        "fair_market_price": 360041,
+        "overpricing_pct": 19.88,
+        "fairness_score": 71,
+        "fraud_risk_score": 0,
+        "is_clinical_anomaly": false,
+        "decision": "APPROVED",
+        "recommendation": "Loan within fair market range. Approved with PM-JAY Gap Funding."
     }
 ]
