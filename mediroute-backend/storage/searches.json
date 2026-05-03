@@ -120,5 +120,21 @@
         },
         "clinical_context_used": true,
         "timestamp": "2026-05-03T10:05:58.860955"
+    },
+    {
+        "user_id": "USR-680f3816",
+        "symptom_text": "Abdominal Pain",
+        "result": {
+            "condition": "Unknown",
+            "icd10_code": "N/A",
+            "recommended_procedure": "Consult physician",
+            "confidence_score": 0.0,
+            "clinical_rationale": "Model failed to generate response.",
+            "procedure_aliases": [
+                "Consult doctor"
+            ]
+        },
+        "clinical_context_used": true,
+        "timestamp": "2026-05-03T10:13:31.043178"
     }
 ]

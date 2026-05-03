@@ -125,5 +125,26 @@
         "is_clinical_anomaly": false,
         "decision": "APPROVED",
         "recommendation": "Loan within fair market range. Approved with PM-JAY Gap Funding."
+    },
+    {
+        "timestamp": "2026-05-03T10:13:53.932210",
+        "application_id": "LOAN-1777803233",
+        "user_id": "USR-680f3816",
+        "patient_name": "Rahul Sharma",
+        "hospital_id": 26,
+        "hospital_name": "BLK-Max",
+        "city": "New Delhi",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "requested_amount": 448877,
+        "insurance_coverage": 291770,
+        "gap_loan": 157107,
+        "fair_market_price": 360041,
+        "overpricing_pct": 24.67,
+        "fairness_score": 63,
+        "fraud_risk_score": 0,
+        "is_clinical_anomaly": false,
+        "decision": "APPROVED",
+        "recommendation": "Loan within fair market range. Approved with PM-JAY Gap Funding."
     }
 ]
