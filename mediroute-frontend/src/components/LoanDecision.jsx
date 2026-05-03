@@ -11,7 +11,8 @@ const LoanDecision = ({ data, onBack }) => {
   const { decision, fair_market_price, requested_amount, overpricing_pct, recommendation, cheaper_alternative, emi_options, procedure } = data;
 
   const isApproved = decision === 'APPROVED';
-  const isReview = decision === 'REVIEW';
+  const isReview = decision === 'REVIEW' || decision === 'HIGH_RISK';
+  const isRejected = decision === 'REJECTED';
 
   const handleApply = (plan) => {
     setIsSuccess(true);
@@ -81,10 +82,46 @@ const LoanDecision = ({ data, onBack }) => {
           <h2 className={`text-4xl font-black mb-3 ${isApproved ? 'text-emerald-700' : isReview ? 'text-amber-700' : 'text-rose-700'}`}>
             {decision}
           </h2>
-          <p className="text-slate-600 max-w-lg mx-auto font-medium">{recommendation}</p>
+          <p className="text-slate-600 max-w-lg mx-auto font-medium">{data.reason || recommendation}</p>
+          
+          {data.ui_message && (
+             <div className="mt-4 px-6 py-2 bg-white/50 backdrop-blur-sm rounded-full inline-block border border-white text-xs font-bold text-slate-500 shadow-sm">
+                ✨ {data.ui_message}
+             </div>
+          )}
         </div>
 
         <div className="p-10 space-y-10">
+          {/* AI Confidence Meter */}
+          <div className="flex items-center gap-6 p-6 bg-slate-900 rounded-[2rem] text-white">
+            <div className="relative w-16 h-16 flex items-center justify-center">
+                <svg className="w-full h-full rotate-[-90deg]">
+                  <circle cx="32" cy="32" r="28" fill="none" stroke="#ffffff10" strokeWidth="4" />
+                  <motion.circle 
+                    cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeWidth="4" 
+                    className="text-primary"
+                    strokeDasharray="176"
+                    initial={{ strokeDashoffset: 176 }}
+                    animate={{ strokeDashoffset: 176 - (176 * (data.confidence_score || 85)) / 100 }}
+                  />
+                </svg>
+                <span className="absolute text-xs font-black">{data.confidence_score || 85}%</span>
+            </div>
+            <div>
+               <h4 className="font-bold text-lg">AI Underwriting Confidence</h4>
+               <p className="text-[10px] text-white/40 uppercase tracking-widest">Medical + Financial Cross-Verification</p>
+            </div>
+            {data.risk_flags?.length > 0 && (
+              <div className="ml-auto flex gap-2">
+                {data.risk_flags.map((flag, i) => (
+                  <span key={i} className="px-2 py-1 bg-rose-500/20 text-rose-300 text-[8px] font-black uppercase rounded border border-rose-500/30">
+                    {flag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+
           {/* Main Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
@@ -102,7 +139,7 @@ const LoanDecision = ({ data, onBack }) => {
             </div>
           </div>
 
-          {/* Funding Split (Option 1) - Redesigned for Premium Aesthetics */}
+          {/* Funding Split */}
           <div className="p-8 bg-slate-50/50 rounded-[2.5rem] border border-slate-100 space-y-8 relative overflow-hidden">
             <div className="flex items-center justify-between relative z-10">
               <div>
@@ -163,46 +200,48 @@ const LoanDecision = ({ data, onBack }) => {
           </div>
 
           {/* Final Loan Callout */}
-          <div className="p-8 bg-primary rounded-[2.5rem] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl shadow-primary/20 border-4 border-white">
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-md">
-                <Check className="w-10 h-10 text-white" />
+          {!isRejected && (
+            <div className="p-8 bg-primary rounded-[2.5rem] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl shadow-primary/20 border-4 border-white">
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-md">
+                  <Check className="w-10 h-10 text-white" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Final Approved Loan</p>
+                  <h4 className="text-4xl font-black">₹{(data.approved_amount || data.gap_loan_amount)?.toLocaleString()}</h4>
+                </div>
               </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Final Approved Loan</p>
-                <h4 className="text-4xl font-black">₹{data.gap_loan_amount?.toLocaleString()}</h4>
+              <div className="text-right">
+                <p className="text-sm font-bold opacity-80">You saved ₹{data.insurance_coverage?.toLocaleString()}</p>
+                <p className="text-[10px] uppercase font-black opacity-40">via Institutional Gap Funding</p>
               </div>
             </div>
-            <div className="text-right">
-              <p className="text-sm font-bold opacity-80">You saved ₹{data.insurance_coverage?.toLocaleString()}</p>
-              <p className="text-[10px] uppercase font-black opacity-40">via Institutional Gap Funding</p>
-            </div>
-          </div>
+          )}
 
           {/* EMI Options */}
-          {emi_options && emi_options.length > 0 && (
+          {data.emi_plans && data.emi_plans.length > 0 && !isRejected && (
             <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <Shield className="text-primary w-6 h-6" /> 
                   <h3 className="text-xl font-bold text-slate-900">Available Financing Options</h3>
                 </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {emi_options.map((opt, i) => (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {data.emi_plans.map((opt, i) => (
                   <div key={i} className="p-6 bg-white border border-slate-200 rounded-3xl hover:border-primary transition-all group">
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <p className="text-2xl font-black text-slate-900">₹{opt.emi.toLocaleString()} <span className="text-xs text-slate-400 font-bold">/mo</span></p>
-                        <p className="text-sm font-bold text-primary mt-1">{opt.tenure_months} Months Tenure</p>
+                        <p className="text-sm font-bold text-primary mt-1">{opt.tenure_months} Months</p>
                       </div>
-                      <div className="px-3 py-1 bg-secondary text-primary text-[10px] font-black rounded-full uppercase tracking-widest">
-                        {opt.interest}
+                      <div className="px-3 py-1 bg-secondary text-primary text-[8px] font-black rounded-full uppercase tracking-widest">
+                        {opt.interest_level} Interest
                       </div>
                     </div>
                     <button 
                       onClick={() => handleApply(opt)}
                       className="w-full py-3 bg-slate-900 text-white rounded-2xl font-bold text-sm hover:bg-primary transition-colors flex items-center justify-center gap-2"
                     >
-                      Apply with This Plan <ExternalLink className="w-4 h-4" />
+                      Select Plan <ExternalLink className="w-4 h-4" />
                     </button>
                   </div>
                 ))}
