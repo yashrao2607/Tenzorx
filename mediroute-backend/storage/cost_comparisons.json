@@ -142,5 +142,43 @@
         "fair_market_price": 292263,
         "hospital_count": 20,
         "timestamp": "2026-05-02T17:49:03.364898"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "New Delhi",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "fair_market_price": 360041,
+        "hospital_count": 20,
+        "applied_factors": [
+            {
+                "condition": "Diabetes",
+                "impact": "+15%"
+            },
+            {
+                "condition": "Hypertension",
+                "impact": "+10%"
+            }
+        ],
+        "timestamp": "2026-05-03T09:25:31.791982"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "New Delhi",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "fair_market_price": 360041,
+        "hospital_count": 20,
+        "applied_factors": [
+            {
+                "condition": "Diabetes",
+                "impact": "+15%"
+            },
+            {
+                "condition": "Hypertension",
+                "impact": "+10%"
+            }
+        ],
+        "timestamp": "2026-05-03T09:25:31.849425"
     }
 ]

@@ -53,5 +53,20 @@
         "decision": "APPROVED",
         "fair_market_price": 232898,
         "timestamp": "2026-05-02T16:47:38.472220"
+    },
+    {
+        "user_id": "USR-680f3816",
+        "patient_name": "Rahul Sharma",
+        "hospital_name": "Primus",
+        "city": "New Delhi",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "requested_amount": 239425,
+        "fair_market_price": 360041,
+        "overpricing_pct": -33.5,
+        "fairness_score": 100,
+        "decision": "APPROVED",
+        "recommendation": "Your loan is within fair market range. Approved.",
+        "timestamp": "2026-05-03T09:25:55.818061"
     }
 ]

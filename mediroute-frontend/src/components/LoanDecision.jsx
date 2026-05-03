@@ -1,7 +1,11 @@
-import { motion } from 'framer-motion';
-import { Check, X, AlertCircle, Activity, ArrowLeft, Shield, Clock, ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Check, X, AlertCircle, Activity, ArrowLeft, Shield, Clock, ExternalLink, Heart, Sparkles } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const LoanDecision = ({ data, onBack }) => {
+  const [isSuccess, setIsSuccess] = useState(false);
+
   if (!data) return null;
 
   const { decision, fair_market_price, requested_amount, overpricing_pct, recommendation, cheaper_alternative, emi_options, procedure } = data;
@@ -9,12 +13,71 @@ const LoanDecision = ({ data, onBack }) => {
   const isApproved = decision === 'APPROVED';
   const isReview = decision === 'REVIEW';
 
+  const handleApply = (plan) => {
+    setIsSuccess(true);
+    toast.success(`Application submitted for ₹${plan.emi}/mo plan!`);
+  };
+
+  if (isSuccess) {
+    return (
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9 }} 
+        animate={{ opacity: 1, scale: 1 }} 
+        className="max-w-2xl mx-auto py-20 text-center space-y-8"
+      >
+        <div className="relative inline-block">
+          <motion.div 
+            initial={{ scale: 0 }} 
+            animate={{ scale: 1 }} 
+            transition={{ type: "spring", damping: 12 }}
+            className="w-32 h-32 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-2xl shadow-emerald-200"
+          >
+            <Check className="w-16 h-16 stroke-[3]" />
+          </motion.div>
+          <motion.div 
+            animate={{ rotate: 360 }} 
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            className="absolute -inset-4 border-2 border-dashed border-emerald-200 rounded-full"
+          />
+        </div>
+        
+        <div className="space-y-4">
+          <h2 className="text-4xl font-black text-slate-900">Application Successful!</h2>
+          <p className="text-slate-500 text-lg font-medium max-w-md mx-auto leading-relaxed">
+            Your financing plan for <span className="text-primary font-bold">{procedure}</span> has been locked in. 
+            The hospital has been notified and will contact you within 2 hours.
+          </p>
+        </div>
+
+        <div className="p-8 bg-white border border-slate-100 rounded-[2.5rem] shadow-xl flex items-center gap-6 text-left">
+          <div className="w-14 h-14 bg-secondary rounded-2xl flex items-center justify-center text-primary">
+            <Heart className="w-7 h-7 fill-current" />
+          </div>
+          <div>
+            <h4 className="font-bold text-slate-900">Next Step: Pre-Op Checkup</h4>
+            <p className="text-xs text-slate-400 font-medium">Bring your ABHA ID and original Aadhaar card.</p>
+          </div>
+          <div className="ml-auto">
+            <Sparkles className="w-6 h-6 text-amber-400" />
+          </div>
+        </div>
+
+        <button 
+          onClick={() => window.location.href = '/'}
+          className="btn-primary px-10 py-4 text-lg"
+        >
+          Return to Dashboard
+        </button>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="max-w-4xl mx-auto pb-20">
       <div className="glass-card overflow-hidden">
         {/* Status Header */}
         <div className={`p-10 text-center ${isApproved ? 'bg-emerald-50' : isReview ? 'bg-amber-50' : 'bg-rose-50'}`}>
-            {isApproved ? <Check className="w-20 h-20 text-emerald-500" /> : isReview ? <AlertCircle className="w-20 h-20 text-amber-500" /> : <X className="w-20 h-20 text-rose-500" />}
+            {isApproved ? <Check className="w-20 h-20 text-emerald-500 mx-auto mb-4" /> : isReview ? <AlertCircle className="w-20 h-20 text-amber-500 mx-auto mb-4" /> : <X className="w-20 h-20 text-rose-500 mx-auto mb-4" />}
           <h2 className={`text-4xl font-black mb-3 ${isApproved ? 'text-emerald-700' : isReview ? 'text-amber-700' : 'text-rose-700'}`}>
             {decision}
           </h2>
@@ -54,7 +117,10 @@ const LoanDecision = ({ data, onBack }) => {
           {/* EMI Options */}
           {emi_options && emi_options.length > 0 && (
             <div className="space-y-6">
-                <Shield className="text-primary w-6 h-6" /> Available Financing Options
+                <div className="flex items-center gap-3">
+                  <Shield className="text-primary w-6 h-6" /> 
+                  <h3 className="text-xl font-bold text-slate-900">Available Financing Options</h3>
+                </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {emi_options.map((opt, i) => (
                   <div key={i} className="p-6 bg-white border border-slate-200 rounded-3xl hover:border-primary transition-all group">
@@ -67,7 +133,10 @@ const LoanDecision = ({ data, onBack }) => {
                         {opt.interest}
                       </div>
                     </div>
-                    <button className="w-full py-3 bg-slate-900 text-white rounded-2xl font-bold text-sm hover:bg-primary transition-colors flex items-center justify-center gap-2">
+                    <button 
+                      onClick={() => handleApply(opt)}
+                      className="w-full py-3 bg-slate-900 text-white rounded-2xl font-bold text-sm hover:bg-primary transition-colors flex items-center justify-center gap-2"
+                    >
                       Apply with This Plan <ExternalLink className="w-4 h-4" />
                     </button>
                   </div>
@@ -89,7 +158,7 @@ const LoanDecision = ({ data, onBack }) => {
                   Compare Other Hospitals <ArrowRight className="w-5 h-5" />
                 </button>
               </div>
-                <Shield className="w-64 h-64" />
+                <Shield className="absolute -right-10 -bottom-10 w-64 h-64 opacity-10" />
             </div>
           )}
 
