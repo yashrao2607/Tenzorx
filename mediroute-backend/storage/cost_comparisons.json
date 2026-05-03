@@ -370,5 +370,25 @@
             }
         ],
         "timestamp": "2026-05-03T10:32:07.569257"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "New Delhi",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "fair_market_price": 288033,
+        "hospital_count": 20,
+        "applied_factors": [],
+        "timestamp": "2026-05-03T11:22:46.758064"
+    },
+    {
+        "city": "Delhi",
+        "resolved_city": "New Delhi",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "fair_market_price": 288033,
+        "hospital_count": 20,
+        "applied_factors": [],
+        "timestamp": "2026-05-03T11:22:46.878192"
     }
 ]
