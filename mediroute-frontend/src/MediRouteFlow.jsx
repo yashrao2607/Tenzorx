@@ -5,6 +5,7 @@ import { Shield, UserPlus, Search, MapPin, FileText, RefreshCcw, User, X, Credit
 import RegistrationForm from './components/RegistrationForm';
 import DiseaseSearch from './components/DiseaseSearch';
 import HospitalMapView from './components/HospitalMapView';
+import FinancialForm from './components/FinancialForm';
 import LoanDecision from './components/LoanDecision';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8011';
@@ -16,6 +17,7 @@ function MediRouteFlow() {
   
   const [user, setUser] = useState(null);
   const [diagnosis, setDiagnosis] = useState(null);
+  const [selectedHospital, setSelectedHospital] = useState(null);
   const [loanResult, setLoanResult] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
 
@@ -33,10 +35,11 @@ function MediRouteFlow() {
   }, []);
 
   const allSteps = [
-    { id: 0, label: 'Registration', icon: UserPlus },
-    { id: 1, label: 'Analysis', icon: Search },
-    { id: 2, label: 'Hospitals', icon: MapPin },
-    { id: 3, label: 'Approval', icon: FileText },
+    { id: 0, label: 'Identity', icon: UserPlus },
+    { id: 1, label: 'Diagnosis', icon: Search },
+    { id: 2, label: 'Hospital', icon: MapPin },
+    { id: 3, label: 'Financials', icon: CreditCard },
+    { id: 4, label: 'Approval', icon: FileText },
   ];
 
   const visibleSteps = user ? allSteps.slice(1) : allSteps;
@@ -52,34 +55,42 @@ function MediRouteFlow() {
     setStep(2);
   };
 
-  const handleHospitalSelect = async (hospital) => {
+  const handleHospitalSelect = (hospital) => {
+    setSelectedHospital(hospital);
+    setStep(3);
+  };
+
+  const handleFinancialSubmit = async (financialData) => {
     setLoading(true);
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/apply-for-loan`, {
+      // First, get the medical underwriting result
+      const medicalResp = await axios.post(`${API_BASE_URL}/api/apply-for-loan`, {
         user_id: user.user_id,
-        hospital_id: hospital.hospital_id,
-        hospital_name: hospital.hospital_name,
+        hospital_id: selectedHospital.hospital_id,
+        hospital_name: selectedHospital.hospital_name,
         icd10_code: diagnosis.icd10_code,
         procedure: diagnosis.recommended_procedure,
-        requested_amount: hospital.estimated_total_cost,
+        requested_amount: selectedHospital.estimated_total_cost,
         city: user.city,
         comorbidities: user.health_records?.comorbidities || []
       });
-      setLoanResult(response.data);
-      setStep(3);
+
+      // Then, run the financial analysis with the insurance coverage calculated by backend
+      const financialResp = await axios.post(`${API_BASE_URL}/api/analyze-financials`, {
+        ...financialData,
+        insurance_coverage: medicalResp.data.insurance_coverage,
+        condition_severity: 'medium'
+      });
+
+      // Merge both for the final screen
+      setLoanResult({
+        ...medicalResp.data,
+        ...financialResp.data,
+        decision: financialResp.data.status // Financial decision takes precedence
+      });
+      setStep(4);
     } catch (err) {
-      const detail = err.response?.data?.detail;
-      let errorMsg = 'Underwriting failed.';
-      
-      if (typeof detail === 'string') {
-        errorMsg = detail;
-      } else if (Array.isArray(detail)) {
-        errorMsg = detail[0]?.msg || 'Validation error.';
-      } else if (detail?.msg) {
-        errorMsg = detail.msg;
-      }
-      
-      setError(errorMsg);
+      setError('Underwriting failed. Please check your data.');
     } finally {
       setLoading(false);
     }
@@ -130,7 +141,8 @@ function MediRouteFlow() {
             {step === 0 && <RegistrationForm key="0" onRegister={handleRegistration} initialData={user} />}
             {step === 1 && <DiseaseSearch key="1" user={user} onSearch={handleSearch} />}
             {step === 2 && <HospitalMapView key="2" user={user} diagnosis={diagnosis} onSelect={handleHospitalSelect} comorbidities={user.health_records?.comorbidities || []} />}
-            {step === 3 && <LoanDecision key="3" data={loanResult} onBack={() => setStep(2)} />}
+            {step === 3 && <FinancialForm key="3" onSubmit={handleFinancialSubmit} treatmentCost={selectedHospital?.estimated_total_cost} hospitalName={selectedHospital?.hospital_name} />}
+            {step === 4 && <LoanDecision key="4" data={loanResult} onBack={() => setStep(3)} />}
           </AnimatePresence>
         </main>
       </div>
