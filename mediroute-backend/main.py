@@ -652,6 +652,77 @@ async def get_lender_audit_logs():
     return {"success": True, "logs": decisions[::-1][:50]}
 
 
+class FinancialAnalysisRequest(BaseModel):
+    treatment_cost: int
+    hospital_name: str
+    condition_severity: str
+    insurance_coverage: int
+    monthly_income: int
+    employment_type: str
+    existing_emis: int
+    credit_score: Optional[int] = None
+    dependents: int
+
+@app.post("/api/analyze-financials")
+async def analyze_financials(req: FinancialAnalysisRequest):
+    # 1. Decision Logic
+    loan_amount = req.treatment_cost - req.insurance_coverage
+    status = "APPROVED"
+    risk_flags = []
+    confidence_score = 85
+    
+    # Strict Rules
+    if req.monthly_income < 10000:
+        status = "REJECTED"
+        risk_flags.append("low income")
+    
+    if req.credit_score and req.credit_score < 600:
+        status = "HIGH_RISK"
+        risk_flags.append("low credit score")
+        confidence_score -= 20
+        
+    if req.treatment_cost > (6 * req.monthly_income):
+        status = "REJECTED"
+        risk_flags.append("high loan-to-income ratio")
+        
+    if req.existing_emis > (req.monthly_income * 0.4):
+        status = "HIGH_RISK"
+        risk_flags.append("existing debt burden")
+        confidence_score -= 15
+
+    # 2. EMI Calculation
+    # EMI = (P × r × (1+r)^n) / ((1+r)^n - 1)
+    # P = loan_amount, r = 0.01 (1%), n = 6, 12, 18
+    def calc_emi(p, r, n):
+        if p <= 0: return 0
+        return int((p * r * (1 + r)**n) / ((1 + r)**n - 1))
+
+    r = 0.01
+    emi_plans = [
+        {"tenure_months": 6, "emi": calc_emi(loan_amount, r, 6), "interest_level": "low"},
+        {"tenure_months": 12, "emi": calc_emi(loan_amount, r, 12), "interest_level": "medium"},
+        {"tenure_months": 18, "emi": calc_emi(loan_amount, r, 18), "interest_level": "high"}
+    ]
+
+    # 3. Final Response
+    reason = "Stable income and moderate medical cost." if status == "APPROVED" else "High financial risk profile detected."
+    if "low income" in risk_flags: reason = "Monthly income below minimum threshold."
+    
+    return {
+        "status": status,
+        "confidence_score": confidence_score,
+        "approved_amount": loan_amount if status != "REJECTED" else 0,
+        "reason": reason,
+        "emi_plans": emi_plans,
+        "risk_flags": risk_flags,
+        "ui_message": "Good news! Your credit profile qualifies for instant medical financing." if status == "APPROVED" else "Based on your financial profile, we require a co-signer or manual review.",
+        "disbursement_plan": {
+            "hospital_payment": int(loan_amount * 0.95),
+            "user_wallet": int(loan_amount * 0.05),
+            "note": "major portion goes to hospital"
+        }
+    }
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host=settings.HOST, port=settings.PORT, reload=settings.DEBUG)
