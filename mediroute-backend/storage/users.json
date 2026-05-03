@@ -320,5 +320,19 @@
         "city": "Delhi",
         "phone": "9352339808",
         "registered_at": "2026-05-02T17:48:02.332330"
+    },
+    {
+        "user_id": "USR-51b438d4",
+        "name": "Kislay Kumar",
+        "age": 25,
+        "gender": "Male",
+        "aadhaar": "XXXX-XXXX-2163",
+        "pan": "DYZPA1451B",
+        "occupation": "Salaried",
+        "city": "Mumbai",
+        "phone": "8434460542",
+        "abha_id": null,
+        "health_records": null,
+        "registered_at": "2026-05-03T08:43:17.213284"
     }
 ]

@@ -577,6 +577,13 @@ async def apply_for_loan(req: ApplyLoanRequest):
             {"tenure_months": 24, "emi": int((amt * 1.08) / 24), "interest": "8% p.a."},
         ]
 
+    # Calculate Fairness Score (0-100)
+    if req.requested_amount <= fair_market_price:
+        fairness_score = 100
+    else:
+        deviation = (req.requested_amount - fair_market_price) / fair_market_price
+        fairness_score = max(0, int(100 - (deviation * 200)))
+
     result = {
         "decision": decision,
         "icd10_code": resolved_icd10,
@@ -588,25 +595,37 @@ async def apply_for_loan(req: ApplyLoanRequest):
         "city_min_cost": min(costs),
         "city_max_cost": max(costs),
         "overpricing_pct": overpricing_pct,
+        "fairness_score": fairness_score,
         "recommendation": recommendation,
         "cheaper_alternative": cheaper,
         "emi_options": emi_options,
     }
 
-    # Save decision
+    # Save decision with audit trail
     append_json("loan_decisions.json", {
         "user_id": req.user_id,
+        "patient_name": user_record.get("name") if user_record else "Unknown",
         "hospital_name": req.hospital_name or (selected["hospital_name"] if selected else "Unknown"),
         "city": resolved_city,
         "icd10_code": resolved_icd10,
         "procedure": resolved_procedure,
         "requested_amount": req.requested_amount,
-        "decision": decision,
         "fair_market_price": fair_market_price,
+        "overpricing_pct": overpricing_pct,
+        "fairness_score": fairness_score,
+        "decision": decision,
+        "recommendation": recommendation,
         "timestamp": now_iso(),
     })
 
     return result
+
+
+@app.get("/api/lender/audit-logs")
+async def get_lender_audit_logs():
+    decisions = read_json("loan_decisions.json")
+    # Return last 50 decisions
+    return {"success": True, "logs": decisions[::-1][:50]}
 
 
 if __name__ == "__main__":
