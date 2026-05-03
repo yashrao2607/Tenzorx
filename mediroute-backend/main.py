@@ -466,8 +466,11 @@ async def hospitals_by_city(req: HospitalsByCityRequest):
     }
     
     total_multiplier = 0
+    applied_factors = []
     for c in (req.comorbidities or []):
-        total_multiplier += COMORBIDITY_MULTIPLIERS.get(c.lower(), 0.05)
+        impact = COMORBIDITY_MULTIPLIERS.get(c.lower(), 0.05)
+        total_multiplier += impact
+        applied_factors.append({"condition": c.title(), "impact": f"+{int(impact * 100)}%"})
     
     fair_market_price = int(base_median * (1 + total_multiplier))
 
@@ -479,6 +482,7 @@ async def hospitals_by_city(req: HospitalsByCityRequest):
         "min_cost": int(min(costs) * (1 + total_multiplier)),
         "max_cost": int(max(costs) * (1 + total_multiplier)),
         "hospital_count": len(matches),
+        "applied_factors": applied_factors,
         "hospitals": sorted([
             {**h, "estimated_total_cost": int(h["estimated_total_cost"] * (1 + total_multiplier))} 
             for h in matches
@@ -493,10 +497,12 @@ async def hospitals_by_city(req: HospitalsByCityRequest):
         "procedure": resolved_procedure,
         "fair_market_price": fair_market_price,
         "hospital_count": len(matches),
+        "applied_factors": applied_factors,
         "timestamp": now_iso(),
     })
 
     return response
+
 
 
 @app.post("/api/apply-for-loan")
