@@ -407,7 +407,19 @@ async def get_questions(req: GetQuestionsRequest):
 @app.post("/api/search-disease")
 async def search_disease(req: SearchDiseaseRequest):
     logger.info(f"[Search] user={req.user_id} symptom={req.symptom_text[:40]}")
-    result = await diagnostician.analyze(req.symptom_text, req.answers)
+    
+    # Fetch User Clinical History from profile (ABDM Data)
+    clinical_history = None
+    if req.user_id and req.user_id != "guest":
+        users = read_json("users.json")
+        user_record = next((u for u in users if u.get("user_id") == req.user_id), None)
+        if user_record and user_record.get("health_records"):
+            clinical_history = user_record["health_records"]
+            logger.info(f"[Search] Found clinical history for user {req.user_id}: {clinical_history.get('comorbidities')}")
+
+    # Analyze with clinical context
+    result = await diagnostician.analyze(req.symptom_text, req.answers, clinical_history)
+    
     if "procedure_aliases" not in result or not result.get("procedure_aliases"):
         result["procedure_aliases"] = _procedure_aliases(
             result.get("icd10_code", ""),
@@ -419,10 +431,12 @@ async def search_disease(req: SearchDiseaseRequest):
         "user_id": req.user_id,
         "symptom_text": req.symptom_text,
         "result": result,
+        "clinical_context_used": True if clinical_history else False,
         "timestamp": now_iso(),
     })
 
     return result
+
 
 
 @app.post("/api/hospitals-by-city")

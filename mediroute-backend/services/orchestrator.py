@@ -1,6 +1,6 @@
 import logging
 import time
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from sqlalchemy.orm import Session
 from agents.diagnostician import DiagnosticianAgent
 from agents.cost_auditor import CostAuditorAgent
@@ -13,11 +13,12 @@ diagnostician = DiagnosticianAgent()
 cost_auditor = CostAuditorAgent()
 underwriter = UnderwriterAgent()
 
-async def run_full_analysis(db: Session, symptom_text: str, city: str, comorbidities: List[str], requested_loan_amount: int) -> Dict[str, Any]:
+async def run_full_analysis(db: Session, symptom_text: str, city: str, comorbidities: List[str], requested_loan_amount: int, clinical_history: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     start_time = time.perf_counter()
     
-    # Step 1: Diagnostician
-    diagnosis = await diagnostician.analyze(symptom_text)
+    # Step 1: Diagnostician (Pass clinical history if available)
+    diagnosis = await diagnostician.analyze(symptom_text, clinical_history=clinical_history)
+
     procedure = diagnosis.get("recommended_procedure", "")
     condition = diagnosis.get("condition", "")
     
