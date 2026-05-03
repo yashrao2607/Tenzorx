@@ -42,7 +42,14 @@ const Hospitals = () => {
 
         if (speciality) {
             filtered = doctors.filter(h => 
-                (h.specialties || []).some(s => s.toLowerCase() === speciality.toLowerCase())
+                (h.specialties || []).some(s => {
+                    const normS = s.toLowerCase();
+                    const normSpec = speciality.toLowerCase();
+                    if (normSpec === 'maternity') {
+                        return normS === 'maternity' || normS === 'gynecology';
+                    }
+                    return normS === normSpec;
+                })
             )
         }
 
@@ -139,7 +146,7 @@ const Hospitals = () => {
                                 
                                 <div className="flex items-center gap-2 text-slate-500 text-sm font-medium">
                                     <Shield className="w-4 h-4 text-primary/60" />
-                                    {item.specialty}
+                                    {item.speciality}
                                 </div>
                                 
                                 <div className="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">

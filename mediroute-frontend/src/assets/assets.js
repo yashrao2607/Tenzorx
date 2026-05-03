@@ -30,12 +30,16 @@ import doc12 from './doc12.png'
 import doc13 from './doc13.png'
 import doc14 from './doc14.png'
 import doc15 from './doc15.png'
-import Dermatologist from './Dermatologist.svg'
-import Gastroenterologist from './Gastroenterologist.svg'
-import General_physician from './General_physician.svg'
-import Gynecologist from './Gynecologist.svg'
-import Neurologist from './Neurologist.svg'
-import Pediatricians from './Pediatricians.svg'
+import Cardiology from './Cardiology.png'
+import Orthopedics from './Orthopedics.png'
+import Oncology from './Oncology.png'
+import Ophthalmology from './Ophthalmology.png'
+import Urology from './Urology.png'
+import General_physician from './General_physician.png'
+import Neurology from './Neurology.png'
+import Gastroenterology from './Gastroenterology.png'
+import Maternity from './Maternity.png'
+import Pediatricians from './Pediatricians.png'
 
 
 export const assets = {
@@ -65,35 +69,35 @@ export const specialityData = [
     },
     {
         speciality: 'Cardiology',
-        image: Neurologist // Placeholder for Cardiology
+        image: Cardiology
     },
     {
         speciality: 'Orthopedics',
-        image: Dermatologist // Placeholder for Orthopedics
+        image: Orthopedics
     },
     {
         speciality: 'Oncology',
-        image: Gastroenterologist // Placeholder for Oncology
+        image: Oncology
     },
     {
         speciality: 'Neurology',
-        image: Neurologist
+        image: Neurology
     },
     {
         speciality: 'Gastroenterology',
-        image: Gastroenterologist
+        image: Gastroenterology
     },
     {
         speciality: 'Ophthalmology',
-        image: General_physician // Placeholder
+        image: Ophthalmology
     },
     {
         speciality: 'Urology',
-        image: Gastroenterologist // Placeholder
+        image: Urology
     },
     {
         speciality: 'Maternity',
-        image: Gynecologist
+        image: Maternity
     },
     {
         speciality: 'Pediatricians',
