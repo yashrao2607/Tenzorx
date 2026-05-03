@@ -24,14 +24,13 @@ llm_fallback = ChatGoogleGenerativeAI(
 )
 
 QUESTIONS_PROMPT = """You are a clinical AI agent. A user has a medical concern. 
-Your goal is to ask 3-4 highly relevant clarifying questions to help narrow down the likely medical procedure needed.
+Your goal is to ask exactly 3 highly relevant clarifying questions to help narrow down the likely medical procedure needed.
 Return JSON only:
 {{
   "questions": [
     "Question 1...",
     "Question 2...",
-    "Question 3...",
-    "Question 4..."
+    "Question 3..."
   ]
 }}
 Ensure questions are concise and directly help in surgical/procedure identification."""
@@ -81,13 +80,29 @@ class DiagnosticianAgent:
             return None
 
     async def get_clarifying_questions(self, concern: str) -> Dict[str, Any]:
+        cache_key = f"questions_{concern.lower().strip()}"
+        if cache_key in self._cache:
+            logger.info(f"Cache hit for questions: {concern[:30]}...")
+            return self._cache[cache_key]
+
         prompt = f"{QUESTIONS_PROMPT}\n\nMedical Concern: {concern}\nJSON:"
         result = await self._invoke_model(llm_primary, prompt)
         if not result:
             result = await self._invoke_model(llm_fallback, prompt)
-        return result or {"questions": ["Can you describe the pain in more detail?", "How long have you been experiencing this?", "Are there any other symptoms?"]}
+        
+        final_result = result or {"questions": ["Can you describe the pain in more detail?", "How long have you been experiencing this?", "Are there any other symptoms?"]}
+        self._cache[cache_key] = final_result
+        return final_result
 
     async def analyze(self, symptom_text: str, answers: Optional[List[Dict[str, str]]] = None, clinical_history: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        # Simple cache key based on symptom and answers
+        answers_key = json.dumps(answers, sort_keys=True) if answers else "none"
+        cache_key = f"analysis_{symptom_text.lower().strip()}_{answers_key}"
+        
+        if cache_key in self._cache:
+            logger.info(f"Cache hit for analysis: {symptom_text[:30]}...")
+            return self._cache[cache_key]
+
         history_str = "None"
         if clinical_history:
             comorb = ", ".join(clinical_history.get("comorbidities", [])) or "None"
@@ -95,10 +110,8 @@ class DiagnosticianAgent:
             history_str = f"Comorbidities: {comorb} | Past Surgeries: {past_surg}"
 
         if not answers:
-            # Traditional one-shot analysis
             prompt = f"{DIAGNOSIS_PROMPT}\n\nClinical History: {history_str}\n\nSymptom: {symptom_text}\nJSON:"
         else:
-            # Multi-turn analysis
             answers_str = "\n".join([f"Q: {a['question']}\nA: {a['answer']}" for a in answers])
             prompt = f"{DIAGNOSIS_PROMPT}\n\nClinical History: {history_str}\n\nInitial Concern: {symptom_text}\n\nClarifying Answers:\n{answers_str}\nJSON:"
 
@@ -115,5 +128,7 @@ class DiagnosticianAgent:
                 "clinical_rationale": "Model failed to generate response.",
                 "procedure_aliases": ["Consult doctor"]
             }
+        
+        self._cache[cache_key] = result
         return result
 

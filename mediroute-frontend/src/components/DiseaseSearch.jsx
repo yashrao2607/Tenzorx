@@ -54,7 +54,42 @@ const DiseaseSearch = ({ user, onSearch }) => {
         <p className="text-slate-500 text-lg">Describe your symptoms or procedure needs. Our AI will guide you through a clinical assessment.</p>
       </div>
 
-      <div className="glass-card overflow-hidden">
+      <div className="glass-card overflow-hidden relative">
+        <AnimatePresence>
+          {loading && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 z-50 bg-white/90 backdrop-blur-sm flex flex-col items-center justify-center p-10 text-center"
+            >
+              <div className="relative">
+                <div className="w-20 h-20 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+                <Activity className="w-8 h-8 text-primary absolute inset-0 m-auto animate-pulse" />
+              </div>
+              <motion.h3 
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="mt-8 text-xl font-bold text-slate-900"
+              >
+                {currentStep === 'input' ? 'Generating Clinical Questions...' : 'Finalizing AI Diagnosis...'}
+              </motion.h3>
+              <p className="mt-3 text-slate-500 max-w-xs mx-auto text-sm leading-relaxed">
+                Our Institutional Intelligence engine is mapping your input to standardized medical codes.
+              </p>
+              
+              <div className="mt-10 w-full max-w-xs bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                <motion.div 
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "100%" }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                  className="w-1/2 h-full bg-primary"
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <AnimatePresence mode="wait">
           {currentStep === 'input' ? (
             <motion.div key="input" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="p-10">
@@ -72,7 +107,7 @@ const DiseaseSearch = ({ user, onSearch }) => {
                   />
                 </div>
                 <button disabled={loading} type="submit" className="btn-primary w-full py-5 flex items-center justify-center gap-3 text-lg">
-                  {loading ? 'Analyzing...' : <><MessageSquare className="w-6 h-6" /> Start Clinical Intake</>}
+                  <MessageSquare className="w-6 h-6" /> Start Clinical Intake
                 </button>
               </form>
             </motion.div>
@@ -96,7 +131,7 @@ const DiseaseSearch = ({ user, onSearch }) => {
                   </div>
                 ))}
                 <button disabled={loading} type="submit" className="btn-primary w-full py-5 flex items-center justify-center gap-3 text-lg">
-                  {loading ? 'Processing...' : <>Finalize Analysis <ArrowRight className="w-6 h-6" /></>}
+                  Finalize Analysis <ArrowRight className="w-6 h-6" />
                 </button>
               </form>
             </motion.div>
