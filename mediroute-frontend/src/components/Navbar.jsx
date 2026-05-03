@@ -44,6 +44,9 @@ const Navbar = () => {
           <NavLink to='/about' className={({isActive}) => isActive ? 'text-primary' : 'hover:text-slate-900 transition-colors'}>
             <li className='py-1'>ABOUT</li>
           </NavLink>
+          <NavLink to='/lender' className={({isActive}) => isActive ? 'text-primary' : 'hover:text-slate-900 transition-colors'}>
+            <li className='py-1'>LENDER</li>
+          </NavLink>
         </ul>
 
         {/* Action Area */}
@@ -98,6 +101,7 @@ const Navbar = () => {
               <NavLink onClick={() => setShowMenu(false)} to='/doctors'>NETWORK</NavLink>
               <NavLink onClick={() => setShowMenu(false)} to='/mediroute'>MEDIROUTE AI</NavLink>
               <NavLink onClick={() => setShowMenu(false)} to='/about'>ABOUT</NavLink>
+              <NavLink onClick={() => setShowMenu(false)} to='/lender'>LENDER</NavLink>
               <NavLink onClick={() => setShowMenu(false)} to='/contact'>CONTACT</NavLink>
             </div>
           </div>

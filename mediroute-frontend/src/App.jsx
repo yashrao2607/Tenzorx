@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AppContextProvider from './context/AppContext'
 import MediRouteFlow from './MediRouteFlow'
+import LenderDashboard from './pages/LenderDashboard'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/mediroute' element={<MediRouteFlow />} />
+          <Route path='/lender' element={<LenderDashboard />} />
           <Route path='/doctors' element={<Hospitals />} />
           <Route path='/doctors/:speciality' element={<Hospitals />} />
           <Route path='/login' element={<Login />} />
