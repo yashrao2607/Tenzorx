@@ -41,7 +41,10 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(`${API_BASE_URL}/api/hospitals-by-city`, {
-          city, procedure: diagnosis.recommended_procedure, icd10_code: diagnosis.icd10_code
+          city, 
+          procedure: diagnosis.recommended_procedure, 
+          icd10_code: diagnosis.icd10_code,
+          comorbidities: user.health_records?.comorbidities || []
         });
         setData(response.data);
       } catch (err) { setError('Could not fetch hospital data.'); }

@@ -6,7 +6,7 @@ from rapidfuzz import fuzz
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Any
 import logging
 import sys
 
@@ -15,6 +15,7 @@ from services.intent_service import analyze_intent
 from services.cost_service import calculate_costs
 from services.loan_service import process_loan
 from services.orchestrator import run_full_analysis, diagnostician, cost_auditor, underwriter
+from services.abdm_service import abdm_service
 from database import get_db, engine, Base
 from storage_utils import read_json, append_json, now_iso
 from sqlalchemy.orm import Session
@@ -114,6 +115,11 @@ class RegisterUserRequest(BaseModel):
     city: str
     state: str
     phone: str
+    abha_id: Optional[str] = None
+    health_records: Optional[Dict[str, Any]] = None
+
+class AbdmFetchRequest(BaseModel):
+    abha_id: str
 
 class SearchDiseaseRequest(BaseModel):
     user_id: str
@@ -127,6 +133,7 @@ class HospitalsByCityRequest(BaseModel):
     city: str
     procedure: str
     icd10_code: str
+    comorbidities: Optional[List[str]] = []
 
 class ApplyLoanRequest(BaseModel):
     user_id: str
@@ -136,6 +143,7 @@ class ApplyLoanRequest(BaseModel):
     procedure: str
     requested_amount: int
     city: Optional[str] = None
+    comorbidities: Optional[List[str]] = []
 
 
 # ──────────────────────────────────────────────
@@ -348,11 +356,22 @@ async def register_user(req: RegisterUserRequest):
         "occupation": req.occupation,
         "city": req.city,
         "phone": phone_digits,
+        "abha_id": req.abha_id,
+        "health_records": req.health_records,
         "registered_at": now_iso(),
     }
     append_json("users.json", record)
-    logger.info(f"[Register] New user {user_id} from {req.city}, {req.state}")
+    logger.info(f"[Register] New user {user_id} from {req.city}, {req.state} | ABHA: {req.abha_id}")
     return {"user_id": user_id, "status": "registered", "city": req.city, "state": req.state, "userData": record}
+
+
+@app.post("/api/abdm/fetch-records")
+async def fetch_abdm_records(req: AbdmFetchRequest):
+    logger.info(f"[ABDM] Fetch request for {req.abha_id}")
+    records = abdm_service.fetch_health_records(req.abha_id)
+    if not records:
+        raise HTTPException(status_code=404, detail="No health records found for this ABHA ID.")
+    return {"success": True, "records": records}
 
 
 @app.get("/api/get-user-profile/{user_id}")
@@ -420,17 +439,36 @@ async def hospitals_by_city(req: HospitalsByCityRequest):
         raise HTTPException(status_code=404, detail=f"No hospitals found in {req.city} for {req.procedure}. Run seed_storage.py.")
 
     costs = [h["estimated_total_cost"] for h in matches]
-    fair_market_price = int(statistics.median(costs))
+    
+    # Base median price
+    base_median = statistics.median(costs)
+    
+    # Apply comorbidity risk adjustment (Simulated logic similar to cost_auditor)
+    COMORBIDITY_MULTIPLIERS = {
+        "diabetes": 0.15,
+        "hypertension": 0.10,
+        "heart_disease": 0.20,
+        "obesity": 0.12
+    }
+    
+    total_multiplier = 0
+    for c in (req.comorbidities or []):
+        total_multiplier += COMORBIDITY_MULTIPLIERS.get(c.lower(), 0.05)
+    
+    fair_market_price = int(base_median * (1 + total_multiplier))
 
     response = {
         "city": resolved_city,
         "icd10_code": resolved_icd10,
         "procedure": resolved_procedure,
         "fair_market_price": fair_market_price,
-        "min_cost": min(costs),
-        "max_cost": max(costs),
+        "min_cost": int(min(costs) * (1 + total_multiplier)),
+        "max_cost": int(max(costs) * (1 + total_multiplier)),
         "hospital_count": len(matches),
-        "hospitals": sorted(matches, key=lambda x: x["estimated_total_cost"]),
+        "hospitals": sorted([
+            {**h, "estimated_total_cost": int(h["estimated_total_cost"] * (1 + total_multiplier))} 
+            for h in matches
+        ], key=lambda x: x["estimated_total_cost"]),
     }
 
     # Save for audit
@@ -466,11 +504,24 @@ async def apply_for_loan(req: ApplyLoanRequest):
         raise HTTPException(status_code=404, detail="No market data available")
 
     costs = [h["estimated_total_cost"] for h in city_matches]
-    fair_market_price = int(statistics.median(costs))
+    
+    # Apply comorbidity risk adjustment
+    COMORBIDITY_MULTIPLIERS = {
+        "diabetes": 0.15,
+        "hypertension": 0.10,
+        "heart_disease": 0.20,
+        "obesity": 0.12
+    }
+    total_multiplier = 0
+    for c in (req.comorbidities or []):
+        total_multiplier += COMORBIDITY_MULTIPLIERS.get(c.lower(), 0.05)
+
+    base_median = statistics.median(costs)
+    fair_market_price = int(base_median * (1 + total_multiplier))
     max_approvable = int(fair_market_price * 1.10)
 
     selected = next((h for h in city_matches if h["hospital_id"] == req.hospital_id), None)
-    selected_cost = selected["estimated_total_cost"] if selected else fair_market_price
+    selected_cost = int(selected["estimated_total_cost"] * (1 + total_multiplier)) if selected else fair_market_price
 
     overpricing_pct = round(((req.requested_amount - fair_market_price) / fair_market_price) * 100, 2)
 

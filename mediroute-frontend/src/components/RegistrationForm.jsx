@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { UserPlus, CreditCard, Briefcase, MapPin, Phone } from 'lucide-react';
+import { UserPlus, CreditCard, Briefcase, MapPin, Phone, ShieldCheck, Activity, Search, CheckCircle2 } from 'lucide-react';
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8011';
@@ -32,10 +32,39 @@ const Verhoeff = {
 
 const RegistrationForm = ({ onRegister, initialData = null }) => {
   const [formData, setFormData] = useState(initialData || {
-    name: '', age: '', gender: 'Male', aadhaar: '', pan: '', occupation: 'Salaried', city: '', phone: ''
+    name: '', age: '', gender: 'Male', aadhaar: '', pan: '', occupation: 'Salaried', city: '', phone: '', abha_id: '', health_records: null
   });
   const [loading, setLoading] = useState(false);
+  const [fetchingAbha, setFetchingAbha] = useState(false);
+  const [abhaSuccess, setAbhaSuccess] = useState(false);
   const [error, setError] = useState(null);
+
+  const fetchAbdmRecords = async () => {
+    if (!formData.abha_id || formData.abha_id.length < 14) {
+      setError('Please enter a valid 14-digit ABHA ID (e.g. 1234-5678-9012)');
+      return;
+    }
+    setFetchingAbha(true);
+    setError(null);
+    try {
+      const res = await axios.post(`${API_BASE_URL}/api/abdm/fetch-records`, { abha_id: formData.abha_id });
+      if (res.data.success) {
+        const records = res.data.records;
+        setFormData({
+          ...formData,
+          name: records.full_name || formData.name,
+          gender: records.gender === 'M' ? 'Male' : records.gender === 'F' ? 'Female' : formData.gender,
+          health_records: records
+        });
+        setAbhaSuccess(true);
+        setTimeout(() => setAbhaSuccess(false), 3000);
+      }
+    } catch (err) {
+      setError(err.response?.data?.detail || 'ABHA ID not found in registry.');
+    } finally {
+      setFetchingAbha(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -134,6 +163,52 @@ const RegistrationForm = ({ onRegister, initialData = null }) => {
             <input required maxLength={10} className="input-field w-full" placeholder="10-digit Mobile" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: onlyDigits(e.target.value).slice(0, 10) })} />
           </div>
         </div>
+
+        <div className="space-y-3">
+          <label className="text-sm font-bold text-slate-600 ml-1 flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-primary" /> ABHA ID (Digital Health Locker)
+          </label>
+          <div className="flex gap-3">
+            <input 
+              className="input-field flex-1" 
+              placeholder="1234-5678-9012" 
+              value={formData.abha_id} 
+              onChange={(e) => setFormData({ ...formData, abha_id: e.target.value })} 
+            />
+            <button 
+              type="button"
+              onClick={fetchAbdmRecords}
+              disabled={fetchingAbha}
+              className={`px-6 rounded-2xl font-bold text-sm transition-all flex items-center gap-2 ${abhaSuccess ? 'bg-emerald-500 text-white' : 'bg-secondary text-primary hover:bg-primary hover:text-white'}`}
+            >
+              {fetchingAbha ? 'Fetching...' : abhaSuccess ? <><CheckCircle2 className="w-4 h-4" /> Verified</> : <><Search className="w-4 h-4" /> Fetch Health Data</>}
+            </button>
+          </div>
+          <p className="text-[10px] text-slate-400 font-medium ml-1 italic">Simulation: Try 1234-5678-9012 or 4321-8765-2109</p>
+        </div>
+
+        {formData.health_records && (
+          <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="p-6 bg-primary/5 border border-primary/10 rounded-[2rem] space-y-4">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2">
+                <Activity className="w-4 h-4" /> Discovered Health Records
+              </h4>
+              <span className="px-2 py-1 bg-emerald-100 text-emerald-700 text-[9px] font-black rounded-lg uppercase tracking-tighter">Verified by ABDM</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {formData.health_records.comorbidities?.map(c => (
+                <span key={c} className="px-4 py-2 bg-white border border-primary/20 text-primary text-xs font-bold rounded-xl shadow-sm">
+                  {c}
+                </span>
+              ))}
+              {formData.health_records.past_surgeries?.map(s => (
+                <span key={s} className="px-4 py-2 bg-white border border-amber-200 text-amber-700 text-xs font-bold rounded-xl shadow-sm">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        )}
 
         <div className="space-y-3">
           <label className="text-sm font-bold text-slate-600 ml-1 flex items-center gap-2">

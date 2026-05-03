@@ -62,7 +62,8 @@ function MediRouteFlow() {
         icd10_code: diagnosis.icd10_code,
         procedure: diagnosis.recommended_procedure,
         requested_amount: hospital.estimated_total_cost,
-        city: user.city
+        city: user.city,
+        comorbidities: user.health_records?.comorbidities || []
       });
       setLoanResult(response.data);
       setStep(3);
@@ -117,7 +118,7 @@ function MediRouteFlow() {
           <AnimatePresence mode="wait">
             {step === 0 && <RegistrationForm key="0" onRegister={handleRegistration} initialData={user} />}
             {step === 1 && <DiseaseSearch key="1" user={user} onSearch={handleSearch} />}
-            {step === 2 && <HospitalMapView key="2" user={user} diagnosis={diagnosis} onSelect={handleHospitalSelect} />}
+            {step === 2 && <HospitalMapView key="2" user={user} diagnosis={diagnosis} onSelect={handleHospitalSelect} comorbidities={user.health_records?.comorbidities || []} />}
             {step === 3 && <LoanDecision key="3" data={loanResult} onBack={() => setStep(2)} />}
           </AnimatePresence>
         </main>

@@ -54,16 +54,12 @@ class CostAuditorAgent:
         
         # Robust Procedure Matching
         VALID_PROCEDURES = ["Appendectomy", "Angioplasty", "Knee Replacement"]
-        matched_procedure = None
+        matched_procedure = procedure # Default to the AI's suggestion
         for p in VALID_PROCEDURES:
             if p.lower() in procedure.lower():
                 matched_procedure = p
                 break
         
-        if not matched_procedure:
-            logger.warning(f"[Cost Auditor] No matching procedure found for: {procedure}")
-            return {}
-
         query = db.query(Hospital).filter(
             Hospital.procedure == matched_procedure,
             Hospital.city == city

@@ -37,19 +37,23 @@ Return JSON only:
 Ensure questions are concise and directly help in surgical/procedure identification."""
 
 DIAGNOSIS_PROMPT = """You are a clinical AI agent. 
-Based on the initial concern and the user's answers to clarifying questions, identify the most likely medical condition and required procedure.
+Based on the user's initial concern, their answers to clarifying questions, and their VERIFIED clinical history (comorbidities/past surgeries), identify the most likely medical condition and required procedure.
+
 Return JSON only:
 {{
   "condition": "...",
   "icd10_code": "...",
   "recommended_procedure": "...",
   "confidence_score": 0.0-1.0,
+  "clinical_rationale": "Briefly explain how the clinical history (if any) impacted this diagnosis.",
   "procedure_aliases": ["...", "..."]
 }}
+
 Rules:
 * Always return a SPECIFIC medical procedure (e.g., Appendectomy, Angioplasty, Knee Replacement).
 * AVOID vague terms like 'Consultation' or 'Evaluation'.
-* Use valid ICD-10 codes."""
+* Use valid ICD-10 codes.
+* If clinical history increases surgical risk or complexity, reflect that in the confidence score and rationale."""
 
 class DiagnosticianAgent:
     def __init__(self):
@@ -83,14 +87,20 @@ class DiagnosticianAgent:
             result = await self._invoke_model(llm_fallback, prompt)
         return result or {"questions": ["Can you describe the pain in more detail?", "How long have you been experiencing this?", "Are there any other symptoms?"]}
 
-    async def analyze(self, symptom_text: str, answers: Optional[List[Dict[str, str]]] = None) -> Dict[str, Any]:
+    async def analyze(self, symptom_text: str, answers: Optional[List[Dict[str, str]]] = None, clinical_history: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        history_str = "None"
+        if clinical_history:
+            comorb = ", ".join(clinical_history.get("comorbidities", [])) or "None"
+            past_surg = ", ".join(clinical_history.get("past_surgeries", [])) or "None"
+            history_str = f"Comorbidities: {comorb} | Past Surgeries: {past_surg}"
+
         if not answers:
-            # Traditional one-shot analysis (legacy support or if direct analysis requested)
-            prompt = f"{DIAGNOSIS_PROMPT}\n\nSymptom: {symptom_text}\nJSON:"
+            # Traditional one-shot analysis
+            prompt = f"{DIAGNOSIS_PROMPT}\n\nClinical History: {history_str}\n\nSymptom: {symptom_text}\nJSON:"
         else:
             # Multi-turn analysis
             answers_str = "\n".join([f"Q: {a['question']}\nA: {a['answer']}" for a in answers])
-            prompt = f"{DIAGNOSIS_PROMPT}\n\nInitial Concern: {symptom_text}\n\nClarifying Answers:\n{answers_str}\nJSON:"
+            prompt = f"{DIAGNOSIS_PROMPT}\n\nClinical History: {history_str}\n\nInitial Concern: {symptom_text}\n\nClarifying Answers:\n{answers_str}\nJSON:"
 
         result = await self._invoke_model(llm_primary, prompt)
         if not result:
@@ -102,6 +112,8 @@ class DiagnosticianAgent:
                 "icd10_code": "N/A",
                 "recommended_procedure": "Consult physician",
                 "confidence_score": 0.0,
+                "clinical_rationale": "Model failed to generate response.",
                 "procedure_aliases": ["Consult doctor"]
             }
         return result
+
