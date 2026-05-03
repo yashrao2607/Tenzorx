@@ -91,9 +91,10 @@ const LoanDecision = ({ data, onBack }) => {
               <p className="text-[10px] uppercase font-black text-slate-400 mb-2 tracking-widest">Medical Procedure</p>
               <p className="text-xl font-bold text-slate-900">{procedure}</p>
             </div>
-            <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 text-center">
-              <p className="text-[10px] uppercase font-black text-slate-400 mb-2 tracking-widest">Requested Loan</p>
-              <p className="text-2xl font-black text-slate-900">₹{requested_amount.toLocaleString()}</p>
+            <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 text-center relative overflow-hidden group">
+              <p className="text-[10px] uppercase font-black text-slate-400 mb-2 tracking-widest relative z-10">Total Hospital Bill</p>
+              <p className="text-2xl font-black text-slate-900 relative z-10">₹{requested_amount.toLocaleString()}</p>
+              <div className="absolute inset-0 bg-rose-50/0 group-hover:bg-rose-50/50 transition-colors" />
             </div>
             <div className="p-6 bg-primary/5 rounded-3xl border border-primary/10 text-right">
               <p className="text-[10px] uppercase font-black text-primary mb-2 tracking-widest">Regional Fair Price</p>
@@ -159,6 +160,23 @@ const LoanDecision = ({ data, onBack }) => {
 
             {/* Subtle background decoration */}
             <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+          </div>
+
+          {/* Final Loan Callout */}
+          <div className="p-8 bg-primary rounded-[2.5rem] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl shadow-primary/20 border-4 border-white">
+            <div className="flex items-center gap-6">
+              <div className="w-16 h-16 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-md">
+                <Check className="w-10 h-10 text-white" />
+              </div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Final Approved Loan</p>
+                <h4 className="text-4xl font-black">₹{data.gap_loan_amount?.toLocaleString()}</h4>
+              </div>
+            </div>
+            <div className="text-right">
+              <p className="text-sm font-bold opacity-80">You saved ₹{data.insurance_coverage?.toLocaleString()}</p>
+              <p className="text-[10px] uppercase font-black opacity-40">via Institutional Gap Funding</p>
+            </div>
           </div>
 
           {/* EMI Options */}

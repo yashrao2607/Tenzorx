@@ -104,5 +104,26 @@
         "is_clinical_anomaly": false,
         "decision": "APPROVED",
         "recommendation": "Loan within fair market range. Approved with PM-JAY Gap Funding."
+    },
+    {
+        "timestamp": "2026-05-03T10:06:13.026650",
+        "application_id": "LOAN-1777802773",
+        "user_id": "USR-680f3816",
+        "patient_name": "Rahul Sharma",
+        "hospital_id": 36,
+        "hospital_name": "Primus",
+        "city": "New Delhi",
+        "icd10_code": "I25.10",
+        "procedure": "Angioplasty",
+        "requested_amount": 239425,
+        "insurance_coverage": 155626,
+        "gap_loan": 83799,
+        "fair_market_price": 360041,
+        "overpricing_pct": -33.5,
+        "fairness_score": 150,
+        "fraud_risk_score": 0,
+        "is_clinical_anomaly": false,
+        "decision": "APPROVED",
+        "recommendation": "Loan within fair market range. Approved with PM-JAY Gap Funding."
     }
 ]
