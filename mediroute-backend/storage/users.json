@@ -334,5 +334,33 @@
         "abha_id": null,
         "health_records": null,
         "registered_at": "2026-05-03T08:43:17.213284"
+    },
+    {
+        "user_id": "USR-680f3816",
+        "name": "Rahul Sharma",
+        "age": 25,
+        "gender": "Male",
+        "aadhaar": "XXXX-XXXX-1992",
+        "pan": "ABCDE1234F",
+        "occupation": "Salaried",
+        "city": "Delhi",
+        "phone": "8434460542",
+        "abha_id": "1234-5678-9012",
+        "health_records": {
+            "full_name": "Rahul Sharma",
+            "abha_id": "1234-5678-9012",
+            "gender": "M",
+            "dob": "1992-05-15",
+            "blood_group": "O+",
+            "comorbidities": [
+                "Diabetes",
+                "Hypertension"
+            ],
+            "past_surgeries": [
+                "Appendectomy (2018)"
+            ],
+            "verified": true
+        },
+        "registered_at": "2026-05-03T09:17:54.002097"
     }
 ]

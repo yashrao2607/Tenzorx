@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { UserPlus, CreditCard, Briefcase, MapPin, Phone, ShieldCheck, Activity, Search, CheckCircle2 } from 'lucide-react';
+import { UserPlus, CreditCard, Briefcase, MapPin, Phone, Shield, Activity, Search, Check } from 'lucide-react';
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8011';
@@ -87,10 +87,24 @@ const RegistrationForm = ({ onRegister, initialData = null }) => {
     if (!payload.city) { setError('Please select your city.'); setLoading(false); return; }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/register-user`, payload);
+      const response = await axios.post(`${API_BASE_URL}/api/register-user`, {
+        ...payload,
+        state: 'Unknown' // Adding required 'state' field with default
+      });
       onRegister({ ...payload, ...response.data });
     } catch (err) {
-      setError(err.response?.data?.detail || 'Registration failed.');
+      const detail = err.response?.data?.detail;
+      let errorMsg = 'Registration failed.';
+      
+      if (typeof detail === 'string') {
+        errorMsg = detail;
+      } else if (Array.isArray(detail)) {
+        errorMsg = detail[0]?.msg || 'Validation error.';
+      } else if (detail?.msg) {
+        errorMsg = detail.msg;
+      }
+      
+      setError(errorMsg);
     } finally { setLoading(false); }
   };
 
@@ -166,7 +180,7 @@ const RegistrationForm = ({ onRegister, initialData = null }) => {
 
         <div className="space-y-3">
           <label className="text-sm font-bold text-slate-600 ml-1 flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-primary" /> ABHA ID (Digital Health Locker)
+            <Shield className="w-4 h-4 text-primary" /> ABHA ID (Digital Health Locker)
           </label>
           <div className="flex gap-3">
             <input 
@@ -181,7 +195,7 @@ const RegistrationForm = ({ onRegister, initialData = null }) => {
               disabled={fetchingAbha}
               className={`px-6 rounded-2xl font-bold text-sm transition-all flex items-center gap-2 ${abhaSuccess ? 'bg-emerald-500 text-white' : 'bg-secondary text-primary hover:bg-primary hover:text-white'}`}
             >
-              {fetchingAbha ? 'Fetching...' : abhaSuccess ? <><CheckCircle2 className="w-4 h-4" /> Verified</> : <><Search className="w-4 h-4" /> Fetch Health Data</>}
+              {fetchingAbha ? 'Fetching...' : abhaSuccess ? <><Check className="w-4 h-4" /> Verified</> : <><Search className="w-4 h-4" /> Fetch Health Data</>}
             </button>
           </div>
           <p className="text-[10px] text-slate-400 font-medium ml-1 italic">Simulation: Try 1234-5678-9012 or 4321-8765-2109</p>

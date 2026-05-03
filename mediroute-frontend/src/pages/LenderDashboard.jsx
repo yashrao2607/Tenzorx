@@ -2,18 +2,15 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ShieldCheck, 
+  Shield, 
   Search, 
   FileText, 
-  TrendingDown, 
-  CheckCircle2, 
-  AlertTriangle, 
-  XCircle,
-  ArrowUpDown,
-  Building2,
-  Calendar,
-  IndianRupee,
-  Activity
+  Activity, 
+  Check, 
+  AlertCircle, 
+  X,
+  Home,
+  Clock
 } from 'lucide-react';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8011';
@@ -70,7 +67,7 @@ const LenderDashboard = () => {
           <div>
             <div className="flex items-center gap-3 mb-2">
               <div className="p-2 bg-primary rounded-lg text-white">
-                <ShieldCheck className="w-6 h-6" />
+                <Shield className="w-6 h-6" />
               </div>
               <h1 className="text-3xl font-bold text-slate-900">Lender Audit Portal</h1>
             </div>
@@ -81,7 +78,7 @@ const LenderDashboard = () => {
             onClick={fetchLogs}
             className="flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 rounded-2xl text-sm font-bold text-slate-600 hover:bg-slate-50 transition-all shadow-sm"
           >
-            <ArrowUpDown className="w-4 h-4" /> Refresh Audit Trail
+            <Search className="w-4 h-4" /> Refresh Audit Trail
           </button>
         </div>
 
@@ -90,7 +87,7 @@ const LenderDashboard = () => {
           {[
             { label: 'Total Audits', val: stats.total, icon: FileText, color: 'text-blue-500', bg: 'bg-blue-50' },
             { label: 'Avg Fairness Score', val: `${stats.avgFairness}%`, icon: Activity, color: 'text-emerald-500', bg: 'bg-emerald-50' },
-            { label: 'Institutional Approval', val: `${stats.approvalRate}%`, icon: CheckCircle2, color: 'text-primary', bg: 'bg-secondary' }
+            { label: 'Institutional Approval', val: `${stats.approvalRate}%`, icon: Check, color: 'text-primary', bg: 'bg-secondary' }
           ].map((s, idx) => (
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -116,7 +113,7 @@ const LenderDashboard = () => {
           {/* Audit List */}
           <div className="lg:col-span-2 space-y-4">
             <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2 mb-2">
-              <TrendingDown className="w-5 h-5 text-primary" /> Recent Loan Decisions
+              <Activity className="w-5 h-5 text-primary" /> Recent Loan Decisions
             </h3>
             
             {loading ? (
@@ -198,12 +195,12 @@ const LenderDashboard = () => {
                   <div className="p-8 space-y-8">
                     <div className="flex items-center gap-4 pb-6 border-b border-slate-100">
                       <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-primary">
-                        <Building2 className="w-6 h-6" />
+                        <Home className="w-6 h-6" />
                       </div>
                       <div>
                         <h4 className="font-bold text-slate-900">{selectedLog.hospital_name}</h4>
                         <p className="text-xs text-slate-400 flex items-center gap-1.5">
-                          <Calendar className="w-3 h-3" /> {new Date(selectedLog.timestamp).toLocaleString()}
+                          <Clock className="w-3 h-3" /> {new Date(selectedLog.timestamp).toLocaleString()}
                         </p>
                       </div>
                     </div>
@@ -235,7 +232,7 @@ const LenderDashboard = () => {
                         "{selectedLog.recommendation}"
                       </p>
                       <div className="flex items-center gap-2 pt-2">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                        <Shield className="w-4 h-4 text-emerald-500" />
                         <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">ABDM Verified History used</span>
                       </div>
                     </div>
@@ -257,7 +254,7 @@ const LenderDashboard = () => {
 
                     {selectedLog.decision === 'REJECTED' && (
                       <div className="p-4 rounded-2xl bg-rose-50 border border-rose-100 flex items-start gap-3">
-                        <AlertTriangle className="w-5 h-5 text-rose-500 shrink-0" />
+                        <AlertCircle className="w-5 h-5 text-rose-500 shrink-0" />
                         <p className="text-[11px] text-rose-700 font-medium">
                           High inflation risk detected. This application violates regional market fairness standards.
                         </p>

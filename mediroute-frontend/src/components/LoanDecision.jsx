@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CheckCircle2, XCircle, AlertCircle, TrendingDown, ArrowLeft, ShieldCheck, Clock, ExternalLink } from 'lucide-react';
+import { Check, X, AlertCircle, Activity, ArrowLeft, Shield, Clock, ExternalLink } from 'lucide-react';
 
 const LoanDecision = ({ data, onBack }) => {
   if (!data) return null;
@@ -14,9 +14,7 @@ const LoanDecision = ({ data, onBack }) => {
       <div className="glass-card overflow-hidden">
         {/* Status Header */}
         <div className={`p-10 text-center ${isApproved ? 'bg-emerald-50' : isReview ? 'bg-amber-50' : 'bg-rose-50'}`}>
-          <div className="flex justify-center mb-6">
-            {isApproved ? <CheckCircle2 className="w-20 h-20 text-emerald-500" /> : isReview ? <AlertCircle className="w-20 h-20 text-amber-500" /> : <XCircle className="w-20 h-20 text-rose-500" />}
-          </div>
+            {isApproved ? <Check className="w-20 h-20 text-emerald-500" /> : isReview ? <AlertCircle className="w-20 h-20 text-amber-500" /> : <X className="w-20 h-20 text-rose-500" />}
           <h2 className={`text-4xl font-black mb-3 ${isApproved ? 'text-emerald-700' : isReview ? 'text-amber-700' : 'text-rose-700'}`}>
             {decision}
           </h2>
@@ -56,9 +54,7 @@ const LoanDecision = ({ data, onBack }) => {
           {/* EMI Options */}
           {emi_options && emi_options.length > 0 && (
             <div className="space-y-6">
-              <h3 className="text-xl font-bold text-slate-900 flex items-center gap-3">
-                <ShieldCheck className="text-primary w-6 h-6" /> Available Financing Options
-              </h3>
+                <Shield className="text-primary w-6 h-6" /> Available Financing Options
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {emi_options.map((opt, i) => (
                   <div key={i} className="p-6 bg-white border border-slate-200 rounded-3xl hover:border-primary transition-all group">
@@ -84,10 +80,7 @@ const LoanDecision = ({ data, onBack }) => {
           {cheaper_alternative && (
             <div className="p-8 bg-primary text-white rounded-[2.5rem] shadow-xl shadow-primary/20 relative overflow-hidden">
               <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-4">
-                  <TrendingDown className="w-6 h-6" />
-                  <span className="text-xs font-black uppercase tracking-[0.2em]">Smart Recommendation</span>
-                </div>
+                  <Activity className="w-6 h-6" />
                 <h4 className="text-2xl font-bold mb-2">Switch to {cheaper_alternative.hospital_name}</h4>
                 <p className="text-white/80 text-sm mb-6 max-w-md">
                   You can save up to <strong className="text-white text-lg">₹{cheaper_alternative.savings.toLocaleString()}</strong> by switching to this equally-rated provider.
@@ -96,9 +89,7 @@ const LoanDecision = ({ data, onBack }) => {
                   Compare Other Hospitals <ArrowRight className="w-5 h-5" />
                 </button>
               </div>
-              <div className="absolute -right-10 -bottom-10 opacity-10">
-                <ShieldCheck className="w-64 h-64" />
-              </div>
+                <Shield className="w-64 h-64" />
             </div>
           )}
 

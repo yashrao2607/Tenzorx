@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, UserPlus, Search, MapPin, FileCheck, RefreshCcw, User, X, CreditCard, Phone, AlertCircle } from 'lucide-react';
+import { Shield, UserPlus, Search, MapPin, FileText, RefreshCcw, User, X, CreditCard, Phone, AlertCircle } from 'lucide-react';
 import RegistrationForm from './components/RegistrationForm';
 import DiseaseSearch from './components/DiseaseSearch';
 import HospitalMapView from './components/HospitalMapView';
@@ -36,7 +36,7 @@ function MediRouteFlow() {
     { id: 0, label: 'Registration', icon: UserPlus },
     { id: 1, label: 'Analysis', icon: Search },
     { id: 2, label: 'Hospitals', icon: MapPin },
-    { id: 3, label: 'Approval', icon: FileCheck },
+    { id: 3, label: 'Approval', icon: FileText },
   ];
 
   const visibleSteps = user ? allSteps.slice(1) : allSteps;
@@ -68,7 +68,18 @@ function MediRouteFlow() {
       setLoanResult(response.data);
       setStep(3);
     } catch (err) {
-      setError(err.response?.data?.detail || 'Underwriting failed.');
+      const detail = err.response?.data?.detail;
+      let errorMsg = 'Underwriting failed.';
+      
+      if (typeof detail === 'string') {
+        errorMsg = detail;
+      } else if (Array.isArray(detail)) {
+        errorMsg = detail[0]?.msg || 'Validation error.';
+      } else if (detail?.msg) {
+        errorMsg = detail.msg;
+      }
+      
+      setError(errorMsg);
     } finally {
       setLoading(false);
     }

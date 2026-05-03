@@ -113,7 +113,7 @@ class RegisterUserRequest(BaseModel):
     pan: str
     occupation: str
     city: str
-    state: str
+    state: Optional[str] = "Unknown"
     phone: str
     abha_id: Optional[str] = None
     health_records: Optional[Dict[str, Any]] = None

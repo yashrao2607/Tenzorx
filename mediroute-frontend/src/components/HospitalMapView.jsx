@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { Star, Building2, ChevronRight, AlertCircle, Info, Shield } from 'lucide-react';
+import { Star, Home, ChevronRight, AlertCircle, Info, Shield } from 'lucide-react';
 import L from 'leaflet';
 import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
@@ -172,7 +172,7 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-5">
                     <div className={`p-4 rounded-2xl transition-colors ${selectedId === h.hospital_id ? 'bg-primary text-white' : 'bg-slate-50 text-slate-400 group-hover:bg-slate-100'}`}>
-                      <Building2 className="w-6 h-6" />
+                      <Home className="w-6 h-6" />
                     </div>
                     <div>
                       <h4 className="text-lg font-bold text-slate-900 leading-tight">{h.hospital_name}</h4>
