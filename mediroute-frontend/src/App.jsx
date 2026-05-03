@@ -20,9 +20,12 @@ import LenderDashboard from './pages/LenderDashboard'
 const App = () => {
   return (
     <AppContextProvider>
-      <div className='mx-4 sm:mx-[10%] max-w-[1440px] xl:mx-auto'>
+      <div className='min-h-screen bg-slate-50'>
         <ToastContainer />
-        <Navbar />
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <Navbar />
+        </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/mediroute' element={<MediRouteFlow />} />
