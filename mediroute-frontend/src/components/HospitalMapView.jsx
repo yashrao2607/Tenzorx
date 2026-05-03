@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { Star, Building2, ChevronRight, AlertCircle, Info } from 'lucide-react';
+import { Star, Building2, ChevronRight, AlertCircle, Info, Shield } from 'lucide-react';
 import L from 'leaflet';
 import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
@@ -99,6 +99,22 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
                 <span className="text-[10px] uppercase tracking-widest text-primary font-black">Regional Audit: {city}</span>
                 <h3 className="text-3xl font-bold text-slate-900 mt-1">{diagnosis.recommended_procedure}</h3>
                 <p className="text-slate-500 text-sm mt-1">Diagnosis: <span className="font-bold text-slate-700">{diagnosis.condition}</span></p>
+                
+                {diagnosis.clinical_rationale && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 5 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    className="mt-4 p-3 bg-indigo-50 border border-indigo-100 rounded-2xl flex gap-3 items-start"
+                  >
+                    <div className="p-1.5 bg-white rounded-lg shadow-sm">
+                      <Shield className="w-3 h-3 text-indigo-500" />
+                    </div>
+                    <p className="text-[11px] text-indigo-700 leading-relaxed font-medium">
+                      <span className="font-bold text-indigo-900 block mb-0.5">Clinical Context Used:</span>
+                      {diagnosis.clinical_rationale}
+                    </p>
+                  </motion.div>
+                )}
               </div>
               <div className="text-right">
                 <p className="text-[10px] text-slate-400 uppercase font-bold mb-1 tracking-widest">Market Median</p>
@@ -113,6 +129,24 @@ const HospitalMapView = ({ user, diagnosis, onSelect }) => {
                 <option value="quality">Quality (Highest Rated)</option>
               </select>
             </div>
+
+            {data?.applied_factors && data.applied_factors.length > 0 && (
+              <div className="mb-6 flex flex-wrap gap-2">
+                {data.applied_factors.map((f, idx) => (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    key={idx} 
+                    className="px-3 py-1.5 bg-amber-50 border border-amber-200 rounded-full flex items-center gap-2 shadow-sm"
+                  >
+                    <AlertCircle className="w-3 h-3 text-amber-600" />
+                    <span className="text-[10px] font-bold text-amber-800 uppercase tracking-tight">
+                      {f.condition}: <span className="text-amber-600">{f.impact}</span> Risk Load
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            )}
             
             <div className="grid grid-cols-3 gap-6">
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
