@@ -545,16 +545,16 @@ async def apply_for_loan(req: ApplyLoanRequest):
 
     overpricing_pct = round(((req.requested_amount - fair_market_price) / fair_market_price) * 100, 2)
 
-    # Decision logic
-    if req.requested_amount <= max_approvable:
-        decision = "APPROVED"
-        recommendation = "Your loan is within fair market range. Approved."
-    elif req.requested_amount <= fair_market_price * 1.30:
-        decision = "REVIEW"
-        recommendation = f"Requested amount exceeds fair market price by {overpricing_pct:.0f}%. Manual verification required."
-    else:
+    # 1. Advanced Logic: Insurance Gap Calculation (Mock PM-JAY)
+    # PM-JAY covers ~65% for major surgeries, capped at 5L
+    insurance_coverage = 0
+    if req.requested_amount > 50000:
+        insurance_coverage = int(req.requested_amount * 0.65)
+        if insurance_coverage > 500000: insurance_coverage = 500000
+    
+    gap_loan_amount = req.requested_amount - insurance_coverage
+
     # 2. Advanced Logic: AI Fraud Risk Score
-    # Risk increases if requested amount is much higher than fair price
     fraud_risk_score = 0
     if overpricing_pct > 25:
         fraud_risk_score += 40
@@ -563,8 +563,7 @@ async def apply_for_loan(req: ApplyLoanRequest):
     
     # Anomaly detection: If clinical rationale mentions "mild" symptoms but price is high
     is_anomaly = False
-    # Assuming diagnosis logic passed in request or retrieved context
-    if getattr(req, 'diagnosis', None) and "mild" in str(req.diagnosis).lower() and overpricing_pct > 15:
+    if overpricing_pct > 15 and "mild" in resolved_procedure.lower():
         fraud_risk_score += 20
         is_anomaly = True
 
@@ -577,7 +576,7 @@ async def apply_for_loan(req: ApplyLoanRequest):
     fairness_score = max(0, 100 - int(overpricing_pct * 1.5))
     
     recommendation = (
-        f"Loan is within fair market range. Approved." if final_decision == "APPROVED"
+        f"Loan within fair market range. Approved with PM-JAY Gap Funding." if final_decision == "APPROVED"
         else f"High price deviation ({overpricing_pct}%). Manual audit required." if final_decision == "REVIEW"
         else "Suspicious pricing detected. Application rejected for audit."
     )
@@ -586,10 +585,9 @@ async def apply_for_loan(req: ApplyLoanRequest):
     cheaper = None
     sorted_by_cost = sorted(city_matches, key=lambda x: x["estimated_total_cost"])
     cheapest = sorted_by_cost[0]
-    selected = next((h for h in city_matches if h["hospital_id"] == req.hospital_id), None)
     if selected and cheapest["hospital_id"] != selected["hospital_id"]:
         savings = int(selected["estimated_total_cost"] * (1 + total_multiplier)) - cheapest["estimated_total_cost"]
-        if savings > 0:
+        if savings > 1000:
             cheaper = {
                 "hospital_name": cheapest["hospital_name"],
                 "cost": cheapest["estimated_total_cost"],
@@ -597,52 +595,51 @@ async def apply_for_loan(req: ApplyLoanRequest):
             }
 
     emi_options = []
-    if decision == "APPROVED":
-        amt = req.requested_amount
+    if final_decision != "REJECTED":
         emi_options = [
-            {"tenure_months": 12, "emi": int(amt / 12), "interest": "0% (Subvention)"},
-            {"tenure_months": 24, "emi": int((amt * 1.08) / 24), "interest": "8% p.a."},
+            {"tenure_months": 12, "emi": int(gap_loan_amount / 12), "interest": "0% (Subvention)"},
+            {"tenure_months": 24, "emi": int((gap_loan_amount * 1.08) / 24), "interest": "8% p.a."},
         ]
 
-    # Calculate Fairness Score (0-100)
-    if req.requested_amount <= fair_market_price:
-        fairness_score = 100
-    else:
-        deviation = (req.requested_amount - fair_market_price) / fair_market_price
-        fairness_score = max(0, int(100 - (deviation * 200)))
-
     result = {
-        "decision": decision,
+        "application_id": f"LOAN-{int(time.time())}",
+        "decision": final_decision,
         "icd10_code": resolved_icd10,
         "procedure": resolved_procedure,
         "fair_market_price": fair_market_price,
-        "max_approvable": max_approvable,
         "requested_amount": req.requested_amount,
-        "selected_hospital_cost": selected_cost,
-        "city_min_cost": min(costs),
-        "city_max_cost": max(costs),
+        "insurance_coverage": insurance_coverage,
+        "gap_loan_amount": gap_loan_amount,
         "overpricing_pct": overpricing_pct,
         "fairness_score": fairness_score,
+        "fraud_risk_score": fraud_risk_score,
+        "is_clinical_anomaly": is_anomaly,
         "recommendation": recommendation,
         "cheaper_alternative": cheaper,
         "emi_options": emi_options,
     }
 
-    # Save decision with audit trail
+    # Save to Audit Trail
     append_json("loan_decisions.json", {
+        "timestamp": now_iso(),
+        "application_id": result["application_id"],
         "user_id": req.user_id,
-        "patient_name": user_record.get("name") if user_record else "Unknown",
+        "patient_name": user_record.get("name") if user_record else "Verified User",
+        "hospital_id": req.hospital_id,
         "hospital_name": req.hospital_name or (selected["hospital_name"] if selected else "Unknown"),
         "city": resolved_city,
         "icd10_code": resolved_icd10,
         "procedure": resolved_procedure,
         "requested_amount": req.requested_amount,
+        "insurance_coverage": insurance_coverage,
+        "gap_loan": gap_loan_amount,
         "fair_market_price": fair_market_price,
         "overpricing_pct": overpricing_pct,
         "fairness_score": fairness_score,
-        "decision": decision,
-        "recommendation": recommendation,
-        "timestamp": now_iso(),
+        "fraud_risk_score": fraud_risk_score,
+        "is_clinical_anomaly": is_anomaly,
+        "decision": final_decision,
+        "recommendation": recommendation
     })
 
     return result

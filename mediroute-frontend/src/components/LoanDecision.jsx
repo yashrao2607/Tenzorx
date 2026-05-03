@@ -101,18 +101,47 @@ const LoanDecision = ({ data, onBack }) => {
             </div>
           </div>
 
-          {/* Alert for Overpricing */}
-          {overpricing_pct > 0 && (
-            <div className={`p-6 rounded-3xl flex items-start gap-4 border ${isApproved ? 'bg-amber-50 border-amber-100' : 'bg-rose-50 border-rose-100'}`}>
-              <AlertCircle className={`w-6 h-6 shrink-0 ${isApproved ? 'text-amber-500' : 'text-rose-500'}`} />
-              <div>
-                <h4 className={`font-bold mb-1 ${isApproved ? 'text-amber-800' : 'text-rose-800'}`}>Price Inflation Detected</h4>
-                <p className={`text-sm ${isApproved ? 'text-amber-700' : 'text-rose-700'}`}>
-                  The selected hospital is charging <strong>{overpricing_pct}% more</strong> than the regional market average.
-                </p>
+          {/* Funding Split (Option 1) */}
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-bold text-slate-900">Institutional Funding Split</h3>
+              <span className="px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-blue-100">
+                Hybrid Approval
+              </span>
+            </div>
+            
+            <div className="relative h-20 bg-slate-100 rounded-[2rem] overflow-hidden flex border-4 border-white shadow-inner">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: `${(data.insurance_coverage / data.requested_amount) * 100}%` }}
+                className="h-full bg-blue-500 relative group cursor-help"
+              >
+                <div className="absolute inset-0 flex items-center justify-center text-[10px] font-black text-white uppercase tracking-tighter">
+                  PM-JAY Coverage: ₹{data.insurance_coverage?.toLocaleString()}
+                </div>
+              </motion.div>
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: `${(data.gap_loan_amount / data.requested_amount) * 100}%` }}
+                className="h-full bg-primary relative group cursor-help"
+              >
+                <div className="absolute inset-0 flex items-center justify-center text-[10px] font-black text-white uppercase tracking-tighter">
+                  MediRoute Gap: ₹{data.gap_loan_amount?.toLocaleString()}
+                </div>
+              </motion.div>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                <p className="text-[10px] font-bold text-blue-700 uppercase">Govt. Direct Benefit (ABHA Verified)</p>
+              </div>
+              <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10 flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <p className="text-[10px] font-bold text-primary uppercase">Institutional Underwriting Active</p>
               </div>
             </div>
-          )}
+          </div>
 
           {/* EMI Options */}
           {emi_options && emi_options.length > 0 && (

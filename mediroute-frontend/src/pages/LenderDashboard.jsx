@@ -252,6 +252,43 @@ const LenderDashboard = () => {
                       </div>
                     </div>
 
+                    {/* Risk Intelligence (Option 3) */}
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h5 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Risk Intelligence</h5>
+                        <div className={`px-2 py-0.5 rounded text-[8px] font-black uppercase ${selectedLog.fraud_risk_score > 50 ? 'bg-rose-50 text-rose-600' : 'bg-emerald-50 text-emerald-600'}`}>
+                          AI Scanned
+                        </div>
+                      </div>
+                      
+                      <div className="p-5 rounded-2xl border border-slate-100 bg-slate-900 text-white relative overflow-hidden">
+                        <div className="relative z-10">
+                          <p className="text-[9px] font-bold text-white/40 uppercase mb-2">Fraud Risk Radar</p>
+                          <div className="flex items-end gap-3">
+                            <p className={`text-3xl font-black ${selectedLog.fraud_risk_score > 50 ? 'text-rose-400' : 'text-emerald-400'}`}>
+                              {selectedLog.fraud_risk_score}%
+                            </p>
+                            <p className="text-[10px] text-white/60 mb-1">Probability of Upcoding</p>
+                          </div>
+                        </div>
+                        <div className="absolute top-0 right-0 p-4 opacity-20">
+                          <Activity className="w-16 h-16 animate-pulse" />
+                        </div>
+                      </div>
+
+                      {selectedLog.is_clinical_anomaly && (
+                        <div className="p-4 rounded-2xl bg-amber-50 border border-amber-100 flex items-start gap-3">
+                          <AlertCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-[10px] font-black text-amber-800 uppercase mb-0.5">Clinical Anomaly Detected</p>
+                            <p className="text-[10px] text-amber-700 leading-tight">
+                              Hospital is requesting a high-cost procedure for symptoms described as "mild". Potential mismatch found.
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
                     {selectedLog.decision === 'REJECTED' && (
                       <div className="p-4 rounded-2xl bg-rose-50 border border-rose-100 flex items-start gap-3">
                         <AlertCircle className="w-5 h-5 text-rose-500 shrink-0" />
