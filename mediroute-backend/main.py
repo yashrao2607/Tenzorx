@@ -553,15 +553,42 @@ async def apply_for_loan(req: ApplyLoanRequest):
         decision = "REVIEW"
         recommendation = f"Requested amount exceeds fair market price by {overpricing_pct:.0f}%. Manual verification required."
     else:
-        decision = "REJECTED"
-        recommendation = f"Loan REJECTED: Requested amount exceeds regional fair price by {overpricing_pct:.0f}%. This indicates potential cost inflation."
+    # 2. Advanced Logic: AI Fraud Risk Score
+    # Risk increases if requested amount is much higher than fair price
+    fraud_risk_score = 0
+    if overpricing_pct > 25:
+        fraud_risk_score += 40
+    if overpricing_pct > 50:
+        fraud_risk_score += 30
+    
+    # Anomaly detection: If clinical rationale mentions "mild" symptoms but price is high
+    is_anomaly = False
+    # Assuming diagnosis logic passed in request or retrieved context
+    if getattr(req, 'diagnosis', None) and "mild" in str(req.diagnosis).lower() and overpricing_pct > 15:
+        fraud_risk_score += 20
+        is_anomaly = True
 
-    # Find cheaper alternative if selected hospital is expensive
+    # 3. Final Underwriting Decision
+    final_decision = "APPROVED"
+    if overpricing_pct > 40: final_decision = "REVIEW"
+    if fraud_risk_score > 80: final_decision = "REJECTED"
+
+    # Fairness Score (Lender Metric)
+    fairness_score = max(0, 100 - int(overpricing_pct * 1.5))
+    
+    recommendation = (
+        f"Loan is within fair market range. Approved." if final_decision == "APPROVED"
+        else f"High price deviation ({overpricing_pct}%). Manual audit required." if final_decision == "REVIEW"
+        else "Suspicious pricing detected. Application rejected for audit."
+    )
+
+    # Find cheaper alternative
     cheaper = None
     sorted_by_cost = sorted(city_matches, key=lambda x: x["estimated_total_cost"])
     cheapest = sorted_by_cost[0]
+    selected = next((h for h in city_matches if h["hospital_id"] == req.hospital_id), None)
     if selected and cheapest["hospital_id"] != selected["hospital_id"]:
-        savings = selected_cost - cheapest["estimated_total_cost"]
+        savings = int(selected["estimated_total_cost"] * (1 + total_multiplier)) - cheapest["estimated_total_cost"]
         if savings > 0:
             cheaper = {
                 "hospital_name": cheapest["hospital_name"],
