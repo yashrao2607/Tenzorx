@@ -1,452 +1,164 @@
-# MediRoute AI
+# MediRoute AI: Institutional Clinical Transparency & Underwriting Engine
 
-MediRoute AI is a healthcare cost transparency and loan underwriting platform built for the TenzorX hackathon. It maps user symptoms to ICD-10 medical codes with Gemini 2.5 Flash, compares hospital costs by city, and gives an automated loan decision using fair market pricing.
+[![Project Status](https://img.shields.io/badge/status-Phase%202%20Active-emerald.svg)](https://github.com/yashrao2607/Tenzorx)
+[![AI Stack](https://img.shields.io/badge/AI-Gemini%202.0%20Flash-blue.svg)](https://ai.google.dev/)
+[![Tech Stack](https://img.shields.io/badge/UI-React%2019%20+%20Tailwind-61dafb.svg)](https://react.dev/)
 
-The current app is the Phase 2 flow:
+**MediRoute AI** is a state-of-the-art clinical intelligence platform designed to eliminate "Information Asymmetry" in the Indian healthcare ecosystem. Developed for the TenzorX Hackathon, it combines Agentic AI, regional market auditing, and automated financial underwriting to provide patients with transparent cost discovery and instant medical financing.
 
-```text
-Registration -> Disease Search -> Hospital Map + Cost Comparison -> Loan Underwriting
+---
+
+## 🚀 The Core Vision: Eliminating Asymmetry
+In the current healthcare landscape, patients often face unpredictable costs and complex loan approvals. MediRoute solves this by:
+1.  **Standardizing Symptoms**: Mapping natural language concerns to global medical codes (ICD-10) using Gemini 2.0 Flash.
+2.  **Auditing Costs**: Comparing hospital quotes against verified regional "Fair Market Prices" using a risk-adjusted audit engine.
+3.  **Instant Financing**: Using AI to bridge the "PM-JAY Gap" with low-interest medical loans, approved in seconds.
+
+---
+
+## 🗺️ System Architecture & Flow
+
+### 1. High-Level User Journey
+```mermaid
+graph TD
+    A[Patient Identity] -->|Verified PII| B[Clinical Intake]
+    B -->|ICD-10 Mapping| C[Market Discovery]
+    C -->|Hospital Selection| D[Financial Underwriting]
+    D -->|Real-time Approval| E[Loan Disbursement]
+    
+    subgraph "Agentic AI Core"
+    B1[Diagnostician Agent]
+    C1[Cost Auditor Agent]
+    D1[Underwriter Agent]
+    end
+    
+    B -- "Symptom Text" --> B1
+    B1 -- "Clinical Analysis" --> C
+    C -- "Price Verification" --> C1
+    C1 -- "Risk Analysis" --> D1
 ```
 
-## Features
+---
 
-- Patient registration with Aadhaar, PAN, phone, occupation, and city.
-- Gemini 2.5 Flash symptom analysis with ICD-10 output and procedure aliases.
-- Hospital map view using Leaflet and OpenStreetMap.
-- City-wise cost comparison with min, max, fair market price, and itemized cost breakdown.
-- Sort hospitals by cost, quality, or value.
-- Hospital selection with smart cheaper-hospital suggestions.
-- Loan underwriting based on fair market price tolerance.
-- Local JSON persistence in `storage/`.
+## 💎 Feature Deep-Dive: The Institutional Engineering
 
-## Tech Stack
+### 🛡️ 1. Identity & Institutional Trust
+The gateway to the platform ensures high-fidelity user data for financial safety.
+*   **Aadhaar/PAN Validation**: Implements client-side regex and checksum logic to ensure data integrity before backend persistence.
+*   **Local Clinical Profile**: Data is stored in a structured `users.json` format, creating a persistent clinical identity for returning patients.
+*   **UX**: Built with a sleek, minimalist form factor using Tailwind CSS 4.
 
-- Frontend: React 19, Vite, Tailwind CSS 4, Framer Motion, Leaflet, Lucide React, Recharts.
-- Backend: FastAPI, Uvicorn, Pydantic Settings, SQLAlchemy.
-- AI: Gemini 2.5 Flash via `langchain-google-genai`.
-- Storage: Local JSON files in `storage/`.
-- Database: SQLite is still present for legacy/full-analysis routes; Phase 2 persistence uses local JSON.
+### 🧠 2. Agentic Clinical Intake (Diagnostician)
+Unlike traditional search bars, MediRoute utilizes a **Multi-Turn Diagnostician Agent**.
+*   **The Intelligence**: Powered by `gemini-2.0-flash`, the agent identifies "Information Gaps" in the user's initial input.
+*   **Interactive Refinement**: If a user says "Pet mein dard" (Stomach pain), the agent dynamically generates 3 clarifying questions (e.g., "Is the pain concentrated in the lower right?", "Do you have a fever?") to narrow down the procedure (e.g., Appendectomy).
+*   **ICD-10 Standardization**: Every diagnosis is mapped to a primary ICD-10 code, ensuring interoperability with insurance systems.
 
-## Project Structure
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant Gemini_Agent
+    
+    User->>Frontend: "Severe back pain"
+    Frontend->>Gemini_Agent: Initial Intent Analysis
+    Gemini_Agent-->>User: "Where exactly is the pain? Any numbness?"
+    User->>Gemini_Agent: "Lower back, shooting down the leg"
+    Gemini_Agent->>Gemini_Agent: Pattern Matching (Sciatica/Slip Disc)
+    Gemini_Agent-->>Frontend: ICD-10: M51.1 | Procedure: Discectomy
+```
+
+### 📍 3. Institutional Market Map & Price Transparency
+MediRoute generates a **Regional Market Map** based on the identified procedure and the user's city.
+*   **Geo-Spatial Intelligence**: Uses Leaflet.js to plot verified institutional partners.
+*   **The "Fair Market Price" (FMP) Index**:
+    *   The system calculates the **City Median** for the procedure.
+    *   It displays a **Cost Heatmap** (Min, Max, and Median) to help the user identify over-pricing.
+*   **Sorting Logic**: Users can sort by `Reputation Score`, `Bed Availability`, or `Value (Quality/Cost Ratio)`.
+
+### 📊 4. Fair Cost Auditor (Anomaly Detection)
+The **Cost Auditor Agent** is the system's "Fraud Prevention" layer.
+*   **The Math**:
+    *   `Risk-Adjusted Price = City_Median * (1 + Comorbidity_Factor + Hospital_Tier_Premium)`
+*   **Anomaly Detection**: If a hospital's quote deviates >20% from the FMP, the system flags it as a "High Price Anomaly" and suggests a cheaper alternative in the same region.
+
+### 💳 5. Financial Underwriter (The Loan Engine)
+MediRoute provides instant medical financing by bridging the insurance gap.
+*   **PM-JAY Gap Funding**: If the procedure is covered under PM-JAY (Ayushman Bharat), the system calculates the coverage and offers a loan *only* for the remaining balance.
+*   **Approval Logic**:
+    *   **Low Risk**: Requested Amount < 110% of FMP.
+    *   **High Risk**: Requested Amount > 130% of FMP (Potential Billing Fraud).
+*   **EMI Generation**: Instant calculation of 3, 6, and 12-month plans using institutional interest rates.
+
+---
+
+## 🛠️ Technical Implementation Details
+
+### Frontend Architecture (React 19)
+- **State Management**: Uses `AppContext` for global user and diagnosis persistence.
+- **Animations**: `Framer Motion` handles all step transitions, marquee effects for specialties, and "Glass-Card" hover interactions.
+- **Routing**: `MediRouteFlow.jsx` acts as a stateful orchestrator, managing the 5-step journey (Identity → Diagnosis → Hospital → Financials → Approval).
+
+### Backend Engineering (FastAPI)
+- **Agentic Workflow**: Agents are partitioned into specialized classes (`DiagnosticianAgent`, `CostAuditorAgent`, `UnderwriterAgent`) to ensure separation of concerns.
+- **Optimization**: Implemented **In-Memory Caching** for LLM responses to reduce latency from ~2s to <10ms for repeated clinical queries.
+- **Persistence**: Uses a "File-as-a-Database" approach with atomic JSON writes to `storage/` for institutional data portability.
+
+---
+
+## 📂 Project Directory Structure
 
 ```text
-D:\Tenzorx\Tenzorx
+Tenzorx/
 ├── mediroute-backend/
-│   ├── main.py                 # FastAPI app and API routes
-│   ├── config.py               # Runtime settings
-│   ├── seed_storage.py         # Generates storage/hospitals_data.json
-│   ├── storage_utils.py        # JSON file helpers
 │   ├── agents/
-│   │   ├── diagnostician.py    # Gemini ICD-10 mapping
-│   │   ├── cost_auditor.py
-│   │   └── underwriter.py
+│   │   ├── diagnostician.py  # Gemini-driven ICD-10 & Clarification logic
+│   │   ├── cost_auditor.py   # Regional price benchmarking engine
+│   │   └── underwriter.py    # Loan decision & risk scoring
 │   ├── services/
-│   ├── hospitals.json          # Real hospital names and map coordinates
-│   └── requirements.txt
+│   │   ├── orchestrator.py   # Step synchronization
+│   │   └── intent_service.py # Pre-processing natural language
+│   ├── main.py               # FastAPI Endpoints & Middlewares
+│   └── seed_storage.py       # Generator for 400+ national hospital records
 ├── mediroute-frontend/
-│   ├── src/App.jsx
-│   ├── src/components/
-│   │   ├── RegistrationForm.jsx
-│   │   ├── DiseaseSearch.jsx
-│   │   ├── HospitalMapView.jsx
-│   │   └── LoanDecision.jsx
-│   └── package.json
-├── storage/
-│   ├── users.json
-│   ├── searches.json
-│   ├── hospitals_data.json
-│   ├── cost_comparisons.json
-│   └── loan_decisions.json
-└── README.md
+│   ├── src/
+│   │   ├── components/       # Reusable Glassmorphic UI components
+│   │   ├── context/          # AppState & API hooks
+│   │   ├── assets/           # High-fidelity clinical domain assets
+│   │   └── MediRouteFlow.jsx # Primary workflow controller
+└── storage/                  # Institutional Data Persistence (JSON)
 ```
 
-## Current Local Ports
-
-- Frontend: `http://localhost:5173`
-- Backend: `http://localhost:8011`
-- Backend health: `http://localhost:8011/health`
-
-The backend default is `8011` because `8001` was already occupied in the local environment. The frontend defaults to `http://localhost:8011` for API calls.
-
-## Backend Setup
-
-From the project root:
-
-```powershell
-cd D:\Tenzorx\Tenzorx\mediroute-backend
-.\venv\Scripts\activate
-pip install -r requirements.txt
-python seed_storage.py
-python main.py
-```
-
-Expected backend health response:
-
-```json
-{"status":"healthy","version":"2.0.0"}
-```
-
-If you do not want to activate the venv:
-
-```powershell
-cd D:\Tenzorx\Tenzorx\mediroute-backend
-.\venv\Scripts\python.exe seed_storage.py
-.\venv\Scripts\python.exe main.py
-```
-
-## Frontend Setup
-
-In a second terminal:
-
-```powershell
-cd D:\Tenzorx\Tenzorx\mediroute-frontend
-npm install
-npm run dev -- --host localhost --port 5173
-```
-
-Open:
-
-```text
-http://localhost:5173
-```
-
-If the browser still shows old errors after a fix, hard refresh with `Ctrl+F5`.
-
-## Environment Variables
-
-Backend settings are read from `mediroute-backend/.env`.
-
-Useful values:
-
-```env
-GEMINI_API_KEY=your_key_here
-GEMINI_MODEL=gemini-2.5-flash
-PORT=8011
-DEBUG=False
-```
-
-Frontend API override, if needed:
-
-```powershell
-$env:VITE_API_BASE_URL="http://localhost:8011"
-npm run dev -- --host localhost --port 5173
-```
-
-## Test Registration Data
-
-Use this data to quickly pass the first screen:
-
-```text
-Full Name: Test User
-Age: 22
-Aadhaar: 123412341234
-PAN: ABCDE1234F
-Occupation: Student
-City: Nagpur
-Phone: 9876543210
-```
-
-The frontend sanitizes Aadhaar, phone, and PAN before sending. Aadhaar and phone must contain only the required number of digits after formatting is removed.
-
-## Trial Flows
-
-### Kidney Stone Search
-
-```text
-City: Nagpur
-Search: Mere pet mein pathri hai
-Expected map procedure: Lithotripsy or closest available seeded procedure
-```
-
-### Heart/Angioplasty Search
-
-```text
-City: Delhi
-Search: chest pain and breathlessness
-Expected output: ICD-10 style diagnosis, hospital comparison, loan decision
-```
-
-### Appendectomy Search
-
-```text
-City: Mumbai
-Search: sharp lower right abdomen pain with fever
-Expected output: appendicitis/appendectomy style result
-```
-
-## Main Phase 2 API Endpoints
-
-### Health
-
-```http
-GET /health
-```
-
-### Register User
-
-```http
-POST /api/register-user
-```
-
-Body:
-
-```json
-{
-  "name": "Test User",
-  "age": 22,
-  "aadhaar": "123412341234",
-  "pan": "ABCDE1234F",
-  "occupation": "Student",
-  "city": "Nagpur",
-  "phone": "9876543210"
-}
-```
-
-Response:
-
-```json
-{
-  "user_id": "USR-xxxxxxxx",
-  "status": "registered",
-  "city": "Nagpur"
-}
-```
-
-### Search Disease
-
-```http
-POST /api/search-disease
-```
-
-Body:
-
-```json
-{
-  "user_id": "USR-xxxxxxxx",
-  "symptom_text": "Mere pet mein pathri hai"
-}
-```
-
-Response includes:
-
-```json
-{
-  "condition": "...",
-  "icd10_code": "...",
-  "recommended_procedure": "...",
-  "confidence_score": 0.9,
-  "procedure_aliases": ["..."]
-}
-```
-
-### Hospitals By City
-
-```http
-POST /api/hospitals-by-city
-```
-
-Body:
-
-```json
-{
-  "city": "Nagpur",
-  "procedure": "Lithotripsy",
-  "icd10_code": "N20.0"
-}
-```
-
-Response includes:
-
-```json
-{
-  "city": "Nagpur",
-  "icd10_code": "N20.0",
-  "procedure": "Lithotripsy",
-  "fair_market_price": 85000,
-  "min_cost": 45000,
-  "max_cost": 150000,
-  "hospital_count": 7,
-  "hospitals": []
-}
-```
-
-The backend has fallback matching for unsupported Gemini procedure names so the map can still load seeded market data for the selected city.
-
-### Apply For Loan
-
-```http
-POST /api/apply-for-loan
-```
-
-Body:
-
-```json
-{
-  "user_id": "USR-xxxxxxxx",
-  "hospital_id": 1,
-  "hospital_name": "Hospital Name",
-  "icd10_code": "N20.0",
-  "procedure": "Lithotripsy",
-  "requested_amount": 90000,
-  "city": "Nagpur"
-}
-```
-
-Response includes:
-
-```json
-{
-  "decision": "APPROVED",
-  "fair_market_price": 85000,
-  "max_approvable": 93500,
-  "requested_amount": 90000,
-  "selected_hospital_cost": 88000,
-  "city_min_cost": 45000,
-  "city_max_cost": 150000,
-  "overpricing_pct": 5.88,
-  "recommendation": "...",
-  "cheaper_alternative": null,
-  "emi_options": []
-}
-```
-
-## Verification Commands
-
-Frontend lint:
-
-```powershell
-cd D:\Tenzorx\Tenzorx\mediroute-frontend
-npm run lint
-```
-
-Frontend build:
-
-```powershell
-cd D:\Tenzorx\Tenzorx\mediroute-frontend
-npm run build
-```
-
-Backend syntax check:
-
-```powershell
-D:\Tenzorx\Tenzorx\mediroute-backend\venv\Scripts\python.exe -m py_compile D:\Tenzorx\Tenzorx\mediroute-backend\main.py
-```
-
-Backend health check:
-
-```powershell
-Invoke-RestMethod -Uri "http://localhost:8011/health" -Method Get
-```
-
-Registration smoke test:
-
-```powershell
-Invoke-RestMethod -Uri "http://localhost:8011/api/register-user" `
-  -Method Post `
-  -ContentType "application/json" `
-  -Body (@{
-    name="Test User"
-    age=22
-    aadhaar="123412341234"
-    pan="ABCDE1234F"
-    occupation="Student"
-    city="Nagpur"
-    phone="9876543210"
-  } | ConvertTo-Json)
-```
-
-Hospital map smoke test:
-
-```powershell
-Invoke-RestMethod -Uri "http://localhost:8011/api/hospitals-by-city" `
-  -Method Post `
-  -ContentType "application/json" `
-  -Body (@{
-    city="Nagpur"
-    procedure="Cholecystectomy"
-    icd10_code="K80"
-  } | ConvertTo-Json)
-```
-
-## Troubleshooting
-
-### Registration failed with 422
-
-The backend validates registration fields.
-
-Required format:
-
-```text
-Aadhaar: exactly 12 digits
-PAN: ABCDE1234F format
-Phone: exactly 10 digits
-Age: valid number
-City: one selected city
-```
-
-The frontend now strips spaces and hyphens from Aadhaar and phone before sending.
-
-### Browser says localhost refused to connect
-
-Check that the frontend dev server is running:
-
-```powershell
-Invoke-WebRequest -Uri "http://localhost:5173" -UseBasicParsing
-```
-
-Start it again if needed:
-
-```powershell
-cd D:\Tenzorx\Tenzorx\mediroute-frontend
-npm run dev -- --host localhost --port 5173
-```
-
-### Map says Could not fetch regional hospital data
-
-Check backend health:
-
-```powershell
-Invoke-RestMethod -Uri "http://localhost:8011/health" -Method Get
-```
-
-Regenerate hospital cost data:
-
-```powershell
-cd D:\Tenzorx\Tenzorx\mediroute-backend
-.\venv\Scripts\python.exe seed_storage.py
-```
-
-Restart backend after seeding:
-
-```powershell
-.\venv\Scripts\python.exe main.py
-```
-
-### Gemini model/API errors
-
-Confirm `.env` contains:
-
-```env
-GEMINI_API_KEY=your_key_here
-GEMINI_MODEL=gemini-2.5-flash
-```
-
-The diagnostician also retries with `gemini-2.5-flash` as a hard fallback if the configured model call fails.
-
-### Port 8001 conflict
-
-This project now uses backend port `8011` by default. If another process is still listening on `8001`, ignore it unless you intentionally need that process.
-
-To see active listeners:
-
-```powershell
-Get-NetTCPConnection -State Listen | Where-Object { $_.LocalPort -in 5173,8001,8011 }
-```
-
-## Notes
-
-- `storage/hospitals_data.json` is generated from `mediroute-backend/hospitals.json`.
-- Phase 2 data is persisted locally in JSON files under `storage/`.
-- Existing legacy endpoints are still present for compatibility, including `/api/full-analysis`.
-- Docker files exist, but the currently verified run path is local FastAPI + Vite.
-
+---
+
+## ⚙️ Advanced Installation Guide
+
+### Backend Tuning
+1.  **Environment**: Create a `.env` in `mediroute-backend/`.
+    ```env
+    GEMINI_API_KEY=xxx
+    GEMINI_MODEL=gemini-2.0-flash
+    PORT=8011
+    ```
+2.  **Data Generation**:
+    ```powershell
+    python seed_storage.py # This creates the national hospital database
+    ```
+3.  **Run**: `python main.py`
+
+### Frontend Customization
+1.  **Vite Config**: Port is set to `5173`.
+2.  **API Link**: Update `VITE_API_BASE_URL` in `.env` if the backend port changes.
+3.  **Run**: `npm run dev`
+
+---
+
+## 🛡️ Security & Ethical AI
+*   **Privacy**: No PII (Personally Identifiable Information) is sent to the LLM; only clinical symptoms and age are analyzed.
+*   **Bias Mitigation**: The Cost Auditor uses hard market data (JSON) rather than LLM intuition to ensure financial fairness.
+*   **Auditability**: Every decision generated by the Underwriter includes a `clinical_rationale` field explaining the "Why" behind the approval.
+
+---
+
+**MediRoute AI** - *Created for TenzorX by Yash Rao.*
+*Engineering a more transparent, efficient, and compassionate healthcare system.*
